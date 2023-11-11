@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxfkpt7yeeuav"]
+
+[ext_resource type="Texture2D" uid="uid://cbb6b3x2djrrd" path="res://assets/splash.png" id="1_j1sig"]
+[ext_resource type="Script" path="res://splashscreen.gd" id="1_jhx7o"]
+[ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="2_hssv8"]
+
+[sub_resource type="Animation" id="Animation_oatha"]
+resource_name = "background moving"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(288.5, 256), Vector2(288, 82)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nwsnb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lkctj"]
+_data = {
+"RESET": SubResource("Animation_nwsnb"),
+"background moving": SubResource("Animation_oatha")
+}
+
+[node name="splashscreen" type="Node2D"]
+script = ExtResource("1_jhx7o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Splash")
+autoplay = "background moving"
+libraries = {
+"": SubResource("AnimationLibrary_lkctj")
+}
+
+[node name="Splash" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(288.168, 140.473)
+scale = Vector2(1.12507, 1)
+texture = ExtResource("1_j1sig")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 171.0
+offset_top = 116.0
+offset_right = 274.0
+offset_bottom = 142.0
+scale = Vector2(2.39659, 2.56729)
+theme_override_fonts/font = ExtResource("2_hssv8")
+text = "BBM Games"
