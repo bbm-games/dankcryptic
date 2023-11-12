@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=18 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Texture2D" uid="uid://dty6ym387qvf4" path="res://assets/hudbars.png" id="1_7r21i"]
 [ext_resource type="Script" path="res://HUDLayer.gd" id="1_47glo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://qsqu1rfaj612" path="res://assets/itemslots.png" id="2_835av"]
 [ext_resource type="Texture2D" uid="uid://kuy5fnxctvqh" path="res://assets/testbg.png" id="3_ctx3v"]
 [ext_resource type="Texture2D" uid="uid://cvjwjaa034kkc" path="res://assets/guts.png" id="6_ui0lc"]
+[ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="7_f521b"]
 
 [sub_resource type="Animation" id="Animation_knli3"]
 length = 0.001
@@ -178,7 +179,6 @@ scale = Vector2(0.826499, 0.670151)
 texture = ExtResource("6_ui0lc")
 hframes = 4
 vframes = 4
-frame = 2
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position_smoothing_enabled = true
@@ -191,5 +191,354 @@ libraries = {
 
 [node name="currentMap" type="Node2D" parent="."]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 2
+
+[node name="pauseMenu" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 184.0
+offset_top = 92.0
+offset_right = 379.0
+offset_bottom = 227.0
+
+[node name="Label" type="Label" parent="CanvasLayer/pauseMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="Button4" type="Button" parent="CanvasLayer/pauseMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 11
+text = "Resume"
+
+[node name="Button" type="Button" parent="CanvasLayer/pauseMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 11
+text = "Options"
+
+[node name="Button2" type="Button" parent="CanvasLayer/pauseMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 11
+text = "Exit to Main"
+
+[node name="Button3" type="Button" parent="CanvasLayer/pauseMenu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 11
+text = "Exit to Desktop"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="playerMenu" type="TabContainer" parent="CanvasLayer2"]
+offset_left = 33.0
+offset_top = 39.0
+offset_right = 541.0
+offset_bottom = 279.0
+theme_override_fonts/font = ExtResource("7_f521b")
+tab_alignment = 2
+
+[node name="Stats" type="HBoxContainer" parent="CanvasLayer2/playerMenu"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer2/playerMenu/Stats"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/playerMenu/Stats"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "Attack
+"
+vertical_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "Defense"
+vertical_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "+"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "Strength"
+vertical_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "+"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "Max Health"
+vertical_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "+"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "Stamina"
+vertical_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "+"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "Magic"
+vertical_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "+"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "Wisdom"
+vertical_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "+"
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer8"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "Mana"
+vertical_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "-"
+
+[node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "+"
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "Exp:"
+
+[node name="Inventory" type="HBoxContainer" parent="CanvasLayer2/playerMenu"]
+visible = false
+layout_mode = 2
+
+[node name="Lore" type="HBoxContainer" parent="CanvasLayer2/playerMenu"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2/playerMenu/Lore"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Lore/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "Game World"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer2/playerMenu/Lore"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer2/playerMenu/Lore/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("7_f521b")
+theme_override_font_sizes/normal_font_size = 10
+text = "In the realm of Dankcrypt, a foreboding darkness has shrouded the land, casting an eternal shadow upon its inhabitants. This high dark fantasy video game plunges players into a treacherous world where ancient evils and malevolent forces reign supreme.\\nWithin the depths of Dankcrypt, forgotten ruins and decrepit crypts lay scattered, holding secrets that whisper of a forgotten era. The land is plagued by sinister creatures, twisted abominations born from the darkest recesses of the human psyche. Their haunting presence instills fear and despair in the hearts of even the bravest souls.\\nAs players embark on their perilous journey, they will encounter a cast of morally ambiguous characters, each harboring their own hidden agendas and dark pasts. The choices made along the way will shape the destiny of the protagonist, as alliances are forged and broken amidst a backdrop of political intrigue and ancient rivalries.\\nThe lore of Dankcrypt is steeped in ancient prophecies and forbidden knowledge, where arcane rituals and forbidden magics hold the key to unlocking the secrets of the realm. Unraveling the mysteries of this twisted world will require unwavering determination, as well as a willingness to confront the darkest aspects of one's own soul.\\nPrepare to delve into the depths of Dankcrypt, where the line between light and darkness blurs, and survival is not guaranteed. Only the most courageous and cunning adventurers will have a chance to uncover the truth and bring hope to a land consumed by the unrelenting grip of darkness."
+
 [connection signal="mouse_entered" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/pauseMenu/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="CanvasLayer/pauseMenu/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/pauseMenu/Button3" to="." method="_on_button_3_pressed"]

@@ -3,6 +3,8 @@ extends Node2D
 
 var player_sprite
 var currentMap
+var pauseMenu
+var playerMenu
 
 var walk_up_held = false
 var walk_down_held = false
@@ -19,6 +21,12 @@ var speed = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pauseMenu = get_node("CanvasLayer/pauseMenu")
+	pauseMenu.hide()
+	
+	playerMenu = get_node("CanvasLayer2/playerMenu")
+	playerMenu.hide()
+	
 	player_sprite = get_node("player") 
 	#map_sprite = get_node("Testbg")
 	playerAnimationPlayer = get_node("PlayerAnimationPlayer")
@@ -58,8 +66,23 @@ func _input(event):
 		dash = true
 	if event.is_action_released("dash"):
 		dash = false
+	if event.is_action_pressed("pause"):
+		if playerMenu.visible:
+			playerMenu.hide()
+		elif get_tree().paused:
+			print("unpausing")
+			get_tree().paused = false
+			pauseMenu.hide()
+		else:
+			print("pausing")
+			get_tree().paused = true
+			pauseMenu.show()
+	if event.is_action_pressed("playerMenu"):
+		if playerMenu.visible:
+			playerMenu.hide()
+		else:
+			playerMenu.show()
 	
-		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time_passed += delta
@@ -89,5 +112,14 @@ func _process(delta):
 		playerAnimationPlayer.play("walk_right")
 	else:
 		playerAnimationPlayer.stop()
-	
-	
+
+# Options menu buttons 
+func _on_button_3_pressed():
+	get_tree().paused = false
+	get_tree().quit()
+func _on_button_2_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://menu.tscn")
+func _on_button_4_pressed():
+	get_tree().paused = false
+	pauseMenu.hide()
