@@ -158,6 +158,14 @@ texture = ExtResource("2_835av")
 position = Vector2(75, 303)
 texture = ExtResource("2_835av")
 
+[node name="portrait" type="Sprite2D" parent="HUDLayer/CanvasGroup"]
+z_index = -1
+position = Vector2(33, 32)
+scale = Vector2(1.75227, 1.65044)
+texture = ExtResource("6_ui0lc")
+region_enabled = true
+region_rect = Rect2(15.631, 10.3269, 33.099, 27.0018)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUDLayer"]
 root_node = NodePath("../..")
 libraries = {
