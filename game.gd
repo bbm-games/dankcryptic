@@ -77,6 +77,7 @@ func _input(event):
 			print("pausing")
 			get_tree().paused = true
 			pauseMenu.show()
+			pauseMenu.get_node('resumeGameButton').grab_focus()
 	if event.is_action_pressed("playerMenu"):
 		if playerMenu.visible:
 			playerMenu.hide()

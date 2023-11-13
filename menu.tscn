@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3a5qovvsnmt7"]
+[gd_scene load_steps=9 format=3 uid="uid://b3a5qovvsnmt7"]
 
 [ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="1_cgn14"]
 [ext_resource type="AudioStream" uid="uid://bcnfhl623lyvh" path="res://assets/theme.mp3" id="1_dts6q"]
 [ext_resource type="Script" path="res://menu.gd" id="1_qbheq"]
 [ext_resource type="Texture2D" uid="uid://b1enf06ssx3u4" path="res://assets/menubg.png" id="4_l7sgt"]
+[ext_resource type="Script" path="res://newGameButton.gd" id="5_odj0k"]
 
 [sub_resource type="Animation" id="Animation_fo5x8"]
 length = 0.001
@@ -75,53 +76,60 @@ position = Vector2(288, 164)
 scale = Vector2(1.125, 0.652344)
 texture = ExtResource("4_l7sgt")
 
-[node name="LinkButton" type="LinkButton" parent="."]
+[node name="newGameButton" type="LinkButton" parent="."]
 offset_left = 240.0
 offset_top = 122.0
 offset_right = 330.0
 offset_bottom = 146.0
+focus_neighbor_bottom = NodePath("../LinkButton2")
+focus_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_cgn14")
 text = "New Game"
-underline = 1
+underline = 2
+script = ExtResource("5_odj0k")
 
 [node name="LinkButton2" type="LinkButton" parent="."]
 offset_left = 240.0
 offset_top = 149.0
 offset_right = 330.0
 offset_bottom = 173.0
+focus_neighbor_top = NodePath("../newGameButton")
+focus_neighbor_bottom = NodePath("../LinkButton3")
+focus_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_cgn14")
 text = "Load Game"
-underline = 1
+underline = 2
 
 [node name="LinkButton3" type="LinkButton" parent="."]
 offset_left = 240.0
 offset_top = 176.0
 offset_right = 330.0
 offset_bottom = 200.0
+focus_neighbor_top = NodePath("../LinkButton2")
+focus_neighbor_bottom = NodePath("../LinkButton4")
+focus_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_cgn14")
 text = "Settings"
-underline = 1
+underline = 2
 
 [node name="LinkButton4" type="LinkButton" parent="."]
 offset_left = 240.0
 offset_top = 205.0
 offset_right = 330.0
 offset_bottom = 229.0
+focus_neighbor_top = NodePath("../LinkButton3")
+focus_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_cgn14")
 text = "Exit"
-underline = 1
+underline = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade in"
@@ -129,5 +137,9 @@ libraries = {
 "": SubResource("AnimationLibrary_g63ds")
 }
 
-[connection signal="pressed" from="LinkButton" to="." method="_on_link_button_pressed"]
+[connection signal="mouse_entered" from="newGameButton" to="newGameButton" method="_on_mouse_entered"]
+[connection signal="pressed" from="newGameButton" to="." method="_on_link_button_pressed"]
+[connection signal="mouse_entered" from="LinkButton2" to="." method="_on_link_button_2_mouse_entered"]
+[connection signal="mouse_entered" from="LinkButton3" to="." method="_on_link_button_3_mouse_entered"]
+[connection signal="mouse_entered" from="LinkButton4" to="." method="_on_link_button_4_mouse_entered"]
 [connection signal="pressed" from="LinkButton4" to="." method="_on_link_button_4_pressed"]

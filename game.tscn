@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=25 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Texture2D" uid="uid://dty6ym387qvf4" path="res://assets/hudbars.png" id="1_7r21i"]
 [ext_resource type="Script" path="res://HUDLayer.gd" id="1_47glo"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cvjwjaa034kkc" path="res://assets/guts.png" id="6_ui0lc"]
 [ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="7_f521b"]
 [ext_resource type="Script" path="res://bigportrait.gd" id="8_c6bur"]
+[ext_resource type="Script" path="res://resumeGameButton.gd" id="8_ul5po"]
 
 [sub_resource type="Animation" id="Animation_knli3"]
 length = 0.001
@@ -244,6 +245,7 @@ offset_left = 184.0
 offset_top = 92.0
 offset_right = 379.0
 offset_bottom = 227.0
+focus_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/pauseMenu"]
 layout_mode = 2
@@ -251,26 +253,33 @@ theme_override_fonts/font = ExtResource("7_f521b")
 text = "Pause"
 horizontal_alignment = 1
 
-[node name="Button4" type="Button" parent="CanvasLayer/pauseMenu"]
+[node name="resumeGameButton" type="Button" parent="CanvasLayer/pauseMenu"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../Button")
 theme_override_fonts/font = ExtResource("7_f521b")
 theme_override_font_sizes/font_size = 11
 text = "Resume"
+script = ExtResource("8_ul5po")
 
 [node name="Button" type="Button" parent="CanvasLayer/pauseMenu"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../resumeGameButton")
+focus_neighbor_bottom = NodePath("../Button2")
 theme_override_fonts/font = ExtResource("7_f521b")
 theme_override_font_sizes/font_size = 11
 text = "Options"
 
 [node name="Button2" type="Button" parent="CanvasLayer/pauseMenu"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Button")
+focus_neighbor_bottom = NodePath("../Button3")
 theme_override_fonts/font = ExtResource("7_f521b")
 theme_override_font_sizes/font_size = 11
 text = "Exit to Main"
 
 [node name="Button3" type="Button" parent="CanvasLayer/pauseMenu"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Button2")
 theme_override_fonts/font = ExtResource("7_f521b")
 theme_override_font_sizes/font_size = 11
 text = "Exit to Desktop"
@@ -611,6 +620,10 @@ text = "In the realm of Dankcrypt, a foreboding darkness has shrouded the land, 
 
 [connection signal="mouse_entered" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/pauseMenu/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/pauseMenu/resumeGameButton" to="CanvasLayer/pauseMenu/resumeGameButton" method="_on_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/pauseMenu/resumeGameButton" to="." method="_on_button_4_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/pauseMenu/Button" to="CanvasLayer/pauseMenu/resumeGameButton" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/pauseMenu/Button2" to="CanvasLayer/pauseMenu/resumeGameButton" method="_on_button_2_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/pauseMenu/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/pauseMenu/Button3" to="CanvasLayer/pauseMenu/resumeGameButton" method="_on_button_3_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/pauseMenu/Button3" to="." method="_on_button_3_pressed"]

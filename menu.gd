@@ -19,3 +19,16 @@ func _on_link_button_4_pressed():
 # new game button
 func _on_link_button_pressed():
 	startNewGame()
+
+
+
+func _on_link_button_2_mouse_entered():
+	get_node("LinkButton2").grab_focus()
+
+
+func _on_link_button_3_mouse_entered():
+	get_node("LinkButton3").grab_focus()
+
+
+func _on_link_button_4_mouse_entered():
+	get_node("LinkButton4").grab_focus()
