@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmrfp8aucy0rh"]
+[gd_scene load_steps=14 format=3 uid="uid://cmrfp8aucy0rh"]
 
 [ext_resource type="Texture2D" uid="uid://6we0ccyfersj" path="res://assets/creationbg.png" id="1_elijy"]
+[ext_resource type="Script" path="res://creation.gd" id="1_tkosg"]
 [ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="2_04ku0"]
 [ext_resource type="Script" path="res://CharNameLineEdit.gd" id="3_64eo6"]
 [ext_resource type="Texture2D" uid="uid://xbd4of61cpg7" path="res://assets/portraits/Icons_01.png" id="3_f1qa2"]
@@ -9,8 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://3rf51gxyi3lo" path="res://assets/portraits/Icons_04.png" id="6_jadxk"]
 [ext_resource type="Texture2D" uid="uid://bdafrjkxddcgt" path="res://assets/portraits/Icons_05.png" id="7_s4oa5"]
 [ext_resource type="Texture2D" uid="uid://c8xn2ds5np25x" path="res://assets/portraits/Icons_06.png" id="8_uyei1"]
+[ext_resource type="Texture2D" uid="uid://b34e5xjw734n" path="res://assets/Item__04.png" id="11_r52q4"]
+[ext_resource type="Texture2D" uid="uid://c4dbelswopvwk" path="res://assets/portraits/Icons_21.png" id="12_to48f"]
+[ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="13_nsk31"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_tkosg")
 
 [node name="Creationbg" type="Sprite2D" parent="."]
 position = Vector2(288, 160)
@@ -25,6 +30,7 @@ offset_bottom = 304.0
 theme_override_fonts/font = ExtResource("2_04ku0")
 
 [node name="Name" type="Panel" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Name"]
@@ -154,10 +160,320 @@ icon = ExtResource("8_uyei1")
 visible = false
 layout_mode = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Vocation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.5
+offset_top = -92.0
+offset_right = 239.5
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Vocation/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+columns = 5
+
+[node name="Button" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(70, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Knight"
+icon = ExtResource("11_r52q4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button2" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(70, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Knight"
+icon = ExtResource("11_r52q4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button3" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(70, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Knight"
+icon = ExtResource("11_r52q4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button4" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(70, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Knight"
+icon = ExtResource("11_r52q4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button5" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(70, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Knight"
+icon = ExtResource("11_r52q4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button6" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(70, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Knight"
+icon = ExtResource("11_r52q4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button7" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(70, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Knight"
+icon = ExtResource("11_r52q4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button8" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(70, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Knight"
+icon = ExtResource("11_r52q4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button9" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(70, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Knight"
+icon = ExtResource("11_r52q4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Button10" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(70, 90)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Knight"
+icon = ExtResource("11_r52q4")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="TabContainer/Vocation/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+text = "Stats"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Attack"
+
+[node name="Label3" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Defense"
+
+[node name="Label4" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Strength"
+
+[node name="Label5" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Max Health"
+
+[node name="Label9" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Stamina"
+
+[node name="Label6" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Magic"
+
+[node name="Label7" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Wisdom"
+
+[node name="Label8" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = "Mana"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = " 0"
+
+[node name="Label3" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = " 0"
+
+[node name="Label4" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = " 0"
+
+[node name="Label5" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = " 0"
+
+[node name="Label9" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = " 0"
+
+[node name="Label6" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = " 0"
+
+[node name="Label7" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = " 0"
+
+[node name="Label8" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 10
+text = " 0"
+
 [node name="Stats" type="Panel" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
-[node name="Panel3" type="Panel" parent="TabContainer"]
-visible = false
+[node name="Confirm" type="Panel" parent="TabContainer"]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Confirm"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -20.0
+offset_right = 61.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="TabContainer/Confirm/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 15
+text = "Enter dankcrypt?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Confirm/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Confirm/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("12_to48f")
+
+[node name="Label" type="Label" parent="TabContainer/Confirm/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_04ku0")
+theme_override_font_sizes/font_size = 15
+text = "buttboy202"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="startGameButton" type="Button" parent="TabContainer/Confirm/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_04ku0")
+text = "Start Game"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="nextButton" type="Button" parent="CanvasLayer"]
+offset_left = 504.0
+offset_top = 272.0
+offset_right = 551.0
+offset_bottom = 301.0
+theme_override_fonts/font = ExtResource("2_04ku0")
+text = "Next"
+
+[node name="prevButton" type="Button" parent="CanvasLayer"]
+offset_left = 32.0
+offset_top = 272.0
+offset_right = 79.0
+offset_bottom = 301.0
+theme_override_fonts/font = ExtResource("2_04ku0")
+text = "Prev"
+
+[node name="hoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_nsk31")
+
+[connection signal="pressed" from="TabContainer/Confirm/VBoxContainer/startGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/nextButton" to="." method="_on_next_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/nextButton" to="." method="_on_next_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/prevButton" to="." method="_on_prev_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/prevButton" to="." method="_on_prev_button_pressed"]

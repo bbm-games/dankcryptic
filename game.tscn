@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=26 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Texture2D" uid="uid://dty6ym387qvf4" path="res://assets/hudbars.png" id="1_7r21i"]
 [ext_resource type="Script" path="res://HUDLayer.gd" id="1_47glo"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="7_f521b"]
 [ext_resource type="Script" path="res://bigportrait.gd" id="8_c6bur"]
 [ext_resource type="Script" path="res://resumeGameButton.gd" id="8_ul5po"]
+[ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="10_d3c5g"]
 
 [sub_resource type="Animation" id="Animation_knli3"]
 length = 0.001
@@ -617,6 +618,9 @@ layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("7_f521b")
 theme_override_font_sizes/normal_font_size = 10
 text = "In the realm of Dankcrypt, a foreboding darkness has shrouded the land, casting an eternal shadow upon its inhabitants. This high dark fantasy video game plunges players into a treacherous world where ancient evils and malevolent forces reign supreme.\\nWithin the depths of Dankcrypt, forgotten ruins and decrepit crypts lay scattered, holding secrets that whisper of a forgotten era. The land is plagued by sinister creatures, twisted abominations born from the darkest recesses of the human psyche. Their haunting presence instills fear and despair in the hearts of even the bravest souls.\\nAs players embark on their perilous journey, they will encounter a cast of morally ambiguous characters, each harboring their own hidden agendas and dark pasts. The choices made along the way will shape the destiny of the protagonist, as alliances are forged and broken amidst a backdrop of political intrigue and ancient rivalries.\\nThe lore of Dankcrypt is steeped in ancient prophecies and forbidden knowledge, where arcane rituals and forbidden magics hold the key to unlocking the secrets of the realm. Unraveling the mysteries of this twisted world will require unwavering determination, as well as a willingness to confront the darkest aspects of one's own soul.\\nPrepare to delve into the depths of Dankcrypt, where the line between light and darkness blurs, and survival is not guaranteed. Only the most courageous and cunning adventurers will have a chance to uncover the truth and bring hope to a land consumed by the unrelenting grip of darkness."
+
+[node name="hoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_d3c5g")
 
 [connection signal="mouse_entered" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_exited"]

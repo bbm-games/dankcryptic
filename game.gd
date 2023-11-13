@@ -15,12 +15,18 @@ var rng
 var playerAnimationPlayer
 var boss1ScenePath = "res://boss1.tscn"
 var centralLight
+var hoverSound
 
 var dash = false
 var speed = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	hoverSound = get_node("hoverSound")
+	connect_buttons(get_tree().root)
+	get_tree().node_added.connect(_on_SceneTree_node_added)
+	
 	pauseMenu = get_node("CanvasLayer/pauseMenu")
 	pauseMenu.hide()
 	
@@ -39,6 +45,23 @@ func _ready():
 	
 	# get the central light from the map, it should follow the player
 	centralLight = scene.get_node("PointLight2D")
+
+func _on_SceneTree_node_added(node):
+	if node is Button:
+		connect_to_button(node)
+		
+# recursively connect all buttons
+func connect_buttons(root):
+	for child in root.get_children():
+		if child is BaseButton:
+			connect_to_button(child)
+		connect_buttons(child)
+
+func connect_to_button(button):
+	button.mouse_entered.connect(_on_mouse_entered_button)
+
+func _on_mouse_entered_button():
+	hoverSound.play()
 	
 func _input(event):
 	#print(event.as_text())

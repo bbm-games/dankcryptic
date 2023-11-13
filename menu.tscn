@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3a5qovvsnmt7"]
+[gd_scene load_steps=10 format=3 uid="uid://b3a5qovvsnmt7"]
 
 [ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="1_cgn14"]
 [ext_resource type="AudioStream" uid="uid://bcnfhl623lyvh" path="res://assets/theme.mp3" id="1_dts6q"]
 [ext_resource type="Script" path="res://menu.gd" id="1_qbheq"]
 [ext_resource type="Texture2D" uid="uid://b1enf06ssx3u4" path="res://assets/menubg.png" id="4_l7sgt"]
 [ext_resource type="Script" path="res://newGameButton.gd" id="5_odj0k"]
+[ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="6_g3o4v"]
 
 [sub_resource type="Animation" id="Animation_fo5x8"]
 length = 0.001
@@ -137,7 +138,10 @@ libraries = {
 "": SubResource("AnimationLibrary_g63ds")
 }
 
-[connection signal="mouse_entered" from="newGameButton" to="newGameButton" method="_on_mouse_entered"]
+[node name="uiPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_g3o4v")
+
+[connection signal="mouse_entered" from="newGameButton" to="." method="_on_new_game_button_mouse_entered"]
 [connection signal="pressed" from="newGameButton" to="." method="_on_link_button_pressed"]
 [connection signal="mouse_entered" from="LinkButton2" to="." method="_on_link_button_2_mouse_entered"]
 [connection signal="mouse_entered" from="LinkButton3" to="." method="_on_link_button_3_mouse_entered"]
