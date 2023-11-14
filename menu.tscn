@@ -47,6 +47,110 @@ _data = {
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_qbheq")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.5
+offset_top = -84.5
+offset_right = 121.5
+offset_bottom = 84.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_cgn14")
+theme_override_font_sizes/font_size = 40
+text = "dankcryptic"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="newGameButton" type="LinkButton" parent="CanvasLayer/Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../LinkButton2")
+focus_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+theme_override_fonts/font = ExtResource("1_cgn14")
+theme_override_font_sizes/font_size = 15
+text = "New Game"
+underline = 2
+script = ExtResource("5_odj0k")
+
+[node name="LinkButton2" type="LinkButton" parent="CanvasLayer/Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../newGameButton")
+focus_neighbor_bottom = NodePath("../LinkButton3")
+focus_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+theme_override_fonts/font = ExtResource("1_cgn14")
+theme_override_font_sizes/font_size = 15
+text = "Load Game"
+underline = 2
+
+[node name="LinkButton3" type="LinkButton" parent="CanvasLayer/Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../LinkButton2")
+focus_neighbor_bottom = NodePath("../LinkButton4")
+focus_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+theme_override_fonts/font = ExtResource("1_cgn14")
+theme_override_font_sizes/font_size = 15
+text = "Options"
+underline = 2
+
+[node name="LinkButton4" type="LinkButton" parent="CanvasLayer/Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../LinkButton3")
+focus_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+theme_override_fonts/font = ExtResource("1_cgn14")
+theme_override_font_sizes/font_size = 15
+text = "Exit"
+underline = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_cgn14")
+theme_override_font_sizes/font_size = 10
+text = "© 2023, BBM Games, LLC. All Right Reserved."
+vertical_alignment = 2
+
 [node name="options" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -55,15 +159,6 @@ offset_top = 26.0
 offset_right = 70.0
 offset_bottom = 66.0
 metadata/_edit_use_anchors_ = true
-
-[node name="title" type="RichTextLabel" parent="."]
-offset_left = 159.0
-offset_top = 40.0
-offset_right = 494.0
-offset_bottom = 97.0
-theme_override_fonts/normal_font = ExtResource("1_cgn14")
-theme_override_font_sizes/normal_font_size = 45
-text = "dankcryptic"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_dts6q")
@@ -75,64 +170,9 @@ bus = &"Music"
 modulate = Color(0, 0, 0, 1)
 z_index = -3
 z_as_relative = false
-position = Vector2(288, 164)
-scale = Vector2(1.125, 0.652344)
+position = Vector2(288, 161)
+scale = Vector2(1.125, 0.628906)
 texture = ExtResource("4_l7sgt")
-
-[node name="newGameButton" type="LinkButton" parent="."]
-offset_left = 240.0
-offset_top = 122.0
-offset_right = 330.0
-offset_bottom = 146.0
-focus_neighbor_bottom = NodePath("../LinkButton2")
-focus_mode = 2
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-theme_override_fonts/font = ExtResource("1_cgn14")
-text = "New Game"
-underline = 2
-script = ExtResource("5_odj0k")
-
-[node name="LinkButton2" type="LinkButton" parent="."]
-offset_left = 240.0
-offset_top = 149.0
-offset_right = 330.0
-offset_bottom = 173.0
-focus_neighbor_top = NodePath("../newGameButton")
-focus_neighbor_bottom = NodePath("../LinkButton3")
-focus_mode = 2
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-theme_override_fonts/font = ExtResource("1_cgn14")
-text = "Load Game"
-underline = 2
-
-[node name="LinkButton3" type="LinkButton" parent="."]
-offset_left = 240.0
-offset_top = 176.0
-offset_right = 330.0
-offset_bottom = 200.0
-focus_neighbor_top = NodePath("../LinkButton2")
-focus_neighbor_bottom = NodePath("../LinkButton4")
-focus_mode = 2
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-theme_override_fonts/font = ExtResource("1_cgn14")
-text = "Settings"
-underline = 2
-
-[node name="LinkButton4" type="LinkButton" parent="."]
-offset_left = 240.0
-offset_top = 205.0
-offset_right = 330.0
-offset_bottom = 229.0
-focus_neighbor_top = NodePath("../LinkButton3")
-focus_mode = 2
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-theme_override_fonts/font = ExtResource("1_cgn14")
-text = "Exit"
-underline = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade in"
@@ -145,10 +185,10 @@ stream = ExtResource("6_g3o4v")
 volume_db = 1.0
 bus = &"Sounds"
 
-[connection signal="mouse_entered" from="newGameButton" to="." method="_on_new_game_button_mouse_entered"]
-[connection signal="pressed" from="newGameButton" to="." method="_on_link_button_pressed"]
-[connection signal="mouse_entered" from="LinkButton2" to="." method="_on_link_button_2_mouse_entered"]
-[connection signal="mouse_entered" from="LinkButton3" to="." method="_on_link_button_3_mouse_entered"]
-[connection signal="pressed" from="LinkButton3" to="." method="_on_link_button_3_pressed"]
-[connection signal="mouse_entered" from="LinkButton4" to="." method="_on_link_button_4_mouse_entered"]
-[connection signal="pressed" from="LinkButton4" to="." method="_on_link_button_4_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/VBoxContainer/newGameButton" to="." method="_on_new_game_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/newGameButton" to="." method="_on_link_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/VBoxContainer/LinkButton2" to="." method="_on_link_button_2_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/VBoxContainer/LinkButton3" to="." method="_on_link_button_3_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/LinkButton3" to="." method="_on_link_button_3_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/VBoxContainer/LinkButton4" to="." method="_on_link_button_4_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/LinkButton4" to="." method="_on_link_button_4_pressed"]

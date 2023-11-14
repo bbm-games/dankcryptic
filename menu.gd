@@ -29,19 +29,19 @@ func _on_link_button_pressed():
 	startNewGame()
 
 func _on_link_button_2_mouse_entered():
-	get_node("LinkButton2").grab_focus()
+	get_node("%LinkButton2").grab_focus()
 	player.play()
 
 func _on_link_button_3_mouse_entered():
-	get_node("LinkButton3").grab_focus()
+	get_node("%LinkButton3").grab_focus()
 	player.play()
 
 func _on_link_button_4_mouse_entered():
-	get_node("LinkButton4").grab_focus()
+	get_node("%LinkButton4").grab_focus()
 	player.play()
 
 func _on_new_game_button_mouse_entered():
-	get_node("newGameButton").grab_focus() 
+	get_node("%newGameButton").grab_focus() 
 	player.play()
 
 func _on_link_button_3_pressed():
