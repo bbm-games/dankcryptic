@@ -49,3 +49,20 @@ func _on_master_volume_slider_value_changed(value):
 func _on_music_volume_slider_value_changed(value):
 	var music_bus = AudioServer.get_bus_index("Music")
 	AudioServer.set_bus_volume_db(music_bus, value)
+
+
+func _on_check_button_toggled(button_pressed):
+	if button_pressed:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_item_list_item_selected(index):
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	if index == 0:
+		get_window().size = Vector2i(576,324)
+	elif index == 1:
+		get_window().size = Vector2i(864,486)
+	else:
+		get_window().size = Vector2i(1152, 648)
