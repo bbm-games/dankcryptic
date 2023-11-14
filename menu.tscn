@@ -47,7 +47,7 @@ _data = {
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_qbheq")
 
-[node name="Control" type="Control" parent="."]
+[node name="options" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 30.0
@@ -69,6 +69,7 @@ text = "dankcryptic"
 stream = ExtResource("1_dts6q")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"
 
 [node name="Menubg" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -141,10 +142,13 @@ libraries = {
 
 [node name="uiPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_g3o4v")
+volume_db = 1.0
+bus = &"Sounds"
 
 [connection signal="mouse_entered" from="newGameButton" to="." method="_on_new_game_button_mouse_entered"]
 [connection signal="pressed" from="newGameButton" to="." method="_on_link_button_pressed"]
 [connection signal="mouse_entered" from="LinkButton2" to="." method="_on_link_button_2_mouse_entered"]
 [connection signal="mouse_entered" from="LinkButton3" to="." method="_on_link_button_3_mouse_entered"]
+[connection signal="pressed" from="LinkButton3" to="." method="_on_link_button_3_pressed"]
 [connection signal="mouse_entered" from="LinkButton4" to="." method="_on_link_button_4_mouse_entered"]
 [connection signal="pressed" from="LinkButton4" to="." method="_on_link_button_4_pressed"]

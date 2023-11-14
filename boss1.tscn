@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dbitr8gpvqlvp" path="res://assets/Knight/noBKG_KnightJumpAndFall_strip.png" id="6_r8lg4"]
 [ext_resource type="Texture2D" uid="uid://bxv3fer7cdi4j" path="res://assets/Knight/noBKG_KnightRun_strip.png" id="7_mbubl"]
 [ext_resource type="Texture2D" uid="uid://7mr23lprj7n3" path="res://assets/neutral.webp" id="8_jv87y"]
-[ext_resource type="AudioStream" uid="uid://bwojl3yl7w2il" path="res://assets/boss1.mp3" id="9_gknu3"]
+[ext_resource type="AudioStream" uid="uid://ck0isojkyewou" path="res://assets/main.mp3" id="9_5my3a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ctmgw"]
 texture = ExtResource("2_x8qfj")
@@ -2115,6 +2115,7 @@ energy = 7.05
 texture = ExtResource("8_jv87y")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_gknu3")
+stream = ExtResource("9_5my3a")
 volume_db = -10.0
 autoplay = true
+bus = &"Music"

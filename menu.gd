@@ -1,9 +1,16 @@
 extends Node2D
 var player
+var optionsMenu
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_node("uiPlayer")
+	# load in the options menu
+	var options_resource = ResourceLoader.load("res://options.tscn")
+	var options_scene = options_resource.instantiate()
+	optionsMenu = get_node("options")
+	optionsMenu.add_child(options_scene)
+	optionsMenu.get_node("Node2D/CanvasLayer").hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -36,3 +43,6 @@ func _on_link_button_4_mouse_entered():
 func _on_new_game_button_mouse_entered():
 	get_node("newGameButton").grab_focus() 
 	player.play()
+
+func _on_link_button_3_pressed():
+	optionsMenu.get_node("Node2D/CanvasLayer").show()

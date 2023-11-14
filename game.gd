@@ -5,6 +5,7 @@ var player_sprite
 var currentMap
 var pauseMenu
 var playerMenu
+var optionsMenu
 
 var walk_up_held = false
 var walk_down_held = false
@@ -37,6 +38,13 @@ func _ready():
 	#map_sprite = get_node("Testbg")
 	playerAnimationPlayer = get_node("PlayerAnimationPlayer")
 
+	# load in the options menu
+	var options_resource = ResourceLoader.load("res://options.tscn")
+	var options_scene = options_resource.instantiate()
+	optionsMenu = get_node("options")
+	optionsMenu.add_child(options_scene)
+	optionsMenu.get_node("Node2D/CanvasLayer").hide()
+	
 	# load in boss battle scene
 	var scene_resource = ResourceLoader.load(boss1ScenePath)
 	var scene = scene_resource.instantiate()
@@ -147,3 +155,7 @@ func _on_button_2_pressed():
 func _on_button_4_pressed():
 	get_tree().paused = false
 	pauseMenu.hide()
+func _on_button_pressed():
+	optionsMenu.get_node("Node2D/CanvasLayer").show()
+	pauseMenu.hide()
+	

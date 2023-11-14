@@ -1,0 +1,120 @@
+[gd_scene load_steps=3 format=3 uid="uid://jagbh3ntpxlx"]
+
+[ext_resource type="Script" path="res://options.gd" id="1_e5eim"]
+[ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="1_xvq04"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_e5eim")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -140.0
+offset_right = 260.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_xvq04")
+tab_alignment = 1
+
+[node name="Audio" type="Panel" parent="CanvasLayer/TabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xvq04")
+text = "Master Volume"
+
+[node name="masterVolumeSlider" type="HSlider" parent="CanvasLayer/TabContainer/Audio/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -20.0
+max_value = 21.0
+value = 1.0
+
+[node name="Label" type="Label" parent="CanvasLayer/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xvq04")
+text = "Music Volume"
+
+[node name="musicVolumeSlider" type="HSlider" parent="CanvasLayer/TabContainer/Audio/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -20.0
+max_value = 21.0
+value = 1.0
+
+[node name="Label2" type="Label" parent="CanvasLayer/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xvq04")
+text = "Sound Volume"
+
+[node name="soundVolumeSlider" type="HSlider" parent="CanvasLayer/TabContainer/Audio/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -20.0
+max_value = 21.0
+value = 1.0
+
+[node name="Video" type="Panel" parent="CanvasLayer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Video"]
+layout_mode = 0
+offset_top = -31.0
+offset_right = 40.0
+offset_bottom = 9.0
+
+[node name="Gameplay" type="Panel" parent="CanvasLayer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TabContainer/Gameplay"]
+layout_mode = 0
+offset_top = -31.0
+offset_right = 40.0
+offset_bottom = 9.0
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 424.0
+offset_top = 264.0
+offset_right = 535.0
+offset_bottom = 295.0
+theme_override_fonts/font = ExtResource("1_xvq04")
+text = "Save and exit"
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+offset_left = 40.0
+offset_top = 264.0
+offset_right = 151.0
+offset_bottom = 295.0
+theme_override_fonts/font = ExtResource("1_xvq04")
+text = "Exit without saving"
+
+[connection signal="value_changed" from="CanvasLayer/TabContainer/Audio/VBoxContainer/masterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="changed" from="CanvasLayer/TabContainer/Audio/VBoxContainer/musicVolumeSlider" to="." method="_on_music_volume_slider_changed"]
+[connection signal="value_changed" from="CanvasLayer/TabContainer/Audio/VBoxContainer/musicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/TabContainer/Audio/VBoxContainer/soundVolumeSlider" to="." method="_on_sound_volume_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button2" to="." method="_on_button_2_pressed"]
