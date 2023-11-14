@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cmrfp8aucy0rh"]
+[gd_scene load_steps=15 format=3 uid="uid://cmrfp8aucy0rh"]
 
 [ext_resource type="Texture2D" uid="uid://6we0ccyfersj" path="res://assets/creationbg.png" id="1_elijy"]
 [ext_resource type="Script" path="res://creation.gd" id="1_tkosg"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bdafrjkxddcgt" path="res://assets/portraits/Icons_05.png" id="7_s4oa5"]
 [ext_resource type="Texture2D" uid="uid://c8xn2ds5np25x" path="res://assets/portraits/Icons_06.png" id="8_uyei1"]
 [ext_resource type="Texture2D" uid="uid://b34e5xjw734n" path="res://assets/Item__04.png" id="11_r52q4"]
+[ext_resource type="Script" path="res://firstvocationbutton.gd" id="12_kb2a3"]
 [ext_resource type="Texture2D" uid="uid://c4dbelswopvwk" path="res://assets/portraits/Icons_21.png" id="12_to48f"]
 [ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="13_nsk31"]
 
@@ -57,7 +58,7 @@ horizontal_alignment = 1
 [node name="CharNameLineEdit" type="LineEdit" parent="TabContainer/Name/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
-placeholder_text = "big_butt_boy"
+placeholder_text = "dumbass123"
 alignment = 1
 script = ExtResource("3_64eo6")
 
@@ -157,7 +158,6 @@ layout_mode = 2
 icon = ExtResource("8_uyei1")
 
 [node name="Vocation" type="Panel" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Vocation"]
@@ -175,56 +175,56 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="TabContainer/Vocation/HBoxContainer"]
-custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-columns = 5
+columns = 4
 
-[node name="Button" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(70, 90)
+[node name="firstvocationbutton" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = "Knight"
+text = "Sellsword"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
+script = ExtResource("12_kb2a3")
 
 [node name="Button2" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(70, 90)
+custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = "Knight"
+text = "Pyromancer"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Button3" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(70, 90)
+custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = "Knight"
+text = "Witch"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Button4" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(70, 90)
+custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = "Knight"
+text = "Cleric"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Button5" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(70, 90)
+custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
@@ -235,59 +235,65 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Button6" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(70, 90)
+custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = "Knight"
+text = "Assassin"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Button7" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(70, 90)
+custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = "Knight"
+text = "Hunter"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Button8" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(70, 90)
+custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = "Knight"
+text = "Berserker"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Button9" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(70, 90)
+custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = "Knight"
+text = "Necromancer"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="Button10" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(70, 90)
+custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = "Knight"
+text = "Oracle"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Vocation/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_04ku0")
+theme_override_font_sizes/normal_font_size = 10
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="TabContainer/Vocation/HBoxContainer"]
 layout_mode = 2
@@ -325,7 +331,7 @@ text = "Strength"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = "Max Health"
+text = "Health"
 
 [node name="Label9" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
@@ -358,55 +364,56 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = " 0"
+text = "0"
 
 [node name="Label3" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = " 0"
+text = "0"
 
 [node name="Label4" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = " 0"
+text = "0"
 
 [node name="Label5" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = " 0"
+text = "0"
 
 [node name="Label9" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = " 0"
+text = "0"
 
 [node name="Label6" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = " 0"
+text = "0"
 
 [node name="Label7" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = " 0"
+text = "0"
 
 [node name="Label8" type="Label" parent="TabContainer/Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
-text = " 0"
+text = "0"
 
 [node name="Stats" type="Panel" parent="TabContainer"]
 visible = false
 layout_mode = 2
 
 [node name="Confirm" type="Panel" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Confirm"]
@@ -441,7 +448,7 @@ texture = ExtResource("12_to48f")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 15
-text = "buttboy202"
+text = "dumbass123"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -472,6 +479,7 @@ text = "Prev"
 [node name="hoverSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_nsk31")
 
+[connection signal="text_changed" from="TabContainer/Name/VBoxContainer/CharNameLineEdit" to="." method="_on_char_name_line_edit_text_changed"]
 [connection signal="pressed" from="TabContainer/Confirm/VBoxContainer/startGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/nextButton" to="." method="_on_next_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/nextButton" to="." method="_on_next_button_pressed"]

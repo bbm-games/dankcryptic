@@ -67,6 +67,7 @@ text = "dankcryptic"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_dts6q")
+volume_db = -10.0
 autoplay = true
 
 [node name="Menubg" type="Sprite2D" parent="."]
