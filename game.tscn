@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=27 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Texture2D" uid="uid://dty6ym387qvf4" path="res://assets/hudbars.png" id="1_7r21i"]
 [ext_resource type="Script" path="res://HUDLayer.gd" id="1_47glo"]
@@ -52,6 +52,9 @@ _data = {
 "fade in hud": SubResource("Animation_8kiow"),
 "fade out hud": SubResource("Animation_hxfa4")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14xon"]
+size = Vector2(26, 34)
 
 [sub_resource type="Animation" id="Animation_et487"]
 length = 0.001
@@ -218,21 +221,30 @@ position = Vector2(112, 0)
 scale = Vector2(1.88587, 1.5464)
 texture = ExtResource("3_ctx3v")
 
-[node name="player" type="Sprite2D" parent="."]
-modulate = Color(0.282353, 0.282353, 0.282353, 1)
+[node name="player" type="CharacterBody2D" parent="."]
 z_index = 2
 y_sort_enabled = true
 position = Vector2(297, 156)
+platform_wall_layers = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+z_index = 2
+position = Vector2(1, 3)
+shape = SubResource("RectangleShape2D_14xon")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="sprite" type="Sprite2D" parent="player"]
+modulate = Color(0.282353, 0.282353, 0.282353, 1)
 scale = Vector2(0.826499, 0.670151)
 texture = ExtResource("6_ui0lc")
 hframes = 4
 vframes = 4
 
-[node name="Camera2D" type="Camera2D" parent="player"]
+[node name="Camera2D" type="Camera2D" parent="player/sprite"]
 position_smoothing_enabled = true
 
 [node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../player")
+root_node = NodePath("../player/sprite")
 libraries = {
 "": SubResource("AnimationLibrary_ltoe5")
 }

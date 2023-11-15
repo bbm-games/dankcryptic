@@ -3,7 +3,7 @@ var bossSprite
 var light
 var rng
 var bossInitiated = false
-var playerSprite
+var playerBody
 var tileMap
 
 # Called when the node enters the scene tree for the first time.
@@ -32,8 +32,8 @@ func turn_left():
 	
 # intiate the boss by setting a boolean to true. Other shit can happen here too.
 func initiateBoss(target):
-	playerSprite = target
-	print('Initiated boss with player ' + str(playerSprite.get_rect()))
+	playerBody = target
+	print('Initiated boss with player')
 	bossInitiated = true;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,7 +44,7 @@ func _process(delta):
 	# have the boss move towards the player 
 	if bossInitiated:
 		# get the direction vector
-		var vec = playerSprite.get_position() - bossSprite.get_position()
+		var vec = playerBody.get_position() - bossSprite.get_position()
 		# if player is on left side of the boss
 		if vec.x <= 0:
 			turn_left()

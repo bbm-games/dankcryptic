@@ -1,6 +1,6 @@
 extends Node2D
 
-
+var player_body
 var player_sprite
 var currentMap
 var pauseMenu
@@ -35,7 +35,8 @@ func _ready():
 	playerMenu = get_node("CanvasLayer2/playerMenu")
 	playerMenu.hide()
 	
-	player_sprite = get_node("player") 
+	player_body = get_node("player")
+	player_sprite = get_node("player/sprite") 
 	#map_sprite = get_node("Testbg")
 	playerAnimationPlayer = get_node("PlayerAnimationPlayer")
 
@@ -126,22 +127,22 @@ func _process(delta):
 	if walk_up_held:
 		#currentMap.set_position(currentMap.get_position() + speed * Vector2(0, 0.25))
 		centralLight.set_position(centralLight.get_position() + speed *Vector2(0, -0.25))
-		player_sprite.set_position(player_sprite.get_position() + speed *Vector2(0, -0.25))
+		player_body.set_position(player_body.get_position() + speed *Vector2(0, -0.25))
 		playerAnimationPlayer.play("walk_up")
 	elif walk_down_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(0, -0.25))
 		centralLight.set_position(centralLight.get_position() + speed *Vector2(0, 0.25))
-		player_sprite.set_position(player_sprite.get_position() + speed *Vector2(0, 0.25))
+		player_body.set_position(player_body.get_position() + speed *Vector2(0, 0.25))
 		playerAnimationPlayer.play("walk_down")
 	elif walk_left_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(0.25, 0))
 		centralLight.set_position(centralLight.get_position() + speed *Vector2(-0.25, 0))
-		player_sprite.set_position(player_sprite.get_position() + speed *Vector2(-0.25, 0))
+		player_body.set_position(player_body.get_position() + speed *Vector2(-0.25, 0))
 		playerAnimationPlayer.play("walk_left")
 	elif walk_right_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(-0.25, 0))			
 		centralLight.set_position(centralLight.get_position() + speed *Vector2(0.25, 0))
-		player_sprite.set_position(player_sprite.get_position() + speed *Vector2(0.25, 0))
+		player_body.set_position(player_body.get_position() + speed *Vector2(0.25, 0))
 		playerAnimationPlayer.play("walk_right")
 	else:
 		playerAnimationPlayer.stop()
