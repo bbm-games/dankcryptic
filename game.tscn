@@ -179,6 +179,11 @@ script = ExtResource("1_o5ole")
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 script = ExtResource("1_47glo")
 
+[node name="Area2D" type="Area2D" parent="HUDLayer"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HUDLayer/Area2D"]
+polygon = PackedVector2Array(16, 3, 205, 3, 208, 59, 10, 59, 6, 282, 298, 282, 298, 322, 3, 325, 2, 7)
+
 [node name="CanvasGroup" type="CanvasGroup" parent="HUDLayer"]
 modulate = Color(1, 1, 1, 0.686275)
 
@@ -643,6 +648,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[connection signal="mouse_entered" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_exited"]
 [connection signal="mouse_entered" from="CanvasLayer/pauseMenu/resumeGameButton" to="CanvasLayer/pauseMenu/resumeGameButton" method="_on_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/pauseMenu/resumeGameButton" to="." method="_on_button_4_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/pauseMenu/Button" to="CanvasLayer/pauseMenu/resumeGameButton" method="_on_button_mouse_entered"]
