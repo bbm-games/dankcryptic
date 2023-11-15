@@ -15,6 +15,7 @@ var time_passed = 0.0
 var rng
 var playerAnimationPlayer
 var boss1ScenePath = "res://boss1.tscn"
+var dungeonScenePath = "res://dungeon.tscn"
 var centralLight
 var hoverSound
 
