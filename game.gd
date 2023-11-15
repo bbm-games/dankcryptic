@@ -1,7 +1,11 @@
 extends Node2D
 
+var rng
+
 var player_body
 var player_sprite
+var light 
+
 var currentMap
 var pauseMenu
 var playerMenu
@@ -12,11 +16,9 @@ var walk_down_held = false
 var walk_left_held = false
 var walk_right_held = false
 var time_passed = 0.0
-var rng
 var playerAnimationPlayer
 var boss1ScenePath = "res://boss1.tscn"
 var dungeonScenePath = "res://dungeon.tscn"
-var centralLight
 var hoverSound
 
 var dash = false
@@ -24,6 +26,8 @@ var speed = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	rng = RandomNumberGenerator.new()
 	
 	hoverSound = get_node("hoverSound")
 	connect_buttons(get_tree().root)
@@ -37,6 +41,7 @@ func _ready():
 	
 	player_body = get_node("player")
 	player_sprite = get_node("player/sprite") 
+	light = get_node("player/PointLight2D") 
 	#map_sprite = get_node("Testbg")
 	playerAnimationPlayer = get_node("PlayerAnimationPlayer")
 
@@ -52,9 +57,6 @@ func _ready():
 	var scene = scene_resource.instantiate()
 	currentMap = self.get_node("currentMap")
 	currentMap.add_child(scene)
-	
-	# get the central light from the map, it should follow the player
-	centralLight = scene.get_node("PointLight2D")
 
 func _on_SceneTree_node_added(node):
 	if node is Button:
@@ -119,30 +121,34 @@ func _input(event):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# flicker the player's light
+	light.set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.1,.1), rng.randf_range(-.1,.1)))
+	light.energy = 7.05 + rng.randf_range(-1,1)
+	
 	time_passed += delta
 	if dash:
-		speed = 6
+		speed = 1.5
 	else:
-		speed = 3
+		speed = 0.75
 	if walk_up_held:
 		#currentMap.set_position(currentMap.get_position() + speed * Vector2(0, 0.25))
-		centralLight.set_position(centralLight.get_position() + speed *Vector2(0, -0.25))
-		player_body.set_position(player_body.get_position() + speed *Vector2(0, -0.25))
+		#player_body.set_position(player_body.get_position() + speed *Vector2(0, -0.25))
+		player_body.move_and_collide(Vector2(0,-1) * speed)
 		playerAnimationPlayer.play("walk_up")
 	elif walk_down_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(0, -0.25))
-		centralLight.set_position(centralLight.get_position() + speed *Vector2(0, 0.25))
-		player_body.set_position(player_body.get_position() + speed *Vector2(0, 0.25))
+		#player_body.set_position(player_body.get_position() + speed *Vector2(0, 0.25))
+		player_body.move_and_collide(Vector2(0,1)* speed)
 		playerAnimationPlayer.play("walk_down")
 	elif walk_left_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(0.25, 0))
-		centralLight.set_position(centralLight.get_position() + speed *Vector2(-0.25, 0))
-		player_body.set_position(player_body.get_position() + speed *Vector2(-0.25, 0))
+		#player_body.set_position(player_body.get_position() + speed *Vector2(-0.25, 0))
+		player_body.move_and_collide(Vector2(-1,0)* speed)
 		playerAnimationPlayer.play("walk_left")
 	elif walk_right_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(-0.25, 0))			
-		centralLight.set_position(centralLight.get_position() + speed *Vector2(0.25, 0))
-		player_body.set_position(player_body.get_position() + speed *Vector2(0.25, 0))
+		#player_body.set_position(player_body.get_position() + speed *Vector2(0.25, 0))
+		player_body.move_and_collide(Vector2(1,0) * speed)
 		playerAnimationPlayer.play("walk_right")
 	else:
 		playerAnimationPlayer.stop()

@@ -9,7 +9,6 @@ var tileMap
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng = RandomNumberGenerator.new()
-	light = get_node("PointLight2D")
 	tileMap = get_node('TileMap')
 	
 	bossSprite = get_node("boss")
@@ -38,8 +37,7 @@ func initiateBoss(target):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	light.set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.1,.1), rng.randf_range(-.1,.1)))
-	light.energy = 7.05 + rng.randf_range(-1,1)
+	
 	
 	# have the boss move towards the player 
 	if bossInitiated:
