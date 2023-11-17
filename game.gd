@@ -5,6 +5,12 @@ var rng
 var player_body
 var player_sprite
 var light 
+var health_bar 
+var mana_bar
+var stamina_bar
+var bar_length
+var bar_height
+var player_data
 
 var currentMap
 var pauseMenu
@@ -29,22 +35,41 @@ func _ready():
 	
 	rng = RandomNumberGenerator.new()
 	
+	# add hover sound effect to all buttons
 	hoverSound = get_node("hoverSound")
 	connect_buttons(get_tree().root)
 	get_tree().node_added.connect(_on_SceneTree_node_added)
 	
+	# get pause menu and hide it
 	pauseMenu = get_node("CanvasLayer/pauseMenu")
 	pauseMenu.hide()
 	
+	# get player menu and hide it
 	playerMenu = get_node("CanvasLayer2/playerMenu")
 	playerMenu.hide()
 	
+	# set up the player
 	player_body = get_node("player")
 	player_sprite = get_node("player/sprite") 
 	light = get_node("player/PointLight2D") 
 	#map_sprite = get_node("Testbg")
 	playerAnimationPlayer = get_node("PlayerAnimationPlayer")
-
+	
+	# set up player's health, mana, and stamina
+	health_bar = get_node("HUDLayer/CanvasGroup/healthBar")
+	stamina_bar = get_node("HUDLayer/CanvasGroup/staminaBar")
+	mana_bar = get_node("HUDLayer/CanvasGroup/manaBar")
+	bar_length = stamina_bar.get_size().x
+	bar_height = stamina_bar.get_size().y
+	
+	player_data = {} # TODO: eventually get this from file
+	player_data['stamina_regen_rate'] = 40
+	player_data['stamina_depl_rate'] = 50
+	player_data['max_stamina'] = 100
+	player_data['current_stamina'] = player_data['max_stamina'] 
+	player_data['max_health'] = 100
+	player_data['max_mana'] = 100
+	
 	# load in the options menu
 	var options_resource = ResourceLoader.load("res://options.tscn")
 	var options_scene = options_resource.instantiate()
@@ -126,10 +151,23 @@ func _process(delta):
 	light.energy = 7.05 + rng.randf_range(-1,1)
 	
 	time_passed += delta
-	if dash:
+	if dash && player_data['current_stamina'] > 0:
 		speed = 1.5
+		if player_data['current_stamina'] - player_data['stamina_depl_rate'] * delta >= 0:
+			player_data['current_stamina'] = player_data['current_stamina'] - player_data['stamina_depl_rate']*delta
+		else:
+			player_data['current_stamina'] = 0
 	else:
 		speed = 0.75
+		# regen stamina
+		if player_data['current_stamina'] + player_data['stamina_regen_rate'] * delta <= player_data['max_stamina']:
+			player_data['current_stamina'] = player_data['current_stamina'] + player_data['stamina_regen_rate']*delta
+		else:
+			player_data['current_stamina'] = player_data['max_stamina']
+		
+	# redraw stamina bar
+	stamina_bar.set_size(Vector2(player_data['current_stamina']/player_data['max_stamina'] * bar_length, bar_height))
+	
 	if walk_up_held:
 		#currentMap.set_position(currentMap.get_position() + speed * Vector2(0, 0.25))
 		#player_body.set_position(player_body.get_position() + speed *Vector2(0, -0.25))
