@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dv8fcgpr6v7ub"]
+[gd_scene load_steps=69 format=3 uid="uid://dv8fcgpr6v7ub"]
 
 [ext_resource type="Script" path="res://boss1.gd" id="1_nbxro"]
 [ext_resource type="Texture2D" uid="uid://uxhib4wkeclx" path="res://assets/RF_Catacombs_v1.0/mainlevbuild.png" id="2_x8qfj"]
@@ -3972,6 +3972,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_313mk"]
+size = Vector2(40, 48)
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_nbxro")
 
@@ -4003,15 +4006,21 @@ layer_3/y_sort_origin = 0
 layer_3/z_index = 3
 layer_3/tile_data = PackedInt32Array()
 
-[node name="boss" type="AnimatedSprite2D" parent="."]
+[node name="boss" type="CharacterBody2D" parent="."]
+position = Vector2(217, 130)
+
+[node name="bossSprite" type="AnimatedSprite2D" parent="boss"]
 modulate = Color(0.152941, 0.152941, 0.152941, 1)
 z_index = 3
-position = Vector2(217, 130)
 scale = Vector2(1.46875, 1.46875)
 sprite_frames = SubResource("SpriteFrames_xagy4")
 animation = &"attack"
 frame = 6
 frame_progress = 0.408471
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boss"]
+position = Vector2(-5, -2)
+shape = SubResource("RectangleShape2D_313mk")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_5my3a")

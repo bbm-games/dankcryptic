@@ -83,8 +83,9 @@ func _ready():
 	optionsMenu.add_child(options_scene)
 	optionsMenu.get_node("Node2D/CanvasLayer").hide()
 	
-	# load in boss battle scene
-	var scene_resource = ResourceLoader.load(boss1ScenePath)
+	# load in actual game map
+	#var scene_resource = ResourceLoader.load(boss1ScenePath)
+	var scene_resource = ResourceLoader.load(dungeonScenePath)
 	var scene = scene_resource.instantiate()
 	currentMap = self.get_node("currentMap")
 	currentMap.add_child(scene)

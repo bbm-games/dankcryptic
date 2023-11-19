@@ -1,4 +1,5 @@
 extends Node2D
+var bossBody
 var bossSprite
 var light
 var rng
@@ -11,7 +12,9 @@ func _ready():
 	rng = RandomNumberGenerator.new()
 	tileMap = get_node('TileMap')
 	
-	bossSprite = get_node("boss")
+	bossBody = get_node("boss")
+	bossSprite = bossBody.get_node('bossSprite')
+	
 	# start the boss up on idle animation
 	bossSprite.play('idle')
 	
@@ -38,11 +41,10 @@ func initiateBoss(target):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	
 	# have the boss move towards the player 
 	if bossInitiated:
 		# get the direction vector
-		var vec = playerBody.get_position() - bossSprite.get_position()
+		var vec = playerBody.get_position() - bossBody.get_position()
 		# if player is on left side of the boss
 		if vec.x <= 0:
 			turn_left()
@@ -55,7 +57,7 @@ func _process(delta):
 			bossSprite.play('attack')
 		else:
 			# start moving in that direction
-			bossSprite.set_position(bossSprite.get_position() + 0.4 * vec.normalized())
+			bossBody.move_and_collide(0.4 * vec.normalized())
 			# wait till last animation finished before you start run animation
 			if bossSprite.get_frame() == 0:
 				bossSprite.play('run')
