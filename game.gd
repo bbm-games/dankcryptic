@@ -18,6 +18,7 @@ var playerMenu
 var optionsMenu
 
 var chatBox
+var chatPopup
 
 var walk_up_held = false
 var walk_down_held = false
@@ -75,6 +76,10 @@ func _ready():
 	
 	# set up the patient's chat box
 	chatBox = get_node('HUDLayer/CanvasGroup/chatBox')
+	
+	# set up the chat box popup for interactions with npcs
+	chatPopup = get_node("HUDLayer/chatPopup")
+	chatPopup.hide()
 	
 	# load in the options menu
 	var options_resource = ResourceLoader.load("res://options.tscn")
@@ -154,6 +159,8 @@ func _input(event):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var collision_data
+	
 	# flicker the player's light
 	light.set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.1,.1), rng.randf_range(-.1,.1)))
 	light.energy = 7.05 + rng.randf_range(-1,1)
@@ -179,25 +186,29 @@ func _process(delta):
 	if walk_up_held:
 		#currentMap.set_position(currentMap.get_position() + speed * Vector2(0, 0.25))
 		#player_body.set_position(player_body.get_position() + speed *Vector2(0, -0.25))
-		player_body.move_and_collide(Vector2(0,-1) * speed)
+		collision_data = player_body.move_and_collide(Vector2(0,-1) * speed)
 		playerAnimationPlayer.play("walk_up")
 	elif walk_down_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(0, -0.25))
 		#player_body.set_position(player_body.get_position() + speed *Vector2(0, 0.25))
-		player_body.move_and_collide(Vector2(0,1)* speed)
+		collision_data = player_body.move_and_collide(Vector2(0,1)* speed)
 		playerAnimationPlayer.play("walk_down")
 	elif walk_left_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(0.25, 0))
 		#player_body.set_position(player_body.get_position() + speed *Vector2(-0.25, 0))
-		player_body.move_and_collide(Vector2(-1,0)* speed)
+		collision_data = player_body.move_and_collide(Vector2(-1,0)* speed)
 		playerAnimationPlayer.play("walk_left")
 	elif walk_right_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(-0.25, 0))			
 		#player_body.set_position(player_body.get_position() + speed *Vector2(0.25, 0))
-		player_body.move_and_collide(Vector2(1,0) * speed)
+		collision_data = player_body.move_and_collide(Vector2(1,0) * speed)
 		playerAnimationPlayer.play("walk_right")
 	else:
 		playerAnimationPlayer.stop()
+	# check to see if collision occured
+	if collision_data:
+		chatBox.append_text("\n[i]Player has collided.[/i]")
+		print(collision_data.get_collider())
 
 # Options menu buttons 
 func _on_button_3_pressed():
