@@ -17,6 +17,8 @@ var pauseMenu
 var playerMenu
 var optionsMenu
 
+var chatBox
+
 var walk_up_held = false
 var walk_down_held = false
 var walk_left_held = false
@@ -26,6 +28,7 @@ var playerAnimationPlayer
 var boss1ScenePath = "res://boss1.tscn"
 var dungeonScenePath = "res://dungeon.tscn"
 var hoverSound
+
 
 var dash = false
 var speed = 3
@@ -69,6 +72,9 @@ func _ready():
 	player_data['current_stamina'] = player_data['max_stamina'] 
 	player_data['max_health'] = 100
 	player_data['max_mana'] = 100
+	
+	# set up the patient's chat box
+	chatBox = get_node('HUDLayer/CanvasGroup/chatBox')
 	
 	# load in the options menu
 	var options_resource = ResourceLoader.load("res://options.tscn")
@@ -123,6 +129,7 @@ func _input(event):
 	if event.is_action_released("walk_right"):
 		walk_right_held = false
 	if event.is_action_pressed("dash"):
+		chatBox.append_text("\n[i]Player has dashed.[/i]")
 		dash = true
 	if event.is_action_released("dash"):
 		dash = false
