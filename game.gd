@@ -32,7 +32,8 @@ var hoverSound
 
 
 var dash = false
-var speed = 3
+var base_speed = 0.75
+var speed = base_speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -67,7 +68,7 @@ func _ready():
 	bar_height = stamina_bar.get_size().y
 	
 	player_data = {} # TODO: eventually get this from file
-	player_data['stamina_regen_rate'] = 40
+	player_data['stamina_regen_rate'] = 20
 	player_data['stamina_depl_rate'] = 50
 	player_data['max_stamina'] = 100
 	player_data['current_stamina'] = player_data['max_stamina'] 
@@ -135,8 +136,12 @@ func _input(event):
 	if event.is_action_released("walk_right"):
 		walk_right_held = false
 	if event.is_action_pressed("dash"):
-		chatBox.append_text("\n[i]Player has dashed.[/i]")
-		dash = true
+		# only dash if the player is first walking
+		if walk_down_held or walk_left_held or walk_right_held or walk_up_held:
+			chatBox.append_text("\n[i]Player has dashed.[/i]")
+			dash = true
+		else:
+			dash = false
 	if event.is_action_released("dash"):
 		dash = false
 	if event.is_action_pressed("pause"):
@@ -159,27 +164,31 @@ func _input(event):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	time_passed += delta
 	var collision_data
 	
 	# flicker the player's light
 	light.set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.1,.1), rng.randf_range(-.1,.1)))
 	light.energy = 7.05 + rng.randf_range(-1,1)
 	
-	time_passed += delta
+	# adjust player's speed based on whether dash status is active
+
 	if dash && player_data['current_stamina'] > 0:
-		speed = 1.5
+		speed = base_speed * 2 
 		if player_data['current_stamina'] - player_data['stamina_depl_rate'] * delta >= 0:
 			player_data['current_stamina'] = player_data['current_stamina'] - player_data['stamina_depl_rate']*delta
 		else:
 			player_data['current_stamina'] = 0
+	elif dash:
+		speed = base_speed
+	# only regen stamina if dash isn't held down when the current stamina is fully depleted.
 	else:
-		speed = 0.75
 		# regen stamina
 		if player_data['current_stamina'] + player_data['stamina_regen_rate'] * delta <= player_data['max_stamina']:
 			player_data['current_stamina'] = player_data['current_stamina'] + player_data['stamina_regen_rate']*delta
 		else:
 			player_data['current_stamina'] = player_data['max_stamina']
-		
+
 	# redraw stamina bar
 	stamina_bar.set_size(Vector2(player_data['current_stamina']/player_data['max_stamina'] * bar_length, bar_height))
 	
@@ -223,4 +232,3 @@ func _on_button_4_pressed():
 func _on_button_pressed():
 	optionsMenu.get_node("Node2D/CanvasLayer").show()
 	pauseMenu.hide()
-	

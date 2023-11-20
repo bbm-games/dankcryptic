@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bulhn4rc843jq"]
+[gd_scene load_steps=16 format=3 uid="uid://bulhn4rc843jq"]
 
 [ext_resource type="Texture2D" uid="uid://bt5e0mken3goj" path="res://assets/griffith.png" id="3_jv5tp"]
 [ext_resource type="AudioStream" uid="uid://ck0isojkyewou" path="res://assets/main.mp3" id="3_qhh2k"]
 [ext_resource type="Script" path="res://npc1.gd" id="3_rao3l"]
 [ext_resource type="Texture2D" uid="uid://cpgipefc7y1ek" path="res://assets/chaticon.png" id="5_xhq85"]
+[ext_resource type="AudioStream" uid="uid://bsxdj6do18f4k" path="res://assets/sounds/suprise.wav" id="6_2goit"]
+[ext_resource type="AudioStream" uid="uid://dl3p5p2c3jhh2" path="res://assets/sounds/chat.wav" id="6_q2qxw"]
 [ext_resource type="Texture2D" uid="uid://dtcm1ghr12nia" path="res://assets/DarkDungeon.png" id="DarkDungeon"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gdev4"]
@@ -349,6 +351,43 @@ size = Vector2(29, 38)
 [sub_resource type="CircleShape2D" id="CircleShape2D_gn28i"]
 radius = 26.0
 
+[sub_resource type="Animation" id="Animation_e6twv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("chatIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_5djxa"]
+resource_name = "bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("chatIcon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -27), Vector2(0, -23), Vector2(0, -27)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2gvuv"]
+_data = {
+"RESET": SubResource("Animation_e6twv"),
+"bounce": SubResource("Animation_5djxa")
+}
+
 [node name="Node2D" type="Node2D"]
 
 [node name="dungeon" type="TileMap" parent="."]
@@ -392,7 +431,7 @@ position = Vector2(1.5, 2)
 shape = SubResource("RectangleShape2D_bp8pf")
 
 [node name="chatIcon" type="Sprite2D" parent="npc1"]
-position = Vector2(0, -25)
+position = Vector2(0, -30)
 texture = ExtResource("5_xhq85")
 
 [node name="npcBoundary" type="Area2D" parent="npc1"]
@@ -400,6 +439,18 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npc1/npcBoundary"]
 shape = SubResource("CircleShape2D_gn28i")
+
+[node name="chatSound" type="AudioStreamPlayer" parent="npc1"]
+stream = ExtResource("6_q2qxw")
+bus = &"Sounds"
+
+[node name="chatIconAnimationPlayer" type="AnimationPlayer" parent="npc1"]
+libraries = {
+"": SubResource("AnimationLibrary_2gvuv")
+}
+
+[node name="surpriseSound" type="AudioStreamPlayer" parent="npc1"]
+stream = ExtResource("6_2goit")
 
 [connection signal="body_entered" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_entered"]
 [connection signal="body_shape_exited" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_shape_exited"]

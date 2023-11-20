@@ -264,14 +264,51 @@ offset_left = 300.0
 offset_top = 30.0
 offset_right = 550.0
 offset_bottom = 110.0
+size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="HUDLayer/chatPopup"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="VBoxContainer" type="VBoxContainer" parent="HUDLayer/chatPopup"]
+layout_mode = 1
+offset_right = 244.0
+offset_bottom = 60.0
+
+[node name="npcName" type="Label" parent="HUDLayer/chatPopup/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUDLayer/chatPopup/VBoxContainer"]
+layout_mode = 2
+
+[node name="chatPortrait" type="TextureRect" parent="HUDLayer/chatPopup/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+expand_mode = 2
+
+[node name="prompt" type="RichTextLabel" parent="HUDLayer/chatPopup/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("7_f521b")
+theme_override_fonts/bold_font = ExtResource("7_f521b")
+theme_override_fonts/italics_font = ExtResource("7_f521b")
+theme_override_fonts/bold_italics_font = ExtResource("7_f521b")
+theme_override_fonts/mono_font = ExtResource("7_f521b")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
+bbcode_enabled = true
+
+[node name="endConvoButton" type="Button" parent="HUDLayer/chatPopup/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_fonts/font = ExtResource("7_f521b")
 theme_override_font_sizes/font_size = 8
-text = "fuck you"
+text = "End conversation."
 
 [node name="Testbg" type="Sprite2D" parent="."]
 modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
