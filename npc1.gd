@@ -46,7 +46,7 @@ func _ready():
 	
 	# TODO: make the prompting smarter
 	#chatPopup.get_node("%prompt").set_text("Fuck you. Get out of my sight.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sodales hendrerit diam, nec aliquam lorem rutrum ac. Suspendisse potenti. Mauris lacus sem, tincidunt et mattis consectetur, maximus at mauris. Duis metus lorem, vehicula sit amet tristique sit amet, facilisis et sapien. Nam tempus bibendum auctor. Pellentesque maximus nulla a tellus ultrices placerat. Curabitur varius dui vulputate tincidunt pellentesque. Aenean tellus nisl, bibendum nec lacus eu, mollis molestie erat.")
-	chatPopup.get_node("%prompt").set_text("Fuck you. Get out of my sight.")
+	
 	
 	# get convoOptions node
 	convoOptions = chatPopup.get_node("%convoOptions")
@@ -59,6 +59,8 @@ func _ready():
 	
 func setConvoState(id):
 	convoOptions.clear()
+	# TODO: get the prompt based on id
+	chatPopup.get_node("%prompt").set_text("Fuck you. Get out of my sight. " + id)
 	convoOptions.add_item("Option 1")
 	convoOptions.add_item("Option 2")
 	convoOptions.add_item(id)

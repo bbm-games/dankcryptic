@@ -136,13 +136,10 @@ func _input(event):
 	if event.is_action_released("walk_right"):
 		walk_right_held = false
 	if event.is_action_pressed("dash"):
-		# only dash if the player is first walking
-		if walk_down_held or walk_left_held or walk_right_held or walk_up_held:
-			chatBox.append_text("\n[i]Player has dashed.[/i]")
-			dash = true
-		else:
-			dash = false
+		chatBox.append_text("\n[i]Player has pressed dash.[/i]")
+		dash = true
 	if event.is_action_released("dash"):
+		chatBox.append_text("\n[i]Player has let go of dash.[/i]")
 		dash = false
 	if event.is_action_pressed("pause"):
 		if playerMenu.visible:
@@ -172,17 +169,19 @@ func _process(delta):
 	light.energy = 7.05 + rng.randf_range(-1,1)
 	
 	# adjust player's speed based on whether dash status is active
-
-	if dash && player_data['current_stamina'] > 0:
+	# condition to dash
+	if dash && player_data['current_stamina'] > 0 && (walk_down_held or walk_left_held or walk_right_held or walk_up_held):
 		speed = base_speed * 2 
 		if player_data['current_stamina'] - player_data['stamina_depl_rate'] * delta >= 0:
 			player_data['current_stamina'] = player_data['current_stamina'] - player_data['stamina_depl_rate']*delta
 		else:
 			player_data['current_stamina'] = 0
-	elif dash:
+	# cannot dash if no stamina
+	elif dash && player_data['current_stamina'] == 0 && (walk_down_held or walk_left_held or walk_right_held or walk_up_held):
 		speed = base_speed
 	# only regen stamina if dash isn't held down when the current stamina is fully depleted.
 	else:
+		speed = base_speed
 		# regen stamina
 		if player_data['current_stamina'] + player_data['stamina_regen_rate'] * delta <= player_data['max_stamina']:
 			player_data['current_stamina'] = player_data['current_stamina'] + player_data['stamina_regen_rate']*delta
@@ -214,6 +213,7 @@ func _process(delta):
 		playerAnimationPlayer.play("walk_right")
 	else:
 		playerAnimationPlayer.stop()
+		
 	# check to see if collision occured
 	if collision_data:
 		chatBox.append_text("\n[i]Player has collided.[/i]")
