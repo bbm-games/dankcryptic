@@ -303,12 +303,13 @@ theme_override_font_sizes/bold_italics_font_size = 8
 theme_override_font_sizes/mono_font_size = 8
 bbcode_enabled = true
 
-[node name="endConvoButton" type="Button" parent="HUDLayer/chatPopup/VBoxContainer"]
+[node name="convoOptions" type="ItemList" parent="HUDLayer/chatPopup/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_f521b")
 theme_override_font_sizes/font_size = 8
-text = "End conversation."
+allow_search = false
+auto_height = true
 
 [node name="Testbg" type="Sprite2D" parent="."]
 modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)

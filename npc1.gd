@@ -10,6 +10,9 @@ var chatSound
 var supriseSound
 var chatPortrait
 var chatIconAnimationPlayer
+var endConvoIndex
+var convoOptions
+var initialConvoStateID = "ID 0"
 
 func _ready():
 	etime = 0
@@ -44,16 +47,39 @@ func _ready():
 	# TODO: make the prompting smarter
 	#chatPopup.get_node("%prompt").set_text("Fuck you. Get out of my sight.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sodales hendrerit diam, nec aliquam lorem rutrum ac. Suspendisse potenti. Mauris lacus sem, tincidunt et mattis consectetur, maximus at mauris. Duis metus lorem, vehicula sit amet tristique sit amet, facilisis et sapien. Nam tempus bibendum auctor. Pellentesque maximus nulla a tellus ultrices placerat. Curabitur varius dui vulputate tincidunt pellentesque. Aenean tellus nisl, bibendum nec lacus eu, mollis molestie erat.")
 	chatPopup.get_node("%prompt").set_text("Fuck you. Get out of my sight.")
-
-	# TODO: make custom response options
 	
-	# program the end convo button
-	chatPopup.get_node("%endConvoButton").connect("pressed", onEndConvoButtonPressed)
+	# get convoOptions node
+	convoOptions = chatPopup.get_node("%convoOptions")
 	
-func onEndConvoButtonPressed():
-	print("exiting chat")
-	chatting = false
+	# initialize the first prompt
+	setConvoState(initialConvoStateID)
 
+	# initiate the item_clicked loop
+	convoOptions.connect("item_clicked", convoOptionsItemClicked)
+	
+func setConvoState(id):
+	convoOptions.clear()
+	convoOptions.add_item("Option 1")
+	convoOptions.add_item("Option 2")
+	convoOptions.add_item(id)
+	# Set up the default convo exit option
+	convoOptions.add_item("End conversation.")
+	
+	# turn off annoying item tooltips
+	for i in range(0,convoOptions.get_item_count()):
+		convoOptions.set_item_tooltip_enabled(i,false)
+
+func convoOptionsItemClicked(index, at_position, mouse_button_index):
+	# index of the end convo option is always the last one
+	endConvoIndex = convoOptions.get_item_count() - 1 
+	if index == endConvoIndex:
+		# turn chatting off and restart the convo from the begning
+		setConvoState(initialConvoStateID)
+		chatting = false
+	else:
+		# look up where the selected id will take us
+		setConvoState("ID 1")
+	
 func _process(delta):
 	pass
 	
@@ -73,7 +99,7 @@ func _physics_process(delta):
 		if chatting:
 			chatIcon.hide()
 			chatPopup.show()
-			chatPopup.get_node("%endConvoButton").grab_focus()
+			chatPopup.get_node("%convoOptions").grab_focus()
 		else:
 			chatIcon.show()
 			chatPopup.hide()
@@ -81,8 +107,13 @@ func _physics_process(delta):
 func _input(event):
 	#print(event.as_text())
 	if event.is_action_pressed("chat") and viscinity:
-		chatting = true
-		chatSound.play()
+		# start chatting if they're not chatting
+		if chatting == false:
+			chatting = true
+			chatSound.play()
+		else:
+			# if they are chatting, then advance in the chat by selecting the focused thing
+			pass
 		
 # functions to show chat icon when player is in viscinity
 func _on_npc_boundary_body_entered(body):
