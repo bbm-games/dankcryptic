@@ -1,16 +1,24 @@
-[gd_scene load_steps=28 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=37 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Texture2D" uid="uid://dty6ym387qvf4" path="res://assets/hudbars.png" id="1_7r21i"]
 [ext_resource type="Script" path="res://HUDLayer.gd" id="1_47glo"]
 [ext_resource type="Script" path="res://game.gd" id="1_o5ole"]
-[ext_resource type="Texture2D" uid="uid://qsqu1rfaj612" path="res://assets/itemslots.png" id="2_835av"]
 [ext_resource type="Texture2D" uid="uid://kuy5fnxctvqh" path="res://assets/testbg.png" id="3_ctx3v"]
+[ext_resource type="Texture2D" uid="uid://bcdn5nkcui482" path="res://assets/Item__31.png" id="6_fa02j"]
 [ext_resource type="Texture2D" uid="uid://cvjwjaa034kkc" path="res://assets/guts.png" id="6_ui0lc"]
 [ext_resource type="Texture2D" uid="uid://7mr23lprj7n3" path="res://assets/neutral.webp" id="7_45vux"]
+[ext_resource type="Texture2D" uid="uid://6ts8y7wt1h4q" path="res://assets/Item__29.png" id="7_f8fxt"]
 [ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="7_f521b"]
+[ext_resource type="Texture2D" uid="uid://c655cwjomeiro" path="res://assets/Item__70.png" id="7_fdq21"]
 [ext_resource type="Script" path="res://bigportrait.gd" id="8_c6bur"]
+[ext_resource type="Texture2D" uid="uid://cr1203spmbv3" path="res://assets/Item__71.png" id="8_p5oq4"]
 [ext_resource type="Script" path="res://resumeGameButton.gd" id="8_ul5po"]
+[ext_resource type="Texture2D" uid="uid://d2jkuylwl6o4a" path="res://assets/border.png" id="8_vh846"]
+[ext_resource type="Texture2D" uid="uid://b4req5scya3ty" path="res://assets/Item__64.png" id="9_3515a"]
+[ext_resource type="Shader" path="res://shield.gdshader" id="9_xiwt1"]
 [ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="10_d3c5g"]
+[ext_resource type="Texture2D" uid="uid://cyf4p4hew68oo" path="res://assets/Item__68.png" id="10_jdcu0"]
+[ext_resource type="Theme" uid="uid://bck6sugoxd40h" path="res://cryptic_theme.tres" id="10_kbx3o"]
 
 [sub_resource type="Animation" id="Animation_knli3"]
 length = 0.001
@@ -56,6 +64,10 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14xon"]
 size = Vector2(26, 13)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omonw"]
+shader = ExtResource("9_xiwt1")
+shader_parameter/color = Color(0.780392, 0.596078, 0, 1)
 
 [sub_resource type="Animation" id="Animation_et487"]
 length = 0.001
@@ -192,14 +204,6 @@ position = Vector2(107, 25)
 texture = ExtResource("1_7r21i")
 vframes = 2
 
-[node name="Itemslots" type="Sprite2D" parent="HUDLayer/CanvasGroup"]
-position = Vector2(223, 303)
-texture = ExtResource("2_835av")
-
-[node name="Itemslots2" type="Sprite2D" parent="HUDLayer/CanvasGroup"]
-position = Vector2(75, 303)
-texture = ExtResource("2_835av")
-
 [node name="portrait" type="Sprite2D" parent="HUDLayer/CanvasGroup"]
 z_index = -1
 position = Vector2(33, 32)
@@ -207,6 +211,55 @@ scale = Vector2(1.75227, 1.65044)
 texture = ExtResource("6_ui0lc")
 region_enabled = true
 region_rect = Rect2(15.631, 10.3269, 33.099, 27.0018)
+
+[node name="slot1" type="TextureRect" parent="HUDLayer/CanvasGroup"]
+offset_left = 10.0
+offset_top = 289.0
+offset_right = 41.0
+offset_bottom = 320.0
+texture = ExtResource("6_fa02j")
+
+[node name="slot2" type="TextureRect" parent="HUDLayer/CanvasGroup"]
+offset_left = 56.0
+offset_top = 289.0
+offset_right = 87.0
+offset_bottom = 320.0
+texture = ExtResource("7_f8fxt")
+
+[node name="slot3" type="TextureRect" parent="HUDLayer/CanvasGroup"]
+offset_left = 102.0
+offset_top = 289.0
+offset_right = 133.0
+offset_bottom = 320.0
+texture = ExtResource("7_fdq21")
+
+[node name="slot4" type="TextureRect" parent="HUDLayer/CanvasGroup"]
+offset_left = 148.0
+offset_top = 289.0
+offset_right = 179.0
+offset_bottom = 320.0
+texture = ExtResource("8_p5oq4")
+
+[node name="slot5" type="TextureRect" parent="HUDLayer/CanvasGroup"]
+offset_left = 194.0
+offset_top = 289.0
+offset_right = 225.0
+offset_bottom = 320.0
+texture = ExtResource("9_3515a")
+
+[node name="slot6" type="TextureRect" parent="HUDLayer/CanvasGroup"]
+offset_left = 240.0
+offset_top = 289.0
+offset_right = 271.0
+offset_bottom = 320.0
+texture = ExtResource("10_jdcu0")
+
+[node name="slotFrame" type="TextureRect" parent="HUDLayer/CanvasGroup"]
+offset_left = 2.0
+offset_top = 279.0
+offset_right = 49.0
+offset_bottom = 326.0
+texture = ExtResource("8_vh846")
 
 [node name="healthBar" type="ColorRect" parent="HUDLayer/CanvasGroup"]
 unique_name_in_owner = true
@@ -345,6 +398,21 @@ position_smoothing_enabled = true
 energy = 7.05
 texture = ExtResource("7_45vux")
 
+[node name="ColorRect" type="ColorRect" parent="player"]
+visible = false
+material = SubResource("ShaderMaterial_omonw")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -25.0
+offset_right = 31.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../player/sprite")
 libraries = {
@@ -407,6 +475,7 @@ offset_left = 33.0
 offset_top = 39.0
 offset_right = 541.0
 offset_bottom = 279.0
+theme = ExtResource("10_kbx3o")
 theme_override_fonts/font = ExtResource("7_f521b")
 tab_alignment = 2
 

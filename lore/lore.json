@@ -1,1245 +1,1245 @@
 {
    "promotional": "In the realm of Dankcrypt, a foreboding darkness has shrouded the land, casting an eternal shadow upon its inhabitants. This high dark fantasy video game plunges players into a treacherous world where ancient evils and malevolent forces reign supreme.\nWithin the depths of Dankcrypt, forgotten ruins and decrepit crypts lay scattered, holding secrets that whisper of a forgotten era. The land is plagued by sinister creatures, twisted abominations born from the darkest recesses of the human psyche. Their haunting presence instills fear and despair in the hearts of even the bravest souls.\nAs players embark on their perilous journey, they will encounter a cast of morally ambiguous characters, each harboring their own hidden agendas and dark pasts. The choices made along the way will shape the destiny of the protagonist, as alliances are forged and broken amidst a backdrop of political intrigue and ancient rivalries.\nThe lore of Dankcrypt is steeped in ancient prophecies and forbidden knowledge, where arcane rituals and forbidden magics hold the key to unlocking the secrets of the realm. Unraveling the mysteries of this twisted world will require unwavering determination, as well as a willingness to confront the darkest aspects of one's own soul.\nPrepare to delve into the depths of Dankcrypt, where the line between light and darkness blurs, and survival is not guaranteed. Only the most courageous and cunning adventurers will have a chance to uncover the truth and bring hope to a land consumed by the unrelenting grip of darkness.",
    "vocations": [
-     {
-       "class_name": "Sellsword",
-       "lore": "Sellswords are skilled mercenaries well-versed in both swordplay and tactics. Driven by a desire for wealth and status, they roam the land, offering their services to the highest bidder.",
-       "stats": {
-         "attack": 75,
-         "defense": 60,
-         "strength": 10,
-         "health": 100,
-         "stamina": 110,
-         "magic": 50,
-         "wisdom": 40,
-         "mana": 60
-       },
-       "weight": 80
-     },
-     {
-       "class_name": "Pyromancer",
-       "lore": "Harnessing the raw power of flame, Pyromancers wield destructive fire spells and incendiary weapons. They delve into the forbidden arts of pyromancy, risking their sanity as they manipulate the essence of combustion.",
-       "stats": {
-         "attack": 60,
-         "defense": 50,
-         "strength": 40,
-         "health": 80,
-         "stamina": 90,
-         "magic": 120,
-         "wisdom": 100,
-         "mana": 140
-       },
-       "weight": 70
-     },
-     {
-       "class_name": "Witch",
-       "lore": "Witches draw power from the occult and esoteric knowledge. They command dark spells and summon familiars to do their bidding. Often misunderstood and feared, they walk a fine line between wisdom and madness.",
-       "stats": {
-         "attack": 50,
-         "defense": 40,
-         "strength": 30,
-         "health": 70,
-         "stamina": 80,
-         "magic": 140,
-         "wisdom": 160,
-         "mana": 180
-       },
-       "weight": 65
-     },
-     {
-       "class_name": "Cleric",
-       "lore": "Chosen by the divine, Clerics channel sacred energy to heal wounds and smite unholy foes. They uphold the principles of faith and righteousness, adorned in sacred vestments and armed with maces.",
-       "stats": {
-         "attack": 65,
-         "defense": 75,
-         "strength": 60,
-         "health": 120,
-         "stamina": 100,
-         "magic": 80,
-         "wisdom": 120,
-         "mana": 100
-       },
-       "weight": 90
-     },
-     {
-       "class_name": "Knight",
-       "lore": "Knights are noble warriors clad in resplendent armor, wielding imposing weapons. Sworn to protect the weak and uphold justice, they are the bastions of order in a world consumed by chaos.",
-       "stats": {
-         "attack": 80,
-         "defense": 100,
-         "strength": 90,
-         "health": 150,
-         "stamina": 120,
-         "magic": 40,
-         "wisdom": 50,
-         "mana": 60
-       },
-       "weight": 110
-     },
-     {
-       "class_name": "Assassin",
-       "lore": "Assassins are shadows in the night, masters of stealth and subtlety. They employ a lethal combination of daggers and poisons, striking swiftly and disappearing into darkness before their targets even realize.",
-       "stats": {
-         "attack": 65,
-         "defense": 50,
-         "strength": 50,
-         "health": 90,
-         "stamina": 100,
-         "magic": 40,
-         "wisdom": 60,
-         "mana": 40
-       },
-       "weight": 60
-     },
-     {
-       "class_name": "Hunter",
-       "lore": "Hunters are skilled marksmen and survivalists, stalking prey with their bows or crossbows. They have honed their senses and navigate the treacherous wilds with exceptional agility and precision.",
-       "stats": {
-         "attack": 70,
-         "defense": 55,
-         "strength": 60,
-         "health": 100,
-         "stamina": 120,
-         "magic": 40,
-         "wisdom": 60,
-         "mana": 40
-       },
-       "weight": 70
-     },
-     {
-       "class_name": "Berserker",
-       "lore": "Berserkers are relentless warriors fueled by primal rage and bloodlust. They charge into battle with reckless abandon, wielding massive weapons that crush bones and rend armor.",
-       "stats": {
-         "attack": 90,
-         "defense": 70,
-         "strength": 100,
-         "health": 130,
-         "stamina": 90,
-         "magic": 30,
-         "wisdom": 40,
-         "mana": 30
-       },
-       "weight": 120
-     },
-     {
-       "class_name": "Necromancer",
-       "lore": "Necromancers are masters of death, manipulating the very essence of life and undeath. Through dark rituals and forbidden knowledge, they can raise the dead to fight by their side and command spectral powers.",
-       "stats": {
-         "attack": 50,
-         "defense": 50,
-         "strength": 40,
-         "health": 80,
-         "stamina": 90,
-         "magic": 140,
-         "wisdom": 160,
-         "mana": 180
-       },
-       "weight": 60
-     },
-     {
-       "class_name": "Oracle",
-       "lore": "Oracles are blessed with heightened foresight and the ability to glimpse fragments of the future. They wield mystic staves and possess powerful divination magic, guiding others and unraveling the enigmas of fate.",
-       "stats": {
-         "attack": 55,
-         "defense": 65,
-         "strength": 50,
-         "health": 100,
-         "stamina": 100,
-         "magic": 100,
-         "wisdom": 150,
-         "mana": 140
-       },
-       "weight": 75
-     }
+	 {
+	   "class_name": "Sellsword",
+	   "lore": "Sellswords are skilled mercenaries well-versed in both swordplay and tactics. Driven by a desire for wealth and status, they roam the land, offering their services to the highest bidder.",
+	   "stats": {
+		 "attack": 75,
+		 "defense": 60,
+		 "strength": 10,
+		 "health": 100,
+		 "stamina": 110,
+		 "magic": 50,
+		 "wisdom": 40,
+		 "mana": 60
+	   },
+	   "weight": 80
+	 },
+	 {
+	   "class_name": "Pyromancer",
+	   "lore": "Harnessing the raw power of flame, Pyromancers wield destructive fire spells and incendiary weapons. They delve into the forbidden arts of pyromancy, risking their sanity as they manipulate the essence of combustion.",
+	   "stats": {
+		 "attack": 60,
+		 "defense": 50,
+		 "strength": 40,
+		 "health": 80,
+		 "stamina": 90,
+		 "magic": 120,
+		 "wisdom": 100,
+		 "mana": 140
+	   },
+	   "weight": 70
+	 },
+	 {
+	   "class_name": "Witch",
+	   "lore": "Witches draw power from the occult and esoteric knowledge. They command dark spells and summon familiars to do their bidding. Often misunderstood and feared, they walk a fine line between wisdom and madness.",
+	   "stats": {
+		 "attack": 50,
+		 "defense": 40,
+		 "strength": 30,
+		 "health": 70,
+		 "stamina": 80,
+		 "magic": 140,
+		 "wisdom": 160,
+		 "mana": 180
+	   },
+	   "weight": 65
+	 },
+	 {
+	   "class_name": "Cleric",
+	   "lore": "Chosen by the divine, Clerics channel sacred energy to heal wounds and smite unholy foes. They uphold the principles of faith and righteousness, adorned in sacred vestments and armed with maces.",
+	   "stats": {
+		 "attack": 65,
+		 "defense": 75,
+		 "strength": 60,
+		 "health": 120,
+		 "stamina": 100,
+		 "magic": 80,
+		 "wisdom": 120,
+		 "mana": 100
+	   },
+	   "weight": 90
+	 },
+	 {
+	   "class_name": "Knight",
+	   "lore": "Knights are noble warriors clad in resplendent armor, wielding imposing weapons. Sworn to protect the weak and uphold justice, they are the bastions of order in a world consumed by chaos.",
+	   "stats": {
+		 "attack": 80,
+		 "defense": 100,
+		 "strength": 90,
+		 "health": 150,
+		 "stamina": 120,
+		 "magic": 40,
+		 "wisdom": 50,
+		 "mana": 60
+	   },
+	   "weight": 110
+	 },
+	 {
+	   "class_name": "Assassin",
+	   "lore": "Assassins are shadows in the night, masters of stealth and subtlety. They employ a lethal combination of daggers and poisons, striking swiftly and disappearing into darkness before their targets even realize.",
+	   "stats": {
+		 "attack": 65,
+		 "defense": 50,
+		 "strength": 50,
+		 "health": 90,
+		 "stamina": 100,
+		 "magic": 40,
+		 "wisdom": 60,
+		 "mana": 40
+	   },
+	   "weight": 60
+	 },
+	 {
+	   "class_name": "Hunter",
+	   "lore": "Hunters are skilled marksmen and survivalists, stalking prey with their bows or crossbows. They have honed their senses and navigate the treacherous wilds with exceptional agility and precision.",
+	   "stats": {
+		 "attack": 70,
+		 "defense": 55,
+		 "strength": 60,
+		 "health": 100,
+		 "stamina": 120,
+		 "magic": 40,
+		 "wisdom": 60,
+		 "mana": 40
+	   },
+	   "weight": 70
+	 },
+	 {
+	   "class_name": "Berserker",
+	   "lore": "Berserkers are relentless warriors fueled by primal rage and bloodlust. They charge into battle with reckless abandon, wielding massive weapons that crush bones and rend armor.",
+	   "stats": {
+		 "attack": 90,
+		 "defense": 70,
+		 "strength": 100,
+		 "health": 130,
+		 "stamina": 90,
+		 "magic": 30,
+		 "wisdom": 40,
+		 "mana": 30
+	   },
+	   "weight": 120
+	 },
+	 {
+	   "class_name": "Necromancer",
+	   "lore": "Necromancers are masters of death, manipulating the very essence of life and undeath. Through dark rituals and forbidden knowledge, they can raise the dead to fight by their side and command spectral powers.",
+	   "stats": {
+		 "attack": 50,
+		 "defense": 50,
+		 "strength": 40,
+		 "health": 80,
+		 "stamina": 90,
+		 "magic": 140,
+		 "wisdom": 160,
+		 "mana": 180
+	   },
+	   "weight": 60
+	 },
+	 {
+	   "class_name": "Oracle",
+	   "lore": "Oracles are blessed with heightened foresight and the ability to glimpse fragments of the future. They wield mystic staves and possess powerful divination magic, guiding others and unraveling the enigmas of fate.",
+	   "stats": {
+		 "attack": 55,
+		 "defense": 65,
+		 "strength": 50,
+		 "health": 100,
+		 "stamina": 100,
+		 "magic": 100,
+		 "wisdom": 150,
+		 "mana": 140
+	   },
+	   "weight": 75
+	 }
    ],
    "weapons": [
-     {
-       "name": "Soulreaper Scythe",
-       "statusInflictions": {
-         "poisoned": 0.6,
-         "burned": 0.3,
-         "drenched": 0.4,
-         "confused": 0.8,
-         "paralyzed": 0.2,
-         "bloodless": 0.7
-       },
-       "loreDescription": "Forged in the bowels of the underworld, the Soulreaper Scythe culls the souls of the living, leaving lasting torment in its wake.",
-       "rarity": "epic",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Crimson Shadowblade",
-       "statusInflictions": {
-         "poisoned": 0.2,
-         "burned": 0.7,
-         "drenched": 0.3,
-         "confused": 0.9,
-         "paralyzed": 0.5,
-         "bloodless": 0.4
-       },
-       "loreDescription": "Imbued with the essence of a fallen demon, the Crimson Shadowblade whispers promises of power to its wielder.",
-       "rarity": "legendary",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Whispering Daggers",
-       "statusInflictions": {
-         "poisoned": 0.9,
-         "burned": 0.2,
-         "drenched": 0.5,
-         "confused": 0.7,
-         "paralyzed": 0.3,
-         "bloodless": 0.6
-       },
-       "loreDescription": "Forged by the hands of a secretive assassin cult, the Whispering Daggers allow their wielder to move in silence and strike with lethal precision.",
-       "rarity": "rare",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Cursed Axe of Desolation",
-       "statusInflictions": {
-         "poisoned": 0.7,
-         "burned": 0.4,
-         "drenched": 0.6,
-         "confused": 0.2,
-         "paralyzed": 0.9,
-         "bloodless": 0.5
-       },
-       "loreDescription": "Infused with ancient curses and dark magic, the Cursed Axe of Desolation leaves a trail of sorrow and destruction in its wake.",
-       "rarity": "epic",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Frostbite Bow",
-       "statusInflictions": {
-         "poisoned": 0.4,
-         "burned": 0.7,
-         "drenched": 0.2,
-         "confused": 0.8,
-         "paralyzed": 0.5,
-         "bloodless": 0.3
-       },
-       "loreDescription": "Crafted in the frozen bowels of the tundra, the Frostbite Bow unleashes arrows imbued with icy chill, freezing the hearts of its targets.",
-       "rarity": "rare",
-       "slots": [
-         "leftarm"
-       ]
-     },
-     {
-       "name": "Blade of Darkness",
-       "statusInflictions": {
-         "poisoned": 0.5,
-         "burned": 0.5,
-         "drenched": 0.5,
-         "confused": 0.5,
-         "paralyzed": 0.5,
-         "bloodless": 0.5
-       },
-       "loreDescription": "A sinister blade shrouded in darkness, this weapon brings forth an aura of malevolence, striking fear into the hearts of its enemies.",
-       "rarity": "common",
-       "slots": [
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Venom Fang Dagger",
-       "statusInflictions": {
-         "poisoned": 0.8,
-         "burned": 0.3,
-         "drenched": 0.5,
-         "confused": 0.7,
-         "paralyzed": 0.2,
-         "bloodless": 0.6
-       },
-       "loreDescription": "Infused with deadly venom, the Venom Fang Dagger delivers a swift and silent death, poisoning its victims from within.",
-       "rarity": "rare",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Inferno Whip",
-       "statusInflictions": {
-         "poisoned": 0.3,
-         "burned": 0.9,
-         "drenched": 0.2,
-         "confused": 0.7,
-         "paralyzed": 0.4,
-         "bloodless": 0.5
-       },
-       "loreDescription": "A whip imbued with the flames of the underworld, the Inferno Whip leaves its mark with scorching burns and searing pain.",
-       "rarity": "epic",
-       "slots": [
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Void Staff",
-       "statusInflictions": {
-         "poisoned": 0.4,
-         "burned": 0.3,
-         "drenched": 0.6,
-         "confused": 0.9,
-         "paralyzed": 0.5,
-         "bloodless": 0.2
-       },
-       "loreDescription": "Forged by dark sorcerers, the Void Staff harnesses the power of the void, casting its victims into eternal darkness and despair.",
-       "rarity": "legendary",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Silvermoon Rapier",
-       "statusInflictions": {
-         "poisoned": 0.3,
-         "burned": 0.5,
-         "drenched": 0.3,
-         "confused": 0.2,
-         "paralyzed": 0.4,
-         "bloodless": 0.7
-       },
-       "loreDescription": "A delicate yet deadly weapon, the Silvermoon Rapier glimmers with moonlight, granting its wielder exquisite finesse and precision.",
-       "rarity": "rare",
-       "slots": [
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Sting of Betrayal",
-       "statusInflictions": {
-         "poisoned": 0.9,
-         "burned": 0.2,
-         "drenched": 0.7,
-         "confused": 0.3,
-         "paralyzed": 0.6,
-         "bloodless": 0.4
-       },
-       "loreDescription": "A treacherous blade that strikes deep into the hearts of its victims, the Sting of Betrayal is a favorite weapon of assassins and traitors.",
-       "rarity": "epic",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Arcane Wand",
-       "statusInflictions": {
-         "poisoned": 0.2,
-         "burned": 0.4,
-         "drenched": 0.5,
-         "confused": 0.8,
-         "paralyzed": 0.6,
-         "bloodless": 0.3
-       },
-       "loreDescription": "A conduit of raw magical energy, the Arcane Wand unleashes devastating spells upon the enemies of its wielder, leaving them stunned and bewildered.",
-       "rarity": "rare",
-       "slots": [
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Vampiric Blade",
-       "statusInflictions": {
-         "poisoned": 0.3,
-         "burned": 0.4,
-         "drenched": 0.6,
-         "confused": 0.7,
-         "paralyzed": 0.2,
-         "bloodless": 0.9
-       },
-       "loreDescription": "A cursed weapon that thirsts for blood, the Vampiric Blade drains the life force of its victims, healing its wielder with each strike.",
-       "rarity": "legendary",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Stormcaller Staff",
-       "statusInflictions": {
-         "poisoned": 0.5,
-         "burned": 0.8,
-         "drenched": 0.4,
-         "confused": 0.9,
-         "paralyzed": 0.3,
-         "bloodless": 0.7
-       },
-       "loreDescription": "Carved from the heartwood of an ancient lightning-struck tree, the Stormcaller Staff wields the power of thunder and tempest, electrocuting its foes.",
-       "rarity": "epic",
-       "slots": [
-         "leftarm"
-       ]
-     },
-     {
-       "name": "Duskbringer Sword",
-       "statusInflictions": {
-         "poisoned": 0.4,
-         "burned": 0.5,
-         "drenched": 0.7,
-         "confused": 0.3,
-         "paralyzed": 0.6,
-         "bloodless": 0.2
-       },
-       "loreDescription": "Forged at the edge of twilight, the Duskbringer Sword draws strength from darkness, cutting through armor and rending souls.",
-       "rarity": "rare",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Moonlight Bow",
-       "statusInflictions": {
-         "poisoned": 0.3,
-         "burned": 0.5,
-         "drenched": 0.3,
-         "confused": 0.2,
-         "paralyzed": 0.4,
-         "bloodless": 0.7
-       },
-       "loreDescription": "Crafted by elven archers under the light of a full moon, the Moonlight Bow showers its targets with silver-tipped arrows, piercing through defenses effortlessly.",
-       "rarity": "epic",
-       "slots": [
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Shadowstrike Katar",
-       "statusInflictions": {
-         "poisoned": 0.7,
-         "burned": 0.3,
-         "drenched": 0.5,
-         "confused": 0.8,
-         "paralyzed": 0.2,
-         "bloodless": 0.4
-       },
-       "loreDescription": "A weapon of assassins, the Shadowstrike Katar delivers swift and deadly strikes, leaving its enemies crippled and gasping for breath.",
-       "rarity": "rare",
-       "slots": [
-         "leftarm"
-       ]
-     },
-     {
-       "name": "Death's Embrace Scimitar",
-       "statusInflictions": {
-         "poisoned": 0.2,
-         "burned": 0.7,
-         "drenched": 0.3,
-         "confused": 0.9,
-         "paralyzed": 0.5,
-         "bloodless": 0.4
-       },
-       "loreDescription": "A wicked scimitar crafted for the servants of Death, the Death's Embrace Scimitar severs life with each stroke, embracing entropy and decay.",
-       "rarity": "legendary",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Spectral Crossbow",
-       "statusInflictions": {
-         "poisoned": 0.4,
-         "burned": 0.3,
-         "drenched": 0.6,
-         "confused": 0.9,
-         "paralyzed": 0.5,
-         "bloodless": 0.2
-       },
-       "loreDescription": "Crafted from the bones of slain specters, the Spectral Crossbow fires ethereal bolts that pass through solid matter, haunting its targets.",
-       "rarity": "epic",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Sunfire Blade",
-       "statusInflictions": {
-         "poisoned": 0.7,
-         "burned": 0.9,
-         "drenched": 0.2,
-         "confused": 0.5,
-         "paralyzed": 0.4,
-         "bloodless": 0.3
-       },
-       "loreDescription": "Forged in the heart of a dying star, the Sunfire Blade harnesses the power of the sun, searing through armor with unrelenting heat.",
-       "rarity": "legendary",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Shadowstrike Crossbow",
-       "statusInflictions": {
-         "poisoned": 0.5,
-         "burned": 0.2,
-         "drenched": 0.7,
-         "confused": 0.3,
-         "paralyzed": 0.6,
-         "bloodless": 0.4
-       },
-       "loreDescription": "A crossbow crafted by the reclusive assassins of the Shadows, the Shadowstrike Crossbow strikes quickly and silently, leaving no trace behind.",
-       "rarity": "rare",
-       "slots": [
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Scepter of Eternal Frost",
-       "statusInflictions": {
-         "poisoned": 0.4,
-         "burned": 0.3,
-         "drenched": 0.9,
-         "confused": 0.5,
-         "paralyzed": 0.7,
-         "bloodless": 0.2
-       },
-       "loreDescription": "Carved from a shard of an eternal glacier, the Scepter of Eternal Frost blasts icy shards, freezing the souls of its enemies.",
-       "rarity": "epic",
-       "slots": [
-         "leftarm"
-       ]
-     },
-     {
-       "name": "Doomhammer",
-       "statusInflictions": {
-         "poisoned": 0.6,
-         "burned": 0.7,
-         "drenched": 0.4,
-         "confused": 0.2,
-         "paralyzed": 0.5,
-         "bloodless": 0.3
-       },
-       "loreDescription": "A massive war hammer forged with demonic blacksmithing, the Doomhammer crushes opponents with devastating blows that leave them shattered.",
-       "rarity": "rare",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Mistfall Staff",
-       "statusInflictions": {
-         "poisoned": 0.2,
-         "burned": 0.4,
-         "drenched": 0.6,
-         "confused": 0.9,
-         "paralyzed": 0.3,
-         "bloodless": 0.7
-       },
-       "loreDescription": "Crafted from enchanted wood found in the heart of a mystical mist, the Mistfall Staff summons ethereal fog that confuses and disorients its enemies.",
-       "rarity": "epic",
-       "slots": [
-         "leftarm"
-       ]
-     },
-     {
-       "name": "Blade of the Night",
-       "statusInflictions": {
-         "poisoned": 0.3,
-         "burned": 0.6,
-         "drenched": 0.4,
-         "confused": 0.2,
-         "paralyzed": 0.7,
-         "bloodless": 0.5
-       },
-       "loreDescription": "A blade forged by moonlight and darkness, the Blade of the Night guides its wielder through shadow, striking with uncanny precision.",
-       "rarity": "rare",
-       "slots": [
-         "rightarm"
-       ]
-     },
-     {
-       "name": "Eldritch Staff",
-       "statusInflictions": {
-         "poisoned": 0.6,
-         "burned": 0.3,
-         "drenched": 0.5,
-         "confused": 0.8,
-         "paralyzed": 0.4,
-         "bloodless": 0.2
-       },
-       "loreDescription": "A staff infused with eldritch energies, the Eldritch Staff conjures eldritch abominations and bends reality to its wielder's will.",
-       "rarity": "legendary",
-       "slots": [
-         "leftarm"
-       ]
-     },
-     {
-       "name": "Thunderstrike Warhammer",
-       "statusInflictions": {
-         "poisoned": 0.5,
-         "burned": 0.7,
-         "drenched": 0.4,
-         "confused": 0.9,
-         "paralyzed": 0.3,
-         "bloodless": 0.6
-       },
-       "loreDescription": "A colossal warhammer crackling with lightning, the Thunderstrike Warhammer unleashes thunderous blows that send shockwaves through its foes.",
-       "rarity": "epic",
-       "slots": [
-         "leftarm",
-         "rightarm"
-       ]
-     }
+	 {
+	   "name": "Soulreaper Scythe",
+	   "statusInflictions": {
+		 "poisoned": 0.6,
+		 "burned": 0.3,
+		 "drenched": 0.4,
+		 "confused": 0.8,
+		 "paralyzed": 0.2,
+		 "bloodless": 0.7
+	   },
+	   "loreDescription": "Forged in the bowels of the underworld, the Soulreaper Scythe culls the souls of the living, leaving lasting torment in its wake.",
+	   "rarity": "epic",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Crimson Shadowblade",
+	   "statusInflictions": {
+		 "poisoned": 0.2,
+		 "burned": 0.7,
+		 "drenched": 0.3,
+		 "confused": 0.9,
+		 "paralyzed": 0.5,
+		 "bloodless": 0.4
+	   },
+	   "loreDescription": "Imbued with the essence of a fallen demon, the Crimson Shadowblade whispers promises of power to its wielder.",
+	   "rarity": "legendary",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Whispering Daggers",
+	   "statusInflictions": {
+		 "poisoned": 0.9,
+		 "burned": 0.2,
+		 "drenched": 0.5,
+		 "confused": 0.7,
+		 "paralyzed": 0.3,
+		 "bloodless": 0.6
+	   },
+	   "loreDescription": "Forged by the hands of a secretive assassin cult, the Whispering Daggers allow their wielder to move in silence and strike with lethal precision.",
+	   "rarity": "rare",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Cursed Axe of Desolation",
+	   "statusInflictions": {
+		 "poisoned": 0.7,
+		 "burned": 0.4,
+		 "drenched": 0.6,
+		 "confused": 0.2,
+		 "paralyzed": 0.9,
+		 "bloodless": 0.5
+	   },
+	   "loreDescription": "Infused with ancient curses and dark magic, the Cursed Axe of Desolation leaves a trail of sorrow and destruction in its wake.",
+	   "rarity": "epic",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Frostbite Bow",
+	   "statusInflictions": {
+		 "poisoned": 0.4,
+		 "burned": 0.7,
+		 "drenched": 0.2,
+		 "confused": 0.8,
+		 "paralyzed": 0.5,
+		 "bloodless": 0.3
+	   },
+	   "loreDescription": "Crafted in the frozen bowels of the tundra, the Frostbite Bow unleashes arrows imbued with icy chill, freezing the hearts of its targets.",
+	   "rarity": "rare",
+	   "slots": [
+		 "leftarm"
+	   ]
+	 },
+	 {
+	   "name": "Blade of Darkness",
+	   "statusInflictions": {
+		 "poisoned": 0.5,
+		 "burned": 0.5,
+		 "drenched": 0.5,
+		 "confused": 0.5,
+		 "paralyzed": 0.5,
+		 "bloodless": 0.5
+	   },
+	   "loreDescription": "A sinister blade shrouded in darkness, this weapon brings forth an aura of malevolence, striking fear into the hearts of its enemies.",
+	   "rarity": "common",
+	   "slots": [
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Venom Fang Dagger",
+	   "statusInflictions": {
+		 "poisoned": 0.8,
+		 "burned": 0.3,
+		 "drenched": 0.5,
+		 "confused": 0.7,
+		 "paralyzed": 0.2,
+		 "bloodless": 0.6
+	   },
+	   "loreDescription": "Infused with deadly venom, the Venom Fang Dagger delivers a swift and silent death, poisoning its victims from within.",
+	   "rarity": "rare",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Inferno Whip",
+	   "statusInflictions": {
+		 "poisoned": 0.3,
+		 "burned": 0.9,
+		 "drenched": 0.2,
+		 "confused": 0.7,
+		 "paralyzed": 0.4,
+		 "bloodless": 0.5
+	   },
+	   "loreDescription": "A whip imbued with the flames of the underworld, the Inferno Whip leaves its mark with scorching burns and searing pain.",
+	   "rarity": "epic",
+	   "slots": [
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Void Staff",
+	   "statusInflictions": {
+		 "poisoned": 0.4,
+		 "burned": 0.3,
+		 "drenched": 0.6,
+		 "confused": 0.9,
+		 "paralyzed": 0.5,
+		 "bloodless": 0.2
+	   },
+	   "loreDescription": "Forged by dark sorcerers, the Void Staff harnesses the power of the void, casting its victims into eternal darkness and despair.",
+	   "rarity": "legendary",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Silvermoon Rapier",
+	   "statusInflictions": {
+		 "poisoned": 0.3,
+		 "burned": 0.5,
+		 "drenched": 0.3,
+		 "confused": 0.2,
+		 "paralyzed": 0.4,
+		 "bloodless": 0.7
+	   },
+	   "loreDescription": "A delicate yet deadly weapon, the Silvermoon Rapier glimmers with moonlight, granting its wielder exquisite finesse and precision.",
+	   "rarity": "rare",
+	   "slots": [
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Sting of Betrayal",
+	   "statusInflictions": {
+		 "poisoned": 0.9,
+		 "burned": 0.2,
+		 "drenched": 0.7,
+		 "confused": 0.3,
+		 "paralyzed": 0.6,
+		 "bloodless": 0.4
+	   },
+	   "loreDescription": "A treacherous blade that strikes deep into the hearts of its victims, the Sting of Betrayal is a favorite weapon of assassins and traitors.",
+	   "rarity": "epic",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Arcane Wand",
+	   "statusInflictions": {
+		 "poisoned": 0.2,
+		 "burned": 0.4,
+		 "drenched": 0.5,
+		 "confused": 0.8,
+		 "paralyzed": 0.6,
+		 "bloodless": 0.3
+	   },
+	   "loreDescription": "A conduit of raw magical energy, the Arcane Wand unleashes devastating spells upon the enemies of its wielder, leaving them stunned and bewildered.",
+	   "rarity": "rare",
+	   "slots": [
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Vampiric Blade",
+	   "statusInflictions": {
+		 "poisoned": 0.3,
+		 "burned": 0.4,
+		 "drenched": 0.6,
+		 "confused": 0.7,
+		 "paralyzed": 0.2,
+		 "bloodless": 0.9
+	   },
+	   "loreDescription": "A cursed weapon that thirsts for blood, the Vampiric Blade drains the life force of its victims, healing its wielder with each strike.",
+	   "rarity": "legendary",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Stormcaller Staff",
+	   "statusInflictions": {
+		 "poisoned": 0.5,
+		 "burned": 0.8,
+		 "drenched": 0.4,
+		 "confused": 0.9,
+		 "paralyzed": 0.3,
+		 "bloodless": 0.7
+	   },
+	   "loreDescription": "Carved from the heartwood of an ancient lightning-struck tree, the Stormcaller Staff wields the power of thunder and tempest, electrocuting its foes.",
+	   "rarity": "epic",
+	   "slots": [
+		 "leftarm"
+	   ]
+	 },
+	 {
+	   "name": "Duskbringer Sword",
+	   "statusInflictions": {
+		 "poisoned": 0.4,
+		 "burned": 0.5,
+		 "drenched": 0.7,
+		 "confused": 0.3,
+		 "paralyzed": 0.6,
+		 "bloodless": 0.2
+	   },
+	   "loreDescription": "Forged at the edge of twilight, the Duskbringer Sword draws strength from darkness, cutting through armor and rending souls.",
+	   "rarity": "rare",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Moonlight Bow",
+	   "statusInflictions": {
+		 "poisoned": 0.3,
+		 "burned": 0.5,
+		 "drenched": 0.3,
+		 "confused": 0.2,
+		 "paralyzed": 0.4,
+		 "bloodless": 0.7
+	   },
+	   "loreDescription": "Crafted by elven archers under the light of a full moon, the Moonlight Bow showers its targets with silver-tipped arrows, piercing through defenses effortlessly.",
+	   "rarity": "epic",
+	   "slots": [
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Shadowstrike Katar",
+	   "statusInflictions": {
+		 "poisoned": 0.7,
+		 "burned": 0.3,
+		 "drenched": 0.5,
+		 "confused": 0.8,
+		 "paralyzed": 0.2,
+		 "bloodless": 0.4
+	   },
+	   "loreDescription": "A weapon of assassins, the Shadowstrike Katar delivers swift and deadly strikes, leaving its enemies crippled and gasping for breath.",
+	   "rarity": "rare",
+	   "slots": [
+		 "leftarm"
+	   ]
+	 },
+	 {
+	   "name": "Death's Embrace Scimitar",
+	   "statusInflictions": {
+		 "poisoned": 0.2,
+		 "burned": 0.7,
+		 "drenched": 0.3,
+		 "confused": 0.9,
+		 "paralyzed": 0.5,
+		 "bloodless": 0.4
+	   },
+	   "loreDescription": "A wicked scimitar crafted for the servants of Death, the Death's Embrace Scimitar severs life with each stroke, embracing entropy and decay.",
+	   "rarity": "legendary",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Spectral Crossbow",
+	   "statusInflictions": {
+		 "poisoned": 0.4,
+		 "burned": 0.3,
+		 "drenched": 0.6,
+		 "confused": 0.9,
+		 "paralyzed": 0.5,
+		 "bloodless": 0.2
+	   },
+	   "loreDescription": "Crafted from the bones of slain specters, the Spectral Crossbow fires ethereal bolts that pass through solid matter, haunting its targets.",
+	   "rarity": "epic",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Sunfire Blade",
+	   "statusInflictions": {
+		 "poisoned": 0.7,
+		 "burned": 0.9,
+		 "drenched": 0.2,
+		 "confused": 0.5,
+		 "paralyzed": 0.4,
+		 "bloodless": 0.3
+	   },
+	   "loreDescription": "Forged in the heart of a dying star, the Sunfire Blade harnesses the power of the sun, searing through armor with unrelenting heat.",
+	   "rarity": "legendary",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Shadowstrike Crossbow",
+	   "statusInflictions": {
+		 "poisoned": 0.5,
+		 "burned": 0.2,
+		 "drenched": 0.7,
+		 "confused": 0.3,
+		 "paralyzed": 0.6,
+		 "bloodless": 0.4
+	   },
+	   "loreDescription": "A crossbow crafted by the reclusive assassins of the Shadows, the Shadowstrike Crossbow strikes quickly and silently, leaving no trace behind.",
+	   "rarity": "rare",
+	   "slots": [
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Scepter of Eternal Frost",
+	   "statusInflictions": {
+		 "poisoned": 0.4,
+		 "burned": 0.3,
+		 "drenched": 0.9,
+		 "confused": 0.5,
+		 "paralyzed": 0.7,
+		 "bloodless": 0.2
+	   },
+	   "loreDescription": "Carved from a shard of an eternal glacier, the Scepter of Eternal Frost blasts icy shards, freezing the souls of its enemies.",
+	   "rarity": "epic",
+	   "slots": [
+		 "leftarm"
+	   ]
+	 },
+	 {
+	   "name": "Doomhammer",
+	   "statusInflictions": {
+		 "poisoned": 0.6,
+		 "burned": 0.7,
+		 "drenched": 0.4,
+		 "confused": 0.2,
+		 "paralyzed": 0.5,
+		 "bloodless": 0.3
+	   },
+	   "loreDescription": "A massive war hammer forged with demonic blacksmithing, the Doomhammer crushes opponents with devastating blows that leave them shattered.",
+	   "rarity": "rare",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Mistfall Staff",
+	   "statusInflictions": {
+		 "poisoned": 0.2,
+		 "burned": 0.4,
+		 "drenched": 0.6,
+		 "confused": 0.9,
+		 "paralyzed": 0.3,
+		 "bloodless": 0.7
+	   },
+	   "loreDescription": "Crafted from enchanted wood found in the heart of a mystical mist, the Mistfall Staff summons ethereal fog that confuses and disorients its enemies.",
+	   "rarity": "epic",
+	   "slots": [
+		 "leftarm"
+	   ]
+	 },
+	 {
+	   "name": "Blade of the Night",
+	   "statusInflictions": {
+		 "poisoned": 0.3,
+		 "burned": 0.6,
+		 "drenched": 0.4,
+		 "confused": 0.2,
+		 "paralyzed": 0.7,
+		 "bloodless": 0.5
+	   },
+	   "loreDescription": "A blade forged by moonlight and darkness, the Blade of the Night guides its wielder through shadow, striking with uncanny precision.",
+	   "rarity": "rare",
+	   "slots": [
+		 "rightarm"
+	   ]
+	 },
+	 {
+	   "name": "Eldritch Staff",
+	   "statusInflictions": {
+		 "poisoned": 0.6,
+		 "burned": 0.3,
+		 "drenched": 0.5,
+		 "confused": 0.8,
+		 "paralyzed": 0.4,
+		 "bloodless": 0.2
+	   },
+	   "loreDescription": "A staff infused with eldritch energies, the Eldritch Staff conjures eldritch abominations and bends reality to its wielder's will.",
+	   "rarity": "legendary",
+	   "slots": [
+		 "leftarm"
+	   ]
+	 },
+	 {
+	   "name": "Thunderstrike Warhammer",
+	   "statusInflictions": {
+		 "poisoned": 0.5,
+		 "burned": 0.7,
+		 "drenched": 0.4,
+		 "confused": 0.9,
+		 "paralyzed": 0.3,
+		 "bloodless": 0.6
+	   },
+	   "loreDescription": "A colossal warhammer crackling with lightning, the Thunderstrike Warhammer unleashes thunderous blows that send shockwaves through its foes.",
+	   "rarity": "epic",
+	   "slots": [
+		 "leftarm",
+		 "rightarm"
+	   ]
+	 }
    ],
    "armors": [
-     {
-       "name": "Shadowsteel Plate",
-       "statusResistances": {
-         "poisoned": 0.2,
-         "burned": 0.8,
-         "drenched": 0.4,
-         "confused": 0.3,
-         "paralyzed": 0.6,
-         "bloodless": 0.9
-       },
-       "loreDescription": "Forged from the darkest depths, the Shadowsteel Plate emits an eerie glow, instilling fear in the hearts of all who lay their eyes upon it.",
-       "rarity": "epic",
-       "slots": [
-         "torso"
-       ]
-     },
-     {
-       "name": "Venomous Shroud",
-       "statusResistances": {
-         "poisoned": 0.9,
-         "burned": 0.2,
-         "drenched": 0.5,
-         "confused": 0.7,
-         "paralyzed": 0.3,
-         "bloodless": 0.4
-       },
-       "loreDescription": "Fashioned by the master weavers of the Arachnid Forest, the Venomous Shroud grants its wearer immunity to the deadliest poisons known to man.",
-       "rarity": "legendary",
-       "slots": [
-         "torso"
-       ]
-     },
-     {
-       "name": "Frostforged Legguards",
-       "statusResistances": {
-         "poisoned": 0.6,
-         "burned": 0.3,
-         "drenched": 0.9,
-         "confused": 0.5,
-         "paralyzed": 0.2,
-         "bloodless": 0.7
-       },
-       "loreDescription": "Forged in the heart of the Frozen Mountains, these Legguards provide exceptional protection against icy winds and freezing temperatures.",
-       "rarity": "rare",
-       "slots": [
-         "legs"
-       ]
-     },
-     {
-       "name": "Helm of Eternal Shadows",
-       "statusResistances": {
-         "poisoned": 0.4,
-         "burned": 0.7,
-         "drenched": 0.2,
-         "confused": 0.9,
-         "paralyzed": 0.5,
-         "bloodless": 0.3
-       },
-       "loreDescription": "Crafted by ancient sorcerers, the Helm of Eternal Shadows veils its wearer from the prying eyes of both light and darkness.",
-       "rarity": "rare",
-       "slots": [
-         "head"
-       ]
-     },
-     {
-       "name": "Amulet of Undying Hope",
-       "statusResistances": {
-         "poisoned": 0.7,
-         "burned": 0.4,
-         "drenched": 0.6,
-         "confused": 0.2,
-         "paralyzed": 0.9,
-         "bloodless": 0.5
-       },
-       "loreDescription": "A relic of the lost civilization, the Amulet of Undying Hope rains blessings upon its bearer during the darkest of times.",
-       "rarity": "common",
-       "slots": [
-         "neck"
-       ]
-     },
-     {
-       "name": "Dreadguard Mail",
-       "statusResistances": {
-         "poisoned": 0.3,
-         "burned": 0.6,
-         "drenched": 0.7,
-         "confused": 0.4,
-         "paralyzed": 0.8,
-         "bloodless": 0.2
-       },
-       "loreDescription": "Infused with ancient enchantments, the Dreadguard Mail instills paralyzing fear in the hearts of its foes.",
-       "rarity": "epic",
-       "slots": [
-         "torso"
-       ]
-     },
-     {
-       "name": "Legplates of the Cursed",
-       "statusResistances": {
-         "poisoned": 0.5,
-         "burned": 0.3,
-         "drenched": 0.8,
-         "confused": 0.6,
-         "paralyzed": 0.4,
-         "bloodless": 0.7
-       },
-       "loreDescription": "Forged with the bones of fallen warriors, these Legplates radiate an aura of haunting dread.",
-       "rarity": "legendary",
-       "slots": [
-         "legs"
-       ]
-     },
-     {
-       "name": "Raven's Embrace",
-       "statusResistances": {
-         "poisoned": 0.8,
-         "burned": 0.4,
-         "drenched": 0.3,
-         "confused": 0.7,
-         "paralyzed": 0.2,
-         "bloodless": 0.5
-       },
-       "loreDescription": "Woven by the hands of ancient druids, the Raven's Embrace provides unyielding protection against the forces of nature.",
-       "rarity": "rare",
-       "slots": [
-         "torso"
-       ]
-     },
-     {
-       "name": "Hood of Whispering Shadows",
-       "statusResistances": {
-         "poisoned": 0.6,
-         "burned": 0.2,
-         "drenched": 0.9,
-         "confused": 0.3,
-         "paralyzed": 0.7,
-         "bloodless": 0.4
-       },
-       "loreDescription": "Once worn by the assassins of a forgotten guild, the Hood of Whispering Shadows shrouds its wearer in an impenetrable veil of darkness.",
-       "rarity": "rare",
-       "slots": [
-         "head"
-       ]
-     },
-     {
-       "name": "Necklace of the Fallen",
-       "statusResistances": {
-         "poisoned": 0.4,
-         "burned": 0.7,
-         "drenched": 0.5,
-         "confused": 0.2,
-         "paralyzed": 0.5,
-         "bloodless": 0.9
-       },
-       "loreDescription": "Forged from the ashes of long-extinguished battlefields, the Necklace of the Fallen grants its wearer the strength and wisdom of fallen heroes.",
-       "rarity": "common",
-       "slots": [
-         "neck"
-       ]
-     },
-     {
-       "name": "Darksteel Scalemail",
-       "statusResistances": {
-         "poisoned": 0.5,
-         "burned": 0.5,
-         "drenched": 0.5,
-         "confused": 0.5,
-         "paralyzed": 0.5,
-         "bloodless": 0.5
-       },
-       "loreDescription": "Forged by the ancient dragon slayers, the Darksteel Scalemail offers balanced protection against all elements.",
-       "rarity": "common",
-       "slots": [
-         "torso"
-       ]
-     },
-     {
-       "name": "Crimson Warplate",
-       "statusResistances": {
-         "poisoned": 0.7,
-         "burned": 0.7,
-         "drenched": 0.7,
-         "confused": 0.7,
-         "paralyzed": 0.7,
-         "bloodless": 0.7
-       },
-       "loreDescription": "Stained with the blood of countless fallen, the Crimson Warplate confers upon its bearer the fury of a thousand warriors.",
-       "rarity": "epic",
-       "slots": [
-         "torso"
-       ]
-     },
-     {
-       "name": "Stormcaster Robes",
-       "statusResistances": {
-         "poisoned": 0.3,
-         "burned": 0.3,
-         "drenched": 0.3,
-         "confused": 0.3,
-         "paralyzed": 0.3,
-         "bloodless": 0.3
-       },
-       "loreDescription": "Infused with the power of lightning, the Stormcaster Robes channel destructive energy, unmatched by any mere mortal.",
-       "rarity": "rare",
-       "slots": [
-         "torso"
-       ]
-     },
-     {
-       "name": "Skullcrusher Helm",
-       "statusResistances": {
-         "poisoned": 0.6,
-         "burned": 0.6,
-         "drenched": 0.6,
-         "confused": 0.6,
-         "paralyzed": 0.6,
-         "bloodless": 0.6
-       },
-       "loreDescription": "Forged from the skull of a fallen titan, the Skullcrusher Helm invokes primal strength and instills terror in the hearts of enemies.",
-       "rarity": "rare",
-       "slots": [
-         "head"
-       ]
-     },
-     {
-       "name": "Crystal Tear Pendant",
-       "statusResistances": {
-         "poisoned": 0.9,
-         "burned": 0.9,
-         "drenched": 0.9,
-         "confused": 0.9,
-         "paralyzed": 0.9,
-         "bloodless": 0.9
-       },
-       "loreDescription": "Formed from the crystallized tears of a celestial being, the pendant radiates an invigorating aura, healing wounds and restoring hope.",
-       "rarity": "legendary",
-       "slots": [
-         "neck"
-       ]
-     },
-     {
-       "name": "Drakescale Leggings",
-       "statusResistances": {
-         "poisoned": 0.8,
-         "burned": 0.2,
-         "drenched": 0.4,
-         "confused": 0.1,
-         "paralyzed": 0.7,
-         "bloodless": 0.3
-       },
-       "loreDescription": "Crafted from the scales of an ancient fire-breathing dragon, the Drakescale Leggings provide unparalleled protection against elemental attacks.",
-       "rarity": "epic",
-       "slots": [
-         "legs"
-       ]
-     },
-     {
-       "name": "Phantom Veil",
-       "statusResistances": {
-         "poisoned": 0.1,
-         "burned": 0.8,
-         "drenched": 0.3,
-         "confused": 0.8,
-         "paralyzed": 0.4,
-         "bloodless": 0.6
-       },
-       "loreDescription": "Woven from ethereal threads, the Phantom Veil grants its wearer extraordinary agility and unnatural resistance to magic.",
-       "rarity": "legendary",
-       "slots": [
-         "head"
-       ]
-     },
-     {
-       "name": "Oceanheart Amulet",
-       "statusResistances": {
-         "poisoned": 0.6,
-         "burned": 0.3,
-         "drenched": 0.9,
-         "confused": 0.5,
-         "paralyzed": 0.2,
-         "bloodless": 0.7
-       },
-       "loreDescription": "Forged from a rare gemstone found deep within the ocean's depths, the Oceanheart Amulet grants its wearer dominion over water and protection from its treacherous currents.",
-       "rarity": "rare",
-       "slots": [
-         "neck"
-       ]
-     },
-     {
-       "name": "Serpent's Embrace",
-       "statusResistances": {
-         "poisoned": 0.7,
-         "burned": 0.4,
-         "drenched": 0.3,
-         "confused": 0.7,
-         "paralyzed": 0.2,
-         "bloodless": 0.5
-       },
-       "loreDescription": "Imbued with the essence of serpents, the Serpent's Embrace grants its wearer unparalleled agility and venomous resistance.",
-       "rarity": "rare",
-       "slots": [
-         "torso"
-       ]
-     },
-     {
-       "name": "Nightshade Hood",
-       "statusResistances": {
-         "poisoned": 0.4,
-         "burned": 0.7,
-         "drenched": 0.2,
-         "confused": 0.9,
-         "paralyzed": 0.5,
-         "bloodless": 0.3
-       },
-       "loreDescription": "Woven from the shadowy fibers of the nightshade plant, the Nightshade Hood conceals its wearer, providing mastery over darkness.",
-       "rarity": "common",
-       "slots": [
-         "head"
-       ]
-     },
-     {
-       "name": "Sentinel's Choker",
-       "statusResistances": {
-         "poisoned": 0.2,
-         "burned": 0.5,
-         "drenched": 0.7,
-         "confused": 0.3,
-         "paralyzed": 0.9,
-         "bloodless": 0.4
-       },
-       "loreDescription": "Forged by the guardians of ancient realms, the Sentinel's Choker wards off curses and reinforces the fortitude of its wearer.",
-       "rarity": "common",
-       "slots": [
-         "neck"
-       ]
-     },
-     {
-       "name": "Plate Mail",
-       "loreDescription": "This legendary suit of armor is said to have been forged by ancient blacksmiths and grants outstanding protection.",
-       "rarity": "Epic",
-       "slots": [
-         "torso"
-       ],
-       "statusResistances": {
-         "poisoned": 0.2,
-         "burned": 0.1,
-         "drenched": 0,
-         "confused": 0.05,
-         "paralyzed": 0,
-         "bloodless": 0.1
-       }
-     },
-     {
-       "name": "Leather Leggings",
-       "loreDescription": "Durable leggings made from thick leather that offer decent defense and flexibility in combat.",
-       "rarity": "Common",
-       "slots": [
-         "legs"
-       ],
-       "statusResistances": {
-         "poisoned": 0.05,
-         "burned": 0.1,
-         "drenched": 0.1,
-         "confused": 0,
-         "paralyzed": 0,
-         "bloodless": 0.05
-       }
-     },
-     {
-       "name": "Shadow Hood",
-       "loreDescription": "A hood infused with the essence of shadows, granting its wearer enhanced stealth and protection from harmful effects.",
-       "rarity": "Rare",
-       "slots": [
-         "head"
-       ],
-       "statusResistances": {
-         "poisoned": 0.1,
-         "burned": 0.2,
-         "drenched": 0.05,
-         "confused": 0.1,
-         "paralyzed": 0,
-         "bloodless": 0.05
-       }
-     },
-     {
-       "name": "Amulet of Vitality",
-       "loreDescription": "An ancient amulet that radiates with magical energy, boosting the wearer's health and providing resistance against various ailments.",
-       "rarity": "Uncommon",
-       "slots": [
-         "neck"
-       ],
-       "statusResistances": {
-         "poisoned": 0.05,
-         "burned": 0.05,
-         "drenched": 0.05,
-         "confused": 0.05,
-         "paralyzed": 0.05,
-         "bloodless": 0.05
-       }
-     },
-     {
-       "name": "Dragon Scale Armor",
-       "loreDescription": "Crafted from the scales of an ancient dragon, this legendary armor grants exceptional protection against fire and various other threats.",
-       "rarity": "Epic",
-       "slots": [
-         "torso"
-       ],
-       "statusResistances": {
-         "poisoned": 0.1,
-         "burned": 0.5,
-         "drenched": 0.1,
-         "confused": 0.05,
-         "paralyzed": 0.05,
-         "bloodless": 0.1
-       }
-     },
-     {
-       "name": "Robes of the Archmage",
-       "loreDescription": "Enigmatic robes bestowed only upon the most accomplished spellcasters. They enhance the wearer's magical abilities and provide defense against various debilitating effects.",
-       "rarity": "Legendary",
-       "slots": [
-         "torso"
-       ],
-       "statusResistances": {
-         "poisoned": 0.1,
-         "burned": 0.2,
-         "drenched": 0.1,
-         "confused": 0.15,
-         "paralyzed": 0.05,
-         "bloodless": 0.05
-       }
-     },
-     {
-       "name": "Iron Legguards",
-       "loreDescription": "Sturdy legguards forged by skilled blacksmiths. While heavy, they offer excellent protection against physical attacks.",
-       "rarity": "Common",
-       "slots": [
-         "legs"
-       ],
-       "statusResistances": {
-         "poisoned": 0.05,
-         "burned": 0.05,
-         "drenched": 0.05,
-         "confused": 0.05,
-         "paralyzed": 0.05,
-         "bloodless": 0.05
-       }
-     },
-     {
-       "name": "Spellweaver's Gloves",
-       "loreDescription": "Gloves imbued with arcane energy, allowing the wearer to channel spells more effectively while providing moderate defense.",
-       "rarity": "Rare",
-       "slots": [
-         "head"
-       ],
-       "statusResistances": {
-         "poisoned": 0.1,
-         "burned": 0.1,
-         "drenched": 0.1,
-         "confused": 0.1,
-         "paralyzed": 0.05,
-         "bloodless": 0.05
-       }
-     },
-     {
-       "name": "Necklace of Protection",
-       "loreDescription": "A protective necklace enchanted with ancient rituals, granting resistance against various harmful effects.",
-       "rarity": "Uncommon",
-       "slots": [
-         "neck"
-       ],
-       "statusResistances": {
-         "poisoned": 0.1,
-         "burned": 0.1,
-         "drenched": 0.1,
-         "confused": 0.1,
-         "paralyzed": 0.1,
-         "bloodless": 0.1
-       }
-     },
-     {
-       "name": "Crimson Armor",
-       "loreDescription": "Armor infused with the essence of an otherworldly crimson crystal, offering both protection and increased resistance to all ailments.",
-       "rarity": "Rare",
-       "slots": [
-         "torso"
-       ],
-       "statusResistances": {
-         "poisoned": 0.2,
-         "burned": 0.2,
-         "drenched": 0.2,
-         "confused": 0.2,
-         "paralyzed": 0.2,
-         "bloodless": 0.2
-       }
-     },
-     {
-       "name": "Steel Leggings",
-       "loreDescription": "Thick steel leggings favored by knights, providing reliable defense against physical and magical attacks.",
-       "rarity": "Uncommon",
-       "slots": [
-         "legs"
-       ],
-       "statusResistances": {
-         "poisoned": 0.1,
-         "burned": 0.2,
-         "drenched": 0.1,
-         "confused": 0.1,
-         "paralyzed": 0.05,
-         "bloodless": 0.05
-       }
-     },
-     {
-       "name": "Helm of the Conqueror",
-       "loreDescription": "A helm worn by fearless warriors who have emerged victorious from countless battles. Enhances offensive capabilities and grants resistance against harmful effects.",
-       "rarity": "Epic",
-       "slots": [
-         "head"
-       ],
-       "statusResistances": {
-         "poisoned": 0.15,
-         "burned": 0.15,
-         "drenched": 0.05,
-         "confused": 0.2,
-         "paralyzed": 0.1,
-         "bloodless": 0.05
-       }
-     },
-     {
-       "name": "Amulet of the Serpent",
-       "loreDescription": "An amulet representing the legendary serpent guardian, granting resistance against venomous attacks and dark magic.",
-       "rarity": "Rare",
-       "slots": [
-         "neck"
-       ],
-       "statusResistances": {
-         "poisoned": 0.3,
-         "burned": 0.05,
-         "drenched": 0.05,
-         "confused": 0.05,
-         "paralyzed": 0.05,
-         "bloodless": 0.05
-       }
-     },
-     {
-       "name": "Shadow Silk Robes",
-       "loreDescription": "Robes woven from a rare silk infused with shadow essence, granting heightened magical prowess and protection from harmful effects.",
-       "rarity": "Epic",
-       "slots": [
-         "torso"
-       ],
-       "statusResistances": {
-         "poisoned": 0.2,
-         "burned": 0.2,
-         "drenched": 0.2,
-         "confused": 0.1,
-         "paralyzed": 0.1,
-         "bloodless": 0.1
-       }
-     },
-     {
-       "name": "Silent Leggings",
-       "loreDescription": "Leggings crafted by secretive assassins, allowing their wearers to move silently and avoid status ailments.",
-       "rarity": "Rare",
-       "slots": [
-         "legs"
-       ],
-       "statusResistances": {
-         "poisoned": 0.2,
-         "burned": 0.1,
-         "drenched": 0.1,
-         "confused": 0.05,
-         "paralyzed": 0.1,
-         "bloodless": 0.1
-       }
-     },
-     {
-       "name": "Bracelets of Warding",
-       "loreDescription": "Enchanted bracelets that create protective barriers around the wearer, reducing the effects of harmful spells and status ailments.",
-       "rarity": "Uncommon",
-       "slots": [
-         "head"
-       ],
-       "statusResistances": {
-         "poisoned": 0.05,
-         "burned": 0.05,
-         "drenched": 0.05,
-         "confused": 0.05,
-         "paralyzed": 0.2,
-         "bloodless": 0.05
-       }
-     },
-     {
-       "name": "Crown of Preservation",
-       "loreDescription": "A crown worn by ancient rulers, said to grant the wearer near-immunity to debilitating effects and curses.",
-       "rarity": "Legendary",
-       "slots": [
-         "head"
-       ],
-       "statusResistances": {
-         "poisoned": 0.05,
-         "burned": 0.05,
-         "drenched": 0.05,
-         "confused": 0.05,
-         "paralyzed": 0.3,
-         "bloodless": 0.05
-       }
-     },
-     {
-       "name": "Talisman of Renewal",
-       "loreDescription": "A mysterious talisman that constantly rejuvenates the wearer, providing minor health regeneration and reducing the duration of all negative effects.",
-       "rarity": "Rare",
-       "slots": [
-         "neck"
-       ],
-       "statusResistances": {
-         "poisoned": 0.1,
-         "burned": 0.1,
-         "drenched": 0.1,
-         "confused": 0.1,
-         "paralyzed": 0.1,
-         "bloodless": 0.1
-       }
-     },
-     {
-       "name": "Dwarven Mail",
-       "loreDescription": "Mail armor expertly crafted by the legendary Dwarven blacksmiths, known for its durability and resistance to status ailments.",
-       "rarity": "Uncommon",
-       "slots": [
-         "torso"
-       ],
-       "statusResistances": {
-         "poisoned": 0.2,
-         "burned": 0.1,
-         "drenched": 0.05,
-         "confused": 0.05,
-         "paralyzed": 0.1,
-         "bloodless": 0.05
-       }
-     }
+	 {
+	   "name": "Shadowsteel Plate",
+	   "statusResistances": {
+		 "poisoned": 0.2,
+		 "burned": 0.8,
+		 "drenched": 0.4,
+		 "confused": 0.3,
+		 "paralyzed": 0.6,
+		 "bloodless": 0.9
+	   },
+	   "loreDescription": "Forged from the darkest depths, the Shadowsteel Plate emits an eerie glow, instilling fear in the hearts of all who lay their eyes upon it.",
+	   "rarity": "epic",
+	   "slots": [
+		 "torso"
+	   ]
+	 },
+	 {
+	   "name": "Venomous Shroud",
+	   "statusResistances": {
+		 "poisoned": 0.9,
+		 "burned": 0.2,
+		 "drenched": 0.5,
+		 "confused": 0.7,
+		 "paralyzed": 0.3,
+		 "bloodless": 0.4
+	   },
+	   "loreDescription": "Fashioned by the master weavers of the Arachnid Forest, the Venomous Shroud grants its wearer immunity to the deadliest poisons known to man.",
+	   "rarity": "legendary",
+	   "slots": [
+		 "torso"
+	   ]
+	 },
+	 {
+	   "name": "Frostforged Legguards",
+	   "statusResistances": {
+		 "poisoned": 0.6,
+		 "burned": 0.3,
+		 "drenched": 0.9,
+		 "confused": 0.5,
+		 "paralyzed": 0.2,
+		 "bloodless": 0.7
+	   },
+	   "loreDescription": "Forged in the heart of the Frozen Mountains, these Legguards provide exceptional protection against icy winds and freezing temperatures.",
+	   "rarity": "rare",
+	   "slots": [
+		 "legs"
+	   ]
+	 },
+	 {
+	   "name": "Helm of Eternal Shadows",
+	   "statusResistances": {
+		 "poisoned": 0.4,
+		 "burned": 0.7,
+		 "drenched": 0.2,
+		 "confused": 0.9,
+		 "paralyzed": 0.5,
+		 "bloodless": 0.3
+	   },
+	   "loreDescription": "Crafted by ancient sorcerers, the Helm of Eternal Shadows veils its wearer from the prying eyes of both light and darkness.",
+	   "rarity": "rare",
+	   "slots": [
+		 "head"
+	   ]
+	 },
+	 {
+	   "name": "Amulet of Undying Hope",
+	   "statusResistances": {
+		 "poisoned": 0.7,
+		 "burned": 0.4,
+		 "drenched": 0.6,
+		 "confused": 0.2,
+		 "paralyzed": 0.9,
+		 "bloodless": 0.5
+	   },
+	   "loreDescription": "A relic of the lost civilization, the Amulet of Undying Hope rains blessings upon its bearer during the darkest of times.",
+	   "rarity": "common",
+	   "slots": [
+		 "neck"
+	   ]
+	 },
+	 {
+	   "name": "Dreadguard Mail",
+	   "statusResistances": {
+		 "poisoned": 0.3,
+		 "burned": 0.6,
+		 "drenched": 0.7,
+		 "confused": 0.4,
+		 "paralyzed": 0.8,
+		 "bloodless": 0.2
+	   },
+	   "loreDescription": "Infused with ancient enchantments, the Dreadguard Mail instills paralyzing fear in the hearts of its foes.",
+	   "rarity": "epic",
+	   "slots": [
+		 "torso"
+	   ]
+	 },
+	 {
+	   "name": "Legplates of the Cursed",
+	   "statusResistances": {
+		 "poisoned": 0.5,
+		 "burned": 0.3,
+		 "drenched": 0.8,
+		 "confused": 0.6,
+		 "paralyzed": 0.4,
+		 "bloodless": 0.7
+	   },
+	   "loreDescription": "Forged with the bones of fallen warriors, these Legplates radiate an aura of haunting dread.",
+	   "rarity": "legendary",
+	   "slots": [
+		 "legs"
+	   ]
+	 },
+	 {
+	   "name": "Raven's Embrace",
+	   "statusResistances": {
+		 "poisoned": 0.8,
+		 "burned": 0.4,
+		 "drenched": 0.3,
+		 "confused": 0.7,
+		 "paralyzed": 0.2,
+		 "bloodless": 0.5
+	   },
+	   "loreDescription": "Woven by the hands of ancient druids, the Raven's Embrace provides unyielding protection against the forces of nature.",
+	   "rarity": "rare",
+	   "slots": [
+		 "torso"
+	   ]
+	 },
+	 {
+	   "name": "Hood of Whispering Shadows",
+	   "statusResistances": {
+		 "poisoned": 0.6,
+		 "burned": 0.2,
+		 "drenched": 0.9,
+		 "confused": 0.3,
+		 "paralyzed": 0.7,
+		 "bloodless": 0.4
+	   },
+	   "loreDescription": "Once worn by the assassins of a forgotten guild, the Hood of Whispering Shadows shrouds its wearer in an impenetrable veil of darkness.",
+	   "rarity": "rare",
+	   "slots": [
+		 "head"
+	   ]
+	 },
+	 {
+	   "name": "Necklace of the Fallen",
+	   "statusResistances": {
+		 "poisoned": 0.4,
+		 "burned": 0.7,
+		 "drenched": 0.5,
+		 "confused": 0.2,
+		 "paralyzed": 0.5,
+		 "bloodless": 0.9
+	   },
+	   "loreDescription": "Forged from the ashes of long-extinguished battlefields, the Necklace of the Fallen grants its wearer the strength and wisdom of fallen heroes.",
+	   "rarity": "common",
+	   "slots": [
+		 "neck"
+	   ]
+	 },
+	 {
+	   "name": "Darksteel Scalemail",
+	   "statusResistances": {
+		 "poisoned": 0.5,
+		 "burned": 0.5,
+		 "drenched": 0.5,
+		 "confused": 0.5,
+		 "paralyzed": 0.5,
+		 "bloodless": 0.5
+	   },
+	   "loreDescription": "Forged by the ancient dragon slayers, the Darksteel Scalemail offers balanced protection against all elements.",
+	   "rarity": "common",
+	   "slots": [
+		 "torso"
+	   ]
+	 },
+	 {
+	   "name": "Crimson Warplate",
+	   "statusResistances": {
+		 "poisoned": 0.7,
+		 "burned": 0.7,
+		 "drenched": 0.7,
+		 "confused": 0.7,
+		 "paralyzed": 0.7,
+		 "bloodless": 0.7
+	   },
+	   "loreDescription": "Stained with the blood of countless fallen, the Crimson Warplate confers upon its bearer the fury of a thousand warriors.",
+	   "rarity": "epic",
+	   "slots": [
+		 "torso"
+	   ]
+	 },
+	 {
+	   "name": "Stormcaster Robes",
+	   "statusResistances": {
+		 "poisoned": 0.3,
+		 "burned": 0.3,
+		 "drenched": 0.3,
+		 "confused": 0.3,
+		 "paralyzed": 0.3,
+		 "bloodless": 0.3
+	   },
+	   "loreDescription": "Infused with the power of lightning, the Stormcaster Robes channel destructive energy, unmatched by any mere mortal.",
+	   "rarity": "rare",
+	   "slots": [
+		 "torso"
+	   ]
+	 },
+	 {
+	   "name": "Skullcrusher Helm",
+	   "statusResistances": {
+		 "poisoned": 0.6,
+		 "burned": 0.6,
+		 "drenched": 0.6,
+		 "confused": 0.6,
+		 "paralyzed": 0.6,
+		 "bloodless": 0.6
+	   },
+	   "loreDescription": "Forged from the skull of a fallen titan, the Skullcrusher Helm invokes primal strength and instills terror in the hearts of enemies.",
+	   "rarity": "rare",
+	   "slots": [
+		 "head"
+	   ]
+	 },
+	 {
+	   "name": "Crystal Tear Pendant",
+	   "statusResistances": {
+		 "poisoned": 0.9,
+		 "burned": 0.9,
+		 "drenched": 0.9,
+		 "confused": 0.9,
+		 "paralyzed": 0.9,
+		 "bloodless": 0.9
+	   },
+	   "loreDescription": "Formed from the crystallized tears of a celestial being, the pendant radiates an invigorating aura, healing wounds and restoring hope.",
+	   "rarity": "legendary",
+	   "slots": [
+		 "neck"
+	   ]
+	 },
+	 {
+	   "name": "Drakescale Leggings",
+	   "statusResistances": {
+		 "poisoned": 0.8,
+		 "burned": 0.2,
+		 "drenched": 0.4,
+		 "confused": 0.1,
+		 "paralyzed": 0.7,
+		 "bloodless": 0.3
+	   },
+	   "loreDescription": "Crafted from the scales of an ancient fire-breathing dragon, the Drakescale Leggings provide unparalleled protection against elemental attacks.",
+	   "rarity": "epic",
+	   "slots": [
+		 "legs"
+	   ]
+	 },
+	 {
+	   "name": "Phantom Veil",
+	   "statusResistances": {
+		 "poisoned": 0.1,
+		 "burned": 0.8,
+		 "drenched": 0.3,
+		 "confused": 0.8,
+		 "paralyzed": 0.4,
+		 "bloodless": 0.6
+	   },
+	   "loreDescription": "Woven from ethereal threads, the Phantom Veil grants its wearer extraordinary agility and unnatural resistance to magic.",
+	   "rarity": "legendary",
+	   "slots": [
+		 "head"
+	   ]
+	 },
+	 {
+	   "name": "Oceanheart Amulet",
+	   "statusResistances": {
+		 "poisoned": 0.6,
+		 "burned": 0.3,
+		 "drenched": 0.9,
+		 "confused": 0.5,
+		 "paralyzed": 0.2,
+		 "bloodless": 0.7
+	   },
+	   "loreDescription": "Forged from a rare gemstone found deep within the ocean's depths, the Oceanheart Amulet grants its wearer dominion over water and protection from its treacherous currents.",
+	   "rarity": "rare",
+	   "slots": [
+		 "neck"
+	   ]
+	 },
+	 {
+	   "name": "Serpent's Embrace",
+	   "statusResistances": {
+		 "poisoned": 0.7,
+		 "burned": 0.4,
+		 "drenched": 0.3,
+		 "confused": 0.7,
+		 "paralyzed": 0.2,
+		 "bloodless": 0.5
+	   },
+	   "loreDescription": "Imbued with the essence of serpents, the Serpent's Embrace grants its wearer unparalleled agility and venomous resistance.",
+	   "rarity": "rare",
+	   "slots": [
+		 "torso"
+	   ]
+	 },
+	 {
+	   "name": "Nightshade Hood",
+	   "statusResistances": {
+		 "poisoned": 0.4,
+		 "burned": 0.7,
+		 "drenched": 0.2,
+		 "confused": 0.9,
+		 "paralyzed": 0.5,
+		 "bloodless": 0.3
+	   },
+	   "loreDescription": "Woven from the shadowy fibers of the nightshade plant, the Nightshade Hood conceals its wearer, providing mastery over darkness.",
+	   "rarity": "common",
+	   "slots": [
+		 "head"
+	   ]
+	 },
+	 {
+	   "name": "Sentinel's Choker",
+	   "statusResistances": {
+		 "poisoned": 0.2,
+		 "burned": 0.5,
+		 "drenched": 0.7,
+		 "confused": 0.3,
+		 "paralyzed": 0.9,
+		 "bloodless": 0.4
+	   },
+	   "loreDescription": "Forged by the guardians of ancient realms, the Sentinel's Choker wards off curses and reinforces the fortitude of its wearer.",
+	   "rarity": "common",
+	   "slots": [
+		 "neck"
+	   ]
+	 },
+	 {
+	   "name": "Plate Mail",
+	   "loreDescription": "This legendary suit of armor is said to have been forged by ancient blacksmiths and grants outstanding protection.",
+	   "rarity": "Epic",
+	   "slots": [
+		 "torso"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.2,
+		 "burned": 0.1,
+		 "drenched": 0,
+		 "confused": 0.05,
+		 "paralyzed": 0,
+		 "bloodless": 0.1
+	   }
+	 },
+	 {
+	   "name": "Leather Leggings",
+	   "loreDescription": "Durable leggings made from thick leather that offer decent defense and flexibility in combat.",
+	   "rarity": "Common",
+	   "slots": [
+		 "legs"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.05,
+		 "burned": 0.1,
+		 "drenched": 0.1,
+		 "confused": 0,
+		 "paralyzed": 0,
+		 "bloodless": 0.05
+	   }
+	 },
+	 {
+	   "name": "Shadow Hood",
+	   "loreDescription": "A hood infused with the essence of shadows, granting its wearer enhanced stealth and protection from harmful effects.",
+	   "rarity": "Rare",
+	   "slots": [
+		 "head"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.1,
+		 "burned": 0.2,
+		 "drenched": 0.05,
+		 "confused": 0.1,
+		 "paralyzed": 0,
+		 "bloodless": 0.05
+	   }
+	 },
+	 {
+	   "name": "Amulet of Vitality",
+	   "loreDescription": "An ancient amulet that radiates with magical energy, boosting the wearer's health and providing resistance against various ailments.",
+	   "rarity": "Uncommon",
+	   "slots": [
+		 "neck"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.05,
+		 "burned": 0.05,
+		 "drenched": 0.05,
+		 "confused": 0.05,
+		 "paralyzed": 0.05,
+		 "bloodless": 0.05
+	   }
+	 },
+	 {
+	   "name": "Dragon Scale Armor",
+	   "loreDescription": "Crafted from the scales of an ancient dragon, this legendary armor grants exceptional protection against fire and various other threats.",
+	   "rarity": "Epic",
+	   "slots": [
+		 "torso"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.1,
+		 "burned": 0.5,
+		 "drenched": 0.1,
+		 "confused": 0.05,
+		 "paralyzed": 0.05,
+		 "bloodless": 0.1
+	   }
+	 },
+	 {
+	   "name": "Robes of the Archmage",
+	   "loreDescription": "Enigmatic robes bestowed only upon the most accomplished spellcasters. They enhance the wearer's magical abilities and provide defense against various debilitating effects.",
+	   "rarity": "Legendary",
+	   "slots": [
+		 "torso"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.1,
+		 "burned": 0.2,
+		 "drenched": 0.1,
+		 "confused": 0.15,
+		 "paralyzed": 0.05,
+		 "bloodless": 0.05
+	   }
+	 },
+	 {
+	   "name": "Iron Legguards",
+	   "loreDescription": "Sturdy legguards forged by skilled blacksmiths. While heavy, they offer excellent protection against physical attacks.",
+	   "rarity": "Common",
+	   "slots": [
+		 "legs"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.05,
+		 "burned": 0.05,
+		 "drenched": 0.05,
+		 "confused": 0.05,
+		 "paralyzed": 0.05,
+		 "bloodless": 0.05
+	   }
+	 },
+	 {
+	   "name": "Spellweaver's Gloves",
+	   "loreDescription": "Gloves imbued with arcane energy, allowing the wearer to channel spells more effectively while providing moderate defense.",
+	   "rarity": "Rare",
+	   "slots": [
+		 "head"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.1,
+		 "burned": 0.1,
+		 "drenched": 0.1,
+		 "confused": 0.1,
+		 "paralyzed": 0.05,
+		 "bloodless": 0.05
+	   }
+	 },
+	 {
+	   "name": "Necklace of Protection",
+	   "loreDescription": "A protective necklace enchanted with ancient rituals, granting resistance against various harmful effects.",
+	   "rarity": "Uncommon",
+	   "slots": [
+		 "neck"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.1,
+		 "burned": 0.1,
+		 "drenched": 0.1,
+		 "confused": 0.1,
+		 "paralyzed": 0.1,
+		 "bloodless": 0.1
+	   }
+	 },
+	 {
+	   "name": "Crimson Armor",
+	   "loreDescription": "Armor infused with the essence of an otherworldly crimson crystal, offering both protection and increased resistance to all ailments.",
+	   "rarity": "Rare",
+	   "slots": [
+		 "torso"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.2,
+		 "burned": 0.2,
+		 "drenched": 0.2,
+		 "confused": 0.2,
+		 "paralyzed": 0.2,
+		 "bloodless": 0.2
+	   }
+	 },
+	 {
+	   "name": "Steel Leggings",
+	   "loreDescription": "Thick steel leggings favored by knights, providing reliable defense against physical and magical attacks.",
+	   "rarity": "Uncommon",
+	   "slots": [
+		 "legs"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.1,
+		 "burned": 0.2,
+		 "drenched": 0.1,
+		 "confused": 0.1,
+		 "paralyzed": 0.05,
+		 "bloodless": 0.05
+	   }
+	 },
+	 {
+	   "name": "Helm of the Conqueror",
+	   "loreDescription": "A helm worn by fearless warriors who have emerged victorious from countless battles. Enhances offensive capabilities and grants resistance against harmful effects.",
+	   "rarity": "Epic",
+	   "slots": [
+		 "head"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.15,
+		 "burned": 0.15,
+		 "drenched": 0.05,
+		 "confused": 0.2,
+		 "paralyzed": 0.1,
+		 "bloodless": 0.05
+	   }
+	 },
+	 {
+	   "name": "Amulet of the Serpent",
+	   "loreDescription": "An amulet representing the legendary serpent guardian, granting resistance against venomous attacks and dark magic.",
+	   "rarity": "Rare",
+	   "slots": [
+		 "neck"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.3,
+		 "burned": 0.05,
+		 "drenched": 0.05,
+		 "confused": 0.05,
+		 "paralyzed": 0.05,
+		 "bloodless": 0.05
+	   }
+	 },
+	 {
+	   "name": "Shadow Silk Robes",
+	   "loreDescription": "Robes woven from a rare silk infused with shadow essence, granting heightened magical prowess and protection from harmful effects.",
+	   "rarity": "Epic",
+	   "slots": [
+		 "torso"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.2,
+		 "burned": 0.2,
+		 "drenched": 0.2,
+		 "confused": 0.1,
+		 "paralyzed": 0.1,
+		 "bloodless": 0.1
+	   }
+	 },
+	 {
+	   "name": "Silent Leggings",
+	   "loreDescription": "Leggings crafted by secretive assassins, allowing their wearers to move silently and avoid status ailments.",
+	   "rarity": "Rare",
+	   "slots": [
+		 "legs"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.2,
+		 "burned": 0.1,
+		 "drenched": 0.1,
+		 "confused": 0.05,
+		 "paralyzed": 0.1,
+		 "bloodless": 0.1
+	   }
+	 },
+	 {
+	   "name": "Bracelets of Warding",
+	   "loreDescription": "Enchanted bracelets that create protective barriers around the wearer, reducing the effects of harmful spells and status ailments.",
+	   "rarity": "Uncommon",
+	   "slots": [
+		 "head"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.05,
+		 "burned": 0.05,
+		 "drenched": 0.05,
+		 "confused": 0.05,
+		 "paralyzed": 0.2,
+		 "bloodless": 0.05
+	   }
+	 },
+	 {
+	   "name": "Crown of Preservation",
+	   "loreDescription": "A crown worn by ancient rulers, said to grant the wearer near-immunity to debilitating effects and curses.",
+	   "rarity": "Legendary",
+	   "slots": [
+		 "head"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.05,
+		 "burned": 0.05,
+		 "drenched": 0.05,
+		 "confused": 0.05,
+		 "paralyzed": 0.3,
+		 "bloodless": 0.05
+	   }
+	 },
+	 {
+	   "name": "Talisman of Renewal",
+	   "loreDescription": "A mysterious talisman that constantly rejuvenates the wearer, providing minor health regeneration and reducing the duration of all negative effects.",
+	   "rarity": "Rare",
+	   "slots": [
+		 "neck"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.1,
+		 "burned": 0.1,
+		 "drenched": 0.1,
+		 "confused": 0.1,
+		 "paralyzed": 0.1,
+		 "bloodless": 0.1
+	   }
+	 },
+	 {
+	   "name": "Dwarven Mail",
+	   "loreDescription": "Mail armor expertly crafted by the legendary Dwarven blacksmiths, known for its durability and resistance to status ailments.",
+	   "rarity": "Uncommon",
+	   "slots": [
+		 "torso"
+	   ],
+	   "statusResistances": {
+		 "poisoned": 0.2,
+		 "burned": 0.1,
+		 "drenched": 0.05,
+		 "confused": 0.05,
+		 "paralyzed": 0.1,
+		 "bloodless": 0.05
+	   }
+	 }
    ]
  }

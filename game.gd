@@ -24,13 +24,18 @@ var walk_up_held = false
 var walk_down_held = false
 var walk_left_held = false
 var walk_right_held = false
+var block_held = false
+var attack_held = false
+
 var time_passed = 0.0
 var playerAnimationPlayer
 var boss1ScenePath = "res://boss1.tscn"
 var dungeonScenePath = "res://dungeon.tscn"
 var hoverSound
 
-
+var item_slot_frame
+var item_slot_frame_initial_position
+var current_item_index = 0
 var dash = false
 var base_speed = 0.75
 var speed = base_speed
@@ -82,6 +87,9 @@ func _ready():
 	chatPopup = get_node("HUDLayer/chatPopup")
 	chatPopup.hide()
 	
+	# get the item slot frame
+	item_slot_frame = get_node("HUDLayer/CanvasGroup/slotFrame")
+	item_slot_frame_initial_position = item_slot_frame.get_position()
 	# load in the options menu
 	var options_resource = ResourceLoader.load("res://options.tscn")
 	var options_scene = options_resource.instantiate()
@@ -115,6 +123,40 @@ func _on_mouse_entered_button():
 	
 func _input(event):
 	#print(event.as_text())
+	if event.is_action_pressed("item_left"):
+		if current_item_index == 0:
+			current_item_index = 5
+		else:
+			current_item_index -= 1
+		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(47,0))
+	if event.is_action_pressed("item_right"):
+		if current_item_index == 5:
+			current_item_index = 0
+		else:
+			current_item_index += 1
+		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(47,0))
+	if event.is_action_pressed("item_consume"):
+		# consume whatever current item is active
+		# if it's the flashlight toggle it
+		if current_item_index == 2:
+			if light.is_visible():
+				light.hide()
+			else:
+				light.show()
+	if event.is_action_pressed("attack"):
+		if not block_held:
+			attack_held = true
+		else:
+			attack_held = false
+	if event.is_action_released("attack"):
+		attack_held = false
+	if event.is_action_pressed("block"):
+		if not attack_held:
+			block_held = true
+		else:
+			block_held = false
+	if event.is_action_released("block"):
+		block_held = false
 	if event.is_action_pressed("walk_up"):
 		player_sprite.set_frame_coords(Vector2i(0, 3))
 		walk_up_held = true
@@ -136,10 +178,10 @@ func _input(event):
 	if event.is_action_released("walk_right"):
 		walk_right_held = false
 	if event.is_action_pressed("dash"):
-		chatBox.append_text("\n[i]Player has pressed dash.[/i]")
+		#chatBox.append_text("\n[i]Player has pressed dash.[/i]")
 		dash = true
 	if event.is_action_released("dash"):
-		chatBox.append_text("\n[i]Player has let go of dash.[/i]")
+		#chatBox.append_text("\n[i]Player has let go of dash.[/i]")
 		dash = false
 	if event.is_action_pressed("pause"):
 		if playerMenu.visible:
@@ -191,6 +233,19 @@ func _process(delta):
 	# redraw stamina bar
 	stamina_bar.set_size(Vector2(player_data['current_stamina']/player_data['max_stamina'] * bar_length, bar_height))
 	
+	# set up attacks and blocks so you can only do one at a time
+	if attack_held:
+		pass
+		#chatBox.append_text("\n[i]Player is attacking.[/i]")
+	if block_held:
+		# show block shield
+		player_body.get_node("ColorRect").show()
+		#chatBox.append_text("\n[i]Player is blocking.[/i]")
+	else:
+		# hide block shield
+		player_body.get_node("ColorRect").hide()	
+
+	# set up movement
 	if walk_up_held:
 		#currentMap.set_position(currentMap.get_position() + speed * Vector2(0, 0.25))
 		#player_body.set_position(player_body.get_position() + speed *Vector2(0, -0.25))

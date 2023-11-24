@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bck6sugoxd40h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ir0r1"]
+border_width_left = 4
+border_color = Color(1, 0.760784, 0.0431373, 1)
+
+[resource]
+/styles/buttonstyle = SubResource("StyleBoxFlat_ir0r1")
+Button/styles/normal = null
