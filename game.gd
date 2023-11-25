@@ -8,8 +8,12 @@ var light
 var health_bar 
 var mana_bar
 var stamina_bar
-var bar_length
-var bar_height
+var stamina_bar_length
+var stamina_bar_height
+var mana_bar_length
+var mana_bar_height
+var health_bar_length
+var health_bar_height
 var player_data
 
 var currentMap
@@ -40,6 +44,10 @@ var dash = false
 var base_speed = 0.75
 var speed = base_speed
 
+var mouse_event_pos
+var emmisionNode
+var spell_active
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -62,6 +70,7 @@ func _ready():
 	player_body = get_node("player")
 	player_sprite = get_node("player/sprite") 
 	light = get_node("player/PointLight2D") 
+	emmisionNode = player_body.get_node("GPUParticles2D")
 	#map_sprite = get_node("Testbg")
 	playerAnimationPlayer = get_node("PlayerAnimationPlayer")
 	
@@ -69,16 +78,25 @@ func _ready():
 	health_bar = get_node("HUDLayer/CanvasGroup/healthBar")
 	stamina_bar = get_node("HUDLayer/CanvasGroup/staminaBar")
 	mana_bar = get_node("HUDLayer/CanvasGroup/manaBar")
-	bar_length = stamina_bar.get_size().x
-	bar_height = stamina_bar.get_size().y
+	stamina_bar_length = stamina_bar.get_size().x
+	stamina_bar_height = stamina_bar.get_size().y
+	mana_bar_length = mana_bar.get_size().x
+	mana_bar_height = mana_bar.get_size().y
+	health_bar_length = health_bar.get_size().x
+	health_bar_height = health_bar.get_size().y
 	
 	player_data = {} # TODO: eventually get this from file
 	player_data['stamina_regen_rate'] = 20
 	player_data['stamina_depl_rate'] = 50
 	player_data['max_stamina'] = 100
 	player_data['current_stamina'] = player_data['max_stamina'] 
+	
 	player_data['max_health'] = 100
+	
 	player_data['max_mana'] = 100
+	player_data['current_mana'] = player_data['max_mana']
+	player_data['mana_regen_rate'] = 20
+	player_data['mana_depl_rate'] = 50
 	
 	# set up the patient's chat box
 	chatBox = get_node('HUDLayer/CanvasGroup/chatBox')
@@ -123,18 +141,24 @@ func _on_mouse_entered_button():
 	
 func _input(event):
 	#print(event.as_text())
+	# Mouse in viewport coordinates.
+	if event is InputEventMouseButton:
+		#print("Mouse Click/Unclick at: ", event.position)
+		pass
+	elif event is InputEventMouseMotion:
+		mouse_event_pos = event.position
 	if event.is_action_pressed("item_left"):
 		if current_item_index == 0:
 			current_item_index = 5
 		else:
 			current_item_index -= 1
-		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(47,0))
+		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_right"):
 		if current_item_index == 5:
 			current_item_index = 0
 		else:
 			current_item_index += 1
-		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(47,0))
+		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_consume"):
 		# consume whatever current item is active
 		# if it's the flashlight toggle it
@@ -143,6 +167,12 @@ func _input(event):
 				light.hide()
 			else:
 				light.show()
+		# for now set the current item at index 3 a spell
+		if current_item_index == 3:
+			spell_active = true
+	if event.is_action_released("item_consume"):
+		if current_item_index == 3:
+			spell_active = false
 	if event.is_action_pressed("attack"):
 		if not block_held:
 			attack_held = true
@@ -231,7 +261,7 @@ func _process(delta):
 			player_data['current_stamina'] = player_data['max_stamina']
 
 	# redraw stamina bar
-	stamina_bar.set_size(Vector2(player_data['current_stamina']/player_data['max_stamina'] * bar_length, bar_height))
+	stamina_bar.set_size(Vector2(player_data['current_stamina']/player_data['max_stamina'] * stamina_bar_length, stamina_bar_height))
 	
 	# set up attacks and blocks so you can only do one at a time
 	if attack_held:
@@ -273,7 +303,36 @@ func _process(delta):
 	if collision_data:
 		chatBox.append_text("\n[i]Player has collided.[/i]")
 		print(collision_data.get_collider())
+	
+	# Spell casting shit
+	if spell_active && player_data['current_mana'] > 0: 
+		# cast the spell in direction of mouse
+		# TODO: adjust emission based on spell being cast
+		emmisionNode.set_emitting(true)
+		emmisionNode.get_process_material().set_direction(Vector3(get_global_mouse_position().x - player_body.position.x, get_global_mouse_position().y - player_body.position.y, 0))
+		if not player_body.get_node("spellSoundPlayer").is_playing():
+			player_body.get_node("spellSoundPlayer").play()
+		if player_data['current_mana'] - player_data['mana_depl_rate'] * delta >= 0:
+			player_data['current_mana'] = player_data['current_mana'] - player_data['mana_depl_rate']*delta
+		else:
+			player_data['current_mana'] = 0
+	# cannot cast if no mana
+	elif spell_active && player_data['current_mana'] == 0:
+		emmisionNode.set_emitting(false)
+		player_body.get_node("spellSoundPlayer").stop()
+	# only regen mana if spellcasting isn't held down when the current mana is fully depleted.
+	else:
+		emmisionNode.set_emitting(false)
+		player_body.get_node("spellSoundPlayer").stop()
+		# regen mana
+		if player_data['current_mana'] + player_data['mana_regen_rate'] * delta <= player_data['max_mana']:
+			player_data['current_mana'] = player_data['current_mana'] + player_data['mana_regen_rate']*delta
+		else:
+			player_data['current_mana'] = player_data['max_mana']
 
+	# redraw mana bar
+	mana_bar.set_size(Vector2(player_data['current_mana']/player_data['max_mana'] * mana_bar_length, mana_bar_height))
+		
 # Options menu buttons 
 func _on_button_3_pressed():
 	get_tree().paused = false

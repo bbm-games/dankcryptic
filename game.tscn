@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=39 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Texture2D" uid="uid://dty6ym387qvf4" path="res://assets/hudbars.png" id="1_7r21i"]
 [ext_resource type="Script" path="res://HUDLayer.gd" id="1_47glo"]
@@ -11,7 +11,7 @@
 [ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="7_f521b"]
 [ext_resource type="Texture2D" uid="uid://c655cwjomeiro" path="res://assets/Item__70.png" id="7_fdq21"]
 [ext_resource type="Script" path="res://bigportrait.gd" id="8_c6bur"]
-[ext_resource type="Texture2D" uid="uid://cr1203spmbv3" path="res://assets/Item__71.png" id="8_p5oq4"]
+[ext_resource type="Texture2D" uid="uid://fscl4nth1jvd" path="res://assets/Item__36.png" id="8_rb3h2"]
 [ext_resource type="Script" path="res://resumeGameButton.gd" id="8_ul5po"]
 [ext_resource type="Texture2D" uid="uid://d2jkuylwl6o4a" path="res://assets/border.png" id="8_vh846"]
 [ext_resource type="Texture2D" uid="uid://b4req5scya3ty" path="res://assets/Item__64.png" id="9_3515a"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="10_d3c5g"]
 [ext_resource type="Texture2D" uid="uid://cyf4p4hew68oo" path="res://assets/Item__68.png" id="10_jdcu0"]
 [ext_resource type="Theme" uid="uid://bck6sugoxd40h" path="res://cryptic_theme.tres" id="10_kbx3o"]
+[ext_resource type="AudioStream" uid="uid://v5srpkj6a8ui" path="res://assets/sounds/magic_attack.mp3" id="16_omwxg"]
 
 [sub_resource type="Animation" id="Animation_knli3"]
 length = 0.001
@@ -68,6 +69,19 @@ size = Vector2(26, 13)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_omonw"]
 shader = ExtResource("9_xiwt1")
 shader_parameter/color = Color(0.780392, 0.596078, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_al2uw"]
+particle_flag_disable_z = true
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 105.27
+initial_velocity_max = 105.27
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 3.0
+color = Color(0.0666667, 1, 1, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
 
 [sub_resource type="Animation" id="Animation_et487"]
 length = 0.001
@@ -238,7 +252,7 @@ offset_left = 148.0
 offset_top = 289.0
 offset_right = 179.0
 offset_bottom = 320.0
-texture = ExtResource("8_p5oq4")
+texture = ExtResource("8_rb3h2")
 
 [node name="slot5" type="TextureRect" parent="HUDLayer/CanvasGroup"]
 offset_left = 194.0
@@ -412,6 +426,16 @@ offset_right = 31.0
 offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="player"]
+z_index = 1
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_al2uw")
+
+[node name="spellSoundPlayer" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("16_omwxg")
+volume_db = 1.0
+bus = &"Sounds"
 
 [node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../player/sprite")

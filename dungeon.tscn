@@ -410,7 +410,7 @@ layer_1/tile_data = PackedInt32Array(8, 131072, 0, 12, 262144, 8, 65536, 262144,
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qhh2k")
-volume_db = -10.0
+volume_db = -15.0
 autoplay = true
 bus = &"Music"
 
@@ -431,6 +431,7 @@ position = Vector2(1.5, 2)
 shape = SubResource("RectangleShape2D_bp8pf")
 
 [node name="chatIcon" type="Sprite2D" parent="npc1"]
+z_index = 1
 position = Vector2(0, -30)
 texture = ExtResource("5_xhq85")
 
