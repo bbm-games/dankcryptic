@@ -309,6 +309,8 @@ func _process(delta):
 		# cast the spell in direction of mouse
 		# TODO: adjust emission based on spell being cast
 		emmisionNode.set_emitting(true)
+		# aim with controller if possible
+		#emmisionNode.get_process_material().set_direction(Vector3(Input.get_joy_axis(JOY_AXIS_RIGHT_X) - player_body.position.x, get_global_mouse_position().y - player_body.position.y, 0))
 		emmisionNode.get_process_material().set_direction(Vector3(get_global_mouse_position().x - player_body.position.x, get_global_mouse_position().y - player_body.position.y, 0))
 		if not player_body.get_node("spellSoundPlayer").is_playing():
 			player_body.get_node("spellSoundPlayer").play()
