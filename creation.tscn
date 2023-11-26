@@ -176,7 +176,7 @@ grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="TabContainer/Vocation/HBoxContainer"]
 layout_mode = 2
-columns = 4
+columns = 3
 
 [node name="firstvocationbutton" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(50, 60)
@@ -189,17 +189,6 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 script = ExtResource("12_kb2a3")
-
-[node name="Button2" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(50, 60)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_04ku0")
-theme_override_font_sizes/font_size = 10
-text = "Pyromancer"
-icon = ExtResource("11_r52q4")
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
 
 [node name="Button3" type="Button" parent="TabContainer/Vocation/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(50, 60)
