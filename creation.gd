@@ -15,7 +15,8 @@ func _ready():
 	# read in JSON and go from there
 	var file = FileAccess.open("lore/lore.json", FileAccess.READ)
 	lore_data = JSON.new().parse_string(file.get_as_text())
-
+	file.close()
+	
 	# load in class buttons and base stats
 	var classes = tabs.get_node("Vocation").get_node("HBoxContainer").get_node("GridContainer")
 	for button in classes.get_children():

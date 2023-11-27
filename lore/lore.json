@@ -21,11 +21,11 @@
 	  "weight":80,
 
 	 "max_health":100,
-	  "current_health":100,
-	  "current_mana":60,
+	 "current_health":100,
+	 "current_mana":60,
 	 "health_regen_rate":0.1,
 
-	  "max_stamina":110,
+	 "max_stamina":110,
 	 "current_stamina":110,
 	 "stamina_depl_rate":50,
 	 "stamina_regen_rate":20,
@@ -33,7 +33,9 @@
 	 "max_mana":60,
 	 "current_mana":60,
 	 "mana_depl_rate":50,
-	 "mana_regen_rate":20
+	 "mana_regen_rate":20,
+
+	"inventory":[]
 
    },
    "vocations":[
