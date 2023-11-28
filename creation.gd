@@ -69,6 +69,8 @@ func _on_next_button_pressed():
 func _on_prev_button_pressed():
 	if (tabs.get_current_tab() - 1 >= 0):
 		tabs.set_current_tab(tabs.get_current_tab() - 1)
+	else:
+		get_tree().change_scene_to_file("res://menu.tscn")
 
 func _on_start_game_button_pressed():
 	# start the game
