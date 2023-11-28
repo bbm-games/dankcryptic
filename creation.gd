@@ -12,10 +12,8 @@ func _ready():
 	connect_buttons(get_tree().root)
 	get_tree().node_added.connect(_on_SceneTree_node_added)
 	
-	# read in JSON and go from there
-	var file = FileAccess.open("lore/lore.json", FileAccess.READ)
-	lore_data = JSON.new().parse_string(file.get_as_text())
-	file.close()
+	# get lore data from global variable
+	lore_data = GlobalVars.lore_data
 	
 	# load in class buttons and base stats
 	var classes = tabs.get_node("Vocation").get_node("HBoxContainer").get_node("GridContainer")

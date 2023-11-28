@@ -85,26 +85,12 @@ func _ready():
 	health_bar_length = health_bar.get_size().x
 	health_bar_height = health_bar.get_size().y
 	
-	# Get player data from file
+	# Get player data from global variables
+	player_data = GlobalVars.player_data
 	# TODO: make it seperate from lore.json
-	var file = FileAccess.open("lore/lore.json", FileAccess.READ)
-	player_data = JSON.new().parse_string(file.get_as_text())['character']
-	file.close()
-	
-	"""
-	player_data = {} 
-	player_data['stamina_regen_rate'] = 20
-	player_data['stamina_depl_rate'] = 50
-	player_data['max_stamina'] = 100
-	player_data['current_stamina'] = player_data['max_stamina'] 
-	
-	player_data['max_health'] = 100
-	
-	player_data['max_mana'] = 100
-	player_data['current_mana'] = player_data['max_mana']
-	player_data['mana_regen_rate'] = 20
-	player_data['mana_depl_rate'] = 50
-	"""
+	#var file = FileAccess.open("lore/lore.json", FileAccess.READ)
+	#player_data = JSON.new().parse_string(file.get_as_text())['character']
+	#file.close()
 	
 	# set up the patient's chat box
 	chatBox = get_node('HUDLayer/CanvasGroup/chatBox')
