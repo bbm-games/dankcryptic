@@ -2,6 +2,7 @@ extends Node2D
 var tabs
 var hoverSound 
 var lore_data
+var new_player_data
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,8 +24,12 @@ func _ready():
 		# make it so stats UI updates on the button click
 		button.pressed.connect(vocation_button_pressed.bind(vocation_name))
 	
+	# make a copy of the player_data JSON
+	new_player_data = GlobalVars.player_data
+	
 func vocation_button_pressed(vocation_name):
 	print(vocation_name)
+	
 	# display stat data for the vocation
 	var statsdatajson = get_vocation_stats(vocation_name)
 	var statvalues = tabs.get_node("Vocation/HBoxContainer/VBoxContainer3/HBoxContainer2/VBoxContainer2").get_children()
@@ -35,6 +40,18 @@ func vocation_button_pressed(vocation_name):
 		i += 1
 	# display lore description too
 	self.get_node("TabContainer/Vocation/HBoxContainer/RichTextLabel").set_text(statsdatajson['lore'])
+	
+	# save the vocation to new_player_data json
+	new_player_data['vocation'] = vocation_name
+	new_player_data['stats'] = statsdatajson['stats']
+	new_player_data['weight'] = statsdatajson['weight']
+	new_player_data['max_health'] = statsdatajson['stats']['health']
+	new_player_data['current_health'] = statsdatajson['stats']['health']
+	new_player_data['max_stamina'] = statsdatajson['stats']['stamina']
+	new_player_data['current_stamina'] = statsdatajson['stats']['stamina']
+	new_player_data['max_mana'] = statsdatajson['stats']['mana']
+	new_player_data['current_mana'] = statsdatajson['stats']['mana']
+
 func get_vocation_stats(name):
 	for thing in lore_data["vocations"]:
 		if thing["class_name"] == name:
@@ -73,8 +90,15 @@ func _on_prev_button_pressed():
 		get_tree().change_scene_to_file("res://menu.tscn")
 
 func _on_start_game_button_pressed():
-	# start the game
+	# establish the new player save file
+	var file = FileAccess.open("res://saves/" + new_player_data['name'] + '.json', FileAccess.WRITE)
+	file.store_string(JSON.stringify(new_player_data))
+	file.close()
+	GlobalVars.load_player_data("res://saves/" + new_player_data['name'] + '.json')
+	# start the game and set the location of the save file
 	get_tree().change_scene_to_file("res://game.tscn")
+	
 
 func _on_char_name_line_edit_text_changed(new_text):
 	get_node("TabContainer/Confirm/VBoxContainer/HBoxContainer/Label").set_text(new_text)
+	new_player_data['name'] = new_text

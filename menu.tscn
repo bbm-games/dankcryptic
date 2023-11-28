@@ -151,6 +151,15 @@ theme_override_font_sizes/font_size = 10
 text = "© 2023, BBM Games, LLC. All Right Reserved."
 vertical_alignment = 2
 
+[node name="FileDialog" type="FileDialog" parent="CanvasLayer"]
+mode = 2
+title = "Open a savefile"
+initial_position = 2
+size = Vector2i(400, 250)
+ok_button_text = "Open"
+file_mode = 0
+root_subfolder = "saves"
+
 [node name="options" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -188,7 +197,9 @@ bus = &"Sounds"
 [connection signal="mouse_entered" from="CanvasLayer/Control/VBoxContainer/newGameButton" to="." method="_on_new_game_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/newGameButton" to="." method="_on_link_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/VBoxContainer/LinkButton2" to="." method="_on_link_button_2_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/LinkButton2" to="." method="_on_link_button_2_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/VBoxContainer/LinkButton3" to="." method="_on_link_button_3_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/LinkButton3" to="." method="_on_link_button_3_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/VBoxContainer/LinkButton4" to="." method="_on_link_button_4_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/LinkButton4" to="." method="_on_link_button_4_pressed"]
+[connection signal="confirmed" from="CanvasLayer/FileDialog" to="." method="_on_file_dialog_confirmed"]

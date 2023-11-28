@@ -94,6 +94,7 @@ func _ready():
 	
 	# set up the patient's chat box
 	chatBox = get_node('HUDLayer/CanvasGroup/chatBox')
+	chatBox.append_text("[i]" + player_data.name +" has spawned.[/i]")
 	
 	# set up the chat box popup for interactions with npcs
 	chatPopup = get_node("HUDLayer/chatPopup")

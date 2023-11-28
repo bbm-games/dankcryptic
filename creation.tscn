@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmrfp8aucy0rh"]
+[gd_scene load_steps=17 format=3 uid="uid://cmrfp8aucy0rh"]
 
 [ext_resource type="Texture2D" uid="uid://6we0ccyfersj" path="res://assets/creationbg.png" id="1_elijy"]
 [ext_resource type="Script" path="res://creation.gd" id="1_tkosg"]
@@ -14,6 +14,10 @@
 [ext_resource type="Script" path="res://firstvocationbutton.gd" id="12_kb2a3"]
 [ext_resource type="Texture2D" uid="uid://c4dbelswopvwk" path="res://assets/portraits/Icons_21.png" id="12_to48f"]
 [ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="13_nsk31"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_g4vpb"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_c11ka"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_tkosg")
@@ -75,42 +79,62 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("3_f1qa2")
 
 [node name="Button2" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("4_trio2")
 
 [node name="Button3" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("5_c10c2")
 
 [node name="Button4" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("6_jadxk")
 
 [node name="Button5" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("7_s4oa5")
 
 [node name="Button6" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("8_uyei1")
 
 [node name="Button7" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("8_uyei1")
 
 [node name="Button8" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("8_uyei1")
 
 [node name="Button9" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("8_uyei1")
 
 [node name="Button10" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("8_uyei1")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Name/VBoxContainer"]
@@ -118,42 +142,62 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("3_f1qa2")
 
 [node name="Button2" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("4_trio2")
 
 [node name="Button3" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("5_c10c2")
 
 [node name="Button4" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("6_jadxk")
 
 [node name="Button5" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("7_s4oa5")
 
 [node name="Button6" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("8_uyei1")
 
 [node name="Button7" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("8_uyei1")
 
 [node name="Button8" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("8_uyei1")
 
 [node name="Button9" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("8_uyei1")
 
 [node name="Button10" type="Button" parent="TabContainer/Name/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_g4vpb")
 icon = ExtResource("8_uyei1")
 
 [node name="Vocation" type="Panel" parent="TabContainer"]
@@ -183,6 +227,8 @@ custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
+toggle_mode = true
+button_group = SubResource("ButtonGroup_c11ka")
 text = "Sellsword"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
@@ -195,6 +241,8 @@ custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
+toggle_mode = true
+button_group = SubResource("ButtonGroup_c11ka")
 text = "Witch"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
@@ -206,6 +254,8 @@ custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
+toggle_mode = true
+button_group = SubResource("ButtonGroup_c11ka")
 text = "Cleric"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
@@ -217,6 +267,8 @@ custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
+toggle_mode = true
+button_group = SubResource("ButtonGroup_c11ka")
 text = "Knight"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
@@ -228,6 +280,8 @@ custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
+toggle_mode = true
+button_group = SubResource("ButtonGroup_c11ka")
 text = "Assassin"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
@@ -239,6 +293,8 @@ custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
+toggle_mode = true
+button_group = SubResource("ButtonGroup_c11ka")
 text = "Hunter"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
@@ -250,6 +306,8 @@ custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
+toggle_mode = true
+button_group = SubResource("ButtonGroup_c11ka")
 text = "Berserker"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
@@ -261,6 +319,8 @@ custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
+toggle_mode = true
+button_group = SubResource("ButtonGroup_c11ka")
 text = "Necromancer"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1
@@ -272,6 +332,8 @@ custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_04ku0")
 theme_override_font_sizes/font_size = 10
+toggle_mode = true
+button_group = SubResource("ButtonGroup_c11ka")
 text = "Oracle"
 icon = ExtResource("11_r52q4")
 icon_alignment = 1

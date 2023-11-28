@@ -46,3 +46,17 @@ func _on_new_game_button_mouse_entered():
 
 func _on_link_button_3_pressed():
 	optionsMenu.get_node("Node2D/CanvasLayer").show()
+
+# load game button
+func _on_link_button_2_pressed():
+	# TODO: eventually take to a load saves screen
+	# for now it's just a file picker
+	get_node("CanvasLayer/FileDialog").show()
+
+# if a save file is confirmed to be opened
+func _on_file_dialog_confirmed():
+	var path = get_node("CanvasLayer/FileDialog").get_current_path()
+	# establish the new player save file
+	GlobalVars.load_player_data("res://saves/" + path)
+	# start the game and set the location of the save file
+	get_tree().change_scene_to_file("res://game.tscn")
