@@ -1,14 +1,15 @@
 {
    "promotional":"In the realm of Dankcrypt, a foreboding darkness has shrouded the land, casting an eternal shadow upon its inhabitants. This high dark fantasy video game plunges players into a treacherous world where ancient evils and malevolent forces reign supreme.\nWithin the depths of Dankcrypt, forgotten ruins and decrepit crypts lay scattered, holding secrets that whisper of a forgotten era. The land is plagued by sinister creatures, twisted abominations born from the darkest recesses of the human psyche. Their haunting presence instills fear and despair in the hearts of even the bravest souls.\nAs players embark on their perilous journey, they will encounter a cast of morally ambiguous characters, each harboring their own hidden agendas and dark pasts. The choices made along the way will shape the destiny of the protagonist, as alliances are forged and broken amidst a backdrop of political intrigue and ancient rivalries.\nThe lore of Dankcrypt is steeped in ancient prophecies and forbidden knowledge, where arcane rituals and forbidden magics hold the key to unlocking the secrets of the realm. Unraveling the mysteries of this twisted world will require unwavering determination, as well as a willingness to confront the darkest aspects of one's own soul.\nPrepare to delve into the depths of Dankcrypt, where the line between light and darkness blurs, and survival is not guaranteed. Only the most courageous and cunning adventurers will have a chance to uncover the truth and bring hope to a land consumed by the unrelenting grip of darkness.",
    "quest_items":[
+	  
    ],
    "character":{
-	  "name": "undefined",
-	  "vocation": "Sellsword",
+	  "name":"undefined",
+	  "vocation":"Sellsword",
 	  "gold":0,
 	  "sprite_data":"",
-	  "is_dead": false,
-	  "stats" : {
+	  "is_dead":false,
+	  "stats":{
 		 "attack":75,
 		 "defense":60,
 		 "strength":10,
@@ -19,24 +20,20 @@
 		 "mana":60
 	  },
 	  "weight":80,
-
-	 "max_health":100,
-	 "current_health":100,
-	 "current_mana":60,
-	 "health_regen_rate":0.1,
-
-	 "max_stamina":110,
-	 "current_stamina":110,
-	 "stamina_depl_rate":50,
-	 "stamina_regen_rate":20,
-
-	 "max_mana":60,
-	 "current_mana":60,
-	 "mana_depl_rate":50,
-	 "mana_regen_rate":20,
-
-	"inventory":[]
-
+	  "max_health":100,
+	  "current_health":100,
+	  "health_regen_rate":0.1,
+	  "max_stamina":110,
+	  "current_stamina":110,
+	  "stamina_depl_rate":50,
+	  "stamina_regen_rate":20,
+	  "max_mana":60,
+	  "current_mana":60,
+	  "mana_depl_rate":50,
+	  "mana_regen_rate":20,
+	  "inventory":[
+		 
+	  ]
    },
    "vocations":[
 	  {
@@ -1741,6 +1738,489 @@
 			"paralyzed":0,
 			"bloodless":0
 		 }
+	  }
+   ],
+   "items":[
+	  {
+		 "item_name":"Life Elixir",
+		 "description":"A potent elixir that instantly restores health.",
+		 "item_id":"item001",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":100,
+		 "mana_replenished":0,
+		 "stamina_replenished":0,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Soul Shard",
+		 "description":"A fragment of a lost soul. Can be used for various purposes.",
+		 "item_id":"item002",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":0,
+		 "mana_replenished":50,
+		 "stamina_replenished":0,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Mystic Remedy",
+		 "description":"A mystical potion that cures various ailments.",
+		 "item_id":"item003",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":40,
+		 "mana_replenished":20,
+		 "stamina_replenished":30,
+		 "statusNegations":{
+			"poisoned":1,
+			"burned":1,
+			"paralyzed":1,
+			"drenched":1,
+			"confused":1,
+			"bloodless":1
+		 }
+	  },
+	  {
+		 "item_name":"Shadow Essence",
+		 "description":"A vial containing the essence of darkness. Used for shadow-based rituals.",
+		 "item_id":"item004",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":0,
+		 "mana_replenished":70,
+		 "stamina_replenished":40,
+		 "statusNegations":{
+			"poisoned":0.5,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0.5,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Witch's Brew",
+		 "description":"A concoction known to increase magical potency temporarily.",
+		 "item_id":"item005",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":0,
+		 "mana_replenished":100,
+		 "stamina_replenished":0,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0.5,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Scroll of Knowledge",
+		 "description":"An ancient scroll containing forbidden knowledge.",
+		 "item_id":"item006",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":0,
+		 "mana_replenished":30,
+		 "stamina_replenished":0,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Dreamroot Herb",
+		 "description":"A rare herb that induces lucid dreaming. Consume with caution.",
+		 "item_id":"item007",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":0,
+		 "mana_replenished":0,
+		 "stamina_replenished":50,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":1,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Antidote",
+		 "description":"A potion that neutralizes poison and restores stability to the body.",
+		 "item_id":"item008",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":0,
+		 "mana_replenished":0,
+		 "stamina_replenished":0,
+		 "statusNegations":{
+			"poisoned":1,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Miracle Tonic",
+		 "description":"A rare tonic that temporarily enhances physical attributes.",
+		 "item_id":"item009",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":75,
+		 "mana_replenished":0,
+		 "stamina_replenished":70,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Essence of Rage",
+		 "description":"An elixir that grants temporary increased damage output.",
+		 "item_id":"item010",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":0,
+		 "mana_replenished":0,
+		 "stamina_replenished":0,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Beast's Blood Vial",
+		 "description":"A vial of mysterious blood that temporarily enhances physical abilities.",
+		 "item_id":"item011",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":0,
+		 "mana_replenished":0,
+		 "stamina_replenished":75,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Illumination Stone",
+		 "description":"A small stone that emits a soft, ethereal glow.",
+		 "item_id":"item012",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Ring of Shadows",
+		 "description":"A ring that grants its wearer enhanced stealth in the darkness.",
+		 "item_id":"item013",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Hexed Relic",
+		 "description":"A cursed relic believed to possess dark powers.",
+		 "item_id":"item014",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Laughing Skull",
+		 "description":"A skull imbued with ancient magic. Its eerie laughter haunts those who hear it.",
+		 "item_id":"item015",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Crystal Shard",
+		 "description":"A shard of crystal that glows faintly with mystical energy.",
+		 "item_id":"item016",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Reflection Mirror",
+		 "description":"A mirror that reflects the true nature of those who gaze upon it.",
+		 "item_id":"item017",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Tome of Forbidden Spells",
+		 "description":"An ancient tome filled with dangerous and forbidden spells.",
+		 "item_id":"item018",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Shimmering Elixir",
+		 "description":"An elixir that enhances the user's magical abilities for a short period of time.",
+		 "item_id":"item019",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":0,
+		 "mana_replenished":60,
+		 "stamina_replenished":0,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Cursed Voodoo Doll",
+		 "description":"A doll that holds great power, but also brings misfortune to its owner.",
+		 "item_id":"item020",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Bitterroot Extract",
+		 "description":"A potent extract made from the bitterroot plant. Restores stamina and heals minor wounds.",
+		 "item_id":"item021",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":30,
+		 "mana_replenished":0,
+		 "stamina_replenished":60,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Prism of Time",
+		 "description":"A mysterious prism that distorts time and space.",
+		 "item_id":"item022",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Tears of the Fallen",
+		 "description":"Tears shed by the souls of the fallen. Possesses restorative properties.",
+		 "item_id":"item023",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":50,
+		 "mana_replenished":0,
+		 "stamina_replenished":0,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Harmony Crystal",
+		 "description":"A rare crystal said to bring harmony and balance to the wielder.",
+		 "item_id":"item024",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Ancient Relic",
+		 "description":"An ancient relic of unknown origin. Carries an aura of mystery.",
+		 "item_id":"item025",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Ethereal Dust",
+		 "description":"A fine dust that glows with a soft ethereal light.",
+		 "item_id":"item026",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Whispering Orb",
+		 "description":"A mysterious orb that seems to whisper secrets to those who hold it.",
+		 "item_id":"item027",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Soothing Balm",
+		 "description":"A healing balm that relieves pain and accelerates natural healing.",
+		 "item_id":"item028",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":60,
+		 "mana_replenished":0,
+		 "stamina_replenished":0,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Seer's Crystal",
+		 "description":"A crystal used by seers to glimpse into the future.",
+		 "item_id":"item029",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Dreamcatcher",
+		 "description":"A mystical item believed to trap and dispel nightmares.",
+		 "item_id":"item030",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Lost Key",
+		 "description":"A key of unknown origin. Its purpose and location are a mystery.",
+		 "item_id":"item031",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Soulstone Shard",
+		 "description":"A shard of a soulstone. Radiates residual energy.",
+		 "item_id":"item032",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Elixir of Shadows",
+		 "description":"An elixir that temporarily allows the user to blend with shadows.",
+		 "item_id":"item033",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":0,
+		 "mana_replenished":0,
+		 "stamina_replenished":0,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Divine Goblet",
+		 "description":"A sacred goblet used in ceremonial rituals.",
+		 "item_id":"item034",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Shattered Soulstone",
+		 "description":"A shattered soulstone. Its power has been drained.",
+		 "item_id":"item035",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Enchanted Feather",
+		 "description":"A feather imbued with enchantments. It glimmers with magic.",
+		 "item_id":"item036",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Potion of Resilience",
+		 "description":"A potion that temporarily increases physical and magical resistances.",
+		 "item_id":"item037",
+		 "sprite_data":"",
+		 "is_consumable":true,
+		 "health_replenished":0,
+		 "mana_replenished":0,
+		 "stamina_replenished":0,
+		 "statusNegations":{
+			"poisoned":0,
+			"burned":0,
+			"paralyzed":0,
+			"drenched":0,
+			"confused":0,
+			"bloodless":0
+		 }
+	  },
+	  {
+		 "item_name":"Fiery Ember",
+		 "description":"An ember infused with intense flames. Used to forge powerful weapons.",
+		 "item_id":"item038",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Ancient Scroll",
+		 "description":"An ancient scroll inscribed with forbidden knowledge.",
+		 "item_id":"item039",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Poisonous Nightshade",
+		 "description":"A poisonous herb used by assassins to coat their weapons.",
+		 "item_id":"item040",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Enigmatic Crystal",
+		 "description":"A crystal that radiates an enigmatic aura. Its true nature remains unknown.",
+		 "item_id":"item041",
+		 "sprite_data":"",
+		 "is_consumable":false
+	  },
+	  {
+		 "item_name":"Bone Dust",
+		 "description":"Finely ground bone powder. Used in necromantic rituals.",
+		 "item_id":"item042",
+		 "sprite_data":"",
+		 "is_consumable":false
 	  }
    ]
 }
