@@ -1286,7 +1286,7 @@
    ],
    "spells":[
 	  {
-		 "spell_name":"Dark Curse",
+		 "name":"Dark Curse",
 		 "id":"spell001",
 		 "description":"Casts a malevolent curse upon the target, inflicting damage over time.",
 		 "base_damage":20,
@@ -1303,7 +1303,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Soul Siphon",
+		 "name":"Soul Siphon",
 		 "id":"spell002",
 		 "description":"Drains the enemy's life force, damaging them while restoring the caster's health.",
 		 "base_damage":10,
@@ -1320,7 +1320,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Netherfire",
+		 "name":"Netherfire",
 		 "id":"spell003",
 		 "description":"Unleashes a fiery explosion, engulfing the enemy in dark flames and causing moderate damage.",
 		 "base_damage":30,
@@ -1337,7 +1337,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Frozen Veins",
+		 "name":"Frozen Veins",
 		 "id":"spell004",
 		 "description":"Freezes the target's veins with intense cold, slowing their movement and causing moderate damage.",
 		 "base_damage":25,
@@ -1354,7 +1354,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Shadowstep",
+		 "name":"Shadowstep",
 		 "id":"spell005",
 		 "description":"Allows the caster to briefly step into the shadows, evading attacks for a short duration.",
 		 "base_damage":0,
@@ -1371,7 +1371,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Crimson Torrent",
+		 "name":"Crimson Torrent",
 		 "id":"spell006",
 		 "description":"Unleashes a torrent of blood-infused energy at the enemy, causing heavy damage.",
 		 "base_damage":40,
@@ -1388,7 +1388,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Nightshade",
+		 "name":"Nightshade",
 		 "id":"spell007",
 		 "description":"Summons a cloud of toxic nightshade, poisoning nearby enemies and causing damage over time.",
 		 "base_damage":15,
@@ -1405,7 +1405,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Spectral Blades",
+		 "name":"Spectral Blades",
 		 "id":"spell008",
 		 "description":"Summons ethereal blades that slash through enemies, causing damage in a wide arc.",
 		 "base_damage":35,
@@ -1422,7 +1422,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Void Blast",
+		 "name":"Void Blast",
 		 "id":"spell009",
 		 "description":"Unleashes a blast of void energy, causing moderate damage and briefly disrupting the target's magical abilities.",
 		 "base_damage":25,
@@ -1439,7 +1439,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Doomblink",
+		 "name":"Doomblink",
 		 "id":"spell010",
 		 "description":"Teleports the caster behind the enemy, landing a devastating strike and causing heavy damage.",
 		 "base_damage":40,
@@ -1456,7 +1456,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Blood Ritual",
+		 "name":"Blood Ritual",
 		 "id":"spell011",
 		 "description":"Infuses the caster's weapon with blood magic, causing additional damage with each strike.",
 		 "base_damage":10,
@@ -1473,7 +1473,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Whispering Shadows",
+		 "name":"Whispering Shadows",
 		 "id":"spell012",
 		 "description":"Summons ethereal shadows that wrap around the target, causing damage and reducing their resistance.",
 		 "base_damage":15,
@@ -1490,7 +1490,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Soul Shatter",
+		 "name":"Soul Shatter",
 		 "id":"spell013",
 		 "description":"Shatters the enemy's soul, causing heavy damage while reducing their maximum health.",
 		 "base_damage":35,
@@ -1507,7 +1507,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Gorestorm",
+		 "name":"Gorestorm",
 		 "id":"spell014",
 		 "description":"Summons a violent storm of razor-sharp projectiles, causing damage to all enemies in the area.",
 		 "base_damage":30,
@@ -1524,7 +1524,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Silent Death",
+		 "name":"Silent Death",
 		 "id":"spell015",
 		 "description":"Deals a swift and silent deathblow to the target, instantly killing them if their health is below a certain threshold.",
 		 "base_damage":0,
@@ -1541,7 +1541,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Plaguebearer",
+		 "name":"Plaguebearer",
 		 "id":"spell016",
 		 "description":"Curses the target with a deadly plague, causing continuous damage over time and weakening their defenses.",
 		 "base_damage":15,
@@ -1558,7 +1558,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Shroud of Darkness",
+		 "name":"Shroud of Darkness",
 		 "id":"spell017",
 		 "description":"Envelops the caster in a shroud of darkness, increasing their evasion and reducing incoming damage for a short duration.",
 		 "base_damage":0,
@@ -1575,7 +1575,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Frostbite",
+		 "name":"Frostbite",
 		 "id":"spell018",
 		 "description":"Inflicts a chilling frostbite upon the enemy, causing damage over time and slowing their movement.",
 		 "base_damage":10,
@@ -1592,7 +1592,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Eternal Damnation",
+		 "name":"Eternal Damnation",
 		 "id":"spell019",
 		 "description":"Condemns the target to eternal damnation, causing heavy damage and reducing their resistance to dark magic.",
 		 "base_damage":30,
@@ -1609,7 +1609,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Abyssal Whirlwind",
+		 "name":"Abyssal Whirlwind",
 		 "id":"spell020",
 		 "description":"Summons a swirling vortex of darkness that tears through enemies, causing damage in a wide radius.",
 		 "base_damage":40,
@@ -1626,7 +1626,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Hemorrhage",
+		 "name":"Hemorrhage",
 		 "id":"spell021",
 		 "description":"Causes internal bleeding in the target, inflicting damage over time and reducing their healing effectiveness.",
 		 "base_damage":20,
@@ -1643,7 +1643,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Searing Shadows",
+		 "name":"Searing Shadows",
 		 "id":"spell022",
 		 "description":"Unleashes searing shadows from the caster's fingertips, causing moderate damage and reducing the enemy's accuracy.",
 		 "base_damage":25,
@@ -1660,7 +1660,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Soul Eater",
+		 "name":"Soul Eater",
 		 "id":"spell023",
 		 "description":"Devours the enemy's soul, causing heavy damage and restoring the caster's health proportional to the damage dealt.",
 		 "base_damage":35,
@@ -1677,7 +1677,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Enfeeble",
+		 "name":"Enfeeble",
 		 "id":"spell024",
 		 "description":"Weakens the target's physical and magical abilities, reducing their damage output and resistance for a short duration.",
 		 "base_damage":0,
@@ -1694,7 +1694,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Soulrend",
+		 "name":"Soulrend",
 		 "id":"spell025",
 		 "description":"Rends the target's soul, causing heavy damage and temporarily preventing them from using magical abilities.",
 		 "base_damage":30,
@@ -1711,7 +1711,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Phantom Embrace",
+		 "name":"Phantom Embrace",
 		 "id":"spell026",
 		 "description":"Summons ethereal phantoms that embrace the target, causing damage over time and reducing their defense.",
 		 "base_damage":20,
@@ -1728,7 +1728,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Dark Passage",
+		 "name":"Dark Passage",
 		 "id":"spell027",
 		 "description":"Creates a dark passage, allowing the caster to quickly travel to a designated location within a certain range.",
 		 "base_damage":0,
@@ -1745,7 +1745,7 @@
 		 }
 	  },
 	  {
-		 "spell_name":"Death's Embrace",
+		 "name":"Death's Embrace",
 		 "id":"spell028",
 		 "description":"Embraces the target with death's cold grip, causing heavy damage and reducing their healing effectiveness.",
 		 "base_damage":35,
@@ -1764,7 +1764,7 @@
    ],
    "items":[
 	  {
-		 "item_name":"Life Elixir",
+		 "name":"Life Elixir",
 		 "description":"A potent elixir that instantly restores health.",
 		 "id":"item001",
 		 "sprite_data":"res://assets/Item__29.png",
@@ -1782,7 +1782,7 @@
 		 }
 	  },
 	  {
-		 "item_name":"Soul Shard",
+		 "name":"Soul Shard",
 		 "description":"A fragment of a lost soul. Can be used for various purposes.",
 		 "id":"item002",
 		 "sprite_data":"",
@@ -1800,7 +1800,7 @@
 		 }
 	  },
 	  {
-		 "item_name":"Mystic Remedy",
+		 "name":"Mystic Remedy",
 		 "description":"A mystical potion that cures various ailments.",
 		 "id":"item003",
 		 "sprite_data":"",
@@ -1818,7 +1818,7 @@
 		 }
 	  },
 	  {
-		 "item_name":"Shadow Essence",
+		 "name":"Shadow Essence",
 		 "description":"A vial containing the essence of darkness. Used for shadow-based rituals.",
 		 "id":"item004",
 		 "sprite_data":"",
@@ -1836,7 +1836,7 @@
 		 }
 	  },
 	  {
-		 "item_name":"Witch's Brew",
+		 "name":"Witch's Brew",
 		 "description":"A concoction known to increase magical potency temporarily.",
 		 "id":"item005",
 		 "sprite_data":"",
@@ -1854,7 +1854,7 @@
 		 }
 	  },
 	  {
-		 "item_name":"Scroll of Knowledge",
+		 "name":"Scroll of Knowledge",
 		 "description":"An ancient scroll containing forbidden knowledge.",
 		 "id":"item006",
 		 "sprite_data":"",
@@ -1872,7 +1872,7 @@
 		 }
 	  },
 	  {
-		 "item_name":"Dreamroot Herb",
+		 "name":"Dreamroot Herb",
 		 "description":"A rare herb that induces lucid dreaming. Consume with caution.",
 		 "id":"item007",
 		 "sprite_data":"",
@@ -1890,7 +1890,7 @@
 		 }
 	  },
 	  {
-		 "item_name":"Antidote",
+		 "name":"Antidote",
 		 "description":"A potion that neutralizes poison and restores stability to the body.",
 		 "id":"item008",
 		 "sprite_data":"",
@@ -1908,7 +1908,7 @@
 		 }
 	  },
 	  {
-		 "item_name":"Miracle Tonic",
+		 "name":"Miracle Tonic",
 		 "description":"A rare tonic that temporarily enhances physical attributes.",
 		 "id":"item009",
 		 "sprite_data":"",
@@ -1926,7 +1926,7 @@
 		 }
 	  },
 	  {
-		 "item_name":"Essence of Rage",
+		 "name":"Essence of Rage",
 		 "description":"An elixir that grants temporary increased damage output.",
 		 "id":"item010",
 		 "sprite_data":"",
@@ -1944,7 +1944,7 @@
 		 }
 	  },
 	  {
-		 "item_name":"Beast's Blood Vial",
+		 "name":"Beast's Blood Vial",
 		 "description":"A vial of mysterious blood that temporarily enhances physical abilities.",
 		 "id":"item011",
 		 "sprite_data":"",
@@ -1962,56 +1962,56 @@
 		 }
 	  },
 	  {
-		 "item_name":"Illumination Candle",
+		 "name":"Illumination Candle",
 		 "description":"A small candle that emits a soft, ethereal glow.",
 		 "id":"item012",
 		 "sprite_data":"res://assets/Item__70.png",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Ring of Shadows",
+		 "name":"Ring of Shadows",
 		 "description":"A ring that grants its wearer enhanced stealth in the darkness.",
 		 "id":"item013",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Hexed Relic",
+		 "name":"Hexed Relic",
 		 "description":"A cursed relic believed to possess dark powers.",
 		 "id":"item014",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Laughing Skull",
+		 "name":"Laughing Skull",
 		 "description":"A skull imbued with ancient magic. Its eerie laughter haunts those who hear it.",
 		 "id":"item015",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Crystal Shard",
+		 "name":"Crystal Shard",
 		 "description":"A shard of crystal that glows faintly with mystical energy.",
 		 "id":"item016",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Reflection Mirror",
+		 "name":"Reflection Mirror",
 		 "description":"A mirror that reflects the true nature of those who gaze upon it.",
 		 "id":"item017",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Tome of Forbidden Spells",
+		 "name":"Tome of Forbidden Spells",
 		 "description":"An ancient tome filled with dangerous and forbidden spells.",
 		 "id":"item018",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Shimmering Elixir",
+		 "name":"Shimmering Elixir",
 		 "description":"An elixir that enhances the user's magical abilities for a short period of time.",
 		 "id":"item019",
 		 "sprite_data":"res://assets/Item__31.png",
@@ -2029,14 +2029,14 @@
 		 }
 	  },
 	  {
-		 "item_name":"Cursed Voodoo Doll",
+		 "name":"Cursed Voodoo Doll",
 		 "description":"A doll that holds great power, but also brings misfortune to its owner.",
 		 "id":"item020",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Bitterroot Extract",
+		 "name":"Bitterroot Extract",
 		 "description":"A potent extract made from the bitterroot plant. Restores stamina and heals minor wounds.",
 		 "id":"item021",
 		 "sprite_data":"",
@@ -2054,14 +2054,14 @@
 		 }
 	  },
 	  {
-		 "item_name":"Prism of Time",
+		 "name":"Prism of Time",
 		 "description":"A mysterious prism that distorts time and space.",
 		 "id":"item022",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Tears of the Fallen",
+		 "name":"Tears of the Fallen",
 		 "description":"Tears shed by the souls of the fallen. Possesses restorative properties.",
 		 "id":"item023",
 		 "sprite_data":"",
@@ -2079,35 +2079,35 @@
 		 }
 	  },
 	  {
-		 "item_name":"Harmony Crystal",
+		 "name":"Harmony Crystal",
 		 "description":"A rare crystal said to bring harmony and balance to the wielder.",
 		 "id":"item024",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Ancient Relic",
+		 "name":"Ancient Relic",
 		 "description":"An ancient relic of unknown origin. Carries an aura of mystery.",
 		 "id":"item025",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Ethereal Dust",
+		 "name":"Ethereal Dust",
 		 "description":"A fine dust that glows with a soft ethereal light.",
 		 "id":"item026",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Whispering Orb",
+		 "name":"Whispering Orb",
 		 "description":"A mysterious orb that seems to whisper secrets to those who hold it.",
 		 "id":"item027",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Soothing Balm",
+		 "name":"Soothing Balm",
 		 "description":"A healing balm that relieves pain and accelerates natural healing.",
 		 "id":"item028",
 		 "sprite_data":"",
@@ -2125,35 +2125,35 @@
 		 }
 	  },
 	  {
-		 "item_name":"Seer's Crystal",
+		 "name":"Seer's Crystal",
 		 "description":"A crystal used by seers to glimpse into the future.",
 		 "id":"item029",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Dreamcatcher",
+		 "name":"Dreamcatcher",
 		 "description":"A mystical item believed to trap and dispel nightmares.",
 		 "id":"item030",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Lost Key",
+		 "name":"Lost Key",
 		 "description":"A key of unknown origin. Its purpose and location are a mystery.",
 		 "id":"item031",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Soulstone Shard",
+		 "name":"Soulstone Shard",
 		 "description":"A shard of a soulstone. Radiates residual energy.",
 		 "id":"item032",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Elixir of Shadows",
+		 "name":"Elixir of Shadows",
 		 "description":"An elixir that temporarily allows the user to blend with shadows.",
 		 "id":"item033",
 		 "sprite_data":"",
@@ -2171,28 +2171,28 @@
 		 }
 	  },
 	  {
-		 "item_name":"Divine Goblet",
+		 "name":"Divine Goblet",
 		 "description":"A sacred goblet used in ceremonial rituals.",
 		 "id":"item034",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Shattered Soulstone",
+		 "name":"Shattered Soulstone",
 		 "description":"A shattered soulstone. Its power has been drained.",
 		 "id":"item035",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Enchanted Feather",
+		 "name":"Enchanted Feather",
 		 "description":"A feather imbued with enchantments. It glimmers with magic.",
 		 "id":"item036",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Potion of Resilience",
+		 "name":"Potion of Resilience",
 		 "description":"A potion that temporarily increases physical and magical resistances.",
 		 "id":"item037",
 		 "sprite_data":"",
@@ -2210,35 +2210,35 @@
 		 }
 	  },
 	  {
-		 "item_name":"Fiery Ember",
+		 "name":"Fiery Ember",
 		 "description":"An ember infused with intense flames. Used to forge powerful weapons.",
 		 "id":"item038",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Ancient Scroll",
+		 "name":"Ancient Scroll",
 		 "description":"An ancient scroll inscribed with forbidden knowledge.",
 		 "id":"item039",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Poisonous Nightshade",
+		 "name":"Poisonous Nightshade",
 		 "description":"A poisonous herb used by assassins to coat their weapons.",
 		 "id":"item040",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Enigmatic Crystal",
+		 "name":"Enigmatic Crystal",
 		 "description":"A crystal that radiates an enigmatic aura. Its true nature remains unknown.",
 		 "id":"item041",
 		 "sprite_data":"",
 		 "is_consumable":false
 	  },
 	  {
-		 "item_name":"Bone Dust",
+		 "name":"Bone Dust",
 		 "description":"Finely ground bone powder. Used in necromantic rituals.",
 		 "id":"item042",
 		 "sprite_data":"",

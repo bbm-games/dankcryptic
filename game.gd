@@ -146,10 +146,12 @@ func update_quick_slots():
 		var item_id = player_data['quick_slots'][slot]
 		if item_id:
 			var texturepath = searchDocsInList(all_quick_items, "id", item_id, 'sprite_data')
+			var itemname = searchDocsInList(all_quick_items, "id", item_id, 'name')
 			if texturepath:	
 				#print(texturepath)
 				# draw the item textures in the quickslots
 				get_node("%" + slot).set_texture(load(texturepath))
+				get_node("%" + slot).set_tooltip_text(itemname)
 		else:
 			# there is not item in the slot
 			# clean up the slot
@@ -203,15 +205,19 @@ func _input(event):
 			var statusNegations = {}
 			statusNegations = searchDocsInList(all_quick_items, 'id', item_id, "statusNegations") 
 			player_data['current_health'] += health_replenished
-			chatBox.append_text("\nReplenished " + str(health_replenished) + " health.")
+			if health_replenished > 0:
+				chatBox.append_text("\nReplenished " + str(health_replenished) + " health.")
 			player_data['current_stamina'] += stamina_replenished
-			chatBox.append_text("\nReplenished " + str(stamina_replenished) + " stamina.")
+			if stamina_replenished > 0:
+				chatBox.append_text("\nReplenished " + str(stamina_replenished) + " stamina.")
 			player_data['current_mana'] += mana_replenished
-			chatBox.append_text("\nReplenished " + str(mana_replenished) + " mana.")
+			if mana_replenished > 0:
+				chatBox.append_text("\nReplenished " + str(mana_replenished) + " mana.")
 			for status in statusNegations.keys():
 				if (player_data['statuses'][status] - statusNegations[status]) >= 0:
 						player_data['statuses'][status] -= statusNegations[status]
-						chatBox.append_text("\nNegated " + str(status) + " by " + str(statusNegations[status]))
+						if statusNegations[status] > 0:
+							chatBox.append_text("\nNegated " + str(status) + " by " + str(statusNegations[status]))
 			# remove item when it's effects are done being applied
 			player_data['quick_slots']['slot' + str(current_item_index+1)] = null
 		# if it's the flashlight toggle it

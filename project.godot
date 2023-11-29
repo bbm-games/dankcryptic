@@ -30,6 +30,10 @@ window/size/window_height_override=648
 window/stretch/mode="viewport"
 mouse_cursor/custom_image="res://assets/cursor.png"
 
+[gui]
+
+theme/custom_font="res://assets/font.ttf"
+
 [input]
 
 ui_accept={
