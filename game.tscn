@@ -317,9 +317,11 @@ scroll_following = true
 
 [node name="quickItemSwitchSound" type="AudioStreamPlayer" parent="HUDLayer/CanvasGroup"]
 stream = ExtResource("7_7pep6")
+bus = &"Sounds"
 
 [node name="quickItemConsumeSound" type="AudioStreamPlayer" parent="HUDLayer/CanvasGroup"]
 stream = ExtResource("8_0de4k")
+bus = &"Sounds"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUDLayer"]
 root_node = NodePath("../..")
@@ -436,7 +438,7 @@ process_material = SubResource("ParticleProcessMaterial_al2uw")
 
 [node name="spellSoundPlayer" type="AudioStreamPlayer" parent="player"]
 stream = ExtResource("16_omwxg")
-volume_db = 1.0
+volume_db = 5.0
 bus = &"Sounds"
 
 [node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
