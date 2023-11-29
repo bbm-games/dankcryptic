@@ -122,6 +122,9 @@ func _ready():
 	optionsMenu.add_child(options_scene)
 	optionsMenu.get_node("Node2D/CanvasLayer").hide()
 	
+	# set up the lore tab 
+	get_node("CanvasLayer2/playerMenu/Lore/VBoxContainer2/RichTextLabel").set_text(lore_data['promotional'])
+	
 	# load in actual game map
 	#var scene_resource = ResourceLoader.load(boss1ScenePath)
 	var scene_resource = ResourceLoader.load(dungeonScenePath)
@@ -295,6 +298,7 @@ func _input(event):
 			pauseMenu.show()
 			pauseMenu.get_node('resumeGameButton').grab_focus()
 	if event.is_action_pressed("playerMenu"):
+		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
 		if playerMenu.visible:
 			playerMenu.hide()
 		else:
@@ -417,3 +421,7 @@ func _on_button_4_pressed():
 func _on_button_pressed():
 	optionsMenu.get_node("Node2D/CanvasLayer").show()
 	pauseMenu.hide()
+
+
+func _on_player_menu_tab_changed(tab):
+	get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()

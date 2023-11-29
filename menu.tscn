@@ -153,7 +153,7 @@ vertical_alignment = 2
 
 [node name="FileDialog" type="FileDialog" parent="CanvasLayer"]
 mode = 2
-title = "Open a savefile"
+title = "Open a File"
 initial_position = 2
 size = Vector2i(400, 250)
 ok_button_text = "Open"
