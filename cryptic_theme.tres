@@ -4,5 +4,5 @@
 
 [resource]
 default_font = ExtResource("1_a1yx1")
-TooltipLabel/colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
+TooltipLabel/colors/font_color = Color(1, 1, 1, 1)
 TooltipLabel/font_sizes/font_size = 9

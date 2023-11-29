@@ -147,11 +147,12 @@ func update_quick_slots():
 		if item_id:
 			var texturepath = searchDocsInList(all_quick_items, "id", item_id, 'sprite_data')
 			var itemname = searchDocsInList(all_quick_items, "id", item_id, 'name')
+			var itemdesc = searchDocsInList(all_quick_items, "id", item_id, 'description')
 			if texturepath:	
 				#print(texturepath)
 				# draw the item textures in the quickslots
 				get_node("%" + slot).set_texture(load(texturepath))
-				get_node("%" + slot).set_tooltip_text(itemname)
+				get_node("%" + slot).set_tooltip_text(itemname + '\n' + itemdesc)
 		else:
 			# there is not item in the slot
 			# clean up the slot
