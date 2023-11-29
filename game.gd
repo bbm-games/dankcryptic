@@ -156,6 +156,7 @@ func update_quick_slots():
 			# there is not item in the slot
 			# clean up the slot
 			get_node("%" + slot).texture = null
+			get_node("%" + slot).set_tooltip_text("")
 func _on_SceneTree_node_added(node):
 	if node is Button:
 		connect_to_button(node)

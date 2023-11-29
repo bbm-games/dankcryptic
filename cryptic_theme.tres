@@ -1,9 +1,8 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://bck6sugoxd40h"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ir0r1"]
-border_width_left = 4
-border_color = Color(1, 0.760784, 0.0431373, 1)
+[ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="1_a1yx1"]
 
 [resource]
-/styles/buttonstyle = SubResource("StyleBoxFlat_ir0r1")
-Button/styles/normal = null
+default_font = ExtResource("1_a1yx1")
+TooltipLabel/colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
+TooltipLabel/font_sizes/font_size = 9

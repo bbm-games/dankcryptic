@@ -32,6 +32,7 @@ mouse_cursor/custom_image="res://assets/cursor.png"
 
 [gui]
 
+theme/custom="res://cryptic_theme.tres"
 theme/custom_font="res://assets/font.ttf"
 
 [input]
