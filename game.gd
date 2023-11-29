@@ -184,12 +184,14 @@ func _input(event):
 	elif event is InputEventMouseMotion:
 		mouse_event_pos = event.position
 	if event.is_action_pressed("item_left"):
+		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
 		if current_item_index == 0:
 			current_item_index = 5
 		else:
 			current_item_index -= 1
 		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_right"):
+		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
 		if current_item_index == 5:
 			current_item_index = 0
 		else:
@@ -222,8 +224,10 @@ func _input(event):
 							chatBox.append_text("\nNegated " + str(status) + " by " + str(statusNegations[status]))
 			# remove item when it's effects are done being applied
 			player_data['quick_slots']['slot' + str(current_item_index+1)] = null
+			get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
 		# if it's the flashlight toggle it
 		if item_id == "item012":
+			get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
 			if light.is_visible():
 				light.hide()
 			else:

@@ -1,12 +1,14 @@
-[gd_scene load_steps=33 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=35 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Texture2D" uid="uid://dty6ym387qvf4" path="res://assets/hudbars.png" id="1_7r21i"]
 [ext_resource type="Script" path="res://HUDLayer.gd" id="1_47glo"]
 [ext_resource type="Script" path="res://game.gd" id="1_o5ole"]
 [ext_resource type="Texture2D" uid="uid://kuy5fnxctvqh" path="res://assets/testbg.png" id="3_ctx3v"]
 [ext_resource type="Texture2D" uid="uid://cvjwjaa034kkc" path="res://assets/guts.png" id="6_ui0lc"]
+[ext_resource type="AudioStream" uid="uid://cchk611qy76ua" path="res://assets/sounds/quickitemswitch.wav" id="7_7pep6"]
 [ext_resource type="Texture2D" uid="uid://7mr23lprj7n3" path="res://assets/neutral.webp" id="7_45vux"]
 [ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="7_f521b"]
+[ext_resource type="AudioStream" uid="uid://bvdtncy8q6r27" path="res://assets/sounds/quickitemuse.wav" id="8_0de4k"]
 [ext_resource type="Script" path="res://bigportrait.gd" id="8_c6bur"]
 [ext_resource type="Script" path="res://resumeGameButton.gd" id="8_ul5po"]
 [ext_resource type="Texture2D" uid="uid://d2jkuylwl6o4a" path="res://assets/border.png" id="8_vh846"]
@@ -312,6 +314,12 @@ theme_override_font_sizes/bold_italics_font_size = 9
 theme_override_font_sizes/mono_font_size = 9
 bbcode_enabled = true
 scroll_following = true
+
+[node name="quickItemSwitchSound" type="AudioStreamPlayer" parent="HUDLayer/CanvasGroup"]
+stream = ExtResource("7_7pep6")
+
+[node name="quickItemConsumeSound" type="AudioStreamPlayer" parent="HUDLayer/CanvasGroup"]
+stream = ExtResource("8_0de4k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUDLayer"]
 root_node = NodePath("../..")
