@@ -14,7 +14,13 @@ var mana_bar_length
 var mana_bar_height
 var health_bar_length
 var health_bar_height
+
+# player data
 var player_data
+
+# lore data and stuff derived from it
+var lore_data
+var all_quick_items
 
 var currentMap
 var pauseMenu
@@ -85,12 +91,14 @@ func _ready():
 	health_bar_length = health_bar.get_size().x
 	health_bar_height = health_bar.get_size().y
 	
-	# Get player data from global variables
+	# Get player and lore data from global variables
 	player_data = GlobalVars.player_data
 	# TODO: make it seperate from lore.json
 	#var file = FileAccess.open("lore/lore.json", FileAccess.READ)
 	#player_data = JSON.new().parse_string(file.get_as_text())['character']
 	#file.close()
+	lore_data = GlobalVars.lore_data
+	all_quick_items = lore_data['items'] + lore_data['spells'] + lore_data['quest_items']
 	
 	# set up the patient's chat box
 	chatBox = get_node('HUDLayer/CanvasGroup/chatBox')
@@ -99,6 +107,10 @@ func _ready():
 	# set up the chat box popup for interactions with npcs
 	chatPopup = get_node("HUDLayer/chatPopup")
 	chatPopup.hide()
+	
+	# set the textures for the items in the player's quickslots
+	# make sure you update the quickslots everytime the player changes shit
+	update_quick_slots()
 	
 	# get the item slot frame
 	item_slot_frame = get_node("HUDLayer/CanvasGroup/slotFrame")
@@ -117,6 +129,31 @@ func _ready():
 	currentMap = self.get_node("currentMap")
 	currentMap.add_child(scene)
 
+# useful function for searching through a list of json documents 
+# and retrieving the value for a key for a document that has a certain id
+func searchDocsInList(list, uniquekey, uniqueid, key):
+	for doc in list:
+		if doc[uniquekey] == uniqueid:
+			if key in doc.keys():
+				return doc[key]
+			else:
+				return null
+	return null
+
+# updates items in player quick slots
+func update_quick_slots():
+	for slot in player_data['quick_slots'].keys():
+		var item_id = player_data['quick_slots'][slot]
+		if item_id:
+			var texturepath = searchDocsInList(all_quick_items, "id", item_id, 'sprite_data')
+			if texturepath:	
+				#print(texturepath)
+				# draw the item textures in the quickslots
+				get_node("%" + slot).set_texture(load(texturepath))
+		else:
+			# there is not item in the slot
+			# clean up the slot
+			get_node("%" + slot).texture = null
 func _on_SceneTree_node_added(node):
 	if node is Button:
 		connect_to_button(node)
@@ -155,16 +192,41 @@ func _input(event):
 			current_item_index += 1
 		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_consume"):
-		# consume whatever current item is active
+		var item_id = player_data['quick_slots']['slot' + str(current_item_index+1)]
+		# check to see if item is consumable
+		var consumable = searchDocsInList(all_quick_items, 'id', item_id, "is_consumable")
+		if consumable:
+			# consume whatever current item is active
+			var health_replenished = searchDocsInList(all_quick_items, 'id', item_id, "health_replenished")
+			var mana_replenished = searchDocsInList(all_quick_items, 'id', item_id, "mana_replenished")
+			var stamina_replenished = searchDocsInList(all_quick_items, 'id', item_id, "stamina_replenished") 
+			var statusNegations = {}
+			statusNegations = searchDocsInList(all_quick_items, 'id', item_id, "statusNegations") 
+			player_data['current_health'] += health_replenished
+			chatBox.append_text("\nReplenished " + str(health_replenished) + " health.")
+			player_data['current_stamina'] += stamina_replenished
+			chatBox.append_text("\nReplenished " + str(stamina_replenished) + " stamina.")
+			player_data['current_mana'] += mana_replenished
+			chatBox.append_text("\nReplenished " + str(mana_replenished) + " mana.")
+			for status in statusNegations.keys():
+				if (player_data['statuses'][status] - statusNegations[status]) >= 0:
+						player_data['statuses'][status] -= statusNegations[status]
+						chatBox.append_text("\nNegated " + str(status) + " by " + str(statusNegations[status]))
+			# remove item when it's effects are done being applied
+			player_data['quick_slots']['slot' + str(current_item_index+1)] = null
 		# if it's the flashlight toggle it
-		if current_item_index == 2:
+		if item_id == "item012":
 			if light.is_visible():
 				light.hide()
 			else:
 				light.show()
-		# for now set the current item at index 3 a spell
-		if current_item_index == 3:
+		# if it's a spell
+		# TODO: This needs to be more elaborate
+		if item_id == "spell001":
 			spell_active = true
+			
+		# update the quick slots now that items are used
+		update_quick_slots()
 	if event.is_action_released("item_consume"):
 		if current_item_index == 3:
 			spell_active = false
