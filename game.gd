@@ -293,7 +293,7 @@ func _input(event):
 	if event.is_action_released("item_consume"):
 		if current_item_index == 3:
 			spell_active = false
-	if event.is_action_pressed("attack"):
+	if event.is_action_pressed("attack") && !playerMenu.visible && !chatPopup.visible:
 		if not block_held:
 			attack_held = true
 			get_node("player/attackSoundPlayer").play()
