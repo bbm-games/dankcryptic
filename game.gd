@@ -124,7 +124,21 @@ func _ready():
 	
 	# set up the lore tab 
 	get_node("CanvasLayer2/playerMenu/Lore/VBoxContainer2/RichTextLabel").set_text(lore_data['promotional'])
-	
+
+	# set up the player inventory
+	var inventoryList = get_node("CanvasLayer2/playerMenu/Inventory/HBoxContainer/ScrollContainer/inventoryList")
+	var buttongroup = ButtonGroup.new()
+	var buttonLoreShow = func(item):
+		var desc = get_node("CanvasLayer2/playerMenu/Inventory/HBoxContainer/selectedInventoryItemDesc")
+		desc.set_text(JSON.stringify(item))
+	for item in all_quick_items:
+		var itemNameLabel = Button.new()
+		itemNameLabel.add_theme_font_size_override("font_size",9)
+		itemNameLabel.set_text(item['name'])
+		itemNameLabel.set_toggle_mode(true)
+		itemNameLabel.set_button_group(buttongroup)
+		inventoryList.add_child(itemNameLabel)
+		itemNameLabel.pressed.connect(buttonLoreShow.bind(item))
 	# load in actual game map
 	#var scene_resource = ResourceLoader.load(boss1ScenePath)
 	var scene_resource = ResourceLoader.load(dungeonScenePath)
