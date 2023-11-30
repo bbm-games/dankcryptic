@@ -132,14 +132,31 @@ func _ready():
 		var desc = get_node("CanvasLayer2/playerMenu/Inventory/HBoxContainer/selectedInventoryItemDesc")
 		desc.set_text(JSON.stringify(item))
 	for item in all_quick_items:
-		var itemNameLabel = Button.new()
-		itemNameLabel.add_theme_font_size_override("font_size",9)
-		itemNameLabel.set_text(item['name'])
-		itemNameLabel.set_toggle_mode(true)
-		itemNameLabel.set_button_group(buttongroup)
-		inventoryList.add_child(itemNameLabel)
-		itemNameLabel.pressed.connect(buttonLoreShow.bind(item))
-	
+		var itemButton = MenuButton.new()
+		itemButton.get_popup().add_theme_font_size_override("font_size", 9)
+		itemButton.get_popup().set_max_size(Vector2(100,900))
+		itemButton.get_popup().add_check_item("Slot 1")
+		itemButton.get_popup().add_check_item("Slot 2")
+		itemButton.get_popup().add_check_item("Slot 3")
+		itemButton.get_popup().add_check_item("Slot 4")
+		itemButton.get_popup().add_check_item("Slot 5")
+		itemButton.get_popup().add_check_item("Slot 6")
+		itemButton.get_popup().add_separator()
+		if "is_consumable" in item.keys():
+			if item['is_consumable']:
+				itemButton.get_popup().add_item("Consume")
+		if "is_equippable" in item.keys():
+			if item['is_equippable']:
+				itemButton.get_popup().add_item("Equip")
+		itemButton.get_popup().add_item("Discard")
+		itemButton.add_theme_font_size_override("font_size",9)
+		itemButton.set_text(item['name'])
+		itemButton.set_button_icon(load(item['sprite_data']))
+		itemButton.set_toggle_mode(true)
+		itemButton.set_button_group(buttongroup)
+		inventoryList.add_child(itemButton)
+		itemButton.pressed.connect(buttonLoreShow.bind(item))
+		
 	# set up the player stats tab
 	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer2/vocationDesc").set_text(searchDocsInList(lore_data['vocations'],'class_name', player_data['vocation'], 'lore'))
 	

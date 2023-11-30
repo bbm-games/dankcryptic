@@ -1311,7 +1311,7 @@
 		 "base_damage":10,
 		 "min_magic_level":5,
 		 "mana_cost":10,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1328,7 +1328,7 @@
 		 "base_damage":30,
 		 "min_magic_level":15,
 		 "mana_cost":20,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0.5,
@@ -1345,7 +1345,7 @@
 		 "base_damage":25,
 		 "min_magic_level":12,
 		 "mana_cost":15,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1362,7 +1362,7 @@
 		 "base_damage":0,
 		 "min_magic_level":8,
 		 "mana_cost":10,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1379,7 +1379,7 @@
 		 "base_damage":40,
 		 "min_magic_level":20,
 		 "mana_cost":25,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1396,7 +1396,7 @@
 		 "base_damage":15,
 		 "min_magic_level":5,
 		 "mana_cost":10,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0.3,
 			"burned":0,
@@ -1413,7 +1413,7 @@
 		 "base_damage":35,
 		 "min_magic_level":18,
 		 "mana_cost":20,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1430,7 +1430,7 @@
 		 "base_damage":25,
 		 "min_magic_level":15,
 		 "mana_cost":15,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1447,7 +1447,7 @@
 		 "base_damage":40,
 		 "min_magic_level":25,
 		 "mana_cost":30,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1464,7 +1464,7 @@
 		 "base_damage":10,
 		 "min_magic_level":5,
 		 "mana_cost":5,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1481,7 +1481,7 @@
 		 "base_damage":15,
 		 "min_magic_level":7,
 		 "mana_cost":10,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1498,7 +1498,7 @@
 		 "base_damage":35,
 		 "min_magic_level":20,
 		 "mana_cost":25,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1515,7 +1515,7 @@
 		 "base_damage":30,
 		 "min_magic_level":15,
 		 "mana_cost":20,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1532,7 +1532,7 @@
 		 "base_damage":0,
 		 "min_magic_level":25,
 		 "mana_cost":30,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1549,7 +1549,7 @@
 		 "base_damage":15,
 		 "min_magic_level":12,
 		 "mana_cost":15,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0.4,
 			"burned":0,
@@ -1566,7 +1566,7 @@
 		 "base_damage":0,
 		 "min_magic_level":8,
 		 "mana_cost":10,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1583,7 +1583,7 @@
 		 "base_damage":10,
 		 "min_magic_level":5,
 		 "mana_cost":5,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1600,7 +1600,7 @@
 		 "base_damage":30,
 		 "min_magic_level":18,
 		 "mana_cost":20,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1617,7 +1617,7 @@
 		 "base_damage":40,
 		 "min_magic_level":25,
 		 "mana_cost":25,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1634,7 +1634,7 @@
 		 "base_damage":20,
 		 "min_magic_level":12,
 		 "mana_cost":15,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1651,7 +1651,7 @@
 		 "base_damage":25,
 		 "min_magic_level":15,
 		 "mana_cost":20,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1668,7 +1668,7 @@
 		 "base_damage":35,
 		 "min_magic_level":20,
 		 "mana_cost":25,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1685,7 +1685,7 @@
 		 "base_damage":0,
 		 "min_magic_level":8,
 		 "mana_cost":10,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1702,7 +1702,7 @@
 		 "base_damage":30,
 		 "min_magic_level":15,
 		 "mana_cost":20,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1719,7 +1719,7 @@
 		 "base_damage":20,
 		 "min_magic_level":12,
 		 "mana_cost":15,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1736,7 +1736,7 @@
 		 "base_damage":0,
 		 "min_magic_level":8,
 		 "mana_cost":10,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1753,7 +1753,7 @@
 		 "base_damage":35,
 		 "min_magic_level":20,
 		 "mana_cost":25,
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1787,7 +1787,7 @@
 		 "name":"Soul Shard",
 		 "description":"A fragment of a lost soul. Can be used for various purposes.",
 		 "id":"item002",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":0,
 		 "mana_replenished":50,
@@ -1805,7 +1805,7 @@
 		 "name":"Mystic Remedy",
 		 "description":"A mystical potion that cures various ailments.",
 		 "id":"item003",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":40,
 		 "mana_replenished":20,
@@ -1823,7 +1823,7 @@
 		 "name":"Shadow Essence",
 		 "description":"A vial containing the essence of darkness. Used for shadow-based rituals.",
 		 "id":"item004",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":0,
 		 "mana_replenished":70,
@@ -1841,7 +1841,7 @@
 		 "name":"Witch's Brew",
 		 "description":"A concoction known to increase magical potency temporarily.",
 		 "id":"item005",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":0,
 		 "mana_replenished":100,
@@ -1859,7 +1859,7 @@
 		 "name":"Scroll of Knowledge",
 		 "description":"An ancient scroll containing forbidden knowledge.",
 		 "id":"item006",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":0,
 		 "mana_replenished":30,
@@ -1877,7 +1877,7 @@
 		 "name":"Dreamroot Herb",
 		 "description":"A rare herb that induces lucid dreaming. Consume with caution.",
 		 "id":"item007",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":0,
 		 "mana_replenished":0,
@@ -1895,7 +1895,7 @@
 		 "name":"Antidote",
 		 "description":"A potion that neutralizes poison and restores stability to the body.",
 		 "id":"item008",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":0,
 		 "mana_replenished":0,
@@ -1913,7 +1913,7 @@
 		 "name":"Miracle Tonic",
 		 "description":"A rare tonic that temporarily enhances physical attributes.",
 		 "id":"item009",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":75,
 		 "mana_replenished":0,
@@ -1931,7 +1931,7 @@
 		 "name":"Essence of Rage",
 		 "description":"An elixir that grants temporary increased damage output.",
 		 "id":"item010",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":0,
 		 "mana_replenished":0,
@@ -1949,7 +1949,7 @@
 		 "name":"Beast's Blood Vial",
 		 "description":"A vial of mysterious blood that temporarily enhances physical abilities.",
 		 "id":"item011",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":0,
 		 "mana_replenished":0,
@@ -1974,42 +1974,42 @@
 		 "name":"Ring of Shadows",
 		 "description":"A ring that grants its wearer enhanced stealth in the darkness.",
 		 "id":"item013",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Hexed Relic",
 		 "description":"A cursed relic believed to possess dark powers.",
 		 "id":"item014",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Laughing Skull",
 		 "description":"A skull imbued with ancient magic. Its eerie laughter haunts those who hear it.",
 		 "id":"item015",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Crystal Shard",
 		 "description":"A shard of crystal that glows faintly with mystical energy.",
 		 "id":"item016",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Reflection Mirror",
 		 "description":"A mirror that reflects the true nature of those who gaze upon it.",
 		 "id":"item017",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Tome of Forbidden Spells",
 		 "description":"An ancient tome filled with dangerous and forbidden spells.",
 		 "id":"item018",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
@@ -2034,14 +2034,14 @@
 		 "name":"Cursed Voodoo Doll",
 		 "description":"A doll that holds great power, but also brings misfortune to its owner.",
 		 "id":"item020",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Bitterroot Extract",
 		 "description":"A potent extract made from the bitterroot plant. Restores stamina and heals minor wounds.",
 		 "id":"item021",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":30,
 		 "mana_replenished":0,
@@ -2059,14 +2059,14 @@
 		 "name":"Prism of Time",
 		 "description":"A mysterious prism that distorts time and space.",
 		 "id":"item022",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Tears of the Fallen",
 		 "description":"Tears shed by the souls of the fallen. Possesses restorative properties.",
 		 "id":"item023",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":50,
 		 "mana_replenished":0,
@@ -2084,35 +2084,35 @@
 		 "name":"Harmony Crystal",
 		 "description":"A rare crystal said to bring harmony and balance to the wielder.",
 		 "id":"item024",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Ancient Relic",
 		 "description":"An ancient relic of unknown origin. Carries an aura of mystery.",
 		 "id":"item025",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Ethereal Dust",
 		 "description":"A fine dust that glows with a soft ethereal light.",
 		 "id":"item026",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Whispering Orb",
 		 "description":"A mysterious orb that seems to whisper secrets to those who hold it.",
 		 "id":"item027",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Soothing Balm",
 		 "description":"A healing balm that relieves pain and accelerates natural healing.",
 		 "id":"item028",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":60,
 		 "mana_replenished":0,
@@ -2130,35 +2130,35 @@
 		 "name":"Seer's Crystal",
 		 "description":"A crystal used by seers to glimpse into the future.",
 		 "id":"item029",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Dreamcatcher",
 		 "description":"A mystical item believed to trap and dispel nightmares.",
 		 "id":"item030",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Lost Key",
 		 "description":"A key of unknown origin. Its purpose and location are a mystery.",
 		 "id":"item031",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Soulstone Shard",
 		 "description":"A shard of a soulstone. Radiates residual energy.",
 		 "id":"item032",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Elixir of Shadows",
 		 "description":"An elixir that temporarily allows the user to blend with shadows.",
 		 "id":"item033",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":0,
 		 "mana_replenished":0,
@@ -2176,28 +2176,28 @@
 		 "name":"Divine Goblet",
 		 "description":"A sacred goblet used in ceremonial rituals.",
 		 "id":"item034",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Shattered Soulstone",
 		 "description":"A shattered soulstone. Its power has been drained.",
 		 "id":"item035",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Enchanted Feather",
 		 "description":"A feather imbued with enchantments. It glimmers with magic.",
 		 "id":"item036",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Potion of Resilience",
 		 "description":"A potion that temporarily increases physical and magical resistances.",
 		 "id":"item037",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":true,
 		 "health_replenished":0,
 		 "mana_replenished":0,
@@ -2215,35 +2215,35 @@
 		 "name":"Fiery Ember",
 		 "description":"An ember infused with intense flames. Used to forge powerful weapons.",
 		 "id":"item038",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Ancient Scroll",
 		 "description":"An ancient scroll inscribed with forbidden knowledge.",
 		 "id":"item039",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Poisonous Nightshade",
 		 "description":"A poisonous herb used by assassins to coat their weapons.",
 		 "id":"item040",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Enigmatic Crystal",
 		 "description":"A crystal that radiates an enigmatic aura. Its true nature remains unknown.",
 		 "id":"item041",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  },
 	  {
 		 "name":"Bone Dust",
 		 "description":"Finely ground bone powder. Used in necromantic rituals.",
 		 "id":"item042",
-		 "sprite_data":"",
+		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  }
    ]
