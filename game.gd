@@ -139,6 +139,13 @@ func _ready():
 		itemNameLabel.set_button_group(buttongroup)
 		inventoryList.add_child(itemNameLabel)
 		itemNameLabel.pressed.connect(buttonLoreShow.bind(item))
+	
+	# set up the player stats tab
+	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer2/vocationDesc").set_text(searchDocsInList(lore_data['vocations'],'class_name', player_data['vocation'], 'lore'))
+	
+	# set up the player summary bar
+	update_player_summary_bar()
+	
 	# load in actual game map
 	#var scene_resource = ResourceLoader.load(boss1ScenePath)
 	var scene_resource = ResourceLoader.load(dungeonScenePath)
@@ -157,6 +164,9 @@ func searchDocsInList(list, uniquekey, uniqueid, key):
 				return null
 	return null
 
+func update_player_summary_bar():
+	get_node("HUDLayer/CanvasGroup/playersummarybarcontainer/playersummarybar").set_text(player_data['name'] + ' | Level ' + str(player_data['current_level']) + ' | ' + player_data['vocation'])
+	get_node("HUDLayer/CanvasGroup/playersummarybarcontainer/gold").set_text(str(player_data['gold']))
 # updates items in player quick slots
 func update_quick_slots():
 	for slot in player_data['quick_slots'].keys():
@@ -200,6 +210,30 @@ func _input(event):
 		pass
 	elif event is InputEventMouseMotion:
 		mouse_event_pos = event.position
+	if event.is_action_pressed("item_1"):
+		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+		current_item_index = 0
+		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+	if event.is_action_pressed("item_2"):
+		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+		current_item_index = 1
+		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+	if event.is_action_pressed("item_3"):
+		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+		current_item_index = 2
+		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+	if event.is_action_pressed("item_4"):
+		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+		current_item_index = 3
+		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+	if event.is_action_pressed("item_5"):
+		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+		current_item_index = 4
+		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+	if event.is_action_pressed("item_6"):
+		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+		current_item_index = 5
+		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))				
 	if event.is_action_pressed("item_left"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
 		if current_item_index == 0:
@@ -262,6 +296,7 @@ func _input(event):
 	if event.is_action_pressed("attack"):
 		if not block_held:
 			attack_held = true
+			get_node("player/attackSoundPlayer").play()
 		else:
 			attack_held = false
 	if event.is_action_released("attack"):
@@ -269,6 +304,7 @@ func _input(event):
 	if event.is_action_pressed("block"):
 		if not attack_held:
 			block_held = true
+			get_node("player/shieldSoundPlayer").play()
 		else:
 			block_held = false
 	if event.is_action_released("block"):

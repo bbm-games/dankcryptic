@@ -39,6 +39,8 @@
 	  "current_mana":60,
 	  "mana_depl_rate":50,
 	  "mana_regen_rate":5,
+	 "current_level":0,
+	 "current_exp":0,
 	  "inventory":[
 		 
 	  ],
