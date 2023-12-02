@@ -213,6 +213,7 @@ func update_player_inventory():
 		slotMenu.add_check_item("Slot 4")
 		slotMenu.add_check_item("Slot 5")
 		slotMenu.add_check_item("Slot 6")
+		itemButton.flat = false
 		itemButton.get_popup().add_child(slotMenu)
 		itemButton.get_popup().add_theme_font_size_override("font_size", 9)
 		itemButton.get_popup().set_max_size(Vector2(100,900))
