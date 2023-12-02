@@ -42,7 +42,10 @@
 	 "current_level":0,
 	 "current_exp":0,
 	  "inventory":[
-		 
+		 "item001",
+	   "item019",
+	   "item012",
+	   "spell001"
 	  ],
 	 "quick_slots":{   
 	  "slot1": "item001",

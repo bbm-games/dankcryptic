@@ -126,37 +126,8 @@ func _ready():
 	get_node("CanvasLayer2/playerMenu/Lore/VBoxContainer2/RichTextLabel").set_text(lore_data['promotional'])
 
 	# set up the player inventory
-	var inventoryList = get_node("CanvasLayer2/playerMenu/Inventory/HBoxContainer/ScrollContainer/inventoryList")
-	var buttongroup = ButtonGroup.new()
-	var buttonLoreShow = func(item):
-		var desc = get_node("CanvasLayer2/playerMenu/Inventory/HBoxContainer/selectedInventoryItemDesc")
-		desc.set_text(JSON.stringify(item))
-	for item in all_quick_items:
-		var itemButton = MenuButton.new()
-		itemButton.get_popup().add_theme_font_size_override("font_size", 9)
-		itemButton.get_popup().set_max_size(Vector2(100,900))
-		itemButton.get_popup().add_check_item("Slot 1")
-		itemButton.get_popup().add_check_item("Slot 2")
-		itemButton.get_popup().add_check_item("Slot 3")
-		itemButton.get_popup().add_check_item("Slot 4")
-		itemButton.get_popup().add_check_item("Slot 5")
-		itemButton.get_popup().add_check_item("Slot 6")
-		itemButton.get_popup().add_separator()
-		if "is_consumable" in item.keys():
-			if item['is_consumable']:
-				itemButton.get_popup().add_item("Consume")
-		if "is_equippable" in item.keys():
-			if item['is_equippable']:
-				itemButton.get_popup().add_item("Equip")
-		itemButton.get_popup().add_item("Discard")
-		itemButton.add_theme_font_size_override("font_size",9)
-		itemButton.set_text(item['name'])
-		itemButton.set_button_icon(load(item['sprite_data']))
-		itemButton.set_toggle_mode(true)
-		itemButton.set_button_group(buttongroup)
-		inventoryList.add_child(itemButton)
-		itemButton.pressed.connect(buttonLoreShow.bind(item))
-		
+	update_player_inventory()
+	
 	# set up the player stats tab
 	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer2/vocationDesc").set_text(searchDocsInList(lore_data['vocations'],'class_name', player_data['vocation'], 'lore'))
 	
@@ -181,9 +152,19 @@ func searchDocsInList(list, uniquekey, uniqueid, key):
 				return null
 	return null
 
+# useful function for searching through a list of json documents
+# and retrieving doc where there is a certain value for a certain key
+func returnDocInList(list, uniquekey, uniqueid):
+	for doc in list:
+		if doc[uniquekey] == uniqueid:
+			return doc
+	return null
+
+# updates the player summary bar text at the top of the screen
 func update_player_summary_bar():
 	get_node("HUDLayer/CanvasGroup/playersummarybarcontainer/playersummarybar").set_text(player_data['name'] + ' | Level ' + str(player_data['current_level']) + ' | ' + player_data['vocation'])
 	get_node("HUDLayer/CanvasGroup/playersummarybarcontainer/gold").set_text(str(player_data['gold']))
+
 # updates items in player quick slots
 func update_quick_slots():
 	for slot in player_data['quick_slots'].keys():
@@ -202,6 +183,123 @@ func update_quick_slots():
 			# clean up the slot
 			get_node("%" + slot).texture = null
 			get_node("%" + slot).set_tooltip_text("")
+
+# updates the player inventory
+func update_player_inventory():
+	# set up the player inventory
+	var inventoryList = get_node("CanvasLayer2/playerMenu/Inventory/HBoxContainer/ScrollContainer/inventoryList")
+	# clear children of inventory list
+	for n in inventoryList.get_children():
+		inventoryList.remove_child(n)
+		n.queue_free()
+	var buttongroup = ButtonGroup.new()
+	var buttonLoreShow = func(item):
+		var desc = get_node("CanvasLayer2/playerMenu/Inventory/HBoxContainer/selectedInventoryItemDesc")
+		desc.set_text(JSON.stringify(item))
+	# if you wanna give the player an entire inventory set
+	#for item in all_quick_items:
+	var current_inventory_items = []
+	for item_id in player_data['inventory']:
+		current_inventory_items.append(returnDocInList(all_quick_items, 'id', item_id))
+	for item in current_inventory_items:
+		var itemButton = MenuButton.new()
+		var slotMenu = PopupMenu.new()
+		slotMenu.set_name('slotMenu')
+		slotMenu.add_theme_font_size_override("font_size", 9)
+		slotMenu.set_max_size(Vector2(100,900))
+		slotMenu.add_check_item("Slot 1")
+		slotMenu.add_check_item("Slot 2")
+		slotMenu.add_check_item("Slot 3")
+		slotMenu.add_check_item("Slot 4")
+		slotMenu.add_check_item("Slot 5")
+		slotMenu.add_check_item("Slot 6")
+		itemButton.get_popup().add_child(slotMenu)
+		itemButton.get_popup().add_theme_font_size_override("font_size", 9)
+		itemButton.get_popup().set_max_size(Vector2(100,900))
+		itemButton.get_popup().add_submenu_item("Quickslot", "slotMenu")
+		itemButton.get_popup().add_separator()
+		if "is_consumable" in item.keys():
+			if item['is_consumable']:
+				itemButton.get_popup().add_item("Consume")
+		if "is_equippable" in item.keys():
+			if item['is_equippable']:
+				itemButton.get_popup().add_item("Equip")
+		itemButton.get_popup().add_item("Discard")
+		itemButton.add_theme_font_size_override("font_size",9)
+		itemButton.set_text(item['name'])
+		itemButton.set_button_icon(load(item['sprite_data']))
+		itemButton.set_toggle_mode(true)
+		itemButton.set_button_group(buttongroup)
+		inventoryList.add_child(itemButton)
+		itemButton.pressed.connect(buttonLoreShow.bind(item))
+		itemButton.get_popup().index_pressed.connect(inventoryItemPopupMenu.bind(item))
+		slotMenu.index_pressed.connect(addItemToSlot.bind(item))
+
+func addItemToSlot(slot_index, item):
+	# try to remove item from quickslots if it's already in there
+	removeItemFromQuickslot(item)
+
+	# add item to quickslot, possibly overwriting another item that was there 
+	player_data['quick_slots']['slot'+str(slot_index+1)] = item['id']
+	
+	update_quick_slots()
+	
+func removeItemFromInventory(item):
+	# remove from player_data['inventory']
+	var i = player_data['inventory'].find(item['id'])
+	if i != -1:
+		player_data['inventory'].remove_at(i)
+	# if item is in a slot remove it too
+	removeItemFromQuickslot(item)
+	
+func removeItemFromQuickslot(item):
+	for key in player_data['quick_slots'].keys():
+		if item['id'] == player_data['quick_slots'][key]:
+			# remove the item from the quickslot
+			player_data['quick_slots'][key] = null
+			
+func inventoryItemPopupMenu(index, item):
+	print(index)
+	if index == 2: # for consuming items
+		consumeItem(item)
+		# if the item is in a slot, remove the slot too
+	if index == 3: # for discarding items
+		removeItemFromInventory(item)
+		# if the item is in a slot, remove the slot too
+	update_player_inventory()
+	update_quick_slots()
+	
+func consumeItem(item):
+	var item_id = item['id']
+	# check to see if item is consumable
+	var consumable
+	if 'is_consumable' in item.keys():
+		consumable = item["is_consumable"]
+	if consumable:
+		# consume whatever current item is active
+		var health_replenished = searchDocsInList(all_quick_items, 'id', item_id, "health_replenished")
+		var mana_replenished = searchDocsInList(all_quick_items, 'id', item_id, "mana_replenished")
+		var stamina_replenished = searchDocsInList(all_quick_items, 'id', item_id, "stamina_replenished") 
+		var statusNegations = {}
+		statusNegations = searchDocsInList(all_quick_items, 'id', item_id, "statusNegations") 
+		player_data['current_health'] += health_replenished
+		if health_replenished > 0:
+			chatBox.append_text("\nReplenished " + str(health_replenished) + " health.")
+		player_data['current_stamina'] += stamina_replenished
+		if stamina_replenished > 0:
+			chatBox.append_text("\nReplenished " + str(stamina_replenished) + " stamina.")
+		player_data['current_mana'] += mana_replenished
+		if mana_replenished > 0:
+			chatBox.append_text("\nReplenished " + str(mana_replenished) + " mana.")
+		for status in statusNegations.keys():
+			if (player_data['statuses'][status] - statusNegations[status]) >= 0:
+					player_data['statuses'][status] -= statusNegations[status]
+					if statusNegations[status] > 0:
+						chatBox.append_text("\nNegated " + str(status) + " by " + str(statusNegations[status]))
+	
+		# after consumed remove item from inventory
+		removeItemFromInventory(item)
+	
 func _on_SceneTree_node_added(node):
 	if node is Button:
 		connect_to_button(node)
@@ -267,46 +365,36 @@ func _input(event):
 		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_consume"):
 		var item_id = player_data['quick_slots']['slot' + str(current_item_index+1)]
-		# check to see if item is consumable
-		var consumable = searchDocsInList(all_quick_items, 'id', item_id, "is_consumable")
-		if consumable:
-			# consume whatever current item is active
-			var health_replenished = searchDocsInList(all_quick_items, 'id', item_id, "health_replenished")
-			var mana_replenished = searchDocsInList(all_quick_items, 'id', item_id, "mana_replenished")
-			var stamina_replenished = searchDocsInList(all_quick_items, 'id', item_id, "stamina_replenished") 
-			var statusNegations = {}
-			statusNegations = searchDocsInList(all_quick_items, 'id', item_id, "statusNegations") 
-			player_data['current_health'] += health_replenished
-			if health_replenished > 0:
-				chatBox.append_text("\nReplenished " + str(health_replenished) + " health.")
-			player_data['current_stamina'] += stamina_replenished
-			if stamina_replenished > 0:
-				chatBox.append_text("\nReplenished " + str(stamina_replenished) + " stamina.")
-			player_data['current_mana'] += mana_replenished
-			if mana_replenished > 0:
-				chatBox.append_text("\nReplenished " + str(mana_replenished) + " mana.")
-			for status in statusNegations.keys():
-				if (player_data['statuses'][status] - statusNegations[status]) >= 0:
-						player_data['statuses'][status] -= statusNegations[status]
-						if statusNegations[status] > 0:
-							chatBox.append_text("\nNegated " + str(status) + " by " + str(statusNegations[status]))
-			# remove item when it's effects are done being applied
-			player_data['quick_slots']['slot' + str(current_item_index+1)] = null
-			get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
-		# if it's the flashlight toggle it
-		if item_id == "item012":
-			get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
-			if light.is_visible():
-				light.hide()
-			else:
-				light.show()
-		# if it's a spell
-		# TODO: This needs to be more elaborate
-		if item_id == "spell001":
-			spell_active = true
+		# make sure there's actually an item in the slot
+		if item_id:
+			var item = {}
+			# grab the item doc
+			item = returnDocInList(all_quick_items, 'id', item_id)
+			if 'is_consumable' in item.keys():
+				if item['is_consumable']:
+					consumeItem(item)
+					get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
+					# remove item when it's effects are done being applied
+					player_data['quick_slots']['slot' + str(current_item_index+1)] = null
+					
+			# CODE FOR SPECIAL ITEMS LIKE SPELLS AND TOGGLE ITEMS
+			# if it's the flashlight toggle it
+			if item_id == "item012":
+				get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
+				if light.is_visible():
+					light.hide()
+				else:
+					light.show()
+			# if it's a spell
+			# TODO: This needs to be more elaborate
+			if item_id == "spell001":
+				spell_active = true
 			
-		# update the quick slots now that items are used
-		update_quick_slots()
+			# redraw the quick slots
+			update_quick_slots()
+			# redraw the inventory
+			update_player_inventory()
+			
 	if event.is_action_released("item_consume"):
 		if current_item_index == 3:
 			spell_active = false
