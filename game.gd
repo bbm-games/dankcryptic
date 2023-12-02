@@ -220,11 +220,11 @@ func update_player_inventory():
 		itemButton.get_popup().add_separator()
 		if "is_consumable" in item.keys():
 			if item['is_consumable']:
-				itemButton.get_popup().add_item("Consume")
+				itemButton.get_popup().add_item("Consume", 1)
 		if "is_equippable" in item.keys():
 			if item['is_equippable']:
-				itemButton.get_popup().add_item("Equip")
-		itemButton.get_popup().add_item("Discard")
+				itemButton.get_popup().add_item("Equip", 2)
+		itemButton.get_popup().add_item("Discard", 3)
 		itemButton.add_theme_font_size_override("font_size",9)
 		itemButton.set_text(item['name'])
 		itemButton.set_button_icon(load(item['sprite_data']))
@@ -232,7 +232,7 @@ func update_player_inventory():
 		itemButton.set_button_group(buttongroup)
 		inventoryList.add_child(itemButton)
 		itemButton.pressed.connect(buttonLoreShow.bind(item))
-		itemButton.get_popup().index_pressed.connect(inventoryItemPopupMenu.bind(item))
+		itemButton.get_popup().id_pressed.connect(inventoryItemPopupMenu.bind(item))
 		slotMenu.index_pressed.connect(addItemToSlot.bind(item))
 
 func addItemToSlot(slot_index, item):
@@ -245,10 +245,15 @@ func addItemToSlot(slot_index, item):
 	update_quick_slots()
 	
 func removeItemFromInventory(item):
-	# remove from player_data['inventory']
+	# remove item from player_data['inventory']
 	var i = player_data['inventory'].find(item['id'])
+
 	if i != -1:
 		player_data['inventory'].remove_at(i)
+		# if item is a flashlight turn it off
+		if item['id'] == "item012":
+			light.hide()
+	
 	# if item is in a slot remove it too
 	removeItemFromQuickslot(item)
 	
@@ -258,13 +263,16 @@ func removeItemFromQuickslot(item):
 			# remove the item from the quickslot
 			player_data['quick_slots'][key] = null
 			
-func inventoryItemPopupMenu(index, item):
-	print(index)
-	if index == 2: # for consuming items
+func inventoryItemPopupMenu(id, item):
+	if id == 1: # for consuming items
 		consumeItem(item)
+		get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
 		# if the item is in a slot, remove the slot too
-	if index == 3: # for discarding items
+	if id == 2: # for equipping items
+		get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
+	if id == 3: # for discarding items
 		removeItemFromInventory(item)
+		get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
 		# if the item is in a slot, remove the slot too
 	update_player_inventory()
 	update_quick_slots()
@@ -350,6 +358,8 @@ func _input(event):
 		current_item_index = 5
 		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))				
 	if event.is_action_pressed("item_left"):
+		# cancel any currently running spells
+		spell_active = false
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
 		if current_item_index == 0:
 			current_item_index = 5
@@ -357,6 +367,8 @@ func _input(event):
 			current_item_index -= 1
 		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_right"):
+		# cancel any currently running spells
+		spell_active = false
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
 		if current_item_index == 5:
 			current_item_index = 0
