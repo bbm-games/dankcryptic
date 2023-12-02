@@ -821,19 +821,35 @@ text = "+"
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer9"]
+custom_minimum_size = Vector2(107, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_f521b")
 theme_override_font_sizes/font_size = 10
 text = "Level: "
 
+[node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 2
+
 [node name="HBoxContainer10" type="HBoxContainer" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer10"]
+custom_minimum_size = Vector2(107, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("7_f521b")
 theme_override_font_sizes/font_size = 10
 text = "Exp:"
+
+[node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer10"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 2
 
 [node name="Inventory" type="HBoxContainer" parent="CanvasLayer2/playerMenu"]
 visible = false
@@ -859,6 +875,7 @@ theme_override_font_sizes/bold_font_size = 9
 theme_override_font_sizes/italics_font_size = 9
 theme_override_font_sizes/bold_italics_font_size = 9
 theme_override_font_sizes/mono_font_size = 9
+bbcode_enabled = true
 
 [node name="Lore" type="HBoxContainer" parent="CanvasLayer2/playerMenu"]
 visible = false

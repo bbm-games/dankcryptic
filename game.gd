@@ -125,11 +125,16 @@ func _ready():
 	# set up the lore tab 
 	get_node("CanvasLayer2/playerMenu/Lore/VBoxContainer2/RichTextLabel").set_text(lore_data['promotional'])
 
+	
+	# OPTIONAL: Give player all the items
+	for item in all_quick_items:
+		player_data['inventory'].append(item['id'])
+	
 	# set up the player inventory
 	update_player_inventory()
 	
 	# set up the player stats tab
-	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer2/vocationDesc").set_text(searchDocsInList(lore_data['vocations'],'class_name', player_data['vocation'], 'lore'))
+	update_player_stats_tab()
 	
 	# set up the player summary bar
 	update_player_summary_bar()
@@ -159,6 +164,19 @@ func returnDocInList(list, uniquekey, uniqueid):
 		if doc[uniquekey] == uniqueid:
 			return doc
 	return null
+	
+func update_player_stats_tab():
+	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer2/vocationDesc").set_text(searchDocsInList(lore_data['vocations'],'class_name', player_data['vocation'], 'lore'))
+	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer/Label2").set_text(str(player_data['stats']['attack']))
+	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer2/Label2").set_text(str(player_data['stats']['defense']))
+	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer3/Label2").set_text(str(player_data['stats']['strength']))
+	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer4/Label2").set_text(str(player_data['stats']['health']))
+	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer5/Label2").set_text(str(player_data['stats']['stamina']))
+	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer6/Label2").set_text(str(player_data['stats']['magic']))
+	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer7/Label2").set_text(str(player_data['stats']['wisdom']))
+	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer8/Label2").set_text(str(player_data['stats']['mana']))
+	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer9/Label2").set_text(str(player_data['current_level']))
+	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer10/Label2").set_text(str(player_data['current_exp']))
 
 # updates the player summary bar text at the top of the screen
 func update_player_summary_bar():
@@ -195,9 +213,8 @@ func update_player_inventory():
 	var buttongroup = ButtonGroup.new()
 	var buttonLoreShow = func(item):
 		var desc = get_node("CanvasLayer2/playerMenu/Inventory/HBoxContainer/selectedInventoryItemDesc")
-		desc.set_text(JSON.stringify(item))
-	# if you wanna give the player an entire inventory set
-	#for item in all_quick_items:
+		desc.set_text('[center][font_size=12]\n' + item['name'] + "[/font_size]\n[img=50]" + item['sprite_data'] + "[/img][/center]" + '\n' + JSON.stringify(item))
+	
 	var current_inventory_items = []
 	for item_id in player_data['inventory']:
 		current_inventory_items.append(returnDocInList(all_quick_items, 'id', item_id))
@@ -227,13 +244,16 @@ func update_player_inventory():
 				itemButton.get_popup().add_item("Equip", 2)
 		itemButton.get_popup().add_item("Discard", 3)
 		itemButton.add_theme_font_size_override("font_size",9)
-		itemButton.set_text(item['name'])
+		if item['id'] in player_data['quick_slots'].values():
+			itemButton.set_text(item['name'] + '\nin quick slot')
+		else:
+			itemButton.set_text(item['name'])
 		itemButton.set_button_icon(load(item['sprite_data']))
 		itemButton.set_toggle_mode(true)
 		itemButton.set_button_group(buttongroup)
 		inventoryList.add_child(itemButton)
 		itemButton.pressed.connect(buttonLoreShow.bind(item))
-		itemButton.get_popup().id_pressed.connect(inventoryItemPopupMenu.bind(item))
+		itemButton.get_popup().id_pressed.connect(inventoryItemPopupMenuPress.bind(item))
 		slotMenu.index_pressed.connect(addItemToSlot.bind(item))
 
 func addItemToSlot(slot_index, item):
@@ -244,6 +264,7 @@ func addItemToSlot(slot_index, item):
 	player_data['quick_slots']['slot'+str(slot_index+1)] = item['id']
 	
 	update_quick_slots()
+	update_player_inventory()
 	
 func removeItemFromInventory(item):
 	# remove item from player_data['inventory']
@@ -264,19 +285,20 @@ func removeItemFromQuickslot(item):
 			# remove the item from the quickslot
 			player_data['quick_slots'][key] = null
 			
-func inventoryItemPopupMenu(id, item):
+func inventoryItemPopupMenuPress(id, item):
 	if id == 1: # for consuming items
 		consumeItem(item)
 		get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
-		# if the item is in a slot, remove the slot too
 	if id == 2: # for equipping items
 		get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
 	if id == 3: # for discarding items
 		removeItemFromInventory(item)
 		get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
-		# if the item is in a slot, remove the slot too
+		
 	update_player_inventory()
 	update_quick_slots()
+	# clear any current item description showing
+	get_node("CanvasLayer2/playerMenu/Inventory/HBoxContainer/selectedInventoryItemDesc").set_text("")
 	
 func consumeItem(item):
 	var item_id = item['id']
