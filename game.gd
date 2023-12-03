@@ -192,8 +192,13 @@ func update_player_stats_tab():
 	otherstats.append_text("Weight: " + str(player_data['weight']))
 	otherstats.append_text("\nInventory Weight: " + str(player_data['inventory_weight'])) 
 	otherstats.append_text("\nSpeed: " + str(base_speed))
-	otherstats.append_text('\n' + JSON.stringify(player_data['statuses']))
-
+	otherstats.append_text('\n\n' + "[color=purple]Poisoned[/color]: " + str(player_data['statuses']['poisoned']))
+	otherstats.append_text('\n' + "[color=orange]Burned[/color]: " + str(player_data['statuses']['burned']))
+	otherstats.append_text('\n' + "[color=blue]Drenched[/color]: " + str(player_data['statuses']['drenched']))
+	otherstats.append_text('\n' + "[color=green]Confused[/color]: " + str(player_data['statuses']['confused']))
+	otherstats.append_text('\n' + "[color=yellow]Paralyzed[/color]: " + str(player_data['statuses']['paralyzed']))
+	otherstats.append_text('\n' + "[color=red]Bloodless[/color]: " + str(player_data['statuses']['bloodless']))
+	
 # updates the player summary bar text at the top of the screen
 func update_player_summary_bar():
 	get_node("HUDLayer/CanvasGroup/playersummarybarcontainer/playersummarybar").set_text(player_data['name'] + ' | Level ' + str(player_data['current_level']) + ' | ' + player_data['vocation'])
@@ -475,8 +480,9 @@ func _input(event):
 			
 			# redraw the quick slots
 			update_quick_slots()
-			# redraw the inventory
-			update_player_inventory()
+			# redraw the inventory if it was open during consumptions
+			if playerMenu.visible:
+				update_player_inventory()
 			
 	if event.is_action_released("item_consume"):
 		if current_item_index == 3:
@@ -540,6 +546,7 @@ func _input(event):
 		if playerMenu.visible:
 			playerMenu.hide()
 		else:
+			update_player_inventory()
 			playerMenu.show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
