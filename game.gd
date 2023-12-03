@@ -620,7 +620,11 @@ func _process(delta):
 	# check to see if collision occured
 	if collision_data:
 		chatBox.append_text("\n[i]Player has collided.[/i]")
-		print(collision_data.get_collider())
+		var collider = collision_data.get_collider()
+		print(collider)
+		
+		# if collision is a coin, delete the coin node and increment current gold
+		#collider.hit_coin.connect(hit_coin)
 	
 	# Spell casting shit
 	if spell_active && player_data['current_mana'] > 0: 
@@ -652,6 +656,13 @@ func _process(delta):
 
 	# redraw mana bar
 	mana_bar.set_size(Vector2(player_data['current_mana']/player_data['max_mana'] * mana_bar_length, mana_bar_height))
+
+# for when you walk over coin
+func hit_coin():
+	# play coin collision sound
+	get_node('%coinCollisionSound').play()
+	player_data['gold'] += 1
+	update_player_summary_bar()
 		
 # Options menu buttons 
 func _on_button_3_pressed():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bulhn4rc843jq"]
+[gd_scene load_steps=19 format=3 uid="uid://bulhn4rc843jq"]
 
 [ext_resource type="Texture2D" uid="uid://bt5e0mken3goj" path="res://assets/griffith.png" id="3_jv5tp"]
 [ext_resource type="AudioStream" uid="uid://ck0isojkyewou" path="res://assets/main.mp3" id="3_qhh2k"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cpgipefc7y1ek" path="res://assets/chaticon.png" id="5_xhq85"]
 [ext_resource type="AudioStream" uid="uid://bsxdj6do18f4k" path="res://assets/sounds/suprise.wav" id="6_2goit"]
 [ext_resource type="AudioStream" uid="uid://dl3p5p2c3jhh2" path="res://assets/sounds/chat.wav" id="6_q2qxw"]
+[ext_resource type="Script" path="res://goldPiece.gd" id="8_4flet"]
+[ext_resource type="Texture2D" uid="uid://c8jpbf2bhxlq6" path="res://assets/coin.png" id="8_rpth0"]
 [ext_resource type="Texture2D" uid="uid://dtcm1ghr12nia" path="res://assets/DarkDungeon.png" id="DarkDungeon"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gdev4"]
@@ -388,6 +390,10 @@ _data = {
 "bounce": SubResource("Animation_5djxa")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnbo"]
+radius = 3.0
+height = 6.0
+
 [node name="Node2D" type="Node2D"]
 
 [node name="dungeon" type="TileMap" parent="."]
@@ -453,5 +459,72 @@ libraries = {
 [node name="surpriseSound" type="AudioStreamPlayer" parent="npc1"]
 stream = ExtResource("6_2goit")
 
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+enabled = false
+
+[node name="goldPiece" type="Area2D" parent="."]
+modulate = Color(0.14902, 0.14902, 0.14902, 1)
+position = Vector2(394, 111)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("8_4flet")
+
+[node name="coinCollisionShape" type="CollisionShape2D" parent="goldPiece"]
+shape = SubResource("CapsuleShape2D_cvnbo")
+
+[node name="goldSprite" type="Sprite2D" parent="goldPiece"]
+z_index = 1
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("8_rpth0")
+
+[node name="goldPiece2" type="Area2D" parent="."]
+modulate = Color(0.14902, 0.14902, 0.14902, 1)
+position = Vector2(446, 95)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("8_4flet")
+
+[node name="coinCollisionShape" type="CollisionShape2D" parent="goldPiece2"]
+shape = SubResource("CapsuleShape2D_cvnbo")
+
+[node name="goldSprite" type="Sprite2D" parent="goldPiece2"]
+z_index = 1
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("8_rpth0")
+
+[node name="goldPiece3" type="Area2D" parent="."]
+modulate = Color(0.14902, 0.14902, 0.14902, 1)
+position = Vector2(417, 130)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("8_4flet")
+
+[node name="coinCollisionShape" type="CollisionShape2D" parent="goldPiece3"]
+shape = SubResource("CapsuleShape2D_cvnbo")
+
+[node name="goldSprite" type="Sprite2D" parent="goldPiece3"]
+z_index = 1
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("8_rpth0")
+
+[node name="goldPiece4" type="Area2D" parent="."]
+modulate = Color(0.14902, 0.14902, 0.14902, 1)
+position = Vector2(424, 111)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("8_4flet")
+
+[node name="coinCollisionShape" type="CollisionShape2D" parent="goldPiece4"]
+shape = SubResource("CapsuleShape2D_cvnbo")
+
+[node name="goldSprite" type="Sprite2D" parent="goldPiece4"]
+z_index = 1
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("8_rpth0")
+
 [connection signal="body_entered" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_entered"]
 [connection signal="body_shape_exited" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_shape_exited"]
+[connection signal="body_entered" from="goldPiece" to="goldPiece" method="_on_body_entered"]
+[connection signal="body_entered" from="goldPiece2" to="goldPiece2" method="_on_body_entered"]
+[connection signal="body_entered" from="goldPiece3" to="goldPiece3" method="_on_body_entered"]
+[connection signal="body_entered" from="goldPiece4" to="goldPiece4" method="_on_body_entered"]

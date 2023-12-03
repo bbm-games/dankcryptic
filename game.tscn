@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=39 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Texture2D" uid="uid://dty6ym387qvf4" path="res://assets/hudbars.png" id="1_7r21i"]
 [ext_resource type="Script" path="res://HUDLayer.gd" id="1_47glo"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://b68m0eyu6s6gc" path="res://assets/sounds/shieldsound.wav" id="14_idgaw"]
 [ext_resource type="AudioStream" uid="uid://py6rar5tguch" path="res://assets/sounds/attacksound.wav" id="15_ewa8a"]
 [ext_resource type="AudioStream" uid="uid://v5srpkj6a8ui" path="res://assets/sounds/magic_attack.mp3" id="16_omwxg"]
+[ext_resource type="AudioStream" uid="uid://dpbyk5u4nr863" path="res://assets/sounds/coin.wav" id="20_e3m1t"]
 
 [sub_resource type="Animation" id="Animation_knli3"]
 length = 0.001
@@ -490,7 +491,8 @@ texture = ExtResource("3_ctx3v")
 z_index = 3
 y_sort_enabled = true
 position = Vector2(297, 156)
-collision_layer = 3
+collision_layer = 7
+collision_mask = 5
 platform_wall_layers = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
@@ -998,6 +1000,10 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="coinCollisionSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("20_e3m1t")
 
 [connection signal="mouse_entered" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_exited"]
