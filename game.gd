@@ -108,13 +108,10 @@ func _ready():
 	chatPopup = get_node("HUDLayer/chatPopup")
 	chatPopup.hide()
 	
-	# set the textures for the items in the player's quickslots
-	# make sure you update the quickslots everytime the player changes shit
-	update_quick_slots()
-	
 	# get the item slot frame
 	item_slot_frame = get_node("HUDLayer/CanvasGroup/slotFrame")
 	item_slot_frame_initial_position = item_slot_frame.get_position()
+	
 	# load in the options menu
 	var options_resource = ResourceLoader.load("res://options.tscn")
 	var options_scene = options_resource.instantiate()
@@ -138,6 +135,10 @@ func _ready():
 	
 	# set up the player summary bar
 	update_player_summary_bar()
+	
+	# set the textures for the items in the player's quickslots
+	# make sure you update the quickslots everytime the player changes shit
+	update_quick_slots()
 	
 	# load in actual game map
 	#var scene_resource = ResourceLoader.load(boss1ScenePath)
@@ -165,6 +166,14 @@ func returnDocInList(list, uniquekey, uniqueid):
 			return doc
 	return null
 	
+# useful function for making an array unique
+func array_unique(array: Array) -> Array:
+	var unique: Array = []
+	for item in array:
+		if not unique.has(item):
+			unique.append(item)
+	return unique
+	
 func update_player_stats_tab():
 	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer2/vocationDesc").set_text(searchDocsInList(lore_data['vocations'],'class_name', player_data['vocation'], 'lore'))
 	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer/Label2").set_text(str(player_data['stats']['attack']))
@@ -191,16 +200,23 @@ func update_quick_slots():
 			var texturepath = searchDocsInList(all_quick_items, "id", item_id, 'sprite_data')
 			var itemname = searchDocsInList(all_quick_items, "id", item_id, 'name')
 			var itemdesc = searchDocsInList(all_quick_items, "id", item_id, 'description')
+			var consumable = searchDocsInList(all_quick_items, "id", item_id, 'is_consumable')
 			if texturepath:	
 				#print(texturepath)
 				# draw the item textures in the quickslots
 				get_node("%" + slot).set_texture(load(texturepath))
 				get_node("%" + slot).set_tooltip_text(itemname + '\n' + itemdesc)
+				get_node("%" + slot + '/Label').set_text("")
+				if consumable:
+					var count = player_data['inventory'].count(item_id)
+					if count > 1:
+						get_node("%" + slot + '/Label').set_text(str(player_data['inventory'].count(item_id)))
 		else:
 			# there is not item in the slot
 			# clean up the slot
 			get_node("%" + slot).texture = null
 			get_node("%" + slot).set_tooltip_text("")
+			get_node("%" + slot + '/Label').set_text("")
 
 # updates the player inventory
 func update_player_inventory():
@@ -215,10 +231,12 @@ func update_player_inventory():
 		var desc = get_node("CanvasLayer2/playerMenu/Inventory/HBoxContainer/selectedInventoryItemDesc")
 		desc.set_text('[center][font_size=12]\n' + item['name'] + "[/font_size]\n[img=50]" + item['sprite_data'] + "[/img][/center]" + '\n' + JSON.stringify(item))
 	
+	# load in all the items from the player inventory json data
 	var current_inventory_items = []
 	for item_id in player_data['inventory']:
 		current_inventory_items.append(returnDocInList(all_quick_items, 'id', item_id))
-	for item in current_inventory_items:
+	
+	for item in array_unique(current_inventory_items):
 		var itemButton = MenuButton.new()
 		var slotMenu = PopupMenu.new()
 		slotMenu.set_name('slotMenu')
@@ -244,10 +262,13 @@ func update_player_inventory():
 				itemButton.get_popup().add_item("Equip", 2)
 		itemButton.get_popup().add_item("Discard", 3)
 		itemButton.add_theme_font_size_override("font_size",9)
+		var itemButtonText = item['name']
+		if "is_stackable" in item.keys():
+			if item['is_stackable']:
+				itemButtonText += ' (' + str(player_data['inventory'].count(item['id'])) + ')'
 		if item['id'] in player_data['quick_slots'].values():
-			itemButton.set_text(item['name'] + '\nin quick slot')
-		else:
-			itemButton.set_text(item['name'])
+			itemButtonText += "\nin quick slot"
+		itemButton.set_text(itemButtonText)
 		itemButton.set_button_icon(load(item['sprite_data']))
 		itemButton.set_toggle_mode(true)
 		itemButton.set_button_group(buttongroup)
@@ -272,17 +293,17 @@ func removeItemFromInventory(item):
 
 	if i != -1:
 		player_data['inventory'].remove_at(i)
-		# if item is a flashlight turn it off
+		# if item is a flashlight turn it off as it is discarded from inventory
 		if item['id'] == "item012":
 			light.hide()
 	
-	# if item is in a slot remove it too
-	removeItemFromQuickslot(item)
+	# if there's not another item of its kind left in inventory, remove from quickslot
+	if player_data['inventory'].find(item['id']) == -1:
+		removeItemFromQuickslot(item)
 	
 func removeItemFromQuickslot(item):
 	for key in player_data['quick_slots'].keys():
 		if item['id'] == player_data['quick_slots'][key]:
-			# remove the item from the quickslot
 			player_data['quick_slots'][key] = null
 			
 func inventoryItemPopupMenuPress(id, item):
@@ -409,8 +430,9 @@ func _input(event):
 				if item['is_consumable']:
 					consumeItem(item)
 					get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
-					# remove item when it's effects are done being applied
-					player_data['quick_slots']['slot' + str(current_item_index+1)] = null
+					# remove item when it's effects are done being applied and there's none left in inventory
+					if player_data['inventory'].find(item['id']) == -1:
+						player_data['quick_slots']['slot' + str(current_item_index+1)] = null
 					
 			# CODE FOR SPECIAL ITEMS LIKE SPELLS AND TOGGLE ITEMS
 			# if it's the flashlight toggle it

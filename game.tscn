@@ -233,12 +233,36 @@ offset_top = 289.0
 offset_right = 41.0
 offset_bottom = 320.0
 
+[node name="Label" type="Label" parent="HUDLayer/CanvasGroup/slot1"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -11.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 2
+
 [node name="slot2" type="TextureRect" parent="HUDLayer/CanvasGroup"]
 unique_name_in_owner = true
 offset_left = 56.0
 offset_top = 289.0
 offset_right = 87.0
 offset_bottom = 320.0
+
+[node name="Label" type="Label" parent="HUDLayer/CanvasGroup/slot2"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -11.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 2
 
 [node name="slot3" type="TextureRect" parent="HUDLayer/CanvasGroup"]
 unique_name_in_owner = true
@@ -247,12 +271,36 @@ offset_top = 289.0
 offset_right = 133.0
 offset_bottom = 320.0
 
+[node name="Label" type="Label" parent="HUDLayer/CanvasGroup/slot3"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -11.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 2
+
 [node name="slot4" type="TextureRect" parent="HUDLayer/CanvasGroup"]
 unique_name_in_owner = true
 offset_left = 148.0
 offset_top = 289.0
 offset_right = 179.0
 offset_bottom = 320.0
+
+[node name="Label" type="Label" parent="HUDLayer/CanvasGroup/slot4"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -11.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 2
 
 [node name="slot5" type="TextureRect" parent="HUDLayer/CanvasGroup"]
 unique_name_in_owner = true
@@ -261,12 +309,36 @@ offset_top = 289.0
 offset_right = 225.0
 offset_bottom = 320.0
 
+[node name="Label" type="Label" parent="HUDLayer/CanvasGroup/slot5"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -11.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 2
+
 [node name="slot6" type="TextureRect" parent="HUDLayer/CanvasGroup"]
 unique_name_in_owner = true
 offset_left = 240.0
 offset_top = 289.0
 offset_right = 271.0
 offset_bottom = 320.0
+
+[node name="Label" type="Label" parent="HUDLayer/CanvasGroup/slot6"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -11.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_font_sizes/font_size = 9
+horizontal_alignment = 2
 
 [node name="slotFrame" type="TextureRect" parent="HUDLayer/CanvasGroup"]
 offset_left = 2.0

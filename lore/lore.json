@@ -42,7 +42,8 @@
 	 "current_level":0,
 	 "current_exp":0,
 	  "inventory":[
-		 "item001",
+		"item001",
+	   "item001",
 	   "item019",
 	   "item012",
 	   "spell001"
@@ -1774,6 +1775,7 @@
 		 "id":"item001",
 		 "sprite_data":"res://assets/Item__29.png",
 		 "is_consumable":true,
+	   "is_stackable":true,
 		 "health_replenished":100,
 		 "mana_replenished":0,
 		 "stamina_replenished":0,
@@ -2021,6 +2023,7 @@
 		 "id":"item019",
 		 "sprite_data":"res://assets/Item__31.png",
 		 "is_consumable":true,
+	   "is_stackable":true,
 		 "health_replenished":0,
 		 "mana_replenished":60,
 		 "stamina_replenished":0,
