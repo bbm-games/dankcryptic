@@ -20,14 +20,15 @@
 		 "mana":60
 	  },
 	  "statuses":{
-		 "poisoned":0.2,
-		 "burned":0.7,
-		 "drenched":0.3,
-		 "confused":0.9,
-		 "paralyzed":0.5,
-		 "bloodless":0.4
+		 "poisoned":0.0,
+		 "burned":0.0,
+		 "drenched":0.0,
+		 "confused":0.0,
+		 "paralyzed":0.0,
+		 "bloodless":0.0
 	   },
 	  "weight":80,
+	 "inventory_weight":0,
 	  "max_health":100,
 	  "current_health":100,
 	  "health_regen_rate":0.1,
