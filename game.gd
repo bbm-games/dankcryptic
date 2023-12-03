@@ -47,8 +47,8 @@ var item_slot_frame
 var item_slot_frame_initial_position
 var current_item_index = 0
 var dash = false
-var base_speed = 0.75
-var speed = base_speed
+var base_speed = 1 # will be adjusted dynamically in game by weight and load
+var speed = base_speed # will be adjusted dynamically in game by dashse
 
 var mouse_event_pos
 var emmisionNode
@@ -187,6 +187,13 @@ func update_player_stats_tab():
 	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer9/Label2").set_text(str(player_data['current_level']))
 	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer10/Label2").set_text(str(player_data['current_exp']))
 
+	var otherstats = get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer2/HBoxContainer/otherStats")
+	otherstats.clear()
+	otherstats.append_text("Weight: " + str(player_data['weight']))
+	otherstats.append_text("\nInventory Weight: " + str(player_data['inventory_weight'])) 
+	otherstats.append_text("\nSpeed: " + str(base_speed))
+	otherstats.append_text('\n' + JSON.stringify(player_data['statuses']))
+
 # updates the player summary bar text at the top of the screen
 func update_player_summary_bar():
 	get_node("HUDLayer/CanvasGroup/playersummarybarcontainer/playersummarybar").set_text(player_data['name'] + ' | Level ' + str(player_data['current_level']) + ' | ' + player_data['vocation'])
@@ -226,6 +233,8 @@ func update_player_inventory():
 	for n in inventoryList.get_children():
 		inventoryList.remove_child(n)
 		n.queue_free()
+	
+	# now redraw the children	
 	var buttongroup = ButtonGroup.new()
 	var buttonLoreShow = func(item):
 		var desc = get_node("CanvasLayer2/playerMenu/Inventory/HBoxContainer/selectedInventoryItemDesc")
@@ -235,6 +244,23 @@ func update_player_inventory():
 	var current_inventory_items = []
 	for item_id in player_data['inventory']:
 		current_inventory_items.append(returnDocInList(all_quick_items, 'id', item_id))
+	
+	# get player total item weight
+	var inventory_weight = 0
+	for item in current_inventory_items:
+		if "weight" in item.keys():
+			inventory_weight += item['weight']
+		else:
+			# assume that the weight of an item is one
+			inventory_weight += 1
+	player_data['inventory_weight'] = inventory_weight
+	#print(inventory_weight)
+	# adjust player speed here, based on the weight being carried
+	var apparent_inventory_weight = inventory_weight - player_data['stats']['strength']
+	if apparent_inventory_weight < 0:
+		apparent_inventory_weight = 0
+	base_speed = 1 - (apparent_inventory_weight/player_data['weight'])*0.75
+	update_player_stats_tab() # to reflect new weight and stuff
 	
 	for item in array_unique(current_inventory_items):
 		var itemButton = MenuButton.new()
