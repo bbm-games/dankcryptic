@@ -54,6 +54,9 @@ var mouse_event_pos
 var emmisionNode
 var spell_active
 
+# to programatically simulate an item_consume input event
+var item_consume_event
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -99,6 +102,11 @@ func _ready():
 	#file.close()
 	lore_data = GlobalVars.lore_data
 	all_quick_items = lore_data['items'] + lore_data['spells'] + lore_data['quest_items']
+	
+	# set up the artificial item_consume input event
+	item_consume_event = InputEventAction.new()
+	item_consume_event.action = "item_consume"
+	item_consume_event.pressed = true
 	
 	# set up the patient's chat box
 	chatBox = get_node('HUDLayer/CanvasGroup/chatBox')
@@ -191,7 +199,7 @@ func update_player_stats_tab():
 	otherstats.clear()
 	otherstats.append_text("Weight: " + str(player_data['weight']))
 	otherstats.append_text("\nInventory Weight: " + str(player_data['inventory_weight'])) 
-	otherstats.append_text("\nSpeed: " + str(base_speed))
+	otherstats.append_text("\nBase Speed: " + str(base_speed))
 	otherstats.append_text('\n\n' + "[color=purple]Poisoned[/color]: " + str(player_data['statuses']['poisoned']))
 	otherstats.append_text('\n' + "[color=orange]Burned[/color]: " + str(player_data['statuses']['burned']))
 	otherstats.append_text('\n' + "[color=blue]Drenched[/color]: " + str(player_data['statuses']['drenched']))
@@ -399,6 +407,8 @@ func connect_to_button(button):
 
 func _on_mouse_entered_button():
 	hoverSound.play()
+
+
 	
 func _input(event):
 	#print(event.as_text())
@@ -410,28 +420,46 @@ func _input(event):
 		mouse_event_pos = event.position
 	if event.is_action_pressed("item_1"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		current_item_index = 0
-		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+		if current_item_index == 0 && not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+			Input.parse_input_event(item_consume_event)
+		else:
+			current_item_index = 0
+			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_2"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		current_item_index = 1
-		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+		if current_item_index == 1 && not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+			Input.parse_input_event(item_consume_event)
+		else:
+			current_item_index = 1
+			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_3"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		current_item_index = 2
-		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+		if current_item_index == 2 && not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+			Input.parse_input_event(item_consume_event)
+		else:
+			current_item_index = 2
+			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_4"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		current_item_index = 3
-		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+		if current_item_index == 3 && not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+			Input.parse_input_event(item_consume_event)
+		else:
+			current_item_index = 3
+			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_5"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		current_item_index = 4
-		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+		if current_item_index == 4 && not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+			Input.parse_input_event(item_consume_event)
+		else:
+			current_item_index = 4
+			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_6"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		current_item_index = 5
-		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))				
+		if current_item_index == 5 && not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+			Input.parse_input_event(item_consume_event)
+		else:
+			current_item_index = 5
+			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))				
 	if event.is_action_pressed("item_left"):
 		# cancel any currently running spells
 		spell_active = false
@@ -485,8 +513,11 @@ func _input(event):
 				update_player_inventory()
 			
 	if event.is_action_released("item_consume"):
-		if current_item_index == 3:
-			spell_active = false
+		# this is for stopping casting a spell
+		var item_id = player_data["quick_slots"]['slot' + str(current_item_index+1)]
+		if item_id:
+			if item_id.contains("spell"):
+				spell_active = false
 	if event.is_action_pressed("attack") && !playerMenu.visible && !chatPopup.visible:
 		if not block_held:
 			attack_held = true
