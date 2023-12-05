@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=45 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Texture2D" uid="uid://dty6ym387qvf4" path="res://assets/hudbars.png" id="1_7r21i"]
 [ext_resource type="Script" path="res://HUDLayer.gd" id="1_47glo"]
@@ -18,6 +18,7 @@
 [ext_resource type="Theme" uid="uid://bck6sugoxd40h" path="res://cryptic_theme.tres" id="10_kbx3o"]
 [ext_resource type="AudioStream" uid="uid://b68m0eyu6s6gc" path="res://assets/sounds/shieldsound.wav" id="14_idgaw"]
 [ext_resource type="AudioStream" uid="uid://py6rar5tguch" path="res://assets/sounds/attacksound.wav" id="15_ewa8a"]
+[ext_resource type="Shader" path="res://fire.gdshader" id="16_5vwms"]
 [ext_resource type="AudioStream" uid="uid://v5srpkj6a8ui" path="res://assets/sounds/magic_attack.mp3" id="16_omwxg"]
 [ext_resource type="AudioStream" uid="uid://dpbyk5u4nr863" path="res://assets/sounds/coin.wav" id="20_e3m1t"]
 
@@ -82,6 +83,26 @@ scale_max = 3.0
 color = Color(0.0666667, 1, 1, 1)
 hue_variation_min = -1.0
 hue_variation_max = 1.0
+
+[sub_resource type="Gradient" id="Gradient_4uyyb"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6qdh2"]
+gradient = SubResource("Gradient_4uyyb")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v6gxl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g7kdf"]
+seamless = true
+noise = SubResource("FastNoiseLite_v6gxl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wgb8u"]
+shader = ExtResource("16_5vwms")
+shader_parameter/brighter_color = Color(1, 0.8, 0, 1)
+shader_parameter/middle_color = Color(1, 0.56, 0, 1)
+shader_parameter/darker_color = Color(0.64, 0.2, 0.05, 1)
+shader_parameter/spread = 0.555
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_g7kdf")
+shader_parameter/gradient_tex = SubResource("GradientTexture2D_6qdh2")
 
 [sub_resource type="Animation" id="Animation_et487"]
 length = 0.001
@@ -515,7 +536,7 @@ position_smoothing_enabled = true
 energy = 7.05
 texture = ExtResource("7_45vux")
 
-[node name="ColorRect" type="ColorRect" parent="player"]
+[node name="ShieldColorRect" type="ColorRect" parent="player"]
 visible = false
 material = SubResource("ShaderMaterial_omonw")
 anchors_preset = 8
@@ -547,6 +568,17 @@ bus = &"Sounds"
 [node name="attackSoundPlayer" type="AudioStreamPlayer" parent="player"]
 stream = ExtResource("15_ewa8a")
 bus = &"Sounds"
+
+[node name="FireColorRect" type="ColorRect" parent="player"]
+visible = false
+light_mask = 0
+z_index = 1
+material = SubResource("ShaderMaterial_wgb8u")
+offset_left = -18.0
+offset_top = -19.0
+offset_right = 22.0
+offset_bottom = 21.0
+color = Color(1, 1, 1, 0)
 
 [node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../player/sprite")

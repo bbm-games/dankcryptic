@@ -20,8 +20,8 @@
 		 "mana":60
 	  },
 	  "statuses":{
-		 "poisoned":0.0,
-		 "burned":0.0,
+		 "poisoned":0.4,
+		 "burned":1.5,
 		 "drenched":0.0,
 		 "confused":0.0,
 		 "paralyzed":0.0,

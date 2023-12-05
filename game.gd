@@ -200,12 +200,12 @@ func update_player_stats_tab():
 	otherstats.append_text("Weight: " + str(player_data['weight']))
 	otherstats.append_text("\nInventory Weight: " + str(player_data['inventory_weight'])) 
 	otherstats.append_text("\nBase Speed: " + str(base_speed))
-	otherstats.append_text('\n\n' + "[color=purple]Poisoned[/color]: " + str(player_data['statuses']['poisoned']))
-	otherstats.append_text('\n' + "[color=orange]Burned[/color]: " + str(player_data['statuses']['burned']))
-	otherstats.append_text('\n' + "[color=blue]Drenched[/color]: " + str(player_data['statuses']['drenched']))
-	otherstats.append_text('\n' + "[color=green]Confused[/color]: " + str(player_data['statuses']['confused']))
-	otherstats.append_text('\n' + "[color=yellow]Paralyzed[/color]: " + str(player_data['statuses']['paralyzed']))
-	otherstats.append_text('\n' + "[color=red]Bloodless[/color]: " + str(player_data['statuses']['bloodless']))
+	otherstats.append_text('\n\n' + "[color=purple]Poisoned[/color]: " + str(snapped(player_data['statuses']['poisoned'], 0.01)))
+	otherstats.append_text('\n' + "[color=orange]Burned[/color]: " + str(snapped(player_data['statuses']['burned'],0.01)))
+	otherstats.append_text('\n' + "[color=blue]Drenched[/color]: " + str(snapped(player_data['statuses']['drenched'],0.01)))
+	otherstats.append_text('\n' + "[color=green]Confused[/color]: " + str(snapped(player_data['statuses']['confused'],0.01)))
+	otherstats.append_text('\n' + "[color=yellow]Paralyzed[/color]: " + str(snapped(player_data['statuses']['paralyzed'],0.01)))
+	otherstats.append_text('\n' + "[color=red]Bloodless[/color]: " + str(snapped(player_data['statuses']['bloodless'],0.01)))
 	
 # updates the player summary bar text at the top of the screen
 func update_player_summary_bar():
@@ -373,7 +373,10 @@ func consumeItem(item):
 		var stamina_replenished = searchDocsInList(all_quick_items, 'id', item_id, "stamina_replenished") 
 		var statusNegations = {}
 		statusNegations = searchDocsInList(all_quick_items, 'id', item_id, "statusNegations") 
-		player_data['current_health'] += health_replenished
+		if player_data['current_health'] + health_replenished <= player_data['max_health']:
+			player_data['current_health'] += health_replenished
+		else:
+			player_data['current_health'] = player_data['max_health']
 		if health_replenished > 0:
 			chatBox.append_text("\nReplenished " + str(health_replenished) + " health.")
 		player_data['current_stamina'] += stamina_replenished
@@ -420,43 +423,49 @@ func _input(event):
 		mouse_event_pos = event.position
 	if event.is_action_pressed("item_1"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 0 && not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
-			Input.parse_input_event(item_consume_event)
+		if current_item_index == 0 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
+			if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+				Input.parse_input_event(item_consume_event)
 		else:
 			current_item_index = 0
 			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_2"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 1 && not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
-			Input.parse_input_event(item_consume_event)
+		if current_item_index == 1 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
+			if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+				Input.parse_input_event(item_consume_event)
 		else:
 			current_item_index = 1
 			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_3"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 2 && not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
-			Input.parse_input_event(item_consume_event)
+		if current_item_index == 2 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
+			if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+				Input.parse_input_event(item_consume_event)
 		else:
 			current_item_index = 2
 			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_4"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 3 && not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
-			Input.parse_input_event(item_consume_event)
+		if current_item_index == 3 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
+			if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+				Input.parse_input_event(item_consume_event)
 		else:
 			current_item_index = 3
 			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_5"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 4 && not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
-			Input.parse_input_event(item_consume_event)
+		if current_item_index == 4 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
+			if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+				Input.parse_input_event(item_consume_event)
 		else:
 			current_item_index = 4
 			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
 	if event.is_action_pressed("item_6"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 5 && not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
-			Input.parse_input_event(item_consume_event)
+		if current_item_index == 5 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
+			if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+				Input.parse_input_event(item_consume_event)
 		else:
 			current_item_index = 5
 			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))				
@@ -618,11 +627,11 @@ func _process(delta):
 		#chatBox.append_text("\n[i]Player is attacking.[/i]")
 	if block_held:
 		# show block shield
-		player_body.get_node("ColorRect").show()
+		player_body.get_node("ShieldColorRect").show()
 		#chatBox.append_text("\n[i]Player is blocking.[/i]")
 	else:
 		# hide block shield
-		player_body.get_node("ColorRect").hide()	
+		player_body.get_node("ShieldColorRect").hide()	
 
 	# set up movement
 	if walk_up_held:
@@ -687,7 +696,35 @@ func _process(delta):
 
 	# redraw mana bar
 	mana_bar.set_size(Vector2(player_data['current_mana']/player_data['max_mana'] * mana_bar_length, mana_bar_height))
+	
+	# redraw health bar
+	health_bar.set_size(Vector2(player_data['current_health']/player_data['max_health'] * health_bar_length, health_bar_height))
 
+	# status effect applications
+	if player_data['statuses']["poisoned"] >= 1:
+		# make purple hue on sprite
+		player_sprite.modulate = Color(1,0,1)
+	else:
+		player_sprite.modulate = Color(0.18,0.18,0.18,1)
+	if player_data['statuses']["burned"] >= 1:
+		player_data['current_health'] -= 1 * delta
+		player_body.get_node("FireColorRect").show()	
+	else:
+		player_body.get_node("FireColorRect").hide()
+	
+	# natural status effect mitigation
+	# TODO: can adjust based on class
+	player_data['statuses']["poisoned"] -= 0.02 *delta
+	player_data['statuses']["burned"] -= 0.02 *delta
+	player_data['statuses']["drenched"] -= 0.02 *delta
+	player_data['statuses']["confused"] -= 0.02 *delta
+	player_data['statuses']["paralyzed"] -= 0.02 *delta
+	player_data['statuses']["bloodless"] -= 0.02 *delta
+	for key in player_data['statuses'].keys():
+		if player_data['statuses'][key] < 0:
+			player_data['statuses'][key] = 0
+	update_player_stats_tab()
+	
 # for when you walk over coin
 func hit_coin():
 	# play coin collision sound
