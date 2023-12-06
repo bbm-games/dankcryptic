@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=53 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Texture2D" uid="uid://dty6ym387qvf4" path="res://assets/hudbars.png" id="1_7r21i"]
 [ext_resource type="Script" path="res://HUDLayer.gd" id="1_47glo"]
@@ -16,10 +16,12 @@
 [ext_resource type="Shader" path="res://shield.gdshader" id="9_xiwt1"]
 [ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="10_d3c5g"]
 [ext_resource type="Theme" uid="uid://bck6sugoxd40h" path="res://cryptic_theme.tres" id="10_kbx3o"]
+[ext_resource type="Shader" path="res://crt.gdshader" id="11_q0vo4"]
 [ext_resource type="AudioStream" uid="uid://b68m0eyu6s6gc" path="res://assets/sounds/shieldsound.wav" id="14_idgaw"]
 [ext_resource type="AudioStream" uid="uid://py6rar5tguch" path="res://assets/sounds/attacksound.wav" id="15_ewa8a"]
 [ext_resource type="Shader" path="res://fire.gdshader" id="16_5vwms"]
 [ext_resource type="AudioStream" uid="uid://v5srpkj6a8ui" path="res://assets/sounds/magic_attack.mp3" id="16_omwxg"]
+[ext_resource type="Shader" path="res://lightning.gdshader" id="17_s64by"]
 [ext_resource type="AudioStream" uid="uid://dpbyk5u4nr863" path="res://assets/sounds/coin.wav" id="20_e3m1t"]
 
 [sub_resource type="Animation" id="Animation_knli3"]
@@ -103,6 +105,53 @@ shader_parameter/darker_color = Color(0.64, 0.2, 0.05, 1)
 shader_parameter/spread = 0.555
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_g7kdf")
 shader_parameter/gradient_tex = SubResource("GradientTexture2D_6qdh2")
+
+[sub_resource type="Gradient" id="Gradient_gabys"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uk2wo"]
+gradient = SubResource("Gradient_gabys")
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a1h34"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y5dq8"]
+emission_shape = 3
+emission_box_extents = Vector3(5, 5, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 3.0
+scale_max = 5.0
+color = Color(1, 0, 0.0156863, 1)
+color_ramp = SubResource("GradientTexture1D_a1h34")
+color_initial_ramp = SubResource("GradientTexture1D_uk2wo")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhjsi"]
+shader = ExtResource("17_s64by")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8mfq3"]
+shader = ExtResource("11_q0vo4")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.0
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="Animation" id="Animation_et487"]
 length = 0.001
@@ -579,6 +628,34 @@ offset_top = -19.0
 offset_right = 22.0
 offset_bottom = 21.0
 color = Color(1, 1, 1, 0)
+
+[node name="trail" type="GPUParticles2D" parent="player"]
+z_index = -1
+position = Vector2(1, 16)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_y5dq8")
+lifetime = 3.0
+
+[node name="LightningColorRect" type="ColorRect" parent="player"]
+visible = false
+z_index = 1
+material = SubResource("ShaderMaterial_bhjsi")
+offset_left = 21.0
+offset_top = -12.0
+offset_right = 52.0
+offset_bottom = 28.0
+rotation = 1.5752
+color = Color(1, 1, 1, 0)
+
+[node name="confusionOverlay" type="ColorRect" parent="player"]
+visible = false
+z_index = 3
+material = SubResource("ShaderMaterial_8mfq3")
+offset_left = -297.0
+offset_top = -156.0
+offset_right = 278.0
+offset_bottom = 170.0
 
 [node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../player/sprite")

@@ -34,6 +34,12 @@ var walk_up_held = false
 var walk_down_held = false
 var walk_left_held = false
 var walk_right_held = false
+var last_walk_up_held = false
+var last_walk_down_held = false
+var last_walk_left_held = false
+var last_walk_right_held = false
+var paralyzer = 1
+var confused = false
 var block_held = false
 var attack_held = false
 
@@ -487,7 +493,7 @@ func _input(event):
 		else:
 			current_item_index += 1
 		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
-	if event.is_action_pressed("item_consume"):
+	if event.is_action_pressed("item_consume") and not confused:
 		var item_id = player_data['quick_slots']['slot' + str(current_item_index+1)]
 		# make sure there's actually an item in the slot
 		if item_id:
@@ -521,7 +527,7 @@ func _input(event):
 			if playerMenu.visible:
 				update_player_inventory()
 			
-	if event.is_action_released("item_consume"):
+	if event.is_action_released("item_consume") and not confused:
 		# this is for stopping casting a spell
 		var item_id = player_data["quick_slots"]['slot' + str(current_item_index+1)]
 		if item_id:
@@ -598,20 +604,29 @@ func _process(delta):
 	light.set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.1,.1), rng.randf_range(-.1,.1)))
 	light.energy = 7.05 + rng.randf_range(-1,1)
 	
+	# paralyze status effect
+	if player_data['statuses']["paralyzed"] >= 1:
+		player_body.get_node("LightningColorRect").show()
+		# this is a variable that when multiplied by the speed, kills it
+		paralyzer = 0
+	else:
+		player_body.get_node("LightningColorRect").hide()
+		paralyzer = 1
+		
 	# adjust player's speed based on whether dash status is active
 	# condition to dash
 	if dash && player_data['current_stamina'] > 0 && (walk_down_held or walk_left_held or walk_right_held or walk_up_held):
-		speed = base_speed * 2 
+		speed = base_speed * 2 * paralyzer
 		if player_data['current_stamina'] - player_data['stamina_depl_rate'] * delta >= 0:
 			player_data['current_stamina'] = player_data['current_stamina'] - player_data['stamina_depl_rate']*delta
 		else:
 			player_data['current_stamina'] = 0
 	# cannot dash if no stamina
 	elif dash && player_data['current_stamina'] == 0 && (walk_down_held or walk_left_held or walk_right_held or walk_up_held):
-		speed = base_speed
+		speed = base_speed * paralyzer
 	# only regen stamina if dash isn't held down when the current stamina is fully depleted.
 	else:
-		speed = base_speed
+		speed = base_speed * paralyzer
 		# regen stamina
 		if player_data['current_stamina'] + player_data['stamina_regen_rate'] * delta <= player_data['max_stamina']:
 			player_data['current_stamina'] = player_data['current_stamina'] + player_data['stamina_regen_rate']*delta
@@ -637,26 +652,80 @@ func _process(delta):
 	if walk_up_held:
 		#currentMap.set_position(currentMap.get_position() + speed * Vector2(0, 0.25))
 		#player_body.set_position(player_body.get_position() + speed *Vector2(0, -0.25))
-		collision_data = player_body.move_and_collide(Vector2(0,-1) * speed)
+		collision_data = player_body.move_and_collide(Vector2(0,-1) * speed * paralyzer)
 		playerAnimationPlayer.play("walk_up")
+		last_walk_up_held = true
+		last_walk_down_held = false
+		last_walk_left_held = false
+		last_walk_right_held = false
 	elif walk_down_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(0, -0.25))
 		#player_body.set_position(player_body.get_position() + speed *Vector2(0, 0.25))
-		collision_data = player_body.move_and_collide(Vector2(0,1)* speed)
+		collision_data = player_body.move_and_collide(Vector2(0,1)* speed * paralyzer)
 		playerAnimationPlayer.play("walk_down")
+		last_walk_up_held = false
+		last_walk_down_held = true
+		last_walk_left_held = false
+		last_walk_right_held = false
 	elif walk_left_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(0.25, 0))
 		#player_body.set_position(player_body.get_position() + speed *Vector2(-0.25, 0))
-		collision_data = player_body.move_and_collide(Vector2(-1,0)* speed)
+		collision_data = player_body.move_and_collide(Vector2(-1,0)* speed * paralyzer)
 		playerAnimationPlayer.play("walk_left")
+		last_walk_up_held = false
+		last_walk_down_held = false
+		last_walk_left_held = true
+		last_walk_right_held = false
 	elif walk_right_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(-0.25, 0))			
 		#player_body.set_position(player_body.get_position() + speed *Vector2(0.25, 0))
-		collision_data = player_body.move_and_collide(Vector2(1,0) * speed)
+		collision_data = player_body.move_and_collide(Vector2(1,0) * speed * paralyzer)
 		playerAnimationPlayer.play("walk_right")
+		last_walk_up_held = false
+		last_walk_down_held = false
+		last_walk_left_held = false
+		last_walk_right_held = true
 	else:
 		playerAnimationPlayer.stop()
-		
+
+	# other status effect applications
+	# by default turn their effects off 
+	player_sprite.modulate = Color(0.18,0.18,0.18,1)
+	player_body.get_node("trail").set_emitting(false)
+	player_body.get_node("FireColorRect").hide()
+	if player_data['statuses']["confused"] >= 1:
+		confused = true
+		player_body.get_node("confusionOverlay").show()
+	else:
+		confused = false
+		player_body.get_node("confusionOverlay").hide()
+	if player_data['statuses']["drenched"] >= 1:
+		player_sprite.modulate = Color(0.37,0.62,0.63,1)
+		if last_walk_up_held:
+			collision_data = player_body.move_and_collide((Vector2(rng.randf_range(-1,1), -1).normalized()) * 2 * speed)
+		if last_walk_down_held:
+			collision_data = player_body.move_and_collide((Vector2(rng.randf_range(-1,1), 1).normalized()) * 2 * speed)
+		if last_walk_left_held:
+			collision_data = player_body.move_and_collide((Vector2(-1, rng.randf_range(-1,1)).normalized()) * 2 * speed)
+		if last_walk_right_held:
+			collision_data = player_body.move_and_collide((Vector2(1, rng.randf_range(-1,1)).normalized()) * 2 * speed)
+		player_body.get_node("trail").get_process_material().set_color(Color(0.37,0.62,0.63,1))
+		player_body.get_node("trail").set_emitting(true)
+	if player_data['statuses']["poisoned"] >= 1:
+		# make purple hue on sprite
+		player_sprite.modulate = Color(1,0,1)
+	if player_data['statuses']["burned"] >= 1:
+		player_data['current_health'] -= 1 * delta
+		player_body.get_node("FireColorRect").show()	
+	if player_data['statuses']["bloodless"] >= 1:
+		if walk_down_held or walk_up_held or walk_left_held or walk_right_held:
+			if dash:
+				player_data['current_health'] -= 3 * delta
+			else:
+				player_data['current_health'] -= 2 * delta
+		player_body.get_node("trail").get_process_material().set_color (Color(1,0,0,1))
+		player_body.get_node("trail").set_emitting(true)
+	
 	# check to see if collision occured
 	if collision_data:
 		chatBox.append_text("\n[i]Player has collided.[/i]")
@@ -699,18 +768,6 @@ func _process(delta):
 	
 	# redraw health bar
 	health_bar.set_size(Vector2(player_data['current_health']/player_data['max_health'] * health_bar_length, health_bar_height))
-
-	# status effect applications
-	if player_data['statuses']["poisoned"] >= 1:
-		# make purple hue on sprite
-		player_sprite.modulate = Color(1,0,1)
-	else:
-		player_sprite.modulate = Color(0.18,0.18,0.18,1)
-	if player_data['statuses']["burned"] >= 1:
-		player_data['current_health'] -= 1 * delta
-		player_body.get_node("FireColorRect").show()	
-	else:
-		player_body.get_node("FireColorRect").hide()
 	
 	# natural status effect mitigation
 	# TODO: can adjust based on class
@@ -718,7 +775,7 @@ func _process(delta):
 	player_data['statuses']["burned"] -= 0.02 *delta
 	player_data['statuses']["drenched"] -= 0.02 *delta
 	player_data['statuses']["confused"] -= 0.02 *delta
-	player_data['statuses']["paralyzed"] -= 0.02 *delta
+	player_data['statuses']["paralyzed"] -= 0.1 *delta
 	player_data['statuses']["bloodless"] -= 0.02 *delta
 	for key in player_data['statuses'].keys():
 		if player_data['statuses'][key] < 0:
