@@ -215,8 +215,23 @@ func update_player_stats_tab():
 	
 # updates the player summary bar text at the top of the screen
 func update_player_summary_bar():
-	get_node("HUDLayer/CanvasGroup/playersummarybarcontainer/playersummarybar").set_text(player_data['name'] + ' | Level ' + str(player_data['current_level']) + ' | ' + player_data['vocation'])
-	get_node("HUDLayer/CanvasGroup/playersummarybarcontainer/gold").set_text(str(player_data['gold']))
+	var bar = get_node("HUDLayer/CanvasGroup/playersummarybarcontainer/playersummarybar")
+	bar.clear()
+	bar.append_text(player_data['name'] + ' | Level ' + str(player_data['current_level']) + ' | ' + player_data['vocation'])
+	bar.append_text('\n')
+	if player_data['statuses']["burned"] >= 1:
+		bar.append_text("[img=20]res://assets/fire1.png[/img]")
+	if player_data['statuses']["bloodless"] >= 1:
+		bar.append_text("[img=20]res://assets/dark4.png[/img]")
+	if player_data['statuses']["drenched"] >= 1:
+		bar.append_text("[img=20]res://assets/water2.png[/img]")
+	if player_data['statuses']["poisoned"] >= 1:
+		bar.append_text("[img=20]res://assets/thunder5.png[/img]")
+	if player_data['statuses']["confused"] >= 1:
+		bar.append_text("[img=20]res://assets/earth2.png[/img]")
+	if player_data['statuses']["paralyzed"] >= 1:
+		bar.append_text("[img=20]res://assets/light3.png[/img]")
+	get_node("HUDLayer/CanvasGroup/playersummarybarcontainer/TextureRect/gold").set_text(str(player_data['gold']))
 
 # updates items in player quick slots
 func update_quick_slots():
@@ -781,6 +796,7 @@ func _process(delta):
 		if player_data['statuses'][key] < 0:
 			player_data['statuses'][key] = 0
 	update_player_stats_tab()
+	update_player_summary_bar()
 	
 # for when you walk over coin
 func hit_coin():
@@ -804,5 +820,5 @@ func _on_button_pressed():
 	pauseMenu.hide()
 
 
-func _on_player_menu_tab_changed(tab):
+func _on_player_menu_tab_changed(_tab):
 	get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
