@@ -20,7 +20,10 @@ var player_data
 
 # lore data and stuff derived from it
 var lore_data
-var all_quick_items
+var all_quick_items # contains all the quick items
+var all_weapons
+var all_armors
+var all_items
 
 var currentMap
 var pauseMenu
@@ -107,7 +110,12 @@ func _ready():
 	#player_data = JSON.new().parse_string(file.get_as_text())['character']
 	#file.close()
 	lore_data = GlobalVars.lore_data
-	all_quick_items = lore_data['items'] + lore_data['spells'] + lore_data['quest_items']
+	all_quick_items = lore_data['items'] + lore_data['spells'] + lore_data['questitems']
+	all_weapons = lore_data['weapons']
+	all_armors = lore_data['armors']
+	
+	# TODO: fully add armor support in json
+	all_items = all_quick_items + all_weapons
 	
 	# set up the artificial item_consume input event
 	item_consume_event = InputEventAction.new()
@@ -136,10 +144,17 @@ func _ready():
 	# set up the lore tab 
 	get_node("CanvasLayer2/playerMenu/Lore/VBoxContainer2/RichTextLabel").set_text(lore_data['promotional'])
 
-	
-	# OPTIONAL: Give player all the items
+	# OPTIONAL: Give player all the quick items
 	for item in all_quick_items:
 		player_data['inventory'].append(item['id'])
+	
+	# OPTIONAL: Give player all the weapon items
+	for item in all_weapons:
+		player_data['inventory'].append(item['id'])
+		
+	# OPTIONAL: Give player all the armor items
+	#for item in all_armors:
+	#	player_data['inventory'].append(item['id'])
 	
 	# set up the player inventory
 	update_player_inventory()
@@ -283,7 +298,7 @@ func update_player_inventory():
 	# load in all the items from the player inventory json data
 	var current_inventory_items = []
 	for item_id in player_data['inventory']:
-		current_inventory_items.append(returnDocInList(all_quick_items, 'id', item_id))
+		current_inventory_items.append(returnDocInList(all_items, 'id', item_id))
 	
 	# get player total item weight
 	var inventory_weight = 0
@@ -303,37 +318,81 @@ func update_player_inventory():
 	update_player_stats_tab() # to reflect new weight and stuff
 	
 	for item in array_unique(current_inventory_items):
-		var itemButton = MenuButton.new()
-		var slotMenu = PopupMenu.new()
-		slotMenu.set_name('slotMenu')
-		slotMenu.add_theme_font_size_override("font_size", 9)
-		slotMenu.set_max_size(Vector2(100,900))
-		slotMenu.add_check_item("Slot 1")
-		slotMenu.add_check_item("Slot 2")
-		slotMenu.add_check_item("Slot 3")
-		slotMenu.add_check_item("Slot 4")
-		slotMenu.add_check_item("Slot 5")
-		slotMenu.add_check_item("Slot 6")
+		var itemButton = MenuButton.new()		
 		itemButton.flat = false
-		itemButton.get_popup().add_child(slotMenu)
 		itemButton.get_popup().add_theme_font_size_override("font_size", 9)
 		itemButton.get_popup().set_max_size(Vector2(100,900))
-		itemButton.get_popup().add_submenu_item("Quickslot", "slotMenu")
-		itemButton.get_popup().add_separator()
+		itemButton.add_theme_font_size_override("font_size",9)
+		
+		# for items that are quick slottable:
+		if item['id'].contains("spell") || item['id'].contains("item") || item['id'].contains("questitem"):
+			var slotMenu = PopupMenu.new()
+			slotMenu.set_name('slotMenu')
+			slotMenu.add_theme_font_size_override("font_size", 9)
+			slotMenu.set_max_size(Vector2(100,900))
+			slotMenu.add_check_item("Slot 1")
+			slotMenu.add_check_item("Slot 2")
+			slotMenu.add_check_item("Slot 3")
+			slotMenu.add_check_item("Slot 4")
+			slotMenu.add_check_item("Slot 5")
+			slotMenu.add_check_item("Slot 6")
+			itemButton.get_popup().add_child(slotMenu)		
+			itemButton.get_popup().add_submenu_item("Quickslot", "slotMenu")
+			itemButton.get_popup().add_separator()
+			slotMenu.index_pressed.connect(addItemToSlot.bind(item))
+			
+		# for items that are equippable
+		if "is_equipable" in item.keys():
+			if item['is_equipable']:
+				var equipMenu = PopupMenu.new()
+				equipMenu.set_name('equipMenu')
+				equipMenu.add_theme_font_size_override("font_size", 9)
+				equipMenu.set_max_size(Vector2(100,900))
+				
+				# TODO: only show options based on item type
+				if 'head' in item['slots']:
+					equipMenu.add_check_item("head", 1)
+				if 'back' in item['slots']:
+					equipMenu.add_check_item("back", 2)
+				if 'torso' in item['slots']:
+					equipMenu.add_check_item("torso", 3)
+				if 'leftarm' in item['slots']:
+					equipMenu.add_check_item("leftarm", 4)
+				if 'rightarm' in item['slots']:
+					equipMenu.add_check_item("rightarm", 5)
+				if 'legs' in item['slots']:
+					equipMenu.add_check_item("legs", 6)
+				if 'feet' in item['slots']:
+					equipMenu.add_check_item("feet", 7)
+				if 'talisman1' in item['slots']:
+					equipMenu.add_check_item("talisman1", 8)
+				if 'talisman2' in item['slots']:
+					equipMenu.add_check_item("talisman2", 9)
+				if 'talisman3' in item['slots']:
+					equipMenu.add_check_item("talisman3", 9)
+				if 'talisman4' in item['slots']:
+					equipMenu.add_check_item("talisman4", 10)
+				itemButton.get_popup().add_child(equipMenu)
+				itemButton.get_popup().add_submenu_item("Equip", "equipMenu")
+				itemButton.get_popup().add_separator()
+				equipMenu.id_pressed.connect(addItemToEquip.bind(item))
+		
+		# for items that are consumable
 		if "is_consumable" in item.keys():
 			if item['is_consumable']:
 				itemButton.get_popup().add_item("Consume", 1)
-		if "is_equippable" in item.keys():
-			if item['is_equippable']:
-				itemButton.get_popup().add_item("Equip", 2)
+			
+		# all items will be discardable
 		itemButton.get_popup().add_item("Discard", 3)
-		itemButton.add_theme_font_size_override("font_size",9)
+		
+		# for items that are stackable
 		var itemButtonText = item['name']
 		if "is_stackable" in item.keys():
 			if item['is_stackable']:
 				itemButtonText += ' (' + str(player_data['inventory'].count(item['id'])) + ')'
 		if item['id'] in player_data['quick_slots'].values():
 			itemButtonText += "\nin quick slot"
+		
 		itemButton.set_text(itemButtonText)
 		itemButton.set_button_icon(load(item['sprite_data']))
 		itemButton.set_toggle_mode(true)
@@ -341,8 +400,11 @@ func update_player_inventory():
 		inventoryList.add_child(itemButton)
 		itemButton.pressed.connect(buttonLoreShow.bind(item))
 		itemButton.get_popup().id_pressed.connect(inventoryItemPopupMenuPress.bind(item))
-		slotMenu.index_pressed.connect(addItemToSlot.bind(item))
+		
 
+func addItemToEquip(equip_index, item):
+	pass
+	
 func addItemToSlot(slot_index, item):
 	# try to remove item from quickslots if it's already in there
 	removeItemFromQuickslot(item)
@@ -380,8 +442,6 @@ func removeItemFromQuickslot(item):
 func inventoryItemPopupMenuPress(id, item):
 	if id == 1: # for consuming items
 		consumeItem(item)
-		get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
-	if id == 2: # for equipping items
 		get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
 	if id == 3: # for discarding items
 		removeItemFromInventory(item)
@@ -443,8 +503,6 @@ func connect_to_button(button):
 func _on_mouse_entered_button():
 	hoverSound.play()
 
-
-	
 func _input(event):
 	#print(event.as_text())
 	# Mouse in viewport coordinates.

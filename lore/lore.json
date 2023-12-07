@@ -1,8 +1,5 @@
 {
    "promotional":"In the realm of Dankcrypt, a foreboding darkness has shrouded the land, casting an eternal shadow upon its inhabitants. This high dark fantasy video game plunges players into a treacherous world where ancient evils and malevolent forces reign supreme.\nWithin the depths of Dankcrypt, forgotten ruins and decrepit crypts lay scattered, holding secrets that whisper of a forgotten era. The land is plagued by sinister creatures, twisted abominations born from the darkest recesses of the human psyche. Their haunting presence instills fear and despair in the hearts of even the bravest souls.\nAs players embark on their perilous journey, they will encounter a cast of morally ambiguous characters, each harboring their own hidden agendas and dark pasts. The choices made along the way will shape the destiny of the protagonist, as alliances are forged and broken amidst a backdrop of political intrigue and ancient rivalries.\nThe lore of Dankcrypt is steeped in ancient prophecies and forbidden knowledge, where arcane rituals and forbidden magics hold the key to unlocking the secrets of the realm. Unraveling the mysteries of this twisted world will require unwavering determination, as well as a willingness to confront the darkest aspects of one's own soul.\nPrepare to delve into the depths of Dankcrypt, where the line between light and darkness blurs, and survival is not guaranteed. Only the most courageous and cunning adventurers will have a chance to uncover the truth and bring hope to a land consumed by the unrelenting grip of darkness.",
-   "quest_items":[
-	  
-   ],
    "character":{
 	  "name":"undefined",
 	  "vocation":"Sellsword",
@@ -26,9 +23,9 @@
 		 "confused":0.3,
 		 "paralyzed":0.5,
 		 "bloodless":0.4
-	   },
+	  },
 	  "weight":80,
-	 "inventory_weight":0,
+	  "inventory_weight":0,
 	  "max_health":100,
 	  "current_health":100,
 	  "health_regen_rate":0.1,
@@ -40,29 +37,41 @@
 	  "current_mana":60,
 	  "mana_depl_rate":50,
 	  "mana_regen_rate":5,
-	 "current_level":0,
-	 "current_exp":0,
+	  "current_level":0,
+	  "current_exp":0,
 	  "inventory":[
-		"item001",
-	   "item001",
-	   "item019",
-	   "item012",
-	   "spell001"
+		 "item001",
+		 "item001",
+		 "item019",
+		 "item012",
+		 "spell001"
 	  ],
-	 "quick_slots":{   
-	  "slot1": "item001",
-	  "slot2": "item019",
-	  "slot3": "item012",
-	  "slot4": "spell001",
-	  "slot5": null,
-	  "slot6": null
-
-	},
-	 "story_flags":{
-	   "act_1" : true,
-	   "act_2" : false,
-	   "act_3" : false,
-	 }
+	  "equipment":{
+		 "head":null,
+		 "back":null,
+		 "torso":null,
+		 "leftarm":null,
+		 "rightarm":null,
+		 "legs":null,
+		 "feet":null,
+		 "talisman1":null,
+		 "talisman2":null,
+		 "talisman3":null,
+		 "talisman4":null
+	  },
+	  "quick_slots":{
+		 "slot1":"item001",
+		 "slot2":"item019",
+		 "slot3":"item012",
+		 "slot4":"spell001",
+		 "slot5":null,
+		 "slot6":null
+	  },
+	  "story_flags":{
+		 "act_1":true,
+		 "act_2":false,
+		 "act_3":false
+	  }
    },
    "vocations":[
 	  {
@@ -201,452 +210,313 @@
 		 "weight":75
 	  }
    ],
+   "questitems":[
+	  
+   ],
    "weapons":[
 	  {
-		 "name":"Soulreaper Scythe",
-		 "statusInflictions":{
-			"poisoned":0.6,
-			"burned":0.3,
-			"drenched":0.4,
-			"confused":0.8,
-			"paralyzed":0.2,
-			"bloodless":0.7
-		 },
-		 "loreDescription":"Forged in the bowels of the underworld, the Soulreaper Scythe culls the souls of the living, leaving lasting torment in its wake.",
-		 "rarity":"epic",
+		 "name":"Sword of Desolation",
+		 "description":"A cursed blade that brings despair to its wielder and enemies alike.",
+		 "id":"weapon1",
+		 "sprite_data":"res://assets/Item__01.png",
+		 "weight":0.01,
 		 "slots":[
 			"leftarm",
 			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Crimson Shadowblade",
-		 "statusInflictions":{
-			"poisoned":0.2,
-			"burned":0.7,
-			"drenched":0.3,
-			"confused":0.9,
-			"paralyzed":0.5,
-			"bloodless":0.4
-		 },
-		 "loreDescription":"Imbued with the essence of a fallen demon, the Crimson Shadowblade whispers promises of power to its wielder.",
-		 "rarity":"legendary",
-		 "slots":[
-			"leftarm",
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Whispering Daggers",
-		 "statusInflictions":{
-			"poisoned":0.9,
-			"burned":0.2,
-			"drenched":0.5,
-			"confused":0.7,
-			"paralyzed":0.3,
-			"bloodless":0.6
-		 },
-		 "loreDescription":"Forged by the hands of a secretive assassin cult, the Whispering Daggers allow their wielder to move in silence and strike with lethal precision.",
-		 "rarity":"rare",
-		 "slots":[
-			"leftarm",
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Cursed Axe of Desolation",
-		 "statusInflictions":{
-			"poisoned":0.7,
-			"burned":0.4,
-			"drenched":0.6,
-			"confused":0.2,
-			"paralyzed":0.9,
-			"bloodless":0.5
-		 },
-		 "loreDescription":"Infused with ancient curses and dark magic, the Cursed Axe of Desolation leaves a trail of sorrow and destruction in its wake.",
-		 "rarity":"epic",
-		 "slots":[
-			"leftarm",
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Frostbite Bow",
-		 "statusInflictions":{
-			"poisoned":0.4,
-			"burned":0.7,
-			"drenched":0.2,
-			"confused":0.8,
-			"paralyzed":0.5,
-			"bloodless":0.3
-		 },
-		 "loreDescription":"Crafted in the frozen bowels of the tundra, the Frostbite Bow unleashes arrows imbued with icy chill, freezing the hearts of its targets.",
-		 "rarity":"rare",
-		 "slots":[
-			"leftarm"
-		 ]
-	  },
-	  {
-		 "name":"Blade of Darkness",
-		 "statusInflictions":{
-			"poisoned":0.5,
-			"burned":0.5,
-			"drenched":0.5,
-			"confused":0.5,
-			"paralyzed":0.5,
-			"bloodless":0.5
-		 },
-		 "loreDescription":"A sinister blade shrouded in darkness, this weapon brings forth an aura of malevolence, striking fear into the hearts of its enemies.",
-		 "rarity":"common",
-		 "slots":[
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Venom Fang Dagger",
-		 "statusInflictions":{
-			"poisoned":0.8,
-			"burned":0.3,
-			"drenched":0.5,
-			"confused":0.7,
-			"paralyzed":0.2,
-			"bloodless":0.6
-		 },
-		 "loreDescription":"Infused with deadly venom, the Venom Fang Dagger delivers a swift and silent death, poisoning its victims from within.",
-		 "rarity":"rare",
-		 "slots":[
-			"leftarm",
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Inferno Whip",
-		 "statusInflictions":{
-			"poisoned":0.3,
-			"burned":0.9,
-			"drenched":0.2,
-			"confused":0.7,
-			"paralyzed":0.4,
-			"bloodless":0.5
-		 },
-		 "loreDescription":"A whip imbued with the flames of the underworld, the Inferno Whip leaves its mark with scorching burns and searing pain.",
-		 "rarity":"epic",
-		 "slots":[
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Void Staff",
-		 "statusInflictions":{
-			"poisoned":0.4,
-			"burned":0.3,
-			"drenched":0.6,
-			"confused":0.9,
-			"paralyzed":0.5,
-			"bloodless":0.2
-		 },
-		 "loreDescription":"Forged by dark sorcerers, the Void Staff harnesses the power of the void, casting its victims into eternal darkness and despair.",
-		 "rarity":"legendary",
-		 "slots":[
-			"leftarm",
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Silvermoon Rapier",
-		 "statusInflictions":{
-			"poisoned":0.3,
-			"burned":0.5,
-			"drenched":0.3,
-			"confused":0.2,
-			"paralyzed":0.4,
-			"bloodless":0.7
-		 },
-		 "loreDescription":"A delicate yet deadly weapon, the Silvermoon Rapier glimmers with moonlight, granting its wielder exquisite finesse and precision.",
-		 "rarity":"rare",
-		 "slots":[
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Sting of Betrayal",
-		 "statusInflictions":{
-			"poisoned":0.9,
-			"burned":0.2,
-			"drenched":0.7,
-			"confused":0.3,
-			"paralyzed":0.6,
-			"bloodless":0.4
-		 },
-		 "loreDescription":"A treacherous blade that strikes deep into the hearts of its victims, the Sting of Betrayal is a favorite weapon of assassins and traitors.",
-		 "rarity":"epic",
-		 "slots":[
-			"leftarm",
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Arcane Wand",
-		 "statusInflictions":{
-			"poisoned":0.2,
-			"burned":0.4,
-			"drenched":0.5,
-			"confused":0.8,
-			"paralyzed":0.6,
-			"bloodless":0.3
-		 },
-		 "loreDescription":"A conduit of raw magical energy, the Arcane Wand unleashes devastating spells upon the enemies of its wielder, leaving them stunned and bewildered.",
-		 "rarity":"rare",
-		 "slots":[
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Vampiric Blade",
-		 "statusInflictions":{
-			"poisoned":0.3,
-			"burned":0.4,
-			"drenched":0.6,
-			"confused":0.7,
-			"paralyzed":0.2,
-			"bloodless":0.9
-		 },
-		 "loreDescription":"A cursed weapon that thirsts for blood, the Vampiric Blade drains the life force of its victims, healing its wielder with each strike.",
-		 "rarity":"legendary",
-		 "slots":[
-			"leftarm",
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Stormcaller Staff",
-		 "statusInflictions":{
-			"poisoned":0.5,
-			"burned":0.8,
-			"drenched":0.4,
-			"confused":0.9,
-			"paralyzed":0.3,
-			"bloodless":0.7
-		 },
-		 "loreDescription":"Carved from the heartwood of an ancient lightning-struck tree, the Stormcaller Staff wields the power of thunder and tempest, electrocuting its foes.",
-		 "rarity":"epic",
-		 "slots":[
-			"leftarm"
-		 ]
-	  },
-	  {
-		 "name":"Duskbringer Sword",
-		 "statusInflictions":{
-			"poisoned":0.4,
-			"burned":0.5,
-			"drenched":0.7,
-			"confused":0.3,
-			"paralyzed":0.6,
-			"bloodless":0.2
-		 },
-		 "loreDescription":"Forged at the edge of twilight, the Duskbringer Sword draws strength from darkness, cutting through armor and rending souls.",
-		 "rarity":"rare",
-		 "slots":[
-			"leftarm",
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Moonlight Bow",
-		 "statusInflictions":{
-			"poisoned":0.3,
-			"burned":0.5,
-			"drenched":0.3,
-			"confused":0.2,
-			"paralyzed":0.4,
-			"bloodless":0.7
-		 },
-		 "loreDescription":"Crafted by elven archers under the light of a full moon, the Moonlight Bow showers its targets with silver-tipped arrows, piercing through defenses effortlessly.",
-		 "rarity":"epic",
-		 "slots":[
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Shadowstrike Katar",
-		 "statusInflictions":{
-			"poisoned":0.7,
-			"burned":0.3,
-			"drenched":0.5,
-			"confused":0.8,
-			"paralyzed":0.2,
-			"bloodless":0.4
-		 },
-		 "loreDescription":"A weapon of assassins, the Shadowstrike Katar delivers swift and deadly strikes, leaving its enemies crippled and gasping for breath.",
-		 "rarity":"rare",
-		 "slots":[
-			"leftarm"
-		 ]
-	  },
-	  {
-		 "name":"Death's Embrace Scimitar",
-		 "statusInflictions":{
-			"poisoned":0.2,
-			"burned":0.7,
-			"drenched":0.3,
-			"confused":0.9,
-			"paralyzed":0.5,
-			"bloodless":0.4
-		 },
-		 "loreDescription":"A wicked scimitar crafted for the servants of Death, the Death's Embrace Scimitar severs life with each stroke, embracing entropy and decay.",
-		 "rarity":"legendary",
-		 "slots":[
-			"leftarm",
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Spectral Crossbow",
-		 "statusInflictions":{
-			"poisoned":0.4,
-			"burned":0.3,
-			"drenched":0.6,
-			"confused":0.9,
-			"paralyzed":0.5,
-			"bloodless":0.2
-		 },
-		 "loreDescription":"Crafted from the bones of slain specters, the Spectral Crossbow fires ethereal bolts that pass through solid matter, haunting its targets.",
-		 "rarity":"epic",
-		 "slots":[
-			"leftarm",
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Sunfire Blade",
-		 "statusInflictions":{
-			"poisoned":0.7,
-			"burned":0.9,
-			"drenched":0.2,
-			"confused":0.5,
-			"paralyzed":0.4,
-			"bloodless":0.3
-		 },
-		 "loreDescription":"Forged in the heart of a dying star, the Sunfire Blade harnesses the power of the sun, searing through armor with unrelenting heat.",
-		 "rarity":"legendary",
-		 "slots":[
-			"leftarm",
-			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Shadowstrike Crossbow",
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
 		 "statusInflictions":{
 			"poisoned":0.5,
 			"burned":0.2,
-			"drenched":0.7,
-			"confused":0.3,
-			"paralyzed":0.6,
-			"bloodless":0.4
-		 },
-		 "loreDescription":"A crossbow crafted by the reclusive assassins of the Shadows, the Shadowstrike Crossbow strikes quickly and silently, leaving no trace behind.",
-		 "rarity":"rare",
-		 "slots":[
-			"rightarm"
-		 ]
+			"paralyzed":0.1,
+			"drenched":0.3,
+			"confused":0.4,
+			"bloodless":0.6
+		 }
 	  },
 	  {
-		 "name":"Scepter of Eternal Frost",
-		 "statusInflictions":{
-			"poisoned":0.4,
-			"burned":0.3,
-			"drenched":0.9,
-			"confused":0.5,
-			"paralyzed":0.7,
-			"bloodless":0.2
-		 },
-		 "loreDescription":"Carved from a shard of an eternal glacier, the Scepter of Eternal Frost blasts icy shards, freezing the souls of its enemies.",
-		 "rarity":"epic",
-		 "slots":[
-			"leftarm"
-		 ]
-	  },
-	  {
-		 "name":"Doomhammer",
-		 "statusInflictions":{
-			"poisoned":0.6,
-			"burned":0.7,
-			"drenched":0.4,
-			"confused":0.2,
-			"paralyzed":0.5,
-			"bloodless":0.3
-		 },
-		 "loreDescription":"A massive war hammer forged with demonic blacksmithing, the Doomhammer crushes opponents with devastating blows that leave them shattered.",
-		 "rarity":"rare",
+		 "name":"Axe of Annihilation",
+		 "description":"A fearsome double-headed axe that cleaves through armor with ease.",
+		 "id":"weapon2",
+		 "sprite_data":"res://assets/Item__02.png",
+		 "weight":0.01,
 		 "slots":[
 			"leftarm",
 			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Mistfall Staff",
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
 		 "statusInflictions":{
 			"poisoned":0.2,
 			"burned":0.4,
-			"drenched":0.6,
-			"confused":0.9,
 			"paralyzed":0.3,
-			"bloodless":0.7
-		 },
-		 "loreDescription":"Crafted from enchanted wood found in the heart of a mystical mist, the Mistfall Staff summons ethereal fog that confuses and disorients its enemies.",
-		 "rarity":"epic",
-		 "slots":[
-			"leftarm"
-		 ]
+			"drenched":0.1,
+			"confused":0.6,
+			"bloodless":0.5
+		 }
 	  },
 	  {
-		 "name":"Blade of the Night",
-		 "statusInflictions":{
-			"poisoned":0.3,
-			"burned":0.6,
-			"drenched":0.4,
-			"confused":0.2,
-			"paralyzed":0.7,
-			"bloodless":0.5
-		 },
-		 "loreDescription":"A blade forged by moonlight and darkness, the Blade of the Night guides its wielder through shadow, striking with uncanny precision.",
-		 "rarity":"rare",
+		 "name":"Bow of Shadows",
+		 "description":"A sleek, black bow that allows its user to strike from the darkness.",
+		 "id":"weapon3",
+		 "sprite_data":"res://assets/Item__03.png",
+		 "weight":0.01,
 		 "slots":[
 			"rightarm"
-		 ]
-	  },
-	  {
-		 "name":"Eldritch Staff",
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
 		 "statusInflictions":{
-			"poisoned":0.6,
+			"poisoned":0.1,
 			"burned":0.3,
-			"drenched":0.5,
-			"confused":0.8,
-			"paralyzed":0.4,
-			"bloodless":0.2
-		 },
-		 "loreDescription":"A staff infused with eldritch energies, the Eldritch Staff conjures eldritch abominations and bends reality to its wielder's will.",
-		 "rarity":"legendary",
-		 "slots":[
-			"leftarm"
-		 ]
+			"paralyzed":0.2,
+			"drenched":0.4,
+			"confused":0.5,
+			"bloodless":0.6
+		 }
 	  },
 	  {
-		 "name":"Thunderstrike Warhammer",
-		 "statusInflictions":{
-			"poisoned":0.5,
-			"burned":0.7,
-			"drenched":0.4,
-			"confused":0.9,
-			"paralyzed":0.3,
-			"bloodless":0.6
-		 },
-		 "loreDescription":"A colossal warhammer crackling with lightning, the Thunderstrike Warhammer unleashes thunderous blows that send shockwaves through its foes.",
-		 "rarity":"epic",
+		 "name":"Staff of Sorcery",
+		 "description":"A mystical staff that channels the raw power of arcane magic.",
+		 "id":"weapon4",
+		 "sprite_data":"res://assets/Item__04.png",
+		 "weight":0.01,
 		 "slots":[
 			"leftarm",
 			"rightarm"
-		 ]
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "statusInflictions":{
+			"poisoned":0.3,
+			"burned":0.1,
+			"paralyzed":0.4,
+			"drenched":0.5,
+			"confused":0.2,
+			"bloodless":0.6
+		 }
+	  },
+	  {
+		 "name":"Dagger of Shadows",
+		 "description":"A small, concealed dagger perfect for striking swiftly and silently.",
+		 "id":"weapon5",
+		 "sprite_data":"res://assets/Item__05.png",
+		 "weight":0.01,
+		 "slots":[
+			"leftarm",
+			"rightarm"
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "statusInflictions":{
+			"poisoned":0.5,
+			"burned":0.2,
+			"paralyzed":0.1,
+			"drenched":0.3,
+			"confused":0.4,
+			"bloodless":0.6
+		 }
+	  },
+	  {
+		 "name":"Crossbow of Vengeance",
+		 "description":"A heavy crossbow that strikes fear into the hearts of enemies from a distance.",
+		 "id":"weapon7",
+		 "sprite_data":"res://assets/Item__07.png",
+		 "weight":0.01,
+		 "slots":[
+			"rightarm"
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "statusInflictions":{
+			"poisoned":0.2,
+			"burned":0.4,
+			"paralyzed":0.3,
+			"drenched":0.1,
+			"confused":0.6,
+			"bloodless":0.5
+		 }
+	  },
+	  {
+		 "name":"Scythe of Death",
+		 "description":"A wicked scythe that reaps the souls of those unfortunate enough to face it.",
+		 "id":"weapon8",
+		 "sprite_data":"res://assets/Item__08.png",
+		 "weight":0.01,
+		 "slots":[
+			"leftarm",
+			"rightarm"
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "statusInflictions":{
+			"poisoned":0.4,
+			"burned":0.2,
+			"paralyzed":0.1,
+			"drenched":0.3,
+			"confused":0.5,
+			"bloodless":0.6
+		 }
+	  },
+	  {
+		 "name":"Mace of Ruin",
+		 "description":"A spiked mace that crushes bones and leaves a path of destruction in its wake.",
+		 "id":"weapon9",
+		 "sprite_data":"res://assets/Item__09.png",
+		 "weight":0.01,
+		 "slots":[
+			"leftarm",
+			"rightarm"
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "statusInflictions":{
+			"poisoned":0.3,
+			"burned":0.1,
+			"paralyzed":0.4,
+			"drenched":0.5,
+			"confused":0.2,
+			"bloodless":0.6
+		 }
+	  },
+	  {
+		 "name":"Wand of Sorcery",
+		 "description":"A slender wand that harnesses the elemental forces of nature for devastating spells.",
+		 "id":"weapon10",
+		 "sprite_data":"res://assets/Item__10.png",
+		 "weight":0.01,
+		 "slots":[
+			"rightarm"
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "statusInflictions":{
+			"poisoned":0.1,
+			"burned":0.3,
+			"paralyzed":0.2,
+			"drenched":0.4,
+			"confused":0.5,
+			"bloodless":0.6
+		 }
+	  },
+	  {
+		 "name":"Throwing Knives",
+		 "description":"A set of razor-sharp throwing knives that find their mark with deadly precision.",
+		 "id":"weapon11",
+		 "sprite_data":"res://assets/Item__11.png",
+		 "weight":0.01,
+		 "slots":[
+			"leftarm",
+			"rightarm"
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "statusInflictions":{
+			"poisoned":0.5,
+			"burned":0.2,
+			"paralyzed":0.1,
+			"drenched":0.3,
+			"confused":0.4,
+			"bloodless":0.6
+		 }
+	  },
+	  {
+		 "name":"Sword of Light",
+		 "description":"A gleaming sword that radiates holy energy, capable of vanquishing the forces of darkness.",
+		 "id":"weapon13",
+		 "sprite_data":"res://assets/Item__13.png",
+		 "weight":0.01,
+		 "slots":[
+			"leftarm",
+			"rightarm"
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "statusInflictions":{
+			"poisoned":0.1,
+			"burned":0.2,
+			"paralyzed":0.1,
+			"drenched":0.1,
+			"confused":0.1,
+			"bloodless":0.1
+		 }
+	  },
+	  {
+		 "name":"Dagger of Shadows",
+		 "description":"A wickedly sharp dagger that grants its wielder the ability to strike unseen from the shadows.",
+		 "id":"weapon14",
+		 "sprite_data":"res://assets/Item__14.png",
+		 "weight":0.01,
+		 "slots":[
+			"leftarm",
+			"rightarm"
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "statusInflictions":{
+			"poisoned":0.2,
+			"burned":0.1,
+			"paralyzed":0.1,
+			"drenched":0.1,
+			"confused":0.1,
+			"bloodless":0.1
+		 }
+	  },
+	  {
+		 "name":"Staff of Arcane Power",
+		 "description":"A mystical staff that channels raw arcane energy, unleashing devastating spells upon the enemy.",
+		 "id":"weapon15",
+		 "sprite_data":"res://assets/Item__15.png",
+		 "weight":0.01,
+		 "slots":[
+			"rightarm"
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "statusInflictions":{
+			"poisoned":0.1,
+			"burned":0.1,
+			"paralyzed":0.1,
+			"drenched":0.1,
+			"confused":0.1,
+			"bloodless":0.1
+		 }
+	  },
+	  {
+		 "name":"Axe of Brutality",
+		 "description":"A brutal axe that cleaves through armor and bones, leaving a trail of destruction in its wake.",
+		 "id":"weapon16",
+		 "sprite_data":"res://assets/Item__16.png",
+		 "weight":0.01,
+		 "slots":[
+			"leftarm",
+			"rightarm"
+		 ],
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "statusInflictions":{
+			"poisoned":0.1,
+			"burned":0.1,
+			"paralyzed":0.1,
+			"drenched":0.1,
+			"confused":0.1,
+			"bloodless":0.1
+		 }
 	  }
    ],
    "armors":[
@@ -1316,7 +1186,7 @@
 		 "base_damage":10,
 		 "min_magic_level":5,
 		 "mana_cost":10,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1333,7 +1203,7 @@
 		 "base_damage":30,
 		 "min_magic_level":15,
 		 "mana_cost":20,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0.5,
@@ -1350,7 +1220,7 @@
 		 "base_damage":25,
 		 "min_magic_level":12,
 		 "mana_cost":15,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1367,7 +1237,7 @@
 		 "base_damage":0,
 		 "min_magic_level":8,
 		 "mana_cost":10,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1384,7 +1254,7 @@
 		 "base_damage":40,
 		 "min_magic_level":20,
 		 "mana_cost":25,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1401,7 +1271,7 @@
 		 "base_damage":15,
 		 "min_magic_level":5,
 		 "mana_cost":10,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0.3,
 			"burned":0,
@@ -1418,7 +1288,7 @@
 		 "base_damage":35,
 		 "min_magic_level":18,
 		 "mana_cost":20,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1435,7 +1305,7 @@
 		 "base_damage":25,
 		 "min_magic_level":15,
 		 "mana_cost":15,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1452,7 +1322,7 @@
 		 "base_damage":40,
 		 "min_magic_level":25,
 		 "mana_cost":30,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1469,7 +1339,7 @@
 		 "base_damage":10,
 		 "min_magic_level":5,
 		 "mana_cost":5,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1486,7 +1356,7 @@
 		 "base_damage":15,
 		 "min_magic_level":7,
 		 "mana_cost":10,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1503,7 +1373,7 @@
 		 "base_damage":35,
 		 "min_magic_level":20,
 		 "mana_cost":25,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1520,7 +1390,7 @@
 		 "base_damage":30,
 		 "min_magic_level":15,
 		 "mana_cost":20,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1537,7 +1407,7 @@
 		 "base_damage":0,
 		 "min_magic_level":25,
 		 "mana_cost":30,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1554,7 +1424,7 @@
 		 "base_damage":15,
 		 "min_magic_level":12,
 		 "mana_cost":15,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0.4,
 			"burned":0,
@@ -1571,7 +1441,7 @@
 		 "base_damage":0,
 		 "min_magic_level":8,
 		 "mana_cost":10,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1588,7 +1458,7 @@
 		 "base_damage":10,
 		 "min_magic_level":5,
 		 "mana_cost":5,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1605,7 +1475,7 @@
 		 "base_damage":30,
 		 "min_magic_level":18,
 		 "mana_cost":20,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1622,7 +1492,7 @@
 		 "base_damage":40,
 		 "min_magic_level":25,
 		 "mana_cost":25,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1639,7 +1509,7 @@
 		 "base_damage":20,
 		 "min_magic_level":12,
 		 "mana_cost":15,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1656,7 +1526,7 @@
 		 "base_damage":25,
 		 "min_magic_level":15,
 		 "mana_cost":20,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1673,7 +1543,7 @@
 		 "base_damage":35,
 		 "min_magic_level":20,
 		 "mana_cost":25,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1690,7 +1560,7 @@
 		 "base_damage":0,
 		 "min_magic_level":8,
 		 "mana_cost":10,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1707,7 +1577,7 @@
 		 "base_damage":30,
 		 "min_magic_level":15,
 		 "mana_cost":20,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1724,7 +1594,7 @@
 		 "base_damage":20,
 		 "min_magic_level":12,
 		 "mana_cost":15,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1741,7 +1611,7 @@
 		 "base_damage":0,
 		 "min_magic_level":8,
 		 "mana_cost":10,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1758,7 +1628,7 @@
 		 "base_damage":35,
 		 "min_magic_level":20,
 		 "mana_cost":25,
-		 "sprite_data":"res://assets/Item__39.png",
+		 "sprite_data":"res://assets/Item__36.png",
 		 "statusInflictions":{
 			"poisoned":0,
 			"burned":0,
@@ -1776,7 +1646,7 @@
 		 "id":"item001",
 		 "sprite_data":"res://assets/Item__29.png",
 		 "is_consumable":true,
-	   "is_stackable":true,
+		 "is_stackable":true,
 		 "health_replenished":100,
 		 "mana_replenished":0,
 		 "stamina_replenished":0,
@@ -2024,7 +1894,7 @@
 		 "id":"item019",
 		 "sprite_data":"res://assets/Item__31.png",
 		 "is_consumable":true,
-	   "is_stackable":true,
+		 "is_stackable":true,
 		 "health_replenished":0,
 		 "mana_replenished":60,
 		 "stamina_replenished":0,
