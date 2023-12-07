@@ -160,6 +160,12 @@ func _ready():
 	var scene = scene_resource.instantiate()
 	currentMap = self.get_node("currentMap")
 	currentMap.add_child(scene)
+	playTitleCard(currentMap.get_node('Node2D').map_name)
+
+func playTitleCard(title: String):
+	get_node("HUDLayer/titleCard/areaTitle").set_text(title)
+	get_node("HUDLayer/titleCard/AnimationPlayer").play('fade_in')
+	#get_node("HUDLayer/titleCard").hide()
 
 # useful function for searching through a list of json documents 
 # and retrieving the value for a key for a document that has a certain id

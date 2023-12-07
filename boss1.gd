@@ -6,6 +6,7 @@ var rng
 var bossInitiated = false
 var playerBody
 var tileMap
+var map_name = "Sir Delrith's Chambers"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
