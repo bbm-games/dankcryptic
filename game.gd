@@ -2,6 +2,8 @@ extends Node2D
 
 var rng
 
+var currentZoom = 1
+
 var player_body
 var player_sprite
 var light 
@@ -511,6 +513,19 @@ func _input(event):
 		pass
 	elif event is InputEventMouseMotion:
 		mouse_event_pos = event.position
+	if event.is_action_pressed("zoom_in") and not playerMenu.visible:
+		if currentZoom <= 2:
+			
+			currentZoom += 0.03
+		else:
+			currentZoom = 2
+		player_body.get_node("sprite/Camera2D").set_zoom(Vector2(currentZoom, currentZoom))
+	if event.is_action_pressed("zoom_out") and not playerMenu.visible:
+		if currentZoom >= 0.5:
+			currentZoom -= 0.03
+		else:
+			currentZoom = 0.5
+		player_body.get_node("sprite/Camera2D").set_zoom(Vector2(currentZoom, currentZoom))
 	if event.is_action_pressed("item_1"):
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
 		if current_item_index == 0 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
