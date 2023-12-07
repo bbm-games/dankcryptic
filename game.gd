@@ -257,7 +257,7 @@ func update_quick_slots():
 				if consumable:
 					var count = player_data['inventory'].count(item_id)
 					if count > 1:
-						get_node("%" + slot + '/Label').set_text(str(player_data['inventory'].count(item_id)))
+						get_node("%" + slot + '/Label').set_text(str(count))
 		else:
 			# there is not item in the slot
 			# clean up the slot
@@ -347,6 +347,11 @@ func addItemToSlot(slot_index, item):
 	# try to remove item from quickslots if it's already in there
 	removeItemFromQuickslot(item)
 
+	# get the item in the intended quickslot
+	var oldItemId = player_data['quick_slots']['slot'+str(slot_index+1)]
+	# if item is a flashlight turn it off as it is not in the quickslots anymore
+	if oldItemId == "item012":
+		light.hide()
 	# add item to quickslot, possibly overwriting another item that was there 
 	player_data['quick_slots']['slot'+str(slot_index+1)] = item['id']
 	
@@ -371,7 +376,7 @@ func removeItemFromQuickslot(item):
 	for key in player_data['quick_slots'].keys():
 		if item['id'] == player_data['quick_slots'][key]:
 			player_data['quick_slots'][key] = null
-			
+		
 func inventoryItemPopupMenuPress(id, item):
 	if id == 1: # for consuming items
 		consumeItem(item)
