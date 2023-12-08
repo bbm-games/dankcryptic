@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=66 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Texture2D" uid="uid://dty6ym387qvf4" path="res://assets/hudbars.png" id="1_7r21i"]
 [ext_resource type="Script" path="res://HUDLayer.gd" id="1_47glo"]
@@ -16,13 +16,16 @@
 [ext_resource type="Shader" path="res://shield.gdshader" id="9_xiwt1"]
 [ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="10_d3c5g"]
 [ext_resource type="Theme" uid="uid://bck6sugoxd40h" path="res://cryptic_theme.tres" id="10_kbx3o"]
+[ext_resource type="Script" path="res://player.gd" id="11_4aetu"]
 [ext_resource type="Shader" path="res://crt.gdshader" id="11_q0vo4"]
 [ext_resource type="AudioStream" uid="uid://b68m0eyu6s6gc" path="res://assets/sounds/shieldsound.wav" id="14_idgaw"]
 [ext_resource type="AudioStream" uid="uid://py6rar5tguch" path="res://assets/sounds/attacksound.wav" id="15_ewa8a"]
 [ext_resource type="Shader" path="res://fire.gdshader" id="16_5vwms"]
 [ext_resource type="AudioStream" uid="uid://v5srpkj6a8ui" path="res://assets/sounds/magic_attack.mp3" id="16_omwxg"]
 [ext_resource type="Shader" path="res://lightning.gdshader" id="17_s64by"]
+[ext_resource type="AudioStream" uid="uid://bpeyq6qhoc0s3" path="res://assets/sounds/RPG_Essentials_Free/10_Battle_SFX/15_Impact_flesh_02.wav" id="20_4wopq"]
 [ext_resource type="AudioStream" uid="uid://dpbyk5u4nr863" path="res://assets/sounds/coin.wav" id="20_e3m1t"]
+[ext_resource type="AudioStream" uid="uid://6s7thlqaga3i" path="res://assets/sounds/RPG_Essentials_Free/10_Battle_SFX/39_Block_03.wav" id="21_cbv0g"]
 
 [sub_resource type="Animation" id="Animation_lro5q"]
 length = 0.001
@@ -214,6 +217,44 @@ shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
 
+[sub_resource type="Gradient" id="Gradient_4n1sk"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_22ru1"]
+gradient = SubResource("Gradient_4n1sk")
+
+[sub_resource type="Gradient" id="Gradient_g51w6"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_k4b0j"]
+gradient = SubResource("Gradient_g51w6")
+
+[sub_resource type="Curve" id="Curve_2uawe"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p8wt1"]
+curve = SubResource("Curve_2uawe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c0mhp"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 24.0
+emission_ring_radius = 24.0
+emission_ring_inner_radius = 23.0
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 200, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_p8wt1")
+color = Color(1, 0.670588, 0.101961, 1)
+color_ramp = SubResource("GradientTexture1D_k4b0j")
+color_initial_ramp = SubResource("GradientTexture1D_22ru1")
+
 [sub_resource type="Animation" id="Animation_et487"]
 length = 0.001
 
@@ -331,6 +372,7 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_o5ole")
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
@@ -671,19 +713,20 @@ texture = ExtResource("3_ctx3v")
 [node name="player" type="CharacterBody2D" parent="."]
 z_index = 3
 y_sort_enabled = true
-position = Vector2(297, 156)
+position = Vector2(298, 175)
 collision_layer = 7
 collision_mask = 5
-platform_wall_layers = 1
+script = ExtResource("11_4aetu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 z_index = 2
-position = Vector2(1, 13.5)
+position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_14xon")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="sprite" type="Sprite2D" parent="player"]
 modulate = Color(0.176471, 0.176471, 0.176471, 1)
+position = Vector2(-1, -19)
 scale = Vector2(0.826499, 0.670151)
 texture = ExtResource("6_ui0lc")
 hframes = 4
@@ -693,26 +736,27 @@ vframes = 4
 position_smoothing_enabled = true
 
 [node name="PointLight2D" type="PointLight2D" parent="player"]
+position = Vector2(-1, -19)
 energy = 7.05
 texture = ExtResource("7_45vux")
 
 [node name="ShieldColorRect" type="ColorRect" parent="player"]
-visible = false
 material = SubResource("ShaderMaterial_omonw")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -29.0
-offset_top = -25.0
-offset_right = 31.0
-offset_bottom = 35.0
+offset_left = -30.0
+offset_top = -44.0
+offset_right = 30.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="player"]
 z_index = 1
+position = Vector2(-1, -19)
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_al2uw")
 
@@ -734,15 +778,15 @@ visible = false
 light_mask = 0
 z_index = 1
 material = SubResource("ShaderMaterial_wgb8u")
-offset_left = -18.0
-offset_top = -19.0
-offset_right = 22.0
-offset_bottom = 21.0
+offset_left = -19.0
+offset_top = -38.0
+offset_right = 21.0
+offset_bottom = 2.0
 color = Color(1, 1, 1, 0)
 
 [node name="trail" type="GPUParticles2D" parent="player"]
 z_index = -1
-position = Vector2(1, 16)
+position = Vector2(0, -3)
 emitting = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_y5dq8")
@@ -752,10 +796,10 @@ lifetime = 3.0
 visible = false
 z_index = 1
 material = SubResource("ShaderMaterial_bhjsi")
-offset_left = 21.0
-offset_top = -12.0
-offset_right = 52.0
-offset_bottom = 28.0
+offset_left = 20.0
+offset_top = -31.0
+offset_right = 51.0
+offset_bottom = 9.0
 rotation = 1.5752
 color = Color(1, 1, 1, 0)
 
@@ -763,10 +807,26 @@ color = Color(1, 1, 1, 0)
 visible = false
 z_index = 3
 material = SubResource("ShaderMaterial_8mfq3")
-offset_left = -297.0
-offset_top = -156.0
-offset_right = 278.0
-offset_bottom = 170.0
+offset_left = -298.0
+offset_top = -175.0
+offset_right = 277.0
+offset_bottom = 151.0
+
+[node name="clappedSoundPlayer" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("20_4wopq")
+bus = &"Sounds"
+
+[node name="deflectSoundPlayer" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource("21_cbv0g")
+bus = &"Sounds"
+
+[node name="sparks" type="GPUParticles2D" parent="player"]
+position = Vector2(0, -17)
+emitting = false
+amount = 60
+process_material = SubResource("ParticleProcessMaterial_c0mhp")
+lifetime = 0.3
+one_shot = true
 
 [node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../player/sprite")
@@ -775,6 +835,7 @@ libraries = {
 }
 
 [node name="currentMap" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 2

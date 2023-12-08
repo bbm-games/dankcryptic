@@ -17,6 +17,8 @@ var mana_bar_height
 var health_bar_length
 var health_bar_height
 
+var health_target
+
 # player data
 var player_data
 
@@ -47,6 +49,7 @@ var paralyzer = 1
 var confused = false
 var block_held = false
 var attack_held = false
+var block_held_t_interval = 0
 
 var time_passed = 0.0
 var playerAnimationPlayer
@@ -157,6 +160,9 @@ func _ready():
 	# OPTIONAL: Give player all the armor items
 	#for item in all_armors:
 	#	player_data['inventory'].append(item['id'])
+	
+	# set up this variable for smooth health bar transitions
+	health_target = player_data['current_health']
 	
 	# set up the player inventory
 	update_player_inventory()
@@ -643,6 +649,7 @@ func _input(event):
 	if event.is_action_pressed("block"):
 		if not attack_held:
 			block_held = true
+			block_held_t_interval = 0
 			get_node("player/shieldSoundPlayer").play()
 		else:
 			block_held = false
@@ -743,6 +750,8 @@ func _process(delta):
 		# show block shield
 		player_body.get_node("ShieldColorRect").show()
 		#chatBox.append_text("\n[i]Player is blocking.[/i]")
+		# start incrementing the time it's being held
+		block_held_t_interval += delta
 	else:
 		# hide block shield
 		player_body.get_node("ShieldColorRect").hide()	
@@ -829,7 +838,8 @@ func _process(delta):
 	if collision_data:
 		chatBox.append_text("\n[i]Player has collided.[/i]")
 		var collider = collision_data.get_collider()
-		print(collider)
+		print("skele " + str(collider.position))
+		print("me " + str(player_body.position))
 		
 		# if collision is a coin, delete the coin node and increment current gold
 		#collider.hit_coin.connect(hit_coin)
@@ -865,8 +875,13 @@ func _process(delta):
 	# redraw mana bar
 	mana_bar.set_size(Vector2(player_data['current_mana']/player_data['max_mana'] * mana_bar_length, mana_bar_height))
 	
-	# redraw health bar
-	health_bar.set_size(Vector2(player_data['current_health']/player_data['max_health'] * health_bar_length, health_bar_height))
+	# redraw health bar in a smooth fashion using health target
+	var health_diff = health_target - player_data['current_health']
+	if health_diff > 0:
+		health_target -= 1
+	if health_diff < 0:
+		health_target += 1
+	health_bar.set_size(Vector2(health_target/player_data['max_health'] * health_bar_length, health_bar_height))
 	
 	# natural status effect mitigation
 	# TODO: can adjust based on class
@@ -881,6 +896,19 @@ func _process(delta):
 			player_data['statuses'][key] = 0
 	update_player_stats_tab()
 	update_player_summary_bar()
+	
+# for removing health
+func subtractHealth(amount):
+	player_data['current_health'] -= amount
+	if player_data['current_health'] <= 0:
+		player_data['current_health'] = 0
+		player_data['is_dead'] = true
+		chatBoxAppend(player_data['name'] + " died.")
+		
+
+# for when you want to output to the chatbox
+func chatBoxAppend(message):
+	chatBox.append_text("\n" + message)
 	
 # for when you walk over coin
 func hit_coin():

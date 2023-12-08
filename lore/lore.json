@@ -19,7 +19,7 @@
 	  "statuses":{
 		 "poisoned":0.4,
 		 "burned":0.5,
-		 "drenched":2.5,
+		 "drenched":0.5,
 		 "confused":0.3,
 		 "paralyzed":0.5,
 		 "bloodless":0.4

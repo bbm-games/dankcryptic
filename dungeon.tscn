@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bulhn4rc843jq"]
+[gd_scene load_steps=31 format=3 uid="uid://bulhn4rc843jq"]
 
 [ext_resource type="Script" path="res://dungeon.gd" id="1_bdp4a"]
 [ext_resource type="Texture2D" uid="uid://bt5e0mken3goj" path="res://assets/griffith.png" id="3_jv5tp"]
@@ -9,6 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://dl3p5p2c3jhh2" path="res://assets/sounds/chat.wav" id="6_q2qxw"]
 [ext_resource type="Script" path="res://goldPiece.gd" id="8_4flet"]
 [ext_resource type="Texture2D" uid="uid://c8jpbf2bhxlq6" path="res://assets/coin.png" id="8_rpth0"]
+[ext_resource type="Texture2D" uid="uid://byfym0ukednyd" path="res://assets/undead/undead_idle_sheet.png" id="11_5t43f"]
+[ext_resource type="Script" path="res://enemy.gd" id="11_hi2bv"]
+[ext_resource type="Texture2D" uid="uid://b52ysywplg4s5" path="res://assets/undead/undead_attack_sheet.png" id="12_xqjnf"]
+[ext_resource type="Texture2D" uid="uid://dwuqfcxb3u8jo" path="res://assets/undead/undead_walk_sheet.png" id="13_ykib3"]
 [ext_resource type="Texture2D" uid="uid://dtcm1ghr12nia" path="res://assets/DarkDungeon.png" id="DarkDungeon"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gdev4"]
@@ -395,13 +399,139 @@ _data = {
 radius = 3.0
 height = 6.0
 
+[sub_resource type="Animation" id="Animation_ltjhe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attack:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("walk:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hitBox/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kg0tn"]
+resource_name = "attack"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_23mgi"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 17]
+}
+
+[sub_resource type="Animation" id="Animation_ohu8y"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("walk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 19]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tn0ai"]
+_data = {
+"RESET": SubResource("Animation_ltjhe"),
+"attack": SubResource("Animation_kg0tn"),
+"idle": SubResource("Animation_23mgi"),
+"walk": SubResource("Animation_ohu8y")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vcpq"]
+size = Vector2(14, 10)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nntj8"]
+radius = 8.08012
+height = 33.6147
+
 [node name="Node2D" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_bdp4a")
 
 [node name="dungeon" type="TileMap" parent="."]
 modulate = Color(0.196078, 0.196078, 0.196078, 1)
 z_index = 1
-y_sort_enabled = true
 position = Vector2(-93, -44)
 scale = Vector2(1.5, 1.5)
 tile_set = SubResource("TileSet_0")
@@ -524,9 +654,54 @@ z_index = 1
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("8_rpth0")
 
+[node name="enemy" type="CharacterBody2D" parent="."]
+modulate = Color(0.164706, 0.164706, 0.164706, 1)
+z_index = 3
+y_sort_enabled = true
+position = Vector2(477, 268)
+scale = Vector2(2, 2)
+script = ExtResource("11_hi2bv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="enemy"]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_tn0ai")
+}
+
+[node name="idle" type="Sprite2D" parent="enemy"]
+visible = false
+position = Vector2(1, -15)
+texture = ExtResource("11_5t43f")
+hframes = 18
+
+[node name="attack" type="Sprite2D" parent="enemy"]
+position = Vector2(1, -15)
+texture = ExtResource("12_xqjnf")
+hframes = 20
+
+[node name="walk" type="Sprite2D" parent="enemy"]
+visible = false
+position = Vector2(1, -15)
+texture = ExtResource("13_ykib3")
+hframes = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy"]
+position = Vector2(1, -5)
+shape = SubResource("RectangleShape2D_1vcpq")
+
+[node name="hitBox" type="Area2D" parent="enemy"]
+visible = false
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/hitBox"]
+position = Vector2(13, -10.5)
+rotation = 2.61799
+shape = SubResource("CapsuleShape2D_nntj8")
+
 [connection signal="body_entered" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_entered"]
 [connection signal="body_shape_exited" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_shape_exited"]
 [connection signal="body_entered" from="goldPiece" to="goldPiece" method="_on_body_entered"]
 [connection signal="body_entered" from="goldPiece2" to="goldPiece2" method="_on_body_entered"]
 [connection signal="body_entered" from="goldPiece3" to="goldPiece3" method="_on_body_entered"]
 [connection signal="body_entered" from="goldPiece4" to="goldPiece4" method="_on_body_entered"]
+[connection signal="body_entered" from="enemy/hitBox" to="enemy" method="_on_hit_box_body_entered"]
