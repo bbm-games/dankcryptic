@@ -20,6 +20,9 @@ func take_damage(damage_val):
 		else:
 			# only partially lose health based on defense level
 			# TODO: make this better
-			main_game_node.subtractHealth(int(damage_val / GlobalVars.player_data['stats']['defense'] * damage_val))
+			var frac = damage_val / GlobalVars.player_data['stats']['defense']
+			if frac > 1:
+				frac = 1
+			main_game_node.subtractHealth(int(frac * damage_val))
 func _physics_process(delta):
 	pass
