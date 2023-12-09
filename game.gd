@@ -71,6 +71,21 @@ var spell_active
 # to programatically simulate an item_consume input event
 var item_consume_event
 
+# for camera shake effect
+# The starting range of possible offsets using random values
+var RANDOM_SHAKE_STRENGTH: float = 30.0
+# Multiplier for lerping the shake strength to zero
+var SHAKE_DECAY_RATE: float = 5.0
+var shake_strength: float = 0.0
+
+func apply_shake(shake_strength_given := RANDOM_SHAKE_STRENGTH) -> void:
+	shake_strength = shake_strength_given
+
+func get_random_offset() -> Vector2:
+	return Vector2(
+		rng.randf_range(-shake_strength, shake_strength),
+		rng.randf_range(-shake_strength, shake_strength)
+	)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -705,6 +720,12 @@ func _input(event):
 func _process(delta):
 	time_passed += delta
 	var collision_data
+	
+	# screen shake effect if needed
+	# Fade out the intensity over time
+	shake_strength = lerp(shake_strength, 0.0, SHAKE_DECAY_RATE * delta)
+	# Shake by adjusting camera.offset so we can move the camera around the level via it's position
+	player_body.get_node('sprite/Camera2D').offset = get_random_offset()
 	
 	# flicker the player's light
 	light.set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.1,.1), rng.randf_range(-.1,.1)))
