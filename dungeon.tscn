@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bulhn4rc843jq"]
+[gd_scene load_steps=32 format=3 uid="uid://bulhn4rc843jq"]
 
 [ext_resource type="Script" path="res://dungeon.gd" id="1_bdp4a"]
 [ext_resource type="Texture2D" uid="uid://bt5e0mken3goj" path="res://assets/griffith.png" id="3_jv5tp"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://enemy.gd" id="11_hi2bv"]
 [ext_resource type="Texture2D" uid="uid://b52ysywplg4s5" path="res://assets/undead/undead_attack_sheet.png" id="12_xqjnf"]
 [ext_resource type="Texture2D" uid="uid://dwuqfcxb3u8jo" path="res://assets/undead/undead_walk_sheet.png" id="13_ykib3"]
+[ext_resource type="AudioStream" uid="uid://b865kmi44feuw" path="res://assets/sounds/Minifantasy_Dungeon_SFX/17_orc_atk_sword_1.wav" id="15_eeipt"]
 [ext_resource type="Texture2D" uid="uid://dtcm1ghr12nia" path="res://assets/DarkDungeon.png" id="DarkDungeon"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gdev4"]
@@ -449,6 +450,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("attack_sound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_kg0tn"]
 resource_name = "attack"
@@ -476,6 +489,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("attack_sound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_23mgi"]
@@ -697,6 +722,11 @@ collision_mask = 4
 position = Vector2(13, -10.5)
 rotation = 2.61799
 shape = SubResource("CapsuleShape2D_nntj8")
+
+[node name="attack_sound" type="AudioStreamPlayer2D" parent="enemy"]
+stream = ExtResource("15_eeipt")
+attenuation = 6.0
+bus = &"Sounds"
 
 [connection signal="body_entered" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_entered"]
 [connection signal="body_shape_exited" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_shape_exited"]
