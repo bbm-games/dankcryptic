@@ -61,7 +61,7 @@ var item_slot_frame
 var item_slot_frame_initial_position
 var current_item_index = 0
 var dash = false
-var base_speed = 1 # will be adjusted dynamically in game by weight and load
+var base_speed = 1 # will be adjusted dynamically in game by weight and load (also contains delta scaling factor)
 var speed = base_speed # will be adjusted dynamically in game by dashse
 
 var mouse_event_pos
@@ -338,6 +338,7 @@ func update_player_inventory():
 	if apparent_inventory_weight < 0:
 		apparent_inventory_weight = 0
 	base_speed = 1 - (apparent_inventory_weight/player_data['weight'])*0.75
+	base_speed *= 50 # number of pixels a second
 	update_player_stats_tab() # to reflect new weight and stuff
 	
 	for item in array_unique(current_inventory_items):
@@ -781,7 +782,7 @@ func _process(delta):
 	if walk_up_held:
 		#currentMap.set_position(currentMap.get_position() + speed * Vector2(0, 0.25))
 		#player_body.set_position(player_body.get_position() + speed *Vector2(0, -0.25))
-		collision_data = player_body.move_and_collide(Vector2(0,-1) * speed * paralyzer)
+		collision_data = player_body.move_and_collide(Vector2(0,-1) * speed * paralyzer * delta)
 		playerAnimationPlayer.play("walk_up")
 		last_walk_up_held = true
 		last_walk_down_held = false
@@ -790,7 +791,7 @@ func _process(delta):
 	elif walk_down_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(0, -0.25))
 		#player_body.set_position(player_body.get_position() + speed *Vector2(0, 0.25))
-		collision_data = player_body.move_and_collide(Vector2(0,1)* speed * paralyzer)
+		collision_data = player_body.move_and_collide(Vector2(0,1)* speed * paralyzer * delta)
 		playerAnimationPlayer.play("walk_down")
 		last_walk_up_held = false
 		last_walk_down_held = true
@@ -799,7 +800,7 @@ func _process(delta):
 	elif walk_left_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(0.25, 0))
 		#player_body.set_position(player_body.get_position() + speed *Vector2(-0.25, 0))
-		collision_data = player_body.move_and_collide(Vector2(-1,0)* speed * paralyzer)
+		collision_data = player_body.move_and_collide(Vector2(-1,0)* speed * paralyzer * delta)
 		playerAnimationPlayer.play("walk_left")
 		last_walk_up_held = false
 		last_walk_down_held = false
@@ -808,7 +809,7 @@ func _process(delta):
 	elif walk_right_held:
 		#currentMap.set_position(currentMap.get_position() + speed *Vector2(-0.25, 0))			
 		#player_body.set_position(player_body.get_position() + speed *Vector2(0.25, 0))
-		collision_data = player_body.move_and_collide(Vector2(1,0) * speed * paralyzer)
+		collision_data = player_body.move_and_collide(Vector2(1,0) * speed * paralyzer * delta)
 		playerAnimationPlayer.play("walk_right")
 		last_walk_up_held = false
 		last_walk_down_held = false
@@ -859,8 +860,6 @@ func _process(delta):
 	if collision_data:
 		chatBox.append_text("\n[i]Player has collided.[/i]")
 		var collider = collision_data.get_collider()
-		print("skele " + str(collider.position))
-		print("me " + str(player_body.position))
 		
 		# if collision is a coin, delete the coin node and increment current gold
 		#collider.hit_coin.connect(hit_coin)

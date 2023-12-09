@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bulhn4rc843jq"]
+[gd_scene load_steps=35 format=3 uid="uid://bulhn4rc843jq"]
 
 [ext_resource type="Script" path="res://dungeon.gd" id="1_bdp4a"]
 [ext_resource type="Texture2D" uid="uid://bt5e0mken3goj" path="res://assets/griffith.png" id="3_jv5tp"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b52ysywplg4s5" path="res://assets/undead/undead_attack_sheet.png" id="12_xqjnf"]
 [ext_resource type="Texture2D" uid="uid://dwuqfcxb3u8jo" path="res://assets/undead/undead_walk_sheet.png" id="13_ykib3"]
 [ext_resource type="AudioStream" uid="uid://b865kmi44feuw" path="res://assets/sounds/Minifantasy_Dungeon_SFX/17_orc_atk_sword_1.wav" id="15_eeipt"]
+[ext_resource type="AudioStream" uid="uid://ckqrfhym0h1tk" path="res://assets/sounds/Minifantasy_Dungeon_SFX/25_orc_walk_stone_3.wav" id="16_kf05u"]
 [ext_resource type="Texture2D" uid="uid://dtcm1ghr12nia" path="res://assets/DarkDungeon.png" id="DarkDungeon"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gdev4"]
@@ -441,22 +442,34 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("hitBox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("attack_sound:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("attack_sound:playing")
+tracks/4/path = NodePath("hitBox:monitoring")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("walk_sound:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -481,19 +494,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("hitBox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("attack_sound:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.4, 0.7),
+"times": PackedFloat32Array(0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("attack_sound:playing")
+tracks/2/path = NodePath("hitBox:monitoring")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -534,6 +547,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0, 19]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("walk_sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tn0ai"]
 _data = {
@@ -549,6 +574,13 @@ size = Vector2(14, 10)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nntj8"]
 radius = 8.08012
 height = 33.6147
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_366qa"]
+radius = 164.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tegtr"]
+radius = 8.24521
+height = 32.7487
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -684,7 +716,6 @@ modulate = Color(0.164706, 0.164706, 0.164706, 1)
 z_index = 3
 y_sort_enabled = true
 position = Vector2(477, 268)
-scale = Vector2(2, 2)
 script = ExtResource("11_hi2bv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="enemy"]
@@ -715,7 +746,6 @@ position = Vector2(1, -5)
 shape = SubResource("RectangleShape2D_1vcpq")
 
 [node name="hitBox" type="Area2D" parent="enemy"]
-visible = false
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/hitBox"]
@@ -728,6 +758,31 @@ stream = ExtResource("15_eeipt")
 attenuation = 6.0
 bus = &"Sounds"
 
+[node name="detectionZone" type="Area2D" parent="enemy"]
+scale = Vector2(0.5, 0.5)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/detectionZone"]
+shape = SubResource("CircleShape2D_366qa")
+
+[node name="attackZone" type="Area2D" parent="enemy"]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy/attackZone"]
+position = Vector2(12.5, -10.5)
+rotation = 2.61799
+shape = SubResource("CapsuleShape2D_tegtr")
+
+[node name="walk_sound" type="AudioStreamPlayer2D" parent="enemy"]
+stream = ExtResource("16_kf05u")
+volume_db = 8.914
+attenuation = 6.0
+bus = &"Sounds"
+
+[node name="idle_sound" type="AudioStreamPlayer2D" parent="enemy"]
+attenuation = 6.0
+bus = &"Sounds"
+
 [connection signal="body_entered" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_entered"]
 [connection signal="body_shape_exited" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_shape_exited"]
 [connection signal="body_entered" from="goldPiece" to="goldPiece" method="_on_body_entered"]
@@ -735,3 +790,8 @@ bus = &"Sounds"
 [connection signal="body_entered" from="goldPiece3" to="goldPiece3" method="_on_body_entered"]
 [connection signal="body_entered" from="goldPiece4" to="goldPiece4" method="_on_body_entered"]
 [connection signal="body_entered" from="enemy/hitBox" to="enemy" method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="enemy/hitBox" to="enemy" method="_on_hit_box_body_exited"]
+[connection signal="body_entered" from="enemy/detectionZone" to="enemy" method="_on_detection_zone_body_entered"]
+[connection signal="body_exited" from="enemy/detectionZone" to="enemy" method="_on_detection_zone_body_exited"]
+[connection signal="body_entered" from="enemy/attackZone" to="enemy" method="_on_attack_zone_body_entered"]
+[connection signal="body_exited" from="enemy/attackZone" to="enemy" method="_on_attack_zone_body_exited"]
