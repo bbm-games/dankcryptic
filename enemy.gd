@@ -32,6 +32,8 @@ func changeState(state_name):
 		speed = base_speed * 2
 
 func showCertainSprite(name):
+	# by default the hit box should not be active
+	get_node('hitBox').set_monitoring(false)
 	if not get_node(name).is_visible():
 		for child in get_children():
 			if child is Sprite2D:

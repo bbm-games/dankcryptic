@@ -1,10 +1,21 @@
 extends Node2D
 var player
 var optionsMenu
+var light
+var rng
+var backgroundMusic
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng = RandomNumberGenerator.new()
 	player = get_node("uiPlayer")
+	light = get_node('spotlight')
+	backgroundMusic = get_node("/root/Music")
+	var filemusic = backgroundMusic.stream.resource_path.get_file()
+	if filemusic != '1- Midnight Dreams.mp3':
+		backgroundMusic.stream = load('res://assets/music/mindseyepack/1- Midnight Dreams.mp3')
+		backgroundMusic.play()
+	
 	# load in the options menu
 	var options_resource = ResourceLoader.load("res://options.tscn")
 	var options_scene = options_resource.instantiate()
@@ -12,9 +23,13 @@ func _ready():
 	optionsMenu.add_child(options_scene)
 	optionsMenu.get_node("Node2D/CanvasLayer").hide()
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	# add flicker to spotlight
+	#light.set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.1,.1), rng.randf_range(-.1,.1)))
+	if rng.randf_range(0,1) < 0.2:	
+		light.energy = 0.4 + rng.randf_range(-0.2,0.2)
 
 func startNewGame():
 	# TODO: actually create character creation

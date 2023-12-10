@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://4wtb7eoru0mn"
+path="res://.godot/imported/3- Something's wrong.ogg-270d0b253a6023cfc62e10688701ec7a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/mindseyepack/3- Something's wrong.ogg"
+dest_files=["res://.godot/imported/3- Something's wrong.ogg-270d0b253a6023cfc62e10688701ec7a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

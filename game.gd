@@ -65,8 +65,11 @@ var base_speed = 1 # will be adjusted dynamically in game by weight and load (al
 var speed = base_speed # will be adjusted dynamically in game by dashse
 
 var mouse_event_pos
+var mouse_event_global_pos
 var emmisionNode
 var spell_active
+
+var backgroundMusic
 
 # to programatically simulate an item_consume input event
 var item_consume_event
@@ -86,6 +89,7 @@ func get_random_offset() -> Vector2:
 		rng.randf_range(-shake_strength, shake_strength),
 		rng.randf_range(-shake_strength, shake_strength)
 	)
+	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -122,6 +126,10 @@ func _ready():
 	mana_bar_height = mana_bar.get_size().y
 	health_bar_length = health_bar.get_size().x
 	health_bar_height = health_bar.get_size().y
+	
+	# get background music player from global 
+	backgroundMusic = get_node("/root/Music")
+	backgroundMusic.playing = false
 	
 	# Get player and lore data from global variables
 	player_data = GlobalVars.player_data
@@ -198,7 +206,10 @@ func _ready():
 	var scene = scene_resource.instantiate()
 	currentMap = self.get_node("currentMap")
 	currentMap.add_child(scene)
+	backgroundMusic.stream = load(currentMap.get_node('Node2D').map_music)
+	backgroundMusic.play()
 	playTitleCard(currentMap.get_node('Node2D').map_name)
+	
 
 func playTitleCard(title: String):
 	get_node("HUDLayer/titleCard/areaTitle").set_text(title)
@@ -535,6 +546,9 @@ func _input(event):
 		pass
 	elif event is InputEventMouseMotion:
 		mouse_event_pos = event.position
+		mouse_event_global_pos = get_global_mouse_position()
+		# move the player's melee collision shape
+		get_node('player/hitBox').look_at(mouse_event_global_pos)
 	if event.is_action_pressed("zoom_in") and not playerMenu.visible:
 		if currentZoom <= 2:
 			
@@ -614,7 +628,7 @@ func _input(event):
 		else:
 			current_item_index += 1
 		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
-	if event.is_action_pressed("item_consume") and not confused:
+	if event.is_action_pressed("item_consume") and not confused and not player_data['is_dead']:
 		var item_id = player_data['quick_slots']['slot' + str(current_item_index+1)]
 		# make sure there's actually an item in the slot
 		if item_id:
@@ -648,53 +662,56 @@ func _input(event):
 			if playerMenu.visible:
 				update_player_inventory()
 			
-	if event.is_action_released("item_consume") and not confused:
+	if event.is_action_released("item_consume") and not confused and not player_data['is_dead']:
 		# this is for stopping casting a spell
 		var item_id = player_data["quick_slots"]['slot' + str(current_item_index+1)]
 		if item_id:
 			if item_id.contains("spell"):
 				spell_active = false
-	if event.is_action_pressed("attack") && !playerMenu.visible && !chatPopup.visible:
+	if event.is_action_pressed("attack") && !playerMenu.visible && !chatPopup.visible and not player_data['is_dead']:
 		if not block_held:
 			attack_held = true
-			get_node("player/attackSoundPlayer").play()
+			if not get_node("player/attackSoundPlayer").is_playing():
+				get_node("player/attackSoundPlayer").play()
+			get_node("player/hitBox/Line2D").set_default_color(Color(1,0,0,1))
 		else:
 			attack_held = false
-	if event.is_action_released("attack"):
+	if event.is_action_released("attack") and not player_data['is_dead']:
+		get_node("player/hitBox/Line2D").set_default_color(Color(1,1,1,1))
 		attack_held = false
-	if event.is_action_pressed("block"):
+	if event.is_action_pressed("block") and not player_data['is_dead']:
 		if not attack_held:
 			block_held = true
 			block_held_t_interval = 0
 			get_node("player/shieldSoundPlayer").play()
 		else:
 			block_held = false
-	if event.is_action_released("block"):
+	if event.is_action_released("block") and not player_data['is_dead']:
 		block_held = false
-	if event.is_action_pressed("walk_up"):
+	if event.is_action_pressed("walk_up") and not player_data['is_dead']:
 		player_sprite.set_frame_coords(Vector2i(0, 3))
 		walk_up_held = true
-	if event.is_action_released("walk_up"):
+	if event.is_action_released("walk_up") and not player_data['is_dead']:
 		walk_up_held = false
-	if event.is_action_pressed("walk_down"):
+	if event.is_action_pressed("walk_down") and not player_data['is_dead']:
 		player_sprite.set_frame_coords(Vector2i(0, 0))
 		walk_down_held = true
-	if event.is_action_released("walk_down"):
+	if event.is_action_released("walk_down") and not player_data['is_dead']:
 		walk_down_held = false
-	if event.is_action_pressed("walk_left"):
+	if event.is_action_pressed("walk_left") and not player_data['is_dead']:
 		player_sprite.set_frame_coords(Vector2i(0, 1))
 		walk_left_held = true
-	if event.is_action_released("walk_left"):
+	if event.is_action_released("walk_left") and not player_data['is_dead']:
 		walk_left_held = false
-	if event.is_action_pressed("walk_right"):
+	if event.is_action_pressed("walk_right") and not player_data['is_dead']:
 		player_sprite.set_frame_coords(Vector2i(0, 2))
 		walk_right_held = true
-	if event.is_action_released("walk_right"):
+	if event.is_action_released("walk_right") and not player_data['is_dead']:
 		walk_right_held = false
-	if event.is_action_pressed("dash"):
+	if event.is_action_pressed("dash") and not player_data['is_dead']:
 		#chatBox.append_text("\n[i]Player has pressed dash.[/i]")
 		dash = true
-	if event.is_action_released("dash"):
+	if event.is_action_released("dash") and not player_data['is_dead']:
 		#chatBox.append_text("\n[i]Player has let go of dash.[/i]")
 		dash = false
 	if event.is_action_pressed("pause"):
@@ -720,6 +737,7 @@ func _input(event):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time_passed += delta
+	
 	var collision_data
 	
 	# screen shake effect if needed
@@ -780,43 +798,71 @@ func _process(delta):
 
 	# set up movement
 	if walk_up_held:
-		#currentMap.set_position(currentMap.get_position() + speed * Vector2(0, 0.25))
-		#player_body.set_position(player_body.get_position() + speed *Vector2(0, -0.25))
-		collision_data = player_body.move_and_collide(Vector2(0,-1) * speed * paralyzer * delta)
-		playerAnimationPlayer.play("walk_up")
+		if walk_right_held:
+			collision_data = player_body.move_and_collide(Vector2(1,-1).normalized() * speed * paralyzer * delta)
+			playerAnimationPlayer.play("walk_up")
+		elif walk_left_held:
+			collision_data = player_body.move_and_collide(Vector2(-1,-1).normalized() * speed * paralyzer * delta)
+			playerAnimationPlayer.play("walk_up")
+		else:
+			#currentMap.set_position(currentMap.get_position() + speed * Vector2(0, 0.25))
+			#player_body.set_position(player_body.get_position() + speed *Vector2(0, -0.25))
+			collision_data = player_body.move_and_collide(Vector2(0,-1) * speed * paralyzer * delta)
+			playerAnimationPlayer.play("walk_up")
 		last_walk_up_held = true
 		last_walk_down_held = false
 		last_walk_left_held = false
 		last_walk_right_held = false
 	elif walk_down_held:
-		#currentMap.set_position(currentMap.get_position() + speed *Vector2(0, -0.25))
-		#player_body.set_position(player_body.get_position() + speed *Vector2(0, 0.25))
-		collision_data = player_body.move_and_collide(Vector2(0,1)* speed * paralyzer * delta)
-		playerAnimationPlayer.play("walk_down")
+		if walk_right_held:
+			collision_data = player_body.move_and_collide(Vector2(1,1).normalized() * speed * paralyzer * delta)
+			playerAnimationPlayer.play("walk_down")
+		elif walk_left_held:
+			collision_data = player_body.move_and_collide(Vector2(-1,1).normalized() * speed * paralyzer * delta)
+			playerAnimationPlayer.play("walk_down")
+		else:
+			#currentMap.set_position(currentMap.get_position() + speed *Vector2(0, -0.25))
+			#player_body.set_position(player_body.get_position() + speed *Vector2(0, 0.25))
+			collision_data = player_body.move_and_collide(Vector2(0,1)* speed * paralyzer * delta)
+			playerAnimationPlayer.play("walk_down")
 		last_walk_up_held = false
 		last_walk_down_held = true
 		last_walk_left_held = false
 		last_walk_right_held = false
 	elif walk_left_held:
-		#currentMap.set_position(currentMap.get_position() + speed *Vector2(0.25, 0))
-		#player_body.set_position(player_body.get_position() + speed *Vector2(-0.25, 0))
-		collision_data = player_body.move_and_collide(Vector2(-1,0)* speed * paralyzer * delta)
-		playerAnimationPlayer.play("walk_left")
+		if walk_up_held:
+			collision_data = player_body.move_and_collide(Vector2(-1,-1).normalized() * speed * paralyzer * delta)
+			playerAnimationPlayer.play("walk_left")
+		elif walk_down_held:
+			collision_data = player_body.move_and_collide(Vector2(-1,1).normalized() * speed * paralyzer * delta)
+			playerAnimationPlayer.play("walk_left")
+		else:
+			#currentMap.set_position(currentMap.get_position() + speed *Vector2(0.25, 0))
+			#player_body.set_position(player_body.get_position() + speed *Vector2(-0.25, 0))
+			collision_data = player_body.move_and_collide(Vector2(-1,0)* speed * paralyzer * delta)
+			playerAnimationPlayer.play("walk_left")
 		last_walk_up_held = false
 		last_walk_down_held = false
 		last_walk_left_held = true
 		last_walk_right_held = false
 	elif walk_right_held:
-		#currentMap.set_position(currentMap.get_position() + speed *Vector2(-0.25, 0))			
-		#player_body.set_position(player_body.get_position() + speed *Vector2(0.25, 0))
-		collision_data = player_body.move_and_collide(Vector2(1,0) * speed * paralyzer * delta)
-		playerAnimationPlayer.play("walk_right")
+		if walk_up_held:
+			collision_data = player_body.move_and_collide(Vector2(1,-1).normalized() * speed * paralyzer * delta)
+			playerAnimationPlayer.play("walk_right")
+		elif walk_down_held:
+			collision_data = player_body.move_and_collide(Vector2(1,1).normalized() * speed * paralyzer * delta)
+			playerAnimationPlayer.play("walk_right")
+		else:
+			#currentMap.set_position(currentMap.get_position() + speed *Vector2(-0.25, 0))			
+			#player_body.set_position(player_body.get_position() + speed *Vector2(0.25, 0))
+			collision_data = player_body.move_and_collide(Vector2(1,0) * speed * paralyzer * delta)
+			playerAnimationPlayer.play("walk_right")
 		last_walk_up_held = false
 		last_walk_down_held = false
 		last_walk_left_held = false
 		last_walk_right_held = true
 	else:
-		playerAnimationPlayer.stop()
+		playerAnimationPlayer.stop() # or play idle animation
 
 	# other status effect applications
 	# by default turn their effects off 
@@ -859,10 +905,7 @@ func _process(delta):
 	# check to see if collision occured
 	if collision_data:
 		chatBox.append_text("\n[i]Player has collided.[/i]")
-		var collider = collision_data.get_collider()
-		
-		# if collision is a coin, delete the coin node and increment current gold
-		#collider.hit_coin.connect(hit_coin)
+		#var collider = collision_data.get_collider()
 	
 	# Spell casting shit
 	if spell_active && player_data['current_mana'] > 0: 
@@ -919,12 +962,24 @@ func _process(delta):
 	
 # for removing health
 func subtractHealth(amount):
-	player_data['current_health'] -= amount
-	if player_data['current_health'] <= 0:
-		player_data['current_health'] = 0
-		player_data['is_dead'] = true
-		chatBoxAppend(player_data['name'] + " died.")
-		
+	if not player_data['is_dead']: # only subtract health if player isn't dead.
+		player_data['current_health'] -= amount
+		if player_data['current_health'] <= 0:
+			player_data['current_health'] = 0
+			player_data['is_dead'] = true
+			chatBoxAppend(player_data['name'] + " died.")
+			# turn off all current movement
+			walk_up_held = false
+			walk_left_held = false
+			walk_right_held = false
+			walk_down_held = false
+			
+			# TODO: show the dead sprite
+			light.hide()
+			playTitleCard('YOU DIED.')
+			
+			# TODO: pull up the death menu
+			
 
 # for when you want to output to the chatbox
 func chatBoxAppend(message):

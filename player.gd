@@ -26,5 +26,10 @@ func take_damage(damage_val):
 			if frac > 1:
 				frac = 1
 			main_game_node.subtractHealth(int(frac * damage_val))
+
+# gives an amount of base damage for a melee attack
+func give_damage():
+	pass
+	
 func _physics_process(delta):
 	pass

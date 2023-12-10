@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://icn5oslofrf"
+path="res://.godot/imported/3- Something's wrong.mp3-e4d4d709c230b0b17e46e01f34324fc8.mp3str"
+
+[deps]
+
+source_file="res://assets/music/mindseyepack/3- Something's wrong.mp3"
+dest_files=["res://.godot/imported/3- Something's wrong.mp3-e4d4d709c230b0b17e46e01f34324fc8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

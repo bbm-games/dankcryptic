@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cegou23o32q8f"
+path="res://.godot/imported/1- Midnight Dreams.mp3-314b3e486051879b13f5bf2b299941b3.mp3str"
+
+[deps]
+
+source_file="res://assets/music/mindseyepack/1- Midnight Dreams.mp3"
+dest_files=["res://.godot/imported/1- Midnight Dreams.mp3-314b3e486051879b13f5bf2b299941b3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

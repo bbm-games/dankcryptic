@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://chpxfx6ts1a58"]
+
+[node name="backgroundMusic" type="AudioStreamPlayer"]
+bus = &"Music"
