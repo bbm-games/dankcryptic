@@ -973,7 +973,9 @@ func subtractHealth(amount):
 			walk_left_held = false
 			walk_right_held = false
 			walk_down_held = false
-			
+			backgroundMusic.playing = false
+			backgroundMusic.stream = load('res://assets/music/mindseyepack/2- Mental Vortex.mp3')
+			backgroundMusic.play()
 			# TODO: show the dead sprite
 			light.hide()
 			playTitleCard('YOU DIED.')
