@@ -73,10 +73,10 @@ func _process(delta):
 		self.set_modulate(Color(.16,.16,.16,1))
 	if target_body:
 		if (target_body.position - self.position).x < 0:
-			self.set_transform(Transform2D(Vector2(-1, 0), Vector2(0,  1), Vector2(position.x, position.y)))
+			self.set_transform(Transform2D(Vector2(-1.5, 0), Vector2(0,  1.5), Vector2(position.x, position.y)))
 		else:
 			# unflip
-			self.set_transform(Transform2D(Vector2(1, 0), Vector2(0,  1), Vector2(position.x, position.y)))
+			self.set_transform(Transform2D(Vector2(1.5, 0), Vector2(0,  1.5), Vector2(position.x, position.y)))
 	if current_state == 'walk' or current_state == 'walkfast' and target_body:
 		self.move_and_collide((target_body.position - (get_node('attackZone').position + self.position)).normalized() * speed * delta)
 	if current_state == 'walkfast':
