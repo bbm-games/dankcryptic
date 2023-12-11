@@ -16,6 +16,7 @@ func take_damage(damage_val):
 		main_game_node.subtractHealth(damage_val)
 		main_game_node.apply_shake(15)
 		get_node('clappedSoundPlayer').play()
+		main_game_node.just_took_damage = true
 	else:
 		get_node('deflectSoundPlayer').play()
 		if main_game_node.block_held_t_interval < 0.2: # deflection window
@@ -30,6 +31,6 @@ func take_damage(damage_val):
 			if frac > 1:
 				frac = 1
 			main_game_node.subtractHealth(int(frac * damage_val))
+			main_game_node.just_took_partial_damage = true
+			
 	
-func _physics_process(delta):
-	pass

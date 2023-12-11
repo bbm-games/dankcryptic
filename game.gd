@@ -50,6 +50,10 @@ var confused = false
 var block_held = false
 var attack_held = false
 var block_held_t_interval = 0
+var just_took_damage = false
+var just_took_partial_damage = false
+var damage_highlight_time = 0
+var damage_partial_highlight_time = 0
 
 var time_passed = 0.0
 var playerAnimationPlayer
@@ -869,7 +873,21 @@ func _process(delta):
 
 	# other status effect applications
 	# by default turn their effects off 
-	player_sprite.modulate = Color(0.18,0.18,0.18,1)
+		# make the player transiently red if attacked
+	if just_took_damage:
+		damage_highlight_time += delta
+		player_sprite.modulate = Color(1,0.18,0.18,1)
+		if damage_highlight_time > 0.3:
+			damage_highlight_time = 0
+			just_took_damage = false
+	elif just_took_partial_damage:
+		damage_partial_highlight_time += delta
+		player_sprite.modulate = Color(0.30,0.18,0.18,1)
+		if damage_partial_highlight_time > 0.3:
+			damage_partial_highlight_time = 0
+			just_took_partial_damage = false
+	else:
+		player_sprite.modulate = Color(0.18,0.18,0.18,1)
 	player_body.get_node("trail").set_emitting(false)
 	player_body.get_node("FireColorRect").hide()
 	if player_data['statuses']["confused"] >= 1:
@@ -878,19 +896,19 @@ func _process(delta):
 	else:
 		confused = false
 		player_body.get_node("confusionOverlay").hide()
-	if player_data['statuses']["drenched"] >= 1:
+	if player_data['statuses']["drenched"] >= 1 and not just_took_damage and not just_took_partial_damage:
 		player_sprite.modulate = Color(0.37,0.62,0.63,1)
 		if last_walk_up_held:
-			collision_data = player_body.move_and_collide((Vector2(rng.randf_range(-1,1), -1).normalized()) * 2 * speed)
+			collision_data = player_body.move_and_collide((Vector2(rng.randf_range(-1,1), -1).normalized()) * 2 * base_speed * delta)
 		if last_walk_down_held:
-			collision_data = player_body.move_and_collide((Vector2(rng.randf_range(-1,1), 1).normalized()) * 2 * speed)
+			collision_data = player_body.move_and_collide((Vector2(rng.randf_range(-1,1), 1).normalized()) * 2 * base_speed * delta)
 		if last_walk_left_held:
-			collision_data = player_body.move_and_collide((Vector2(-1, rng.randf_range(-1,1)).normalized()) * 2 * speed)
+			collision_data = player_body.move_and_collide((Vector2(-1, rng.randf_range(-1,1)).normalized()) * 2 * base_speed * delta)
 		if last_walk_right_held:
-			collision_data = player_body.move_and_collide((Vector2(1, rng.randf_range(-1,1)).normalized()) * 2 * speed)
+			collision_data = player_body.move_and_collide((Vector2(1, rng.randf_range(-1,1)).normalized()) * 2 * base_speed * delta)
 		player_body.get_node("trail").get_process_material().set_color(Color(0.37,0.62,0.63,1))
 		player_body.get_node("trail").set_emitting(true)
-	if player_data['statuses']["poisoned"] >= 1:
+	if player_data['statuses']["poisoned"] >= 1 and not just_took_damage and not just_took_partial_damage:
 		# make purple hue on sprite
 		player_sprite.modulate = Color(1,0,1)
 	if player_data['statuses']["burned"] >= 1:
