@@ -3,7 +3,8 @@ extends CharacterBody2D
 var main_game_node
 
 func _init():
-	self.add_collision_exception_with(get_node('hitBox'))
+	#self.add_collision_exception_with(get_node('hitBox'))
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +18,7 @@ func take_damage(damage_val):
 		get_node('clappedSoundPlayer').play()
 	else:
 		get_node('deflectSoundPlayer').play()
-		if main_game_node.block_held_t_interval < 0.1: # deflection window
+		if main_game_node.block_held_t_interval < 0.2: # deflection window
 			# deflect all damage
 			get_node('sparks').set_emitting(true)
 			main_game_node.apply_shake(5)
