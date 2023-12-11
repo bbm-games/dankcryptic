@@ -6,6 +6,10 @@ var base_speed = 30 # incorporated delta scaling factor
 var speed = base_speed
 var current_state
 var walk_fast_time = 0
+var is_attackable = true
+var health = 100
+var just_took_damage = false
+var damage_highlight_time = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,8 +52,25 @@ func showCertainSprite(name):
 func flip_sprite():
 	pass
 
+func take_damage(value):
+	get_node('clapped_sound').play()
+	just_took_damage = true
+	self.health -= value
+	if self.health <= 0:
+		self.health = 0
+		self.queue_free()
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if just_took_damage:
+		damage_highlight_time += delta
+		self.set_modulate(Color(1,.16,.16,1))
+		if damage_highlight_time > .3:
+			damage_highlight_time = 0
+			just_took_damage = false
+	else:
+		self.set_modulate(Color(.16,.16,.16,1))
 	if target_body:
 		if (target_body.position - self.position).x < 0:
 			self.set_transform(Transform2D(Vector2(-1, 0), Vector2(0,  1), Vector2(position.x, position.y)))
@@ -66,7 +87,6 @@ func _process(delta):
 		
 func _physics_process(delta):
 	pass
-
 
 func _on_hit_box_body_entered(body):
 	#main_game_node.chatBoxAppend(str(body))

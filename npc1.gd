@@ -13,6 +13,7 @@ var chatIconAnimationPlayer
 var endConvoIndex
 var convoOptions
 var initialConvoStateID = "ID 0"
+var is_attackable = false
 
 func _ready():
 	etime = 0

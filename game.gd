@@ -114,7 +114,7 @@ func _ready():
 	light = get_node("player/PointLight2D") 
 	emmisionNode = player_body.get_node("GPUParticles2D")
 	#map_sprite = get_node("Testbg")
-	playerAnimationPlayer = get_node("PlayerAnimationPlayer")
+	playerAnimationPlayer = get_node("player/PlayerAnimationPlayer")
 	
 	# set up player's health, mana, and stamina
 	health_bar = get_node("HUDLayer/CanvasGroup/healthBar")
@@ -671,8 +671,11 @@ func _input(event):
 	if event.is_action_pressed("attack") && !playerMenu.visible && !chatPopup.visible and not player_data['is_dead']:
 		if not block_held:
 			attack_held = true
-			if not get_node("player/attackSoundPlayer").is_playing():
-				get_node("player/attackSoundPlayer").play()
+			for body in get_node('player/hitBox').get_overlapping_bodies():
+				if body.is_attackable:
+					if body.has_method("take_damage") :
+						body.take_damage(20)
+			get_node('player/attackSoundPlayer').play()
 			get_node("player/hitBox/Line2D").set_default_color(Color(1,0,0,1))
 		else:
 			attack_held = false

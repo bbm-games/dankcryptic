@@ -2,10 +2,13 @@ extends CharacterBody2D
 
 var main_game_node
 
+func _init():
+	self.add_collision_exception_with(get_node('hitBox'))
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main_game_node = get_tree().get_root().get_node('Node2D')
-
+	
 # modifies the player_data anytime damage is taken
 func take_damage(damage_val):
 	if not main_game_node.block_held:
@@ -26,10 +29,6 @@ func take_damage(damage_val):
 			if frac > 1:
 				frac = 1
 			main_game_node.subtractHealth(int(frac * damage_val))
-
-# gives an amount of base damage for a melee attack
-func give_damage():
-	pass
 	
 func _physics_process(delta):
 	pass

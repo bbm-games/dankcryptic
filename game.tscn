@@ -830,7 +830,7 @@ one_shot = true
 
 [node name="hitBox" type="Area2D" parent="player"]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="player/hitBox"]
 position = Vector2(8.00006, 1.99998)
@@ -839,6 +839,7 @@ scale = Vector2(0.435004, 0.683175)
 polygon = PackedVector2Array(4.09479, -11.3898, -20.4739, -1.26555, -20.4739, 18.983, 28.6635, 18.983, 28.6635, -1.26555)
 
 [node name="Line2D" type="Line2D" parent="player/hitBox"]
+modulate = Color(1, 1, 1, 0.454902)
 z_index = -1
 position = Vector2(8, 0)
 rotation = -1.5708
@@ -847,8 +848,8 @@ width = 2.0
 
 [node name="deathSoundPlayer" type="AudioStreamPlayer" parent="player"]
 
-[node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../player/sprite")
+[node name="PlayerAnimationPlayer" type="AnimationPlayer" parent="player"]
+root_node = NodePath("../sprite")
 libraries = {
 "": SubResource("AnimationLibrary_ltoe5")
 }
