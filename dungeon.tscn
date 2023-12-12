@@ -790,6 +790,9 @@ stream = ExtResource("16_o8bt7")
 [node name="treasure" type="Node2D" parent="."]
 position = Vector2(413, 32)
 
+[node name="treasure2" type="Node2D" parent="."]
+position = Vector2(273, 73)
+
 [connection signal="body_entered" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_entered"]
 [connection signal="body_shape_exited" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_shape_exited"]
 [connection signal="body_entered" from="goldPiece" to="goldPiece" method="_on_body_entered"]

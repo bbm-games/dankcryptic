@@ -12,6 +12,13 @@ func _ready():
 	self.add_child(item_instance)
 	item_instance.load_item('weapon8')
 	item_instance.position = get_node('treasure').position
+	
+	# THIS CODE SHOWS HOW TO LOAD IN AN ITEM:
+	item = preload("res://ground_item.tscn")
+	item_instance = item.instantiate()
+	self.add_child(item_instance)
+	item_instance.load_item('weapon2')
+	item_instance.position = get_node('treasure2').position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
