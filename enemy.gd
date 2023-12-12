@@ -10,6 +10,7 @@ var is_attackable = true
 var health = 100
 var just_took_damage = false
 var damage_highlight_time = 0
+var base_modulation = self.get_modulate()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,14 +53,13 @@ func showCertainSprite(name):
 func flip_sprite():
 	pass
 
-func take_damage(value):
+func take_damage(value, statusInflictions = null):
 	get_node('clapped_sound').play()
 	just_took_damage = true
 	self.health -= value
 	if self.health <= 0:
 		self.health = 0
 		self.queue_free()
-	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -70,7 +70,7 @@ func _process(delta):
 			damage_highlight_time = 0
 			just_took_damage = false
 	else:
-		self.set_modulate(Color(.16,.16,.16,1))
+		self.set_modulate(base_modulation)
 	if target_body:
 		if (target_body.position - self.position).x < 0:
 			self.set_transform(Transform2D(Vector2(-1.5, 0), Vector2(0,  1.5), Vector2(position.x, position.y)))

@@ -429,8 +429,14 @@ func update_player_inventory():
 		if "is_stackable" in item.keys():
 			if item['is_stackable']:
 				itemButtonText += ' (' + str(player_data['inventory'].count(item['id'])) + ')'
+		
+		# if the item in already in a quick slot
 		if item['id'] in player_data['quick_slots'].values():
 			itemButtonText += "\nin quick slot"
+			
+		# if the item is in an equipment slot
+		if item['id'] in player_data['equipment'].values():
+			itemButtonText += "\nequipped"
 		
 		itemButton.set_text(itemButtonText)
 		itemButton.set_button_icon(load(item['sprite_data']))
@@ -439,7 +445,6 @@ func update_player_inventory():
 		inventoryList.add_child(itemButton)
 		itemButton.pressed.connect(buttonLoreShow.bind(item))
 		itemButton.get_popup().id_pressed.connect(inventoryItemPopupMenuPress.bind(item))
-		
 
 func addItemToEquip(equip_index, item):
 	pass
@@ -678,7 +683,7 @@ func _input(event):
 			for body in get_node('player/hitBox').get_overlapping_bodies():
 				if body.is_attackable:
 					if body.has_method("take_damage") :
-						body.take_damage(20)
+						body.take_damage(20, player_data['statusInflictions'])
 			get_node('player/attackSoundPlayer').play()
 			get_node("player/hitBox/Line2D").set_default_color(Color(1,0,0,1))
 		else:
@@ -754,8 +759,8 @@ func _process(delta):
 	player_body.get_node('sprite/Camera2D').offset = get_random_offset()
 	
 	# flicker the player's light
-	light.set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.1,.1), rng.randf_range(-.1,.1)))
-	light.energy = 7.05 + rng.randf_range(-1,1)
+	light.set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.05,.05), rng.randf_range(-.05,.05)))
+	light.energy = 1.5 + rng.randf_range(-.1,.1)
 	
 	# paralyze status effect
 	if player_data['statuses']["paralyzed"] >= 1:
@@ -882,12 +887,12 @@ func _process(delta):
 			just_took_damage = false
 	elif just_took_partial_damage:
 		damage_partial_highlight_time += delta
-		player_sprite.modulate = Color(0.30,0.18,0.18,1)
+		player_sprite.modulate = Color(0.50,0.18,0.18,1)
 		if damage_partial_highlight_time > 0.3:
 			damage_partial_highlight_time = 0
 			just_took_partial_damage = false
 	else:
-		player_sprite.modulate = Color(0.18,0.18,0.18,1)
+		player_sprite.modulate = Color(1,1,1,1)
 	player_body.get_node("trail").set_emitting(false)
 	player_body.get_node("FireColorRect").hide()
 	if player_data['statuses']["confused"] >= 1:

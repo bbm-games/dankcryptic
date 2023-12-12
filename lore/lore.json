@@ -19,11 +19,27 @@
 	  "statuses":{
 		 "poisoned":0.4,
 		 "burned":0.5,
-		 "drenched":1.5,
+		 "drenched":0.5,
 		 "confused":0.3,
 		 "paralyzed":0.5,
 		 "bloodless":0.4
 	  },
+	 "statusInflictions":{
+	   "poisoned":0.0,
+	   "burned":0.0,
+	   "drenched":0.0,
+	   "confused":0.0,
+	   "paralyzed":0.0,
+	   "bloodless":0.0
+	 },
+	 "statusNegations":{
+	   "poisoned":0.0,
+	   "burned":0.0,
+	   "drenched":0.0,
+	   "confused":0.0,
+	   "paralyzed":0.0,
+	   "bloodless":0.0
+	 },
 	  "weight":80,
 	  "inventory_weight":0,
 	  "max_health":100,

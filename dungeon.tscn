@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bulhn4rc843jq"]
+[gd_scene load_steps=37 format=3 uid="uid://bulhn4rc843jq"]
 
 [ext_resource type="Script" path="res://dungeon.gd" id="1_bdp4a"]
 [ext_resource type="Texture2D" uid="uid://bt5e0mken3goj" path="res://assets/griffith.png" id="3_jv5tp"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://b865kmi44feuw" path="res://assets/sounds/Minifantasy_Dungeon_SFX/17_orc_atk_sword_1.wav" id="15_eeipt"]
 [ext_resource type="AudioStream" uid="uid://ckqrfhym0h1tk" path="res://assets/sounds/Minifantasy_Dungeon_SFX/25_orc_walk_stone_3.wav" id="16_kf05u"]
 [ext_resource type="AudioStream" uid="uid://d368enykfayyf" path="res://assets/sounds/Minifantasy_Dungeon_SFX/21_orc_damage_3.wav" id="16_o8bt7"]
+[ext_resource type="Script" path="res://ground_item.gd" id="17_hcb8x"]
 [ext_resource type="Texture2D" uid="uid://dtcm1ghr12nia" path="res://assets/DarkDungeon.png" id="DarkDungeon"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gdev4"]
@@ -351,6 +352,7 @@ texture = ExtResource("DarkDungeon")
 
 [sub_resource type="TileSet" id="TileSet_0"]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 13
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_gdev4")
 sources/0 = SubResource("TileSetAtlasSource_0")
 
@@ -582,13 +584,18 @@ radius = 164.0
 radius = 8.24521
 height = 32.7487
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5kku"]
+
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_bdp4a")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.121569, 0.121569, 0.121569, 1)
+
 [node name="dungeon" type="TileMap" parent="."]
-modulate = Color(0.196078, 0.196078, 0.196078, 1)
 z_index = 1
+y_sort_enabled = true
 position = Vector2(-93, -44)
 scale = Vector2(1.5, 1.5)
 tile_set = SubResource("TileSet_0")
@@ -604,11 +611,10 @@ layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(8, 131072, 0, 12, 262144, 8, 65536, 262144, 1, 65537, 327680, 1, 65538, 393216, 1, 65539, 131072, 1, 65540, 196608, 1, 65541, 262144, 1, 65542, 327680, 1, 65543, 393216, 1, 65544, 131072, 1, 65545, 196608, 1, 65546, 262144, 1, 65547, 327680, 1, 65548, 393216, 1, 65549, 196608, 1, 65550, 262144, 1, 65551, 327680, 1, 131072, 262144, 2, 131073, 327680, 2, 131074, 393216, 2, 131075, 131072, 2, 131076, 196608, 2, 131077, 262144, 2, 131078, 327680, 2, 131079, 393216, 2, 131080, 131072, 2, 131081, 196608, 2, 131082, 262144, 2, 131083, 327680, 2, 131084, 393216, 2, 131085, 196608, 2, 131086, 262144, 2, 131087, 327680, 2, 196608, 131072, 14, 196609, 196608, 14, 196610, 262144, 14, 196611, 393216, 5, 196612, 327680, 10, 196613, 393216, 10, 196614, 458752, 10, 196615, 524288, 10, 196616, 131072, 1, 196617, 196608, 1, 196618, 262144, 1, 196619, 327680, 1, 196620, 196608, 1, 196621, 262144, 1, 196622, 327680, 1, 262144, 131072, 15, 262145, 196608, 15, 262146, 262144, 15, 262147, 393216, 6, 262148, 327680, 11, 262149, 393216, 11, 262150, 458752, 11, 262151, 524288, 11, 262152, 131072, 2, 262153, 196608, 2, 262154, 262144, 2, 262155, 327680, 2, 262156, 196608, 2, 262157, 262144, 2, 262158, 327680, 2, 327684, 327680, 12, 327685, 393216, 12, 327686, 458752, 12, 327687, 524288, 12, 327688, 262144, 3, 327689, 196608, 1, 327690, 262144, 1, 327691, 327680, 1, 327692, 393216, 1, 393224, 327680, 3, 393225, 196608, 2, 393226, 262144, 2, 393227, 327680, 2, 393228, 393216, 2, 458759, 196608, 1, 458760, 196608, 3, 458761, 327680, 1, 458762, 393216, 1, 458765, 65536, 12, 524293, 65536, 12, 524295, 196608, 2, 524296, 262144, 2, 524297, 327680, 2, 524298, 393216, 2, 524301, 65536, 13, 589829, 65536, 13, 655361, 0, 3, 655362, 196608, 1, 655363, 262144, 1, 655364, 196608, 1, 655365, 262144, 1, 655366, 327680, 1, 655367, 393216, 1, 655368, 65536, 3, 655370, 0, 3, 655371, 65536, 3, 720897, 0, 4, 720898, 196608, 2, 720899, 262144, 2, 720900, 196608, 2, 720901, 262144, 2, 720902, 327680, 2, 720903, 393216, 2, 720904, 65536, 4, 720906, 0, 4, 720907, 65536, 4, 786433, 0, 5, 786434, 196608, 1, 786435, 327680, 7, 786436, 393216, 7, 786437, 458752, 7, 786438, 524288, 7, 786439, 393216, 1, 786440, 65536, 5, 786442, 0, 5, 786443, 65536, 5, 851969, 0, 2, 851970, 196608, 2, 851971, 327680, 8, 851972, 393216, 8, 851973, 458752, 8, 851974, 524288, 8, 851975, 393216, 2, 851976, 65536, 2, 851978, 0, 2, 851979, 65536, 2, 851981, 65536, 12, 917507, 327680, 9, 917508, 393216, 9, 917509, 458752, 9, 917510, 524288, 9, 917517, 65536, 13, 9, 65536, 8, 10, 131072, 8, 11, 196608, 8)
 
 [node name="npc1" type="CharacterBody2D" parent="."]
-modulate = Color(0.129412, 0.129412, 0.129412, 1)
 z_index = 2
 position = Vector2(409, 202)
 collision_layer = 4
-collision_mask = 4
+collision_mask = 15
 script = ExtResource("3_rao3l")
 
 [node name="npc1sprite" type="Sprite2D" parent="npc1"]
@@ -649,7 +655,6 @@ stream = ExtResource("6_2goit")
 enabled = false
 
 [node name="goldPiece" type="Area2D" parent="."]
-modulate = Color(0.14902, 0.14902, 0.14902, 1)
 position = Vector2(394, 111)
 collision_layer = 2
 collision_mask = 4
@@ -664,7 +669,6 @@ scale = Vector2(0.01, 0.01)
 texture = ExtResource("8_rpth0")
 
 [node name="goldPiece2" type="Area2D" parent="."]
-modulate = Color(0.14902, 0.14902, 0.14902, 1)
 position = Vector2(446, 95)
 collision_layer = 2
 collision_mask = 4
@@ -679,7 +683,6 @@ scale = Vector2(0.01, 0.01)
 texture = ExtResource("8_rpth0")
 
 [node name="goldPiece3" type="Area2D" parent="."]
-modulate = Color(0.14902, 0.14902, 0.14902, 1)
 position = Vector2(417, 130)
 collision_layer = 2
 collision_mask = 4
@@ -694,7 +697,6 @@ scale = Vector2(0.01, 0.01)
 texture = ExtResource("8_rpth0")
 
 [node name="goldPiece4" type="Area2D" parent="."]
-modulate = Color(0.14902, 0.14902, 0.14902, 1)
 position = Vector2(424, 111)
 collision_layer = 2
 collision_mask = 4
@@ -709,13 +711,12 @@ scale = Vector2(0.01, 0.01)
 texture = ExtResource("8_rpth0")
 
 [node name="enemy" type="CharacterBody2D" parent="."]
-modulate = Color(0.164706, 0.164706, 0.164706, 1)
 z_index = 3
 y_sort_enabled = true
 position = Vector2(477, 268)
 scale = Vector2(1.5, 1.5)
 collision_layer = 8
-collision_mask = 4
+collision_mask = 15
 script = ExtResource("11_hi2bv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="enemy"]
@@ -788,6 +789,20 @@ bus = &"Sounds"
 
 [node name="clapped_sound" type="AudioStreamPlayer" parent="enemy"]
 stream = ExtResource("16_o8bt7")
+
+[node name="ground_item" type="RigidBody2D" parent="."]
+z_index = 1
+position = Vector2(361, 43)
+collision_layer = 2
+collision_mask = 15
+input_pickable = true
+gravity_scale = 0.0
+script = ExtResource("17_hcb8x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground_item"]
+shape = SubResource("RectangleShape2D_w5kku")
+
+[node name="Sprite2D" type="Sprite2D" parent="ground_item"]
 
 [connection signal="body_entered" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_entered"]
 [connection signal="body_shape_exited" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_shape_exited"]
