@@ -11,15 +11,16 @@ func _ready():
 	player = get_node("uiPlayer")
 	light = get_node('spotlight')
 	backgroundMusic = get_node("/root/Music")
-	var filemusic = backgroundMusic.stream.resource_path.get_file()
-	if filemusic != '1- Midnight Dreams.mp3':
-		backgroundMusic.stream = load('res://assets/music/mindseyepack/1- Midnight Dreams.mp3')
-		backgroundMusic.play()
+	if backgroundMusic.stream:
+		var filemusic = backgroundMusic.stream.resource_path.get_file()
+		if filemusic != '1- Midnight Dreams.mp3':
+			backgroundMusic.stream = load('res://assets/music/mindseyepack/1- Midnight Dreams.mp3')
+			backgroundMusic.play()
 	
 	# load in the options menu
 	var options_resource = ResourceLoader.load("res://options.tscn")
 	var options_scene = options_resource.instantiate()
-	optionsMenu = get_node("options")
+	optionsMenu = get_node("CanvasLayer2/options")
 	optionsMenu.add_child(options_scene)
 	optionsMenu.get_node("Node2D/CanvasLayer").hide()
 
@@ -61,7 +62,7 @@ func _on_new_game_button_mouse_entered():
 
 func _on_link_button_3_pressed():
 	optionsMenu.get_node("Node2D/CanvasLayer").show()
-
+	
 # load game button
 func _on_link_button_2_pressed():
 	# TODO: eventually take to a load saves screen

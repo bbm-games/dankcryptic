@@ -51,6 +51,7 @@ script = ExtResource("1_qbheq")
 color = Color(0.219608, 0.219608, 0.219608, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -163,7 +164,9 @@ ok_button_text = "Open"
 file_mode = 0
 root_subfolder = "saves"
 
-[node name="options" type="Control" parent="."]
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="options" type="Control" parent="CanvasLayer2"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 30.0
