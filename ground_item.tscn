@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dywtovs1hwwfx"]
+
+[ext_resource type="Script" path="res://ground_item.gd" id="1_pkmkb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tj0j6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1ttb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hvjsb"]
+
+[node name="ground_item" type="RigidBody2D"]
+z_index = 1
+collision_layer = 2
+collision_mask = 15
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_tj0j6")
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_pkmkb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o1ttb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hvjsb")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

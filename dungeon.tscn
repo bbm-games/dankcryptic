@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bulhn4rc843jq"]
+[gd_scene load_steps=35 format=3 uid="uid://bulhn4rc843jq"]
 
 [ext_resource type="Script" path="res://dungeon.gd" id="1_bdp4a"]
 [ext_resource type="Texture2D" uid="uid://bt5e0mken3goj" path="res://assets/griffith.png" id="3_jv5tp"]
@@ -15,7 +15,6 @@
 [ext_resource type="AudioStream" uid="uid://b865kmi44feuw" path="res://assets/sounds/Minifantasy_Dungeon_SFX/17_orc_atk_sword_1.wav" id="15_eeipt"]
 [ext_resource type="AudioStream" uid="uid://ckqrfhym0h1tk" path="res://assets/sounds/Minifantasy_Dungeon_SFX/25_orc_walk_stone_3.wav" id="16_kf05u"]
 [ext_resource type="AudioStream" uid="uid://d368enykfayyf" path="res://assets/sounds/Minifantasy_Dungeon_SFX/21_orc_damage_3.wav" id="16_o8bt7"]
-[ext_resource type="Script" path="res://ground_item.gd" id="17_hcb8x"]
 [ext_resource type="Texture2D" uid="uid://dtcm1ghr12nia" path="res://assets/DarkDungeon.png" id="DarkDungeon"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gdev4"]
@@ -584,8 +583,6 @@ radius = 164.0
 radius = 8.24521
 height = 32.7487
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5kku"]
-
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_bdp4a")
@@ -613,7 +610,7 @@ layer_1/tile_data = PackedInt32Array(8, 131072, 0, 12, 262144, 8, 65536, 262144,
 [node name="npc1" type="CharacterBody2D" parent="."]
 z_index = 2
 position = Vector2(409, 202)
-collision_layer = 4
+collision_layer = 16
 collision_mask = 15
 script = ExtResource("3_rao3l")
 
@@ -634,7 +631,7 @@ texture = ExtResource("5_xhq85")
 
 [node name="npcBoundary" type="Area2D" parent="npc1"]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npc1/npcBoundary"]
 shape = SubResource("CircleShape2D_gn28i")
@@ -790,19 +787,8 @@ bus = &"Sounds"
 [node name="clapped_sound" type="AudioStreamPlayer" parent="enemy"]
 stream = ExtResource("16_o8bt7")
 
-[node name="ground_item" type="RigidBody2D" parent="."]
-z_index = 1
-position = Vector2(361, 43)
-collision_layer = 2
-collision_mask = 15
-input_pickable = true
-gravity_scale = 0.0
-script = ExtResource("17_hcb8x")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ground_item"]
-shape = SubResource("RectangleShape2D_w5kku")
-
-[node name="Sprite2D" type="Sprite2D" parent="ground_item"]
+[node name="treasure" type="Node2D" parent="."]
+position = Vector2(413, 32)
 
 [connection signal="body_entered" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_entered"]
 [connection signal="body_shape_exited" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_shape_exited"]

@@ -73,6 +73,8 @@ var mouse_event_global_pos
 var emmisionNode
 var spell_active
 
+var interaction # determines if the E key is being pressed
+
 var backgroundMusic
 
 # to programatically simulate an item_consume input event
@@ -746,6 +748,19 @@ func _input(event):
 			update_player_inventory()
 			playerMenu.show()
 	
+	# item interaction in the world also uses the chat key
+	if event.is_action_pressed("chat"):
+		interaction = true
+		for body in get_node('player/hitBox').get_overlapping_bodies():
+			if body.is_ground_item:
+				player_body.get_node('grabSoundPlayer').play()
+				chatBoxAppend("Picked up " + body.item_id)
+				# TODO: add item to the inventory	
+				# remove item from world.
+				body.queue_free()
+	if event.is_action_released("chat"):
+		interaction = false
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time_passed += delta
@@ -931,8 +946,12 @@ func _process(delta):
 	# check to see if collision occured
 	if collision_data:
 		chatBox.append_text("\n[i]Player has collided.[/i]")
-		#var collider = collision_data.get_collider()
-	
+		var collider = collision_data.get_collider()
+		# if it's a rigid body (aka a ground item, move it)
+		if collider is RigidBody2D:
+			#collision_data.get_collider().apply_central_impulse(-1 * collision_data.get_normal())
+			pass
+			
 	# Spell casting shit
 	if spell_active && player_data['current_mana'] > 0: 
 		# cast the spell in direction of mouse
