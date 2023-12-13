@@ -1317,6 +1317,7 @@ bus = &"Sounds"
 
 [node name="discardSound" type="AudioStreamPlayer" parent="CanvasLayer2/playerMenu"]
 stream = ExtResource("22_hjd6q")
+bus = &"Sounds"
 
 [node name="hoverSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_d3c5g")

@@ -1001,7 +1001,7 @@ func _process(delta):
 	
 	# check to see if collision occured
 	if collision_data:
-		chatBox.append_text("\n[i]Player has collided.[/i]")
+		#chatBox.append_text("\n[i]Player has collided.[/i]")
 		var collider = collision_data.get_collider()
 		# if it's a rigid body (aka a ground item, move it)
 		if collider is RigidBody2D:
