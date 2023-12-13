@@ -2,12 +2,17 @@ extends RigidBody2D
 
 var item_id = 'weapon5' # this is the default item id
 var is_ground_item = true
+var is_attackable = false
 var main_game_node # contains the root of the entire game
-var outline # outline shader
+#var outline # outline shader
+#signal highlight_item
+#signal unhighlight_item
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	outline = preload("res://itemoutline.gdshader")
+	#highlight_item.connect(highlight.bind(get_node("Sprite2D")))
+	#unhighlight_item.connect(unhighlight.bind(get_node("Sprite2D")))
+	#outline = preload("res://itemoutline.gdshader")
 	main_game_node = get_tree().get_root().get_node('Node2D')
 
 func load_item(item_id_given):
@@ -31,9 +36,23 @@ func load_item(item_id_given):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	
+
+'''
+func highlight(item_sprite):
+	if item_sprite == get_node('Sprite2D'):
+		item_sprite.material.shader = outline
+
+func unhighlight(item_sprite):
+	if item_sprite == get_node('Sprite2D'):
+		item_sprite.material.shader = null
+'''
 func _on_mouse_entered():
-	get_node("Sprite2D").material.shader = outline
+	#emit_signal('highlight_item')
+	get_node("Sprite2D").material.set_shader_parameter('width',1)
+	#main_game_node.chatBoxAppend(item_id)
+	pass
 
 func _on_mouse_exited():
-	get_node("Sprite2D").material.shader = null
+	#emit_signal('unhighlight_item')
+	get_node("Sprite2D").material.set_shader_parameter('width',0)
+	pass

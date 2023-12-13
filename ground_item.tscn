@@ -1,12 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dywtovs1hwwfx"]
+[gd_scene load_steps=6 format=3 uid="uid://dywtovs1hwwfx"]
 
 [ext_resource type="Script" path="res://ground_item.gd" id="1_pkmkb"]
+[ext_resource type="Shader" path="res://itemoutline.gdshader" id="2_q0ike"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tj0j6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1ttb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hvjsb"]
+resource_local_to_scene = true
+shader = ExtResource("2_q0ike")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [node name="ground_item" type="RigidBody2D"]
 z_index = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bulhn4rc843jq"]
+[gd_scene load_steps=36 format=3 uid="uid://bulhn4rc843jq"]
 
 [ext_resource type="Script" path="res://dungeon.gd" id="1_bdp4a"]
 [ext_resource type="Texture2D" uid="uid://bt5e0mken3goj" path="res://assets/griffith.png" id="3_jv5tp"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://b865kmi44feuw" path="res://assets/sounds/Minifantasy_Dungeon_SFX/17_orc_atk_sword_1.wav" id="15_eeipt"]
 [ext_resource type="AudioStream" uid="uid://ckqrfhym0h1tk" path="res://assets/sounds/Minifantasy_Dungeon_SFX/25_orc_walk_stone_3.wav" id="16_kf05u"]
 [ext_resource type="AudioStream" uid="uid://d368enykfayyf" path="res://assets/sounds/Minifantasy_Dungeon_SFX/21_orc_damage_3.wav" id="16_o8bt7"]
+[ext_resource type="PackedScene" uid="uid://dywtovs1hwwfx" path="res://ground_item.tscn" id="17_ti4gq"]
 [ext_resource type="Texture2D" uid="uid://dtcm1ghr12nia" path="res://assets/DarkDungeon.png" id="DarkDungeon"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gdev4"]
@@ -792,6 +793,9 @@ position = Vector2(413, 32)
 
 [node name="treasure2" type="Node2D" parent="."]
 position = Vector2(273, 73)
+
+[node name="treasure3" parent="." instance=ExtResource("17_ti4gq")]
+position = Vector2(273, 243)
 
 [connection signal="body_entered" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_entered"]
 [connection signal="body_shape_exited" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_shape_exited"]

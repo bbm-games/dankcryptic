@@ -19,6 +19,9 @@ func _ready():
 	self.add_child(item_instance)
 	item_instance.load_item('weapon2')
 	item_instance.position = get_node('treasure2').position
+	
+	# The other way to load in item
+	get_node('treasure3').load_item('weapon13')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

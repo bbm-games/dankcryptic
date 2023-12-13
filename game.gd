@@ -193,8 +193,11 @@ func _ready():
 	# set up this variable for smooth health bar transitions
 	health_target = player_data['current_health']
 	
-	# set up the player inventory
+	# set up the player inventory tab
 	update_player_inventory()
+	
+	# set up the player equipment tab
+	update_player_equipment()
 	
 	# set up the player stats tab
 	update_player_stats_tab()
@@ -264,7 +267,7 @@ func update_player_stats_tab():
 
 	var otherstats = get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer2/HBoxContainer/otherStats")
 	otherstats.clear()
-	otherstats.append_text("Weight: " + str(player_data['weight']))
+	otherstats.append_text("\nWeight: " + str(player_data['weight']))
 	otherstats.append_text("\nInventory Weight: " + str(player_data['inventory_weight'])) 
 	otherstats.append_text("\nBase Speed: " + str(base_speed))
 	otherstats.append_text('\n\n' + "[color=purple]Poisoned[/color]: " + str(snapped(player_data['statuses']['poisoned'], 0.01)))
@@ -320,6 +323,12 @@ func update_quick_slots():
 			get_node("%" + slot).set_tooltip_text("")
 			get_node("%" + slot + '/Label').set_text("")
 
+# updates the player equipment
+# TODO: make this better
+func update_player_equipment():
+	get_node('CanvasLayer2/playerMenu/Equipment/HBoxContainer/RichTextLabel').set_text("")
+	get_node('CanvasLayer2/playerMenu/Equipment/HBoxContainer/RichTextLabel').set_text(JSON.stringify(player_data['equipment']))
+	
 # updates the player inventory
 func update_player_inventory():
 	# set up the player inventory
@@ -410,9 +419,9 @@ func update_player_inventory():
 				if 'talisman2' in item['slots']:
 					equipMenu.add_check_item("talisman2", 9)
 				if 'talisman3' in item['slots']:
-					equipMenu.add_check_item("talisman3", 9)
+					equipMenu.add_check_item("talisman3", 10)
 				if 'talisman4' in item['slots']:
-					equipMenu.add_check_item("talisman4", 10)
+					equipMenu.add_check_item("talisman4", 11)
 				itemButton.get_popup().add_child(equipMenu)
 				itemButton.get_popup().add_submenu_item("Equip", "equipMenu")
 				itemButton.get_popup().add_separator()
@@ -423,9 +432,6 @@ func update_player_inventory():
 			if item['is_consumable']:
 				itemButton.get_popup().add_item("Consume", 1)
 			
-		# all items will be discardable
-		itemButton.get_popup().add_item("Discard", 3)
-		
 		# for items that are stackable
 		var itemButtonText = item['name']
 		if "is_stackable" in item.keys():
@@ -439,6 +445,10 @@ func update_player_inventory():
 		# if the item is in an equipment slot
 		if item['id'] in player_data['equipment'].values():
 			itemButtonText += "\nequipped"
+			itemButton.get_popup().add_item("Unequip", 4)
+			
+		# all items will be discardable
+		itemButton.get_popup().add_item("Discard", 3)
 		
 		itemButton.set_text(itemButtonText)
 		itemButton.set_button_icon(load(item['sprite_data']))
@@ -448,9 +458,46 @@ func update_player_inventory():
 		itemButton.pressed.connect(buttonLoreShow.bind(item))
 		itemButton.get_popup().id_pressed.connect(inventoryItemPopupMenuPress.bind(item))
 
+func removeItemFromEquip(item):
+	# remove item if it's in an equipment slot
+	for key in player_data['equipment'].keys():
+		if player_data['equipment'][key] == item['id']:
+			player_data['equipment'][key] = null
+	update_player_equipment()
+
 func addItemToEquip(equip_index, item):
-	pass
+	# if the item is already equipped, remove it
+	removeItemFromEquip(item)
+		
+	# now add the item overwriting another item that may be there
+	if equip_index == 1:
+		player_data['equipment']['head'] = item['id']
+	if equip_index == 2:
+		player_data['equipment']['back'] = item['id']
+	if equip_index == 3:
+		player_data['equipment']['torso'] = item['id']
+	if equip_index == 4:
+		player_data['equipment']['leftarm'] = item['id']
+	if equip_index == 5:
+		player_data['equipment']['rightarm'] = item['id']
+	if equip_index == 6:
+		player_data['equipment']['legs'] = item['id']	
+	if equip_index == 7:
+		player_data['equipment']['feet'] = item['id']
+	if equip_index == 8:
+		player_data['equipment']['talisman1'] = item['id']
+	if equip_index == 9:
+		player_data['equipment']['talisman2'] = item['id']
+	if equip_index == 10:
+		player_data['equipment']['talisman3'] = item['id']
+	if equip_index == 11:
+		player_data['equipment']['talisman4'] = item['id']
 	
+	get_node('CanvasLayer2/playerMenu/equipSound').play()
+	
+	update_player_inventory()
+	update_player_equipment()
+			
 func addItemToSlot(slot_index, item):
 	# try to remove item from quickslots if it's already in there
 	removeItemFromQuickslot(item)
@@ -463,6 +510,7 @@ func addItemToSlot(slot_index, item):
 	# add item to quickslot, possibly overwriting another item that was there 
 	player_data['quick_slots']['slot'+str(slot_index+1)] = item['id']
 	
+	get_node('HUDLayer/CanvasGroup/quickItemSwitchSound').play()
 	update_quick_slots()
 	update_player_inventory()
 	
@@ -475,7 +523,7 @@ func removeItemFromInventory(item):
 		# if item is a flashlight turn it off as it is discarded from inventory
 		if item['id'] == "item012":
 			light.hide()
-	
+		
 	# if there's not another item of its kind left in inventory, remove from quickslot
 	if player_data['inventory'].find(item['id']) == -1:
 		removeItemFromQuickslot(item)
@@ -484,6 +532,7 @@ func removeItemFromQuickslot(item):
 	for key in player_data['quick_slots'].keys():
 		if item['id'] == player_data['quick_slots'][key]:
 			player_data['quick_slots'][key] = null
+			get_node('HUDLayer/CanvasGroup/quickItemSwitchSound').play()
 		
 func inventoryItemPopupMenuPress(id, item):
 	if id == 1: # for consuming items
@@ -491,7 +540,10 @@ func inventoryItemPopupMenuPress(id, item):
 		get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
 	if id == 3: # for discarding items
 		removeItemFromInventory(item)
-		get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
+		get_node('CanvasLayer2/playerMenu/discardSound').play()
+	if id == 4: # for unequipping items
+		removeItemFromEquip(item)
+		get_node('CanvasLayer2/playerMenu/unequipSound').play()
 		
 	update_player_inventory()
 	update_quick_slots()
