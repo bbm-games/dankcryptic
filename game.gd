@@ -179,12 +179,12 @@ func _ready():
 	get_node("CanvasLayer2/playerMenu/Lore/VBoxContainer2/RichTextLabel").set_text(lore_data['promotional'])
 
 	# OPTIONAL: Give player all the quick items
-	for item in all_quick_items:
-		player_data['inventory'].append(item['id'])
+	#for item in all_quick_items:
+	#	player_data['inventory'].append(item['id'])
 	
 	# OPTIONAL: Give player all the weapon items
-	for item in all_weapons:
-		player_data['inventory'].append(item['id'])
+	#for item in all_weapons:
+	#	player_data['inventory'].append(item['id'])
 		
 	# OPTIONAL: Give player all the armor items
 	#for item in all_armors:
@@ -224,7 +224,7 @@ func playTitleCard(title: String):
 
 # useful function for searching through a list of json documents 
 # and retrieving the value for a key for a document that has a certain id
-func searchDocsInList(list, uniquekey, uniqueid, key):
+func searchDocsInList(list, uniquekey: String, uniqueid: String, key: String):
 	for doc in list:
 		if doc[uniquekey] == uniqueid:
 			if key in doc.keys():
@@ -562,7 +562,6 @@ func _input(event):
 		get_node('player/hitBox').look_at(mouse_event_global_pos)
 	if event.is_action_pressed("zoom_in") and not playerMenu.visible:
 		if currentZoom <= 2:
-			
 			currentZoom += 0.03
 		else:
 			currentZoom = 2
@@ -754,8 +753,13 @@ func _input(event):
 		for body in get_node('player/hitBox').get_overlapping_bodies():
 			if body.is_ground_item:
 				player_body.get_node('grabSoundPlayer').play()
-				chatBoxAppend("Picked up " + body.item_id)
-				# TODO: add item to the inventory	
+				var itemname = searchDocsInList(all_items, 'id', body.item_id, 'name')
+				if itemname:
+					chatBoxAppend("Picked up " + itemname)
+				else:
+					chatBoxAppend("Picked up item with id " + body.item_id + ' could not find in database')
+				# add item to the inventory	
+				player_data['inventory'].append(body.item_id)
 				# remove item from world.
 				body.queue_free()
 	if event.is_action_released("chat"):
