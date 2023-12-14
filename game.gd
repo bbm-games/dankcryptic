@@ -183,12 +183,12 @@ func _ready():
 	#	player_data['inventory'].append(item['id'])
 	
 	# OPTIONAL: Give player all the weapon items
-	for item in all_weapons:
-		player_data['inventory'].append(item['id'])
+	#for item in all_weapons:
+	#	player_data['inventory'].append(item['id'])
 		
 	# OPTIONAL: Give player all the armor items
-	for item in all_armors:
-		player_data['inventory'].append(item['id'])
+	#for item in all_armors:
+	#	player_data['inventory'].append(item['id'])
 	
 	# set up this variable for smooth health bar transitions
 	health_target = player_data['current_health']
@@ -778,6 +778,7 @@ func _input(event):
 			for body in get_node('player/hitBox').get_overlapping_bodies():
 				if body.is_attackable:
 					if body.has_method("take_damage") :
+						# TODO: determine perfect formula for attack
 						body.take_damage(20, player_data['statusInflictions'])
 			get_node('player/attackSoundPlayer').play()
 			get_node("player/hitBox/Line2D").set_default_color(Color(1,0,0,1))
