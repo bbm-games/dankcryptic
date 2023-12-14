@@ -7,14 +7,25 @@ var speed = base_speed
 var current_state
 var walk_fast_time = 0
 var is_attackable = true
-var health = 100
 var just_took_damage = false
 var damage_highlight_time = 0
 var base_modulation = self.get_modulate()
-
+var rng
+var enemy_data =  {"stats":{
+			"attack":65,
+			"defense":65,
+			"strength":20,
+			"health":90,
+			"stamina":100,
+			"magic":40,
+			"wisdom":60,
+			"mana":40
+		 }}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main_game_node = get_tree().get_root().get_node('Node2D')
+	
+	rng = RandomNumberGenerator.new()
 	
 	# initial state when spawned is idle
 	self.changeState('idle')
@@ -56,9 +67,9 @@ func flip_sprite():
 func take_damage(value, statusInflictions = null):
 	get_node('clapped_sound').play()
 	just_took_damage = true
-	self.health -= value
-	if self.health <= 0:
-		self.health = 0
+	enemy_data['stats']['health'] -= value
+	if enemy_data['stats']['health'] <= 0:
+		enemy_data['stats']['health'] = 0
 		self.queue_free()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -91,10 +102,17 @@ func _physics_process(delta):
 func _on_hit_box_body_entered(body):
 	#main_game_node.chatBoxAppend(str(body))
 	# attack the body
-	if body.has_method("take_damage") :
-		body.take_damage(20)
+	if body.has_method("take_damage"):
+		var diff = enemy_data['stats']['attack'] - GlobalVars.player_data['stats']['defense']
+		var prob = 0.1 + pow(2.718,-10/diff) * 0.9
+		if rng.randf_range(0,1) <= prob:
+			# damage is strength times 2 if critical hit
+			body.take_damage(enemy_data['stats']['strength']*2)
+		else:
+			# normal hit
+			body.take_damage(enemy_data['stats']['strength'])
+			
 	#main_game_node.chatBoxAppend('got clapped')
-
 func _on_hit_box_body_exited(body):
 	pass
 

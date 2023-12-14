@@ -775,12 +775,31 @@ func _input(event):
 	if event.is_action_pressed("attack") && !playerMenu.visible && !chatPopup.visible and not player_data['is_dead']:
 		if not block_held:
 			attack_held = true
-			for body in get_node('player/hitBox').get_overlapping_bodies():
-				if body.is_attackable:
-					if body.has_method("take_damage") :
-						# TODO: determine perfect formula for attack
-						body.take_damage(20, player_data['statusInflictions'])
-			get_node('player/attackSoundPlayer').play()
+			var bodies = get_node('player/hitBox').get_overlapping_bodies();
+			if bodies:
+				for body in bodies:
+					if body.is_attackable:
+						if body.has_method("take_damage") :
+							# TODO: determine perfect formula for attack
+							
+							# calculate the difference between player attack and enemy defense to determine critical hit percentage
+							var diff = player_data['stats']['attack'] - body.enemy_data['stats']['defense']
+							var prob = 0
+							if diff <= 0: # if the enemy is higher level than you, you cannot critically hit
+								prob = 0
+							else:
+								# base critical hit change at same level is 1/10
+								prob = 0.1 + pow(2.718,-10/diff) * 0.9
+							if rng.randf_range(0,1) <= prob:
+								# then do a critical hit
+								body.take_damage(player_data['stats']['strength']*2, player_data['statusInflictions'])
+								get_node('player/criticalSoundPlayer').play()
+							else:
+								# do a normal hit
+								body.take_damage(player_data['stats']['strength'], player_data['statusInflictions'])
+								get_node('player/attackSoundPlayer').play()
+			else:
+				get_node('player/attackSoundPlayer').play()
 			get_node("player/hitBox/Line2D").set_default_color(Color(1,0,0,1))
 		else:
 			attack_held = false
