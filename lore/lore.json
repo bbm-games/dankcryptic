@@ -24,22 +24,22 @@
 		 "paralyzed":0.5,
 		 "bloodless":0.4
 	  },
-	 "statusInflictions":{
-	   "poisoned":0.0,
-	   "burned":0.0,
-	   "drenched":0.0,
-	   "confused":0.0,
-	   "paralyzed":0.0,
-	   "bloodless":0.0
-	 },
-	 "statusNegations":{
-	   "poisoned":0.0,
-	   "burned":0.0,
-	   "drenched":0.0,
-	   "confused":0.0,
-	   "paralyzed":0.0,
-	   "bloodless":0.0
-	 },
+	  "statusInflictions":{
+		 "poisoned":0.0,
+		 "burned":0.0,
+		 "drenched":0.0,
+		 "confused":0.0,
+		 "paralyzed":0.0,
+		 "bloodless":0.0
+	  },
+	  "statusNegations":{
+		 "poisoned":0.0,
+		 "burned":0.0,
+		 "drenched":0.0,
+		 "confused":0.0,
+		 "paralyzed":0.0,
+		 "bloodless":0.0
+	  },
 	  "weight":80,
 	  "inventory_weight":0,
 	  "max_health":100,
@@ -73,7 +73,8 @@
 		 "talisman1":null,
 		 "talisman2":null,
 		 "talisman3":null,
-		 "talisman4":null
+		 "talisman4":null,
+	   "neck":null
 	  },
 	  "quick_slots":{
 		 "slot1":"item001",
@@ -538,7 +539,10 @@
    "armors":[
 	  {
 		 "name":"Shadowsteel Plate",
-		 "statusResistances":{
+		 "id":"armor001",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.2,
 			"burned":0.8,
 			"drenched":0.4,
@@ -546,7 +550,10 @@
 			"paralyzed":0.6,
 			"bloodless":0.9
 		 },
-		 "loreDescription":"Forged from the darkest depths, the Shadowsteel Plate emits an eerie glow, instilling fear in the hearts of all who lay their eyes upon it.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Forged from the darkest depths, the Shadowsteel Plate emits an eerie glow, instilling fear in the hearts of all who lay their eyes upon it.",
 		 "rarity":"epic",
 		 "slots":[
 			"torso"
@@ -554,7 +561,10 @@
 	  },
 	  {
 		 "name":"Venomous Shroud",
-		 "statusResistances":{
+		 "id":"armor002",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.9,
 			"burned":0.2,
 			"drenched":0.5,
@@ -562,7 +572,10 @@
 			"paralyzed":0.3,
 			"bloodless":0.4
 		 },
-		 "loreDescription":"Fashioned by the master weavers of the Arachnid Forest, the Venomous Shroud grants its wearer immunity to the deadliest poisons known to man.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Fashioned by the master weavers of the Arachnid Forest, the Venomous Shroud grants its wearer immunity to the deadliest poisons known to man.",
 		 "rarity":"legendary",
 		 "slots":[
 			"torso"
@@ -570,7 +583,10 @@
 	  },
 	  {
 		 "name":"Frostforged Legguards",
-		 "statusResistances":{
+		 "id":"armor003",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.6,
 			"burned":0.3,
 			"drenched":0.9,
@@ -578,7 +594,10 @@
 			"paralyzed":0.2,
 			"bloodless":0.7
 		 },
-		 "loreDescription":"Forged in the heart of the Frozen Mountains, these Legguards provide exceptional protection against icy winds and freezing temperatures.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Forged in the heart of the Frozen Mountains, these Legguards provide exceptional protection against icy winds and freezing temperatures.",
 		 "rarity":"rare",
 		 "slots":[
 			"legs"
@@ -586,7 +605,10 @@
 	  },
 	  {
 		 "name":"Helm of Eternal Shadows",
-		 "statusResistances":{
+		 "id":"armor004",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.4,
 			"burned":0.7,
 			"drenched":0.2,
@@ -594,7 +616,10 @@
 			"paralyzed":0.5,
 			"bloodless":0.3
 		 },
-		 "loreDescription":"Crafted by ancient sorcerers, the Helm of Eternal Shadows veils its wearer from the prying eyes of both light and darkness.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Crafted by ancient sorcerers, the Helm of Eternal Shadows veils its wearer from the prying eyes of both light and darkness.",
 		 "rarity":"rare",
 		 "slots":[
 			"head"
@@ -602,7 +627,10 @@
 	  },
 	  {
 		 "name":"Amulet of Undying Hope",
-		 "statusResistances":{
+		 "id":"armor005",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.7,
 			"burned":0.4,
 			"drenched":0.6,
@@ -610,7 +638,10 @@
 			"paralyzed":0.9,
 			"bloodless":0.5
 		 },
-		 "loreDescription":"A relic of the lost civilization, the Amulet of Undying Hope rains blessings upon its bearer during the darkest of times.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"A relic of the lost civilization, the Amulet of Undying Hope rains blessings upon its bearer during the darkest of times.",
 		 "rarity":"common",
 		 "slots":[
 			"neck"
@@ -618,7 +649,10 @@
 	  },
 	  {
 		 "name":"Dreadguard Mail",
-		 "statusResistances":{
+		 "id":"armor006",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.3,
 			"burned":0.6,
 			"drenched":0.7,
@@ -626,7 +660,10 @@
 			"paralyzed":0.8,
 			"bloodless":0.2
 		 },
-		 "loreDescription":"Infused with ancient enchantments, the Dreadguard Mail instills paralyzing fear in the hearts of its foes.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Infused with ancient enchantments, the Dreadguard Mail instills paralyzing fear in the hearts of its foes.",
 		 "rarity":"epic",
 		 "slots":[
 			"torso"
@@ -634,7 +671,10 @@
 	  },
 	  {
 		 "name":"Legplates of the Cursed",
-		 "statusResistances":{
+		 "id":"armor007",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.5,
 			"burned":0.3,
 			"drenched":0.8,
@@ -642,7 +682,10 @@
 			"paralyzed":0.4,
 			"bloodless":0.7
 		 },
-		 "loreDescription":"Forged with the bones of fallen warriors, these Legplates radiate an aura of haunting dread.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Forged with the bones of fallen warriors, these Legplates radiate an aura of haunting dread.",
 		 "rarity":"legendary",
 		 "slots":[
 			"legs"
@@ -650,7 +693,10 @@
 	  },
 	  {
 		 "name":"Raven's Embrace",
-		 "statusResistances":{
+		 "id":"armor008",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.8,
 			"burned":0.4,
 			"drenched":0.3,
@@ -658,7 +704,10 @@
 			"paralyzed":0.2,
 			"bloodless":0.5
 		 },
-		 "loreDescription":"Woven by the hands of ancient druids, the Raven's Embrace provides unyielding protection against the forces of nature.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Woven by the hands of ancient druids, the Raven's Embrace provides unyielding protection against the forces of nature.",
 		 "rarity":"rare",
 		 "slots":[
 			"torso"
@@ -666,7 +715,10 @@
 	  },
 	  {
 		 "name":"Hood of Whispering Shadows",
-		 "statusResistances":{
+		 "id":"armor009",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.6,
 			"burned":0.2,
 			"drenched":0.9,
@@ -674,7 +726,10 @@
 			"paralyzed":0.7,
 			"bloodless":0.4
 		 },
-		 "loreDescription":"Once worn by the assassins of a forgotten guild, the Hood of Whispering Shadows shrouds its wearer in an impenetrable veil of darkness.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Once worn by the assassins of a forgotten guild, the Hood of Whispering Shadows shrouds its wearer in an impenetrable veil of darkness.",
 		 "rarity":"rare",
 		 "slots":[
 			"head"
@@ -682,7 +737,10 @@
 	  },
 	  {
 		 "name":"Necklace of the Fallen",
-		 "statusResistances":{
+		 "id":"armor010",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.4,
 			"burned":0.7,
 			"drenched":0.5,
@@ -690,7 +748,10 @@
 			"paralyzed":0.5,
 			"bloodless":0.9
 		 },
-		 "loreDescription":"Forged from the ashes of long-extinguished battlefields, the Necklace of the Fallen grants its wearer the strength and wisdom of fallen heroes.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Forged from the ashes of long-extinguished battlefields, the Necklace of the Fallen grants its wearer the strength and wisdom of fallen heroes.",
 		 "rarity":"common",
 		 "slots":[
 			"neck"
@@ -698,7 +759,10 @@
 	  },
 	  {
 		 "name":"Darksteel Scalemail",
-		 "statusResistances":{
+		 "id":"armor011",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.5,
 			"burned":0.5,
 			"drenched":0.5,
@@ -706,7 +770,10 @@
 			"paralyzed":0.5,
 			"bloodless":0.5
 		 },
-		 "loreDescription":"Forged by the ancient dragon slayers, the Darksteel Scalemail offers balanced protection against all elements.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Forged by the ancient dragon slayers, the Darksteel Scalemail offers balanced protection against all elements.",
 		 "rarity":"common",
 		 "slots":[
 			"torso"
@@ -714,7 +781,10 @@
 	  },
 	  {
 		 "name":"Crimson Warplate",
-		 "statusResistances":{
+		 "id":"armor012",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.7,
 			"burned":0.7,
 			"drenched":0.7,
@@ -722,7 +792,10 @@
 			"paralyzed":0.7,
 			"bloodless":0.7
 		 },
-		 "loreDescription":"Stained with the blood of countless fallen, the Crimson Warplate confers upon its bearer the fury of a thousand warriors.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Stained with the blood of countless fallen, the Crimson Warplate confers upon its bearer the fury of a thousand warriors.",
 		 "rarity":"epic",
 		 "slots":[
 			"torso"
@@ -730,7 +803,10 @@
 	  },
 	  {
 		 "name":"Stormcaster Robes",
-		 "statusResistances":{
+		 "id":"armor013",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.3,
 			"burned":0.3,
 			"drenched":0.3,
@@ -738,7 +814,10 @@
 			"paralyzed":0.3,
 			"bloodless":0.3
 		 },
-		 "loreDescription":"Infused with the power of lightning, the Stormcaster Robes channel destructive energy, unmatched by any mere mortal.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Infused with the power of lightning, the Stormcaster Robes channel destructive energy, unmatched by any mere mortal.",
 		 "rarity":"rare",
 		 "slots":[
 			"torso"
@@ -746,7 +825,10 @@
 	  },
 	  {
 		 "name":"Skullcrusher Helm",
-		 "statusResistances":{
+		 "id":"armor014",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.6,
 			"burned":0.6,
 			"drenched":0.6,
@@ -754,7 +836,10 @@
 			"paralyzed":0.6,
 			"bloodless":0.6
 		 },
-		 "loreDescription":"Forged from the skull of a fallen titan, the Skullcrusher Helm invokes primal strength and instills terror in the hearts of enemies.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Forged from the skull of a fallen titan, the Skullcrusher Helm invokes primal strength and instills terror in the hearts of enemies.",
 		 "rarity":"rare",
 		 "slots":[
 			"head"
@@ -762,7 +847,10 @@
 	  },
 	  {
 		 "name":"Crystal Tear Pendant",
-		 "statusResistances":{
+		 "id":"armor015",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.9,
 			"burned":0.9,
 			"drenched":0.9,
@@ -770,7 +858,10 @@
 			"paralyzed":0.9,
 			"bloodless":0.9
 		 },
-		 "loreDescription":"Formed from the crystallized tears of a celestial being, the pendant radiates an invigorating aura, healing wounds and restoring hope.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Formed from the crystallized tears of a celestial being, the pendant radiates an invigorating aura, healing wounds and restoring hope.",
 		 "rarity":"legendary",
 		 "slots":[
 			"neck"
@@ -778,7 +869,10 @@
 	  },
 	  {
 		 "name":"Drakescale Leggings",
-		 "statusResistances":{
+		 "id":"armor016",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.8,
 			"burned":0.2,
 			"drenched":0.4,
@@ -786,7 +880,10 @@
 			"paralyzed":0.7,
 			"bloodless":0.3
 		 },
-		 "loreDescription":"Crafted from the scales of an ancient fire-breathing dragon, the Drakescale Leggings provide unparalleled protection against elemental attacks.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Crafted from the scales of an ancient fire-breathing dragon, the Drakescale Leggings provide unparalleled protection against elemental attacks.",
 		 "rarity":"epic",
 		 "slots":[
 			"legs"
@@ -794,7 +891,10 @@
 	  },
 	  {
 		 "name":"Phantom Veil",
-		 "statusResistances":{
+		 "id":"armor017",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.1,
 			"burned":0.8,
 			"drenched":0.3,
@@ -802,7 +902,10 @@
 			"paralyzed":0.4,
 			"bloodless":0.6
 		 },
-		 "loreDescription":"Woven from ethereal threads, the Phantom Veil grants its wearer extraordinary agility and unnatural resistance to magic.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Woven from ethereal threads, the Phantom Veil grants its wearer extraordinary agility and unnatural resistance to magic.",
 		 "rarity":"legendary",
 		 "slots":[
 			"head"
@@ -810,7 +913,10 @@
 	  },
 	  {
 		 "name":"Oceanheart Amulet",
-		 "statusResistances":{
+		 "id":"armor018",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.6,
 			"burned":0.3,
 			"drenched":0.9,
@@ -818,7 +924,10 @@
 			"paralyzed":0.2,
 			"bloodless":0.7
 		 },
-		 "loreDescription":"Forged from a rare gemstone found deep within the ocean's depths, the Oceanheart Amulet grants its wearer dominion over water and protection from its treacherous currents.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Forged from a rare gemstone found deep within the ocean's depths, the Oceanheart Amulet grants its wearer dominion over water and protection from its treacherous currents.",
 		 "rarity":"rare",
 		 "slots":[
 			"neck"
@@ -826,7 +935,10 @@
 	  },
 	  {
 		 "name":"Serpent's Embrace",
-		 "statusResistances":{
+		 "id":"armor019",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.7,
 			"burned":0.4,
 			"drenched":0.3,
@@ -834,7 +946,10 @@
 			"paralyzed":0.2,
 			"bloodless":0.5
 		 },
-		 "loreDescription":"Imbued with the essence of serpents, the Serpent's Embrace grants its wearer unparalleled agility and venomous resistance.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Imbued with the essence of serpents, the Serpent's Embrace grants its wearer unparalleled agility and venomous resistance.",
 		 "rarity":"rare",
 		 "slots":[
 			"torso"
@@ -842,7 +957,10 @@
 	  },
 	  {
 		 "name":"Nightshade Hood",
-		 "statusResistances":{
+		 "id":"armor020",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.4,
 			"burned":0.7,
 			"drenched":0.2,
@@ -850,7 +968,10 @@
 			"paralyzed":0.5,
 			"bloodless":0.3
 		 },
-		 "loreDescription":"Woven from the shadowy fibers of the nightshade plant, the Nightshade Hood conceals its wearer, providing mastery over darkness.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Woven from the shadowy fibers of the nightshade plant, the Nightshade Hood conceals its wearer, providing mastery over darkness.",
 		 "rarity":"common",
 		 "slots":[
 			"head"
@@ -858,7 +979,10 @@
 	  },
 	  {
 		 "name":"Sentinel's Choker",
-		 "statusResistances":{
+		 "id":"armor021",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "statusNegations":{
 			"poisoned":0.2,
 			"burned":0.5,
 			"drenched":0.7,
@@ -866,7 +990,10 @@
 			"paralyzed":0.9,
 			"bloodless":0.4
 		 },
-		 "loreDescription":"Forged by the guardians of ancient realms, the Sentinel's Choker wards off curses and reinforces the fortitude of its wearer.",
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false,
+		 "description":"Forged by the guardians of ancient realms, the Sentinel's Choker wards off curses and reinforces the fortitude of its wearer.",
 		 "rarity":"common",
 		 "slots":[
 			"neck"
@@ -874,307 +1001,424 @@
 	  },
 	  {
 		 "name":"Plate Mail",
-		 "loreDescription":"This legendary suit of armor is said to have been forged by ancient blacksmiths and grants outstanding protection.",
+		 "id":"armor022",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"This legendary suit of armor is said to have been forged by ancient blacksmiths and grants outstanding protection.",
 		 "rarity":"Epic",
 		 "slots":[
 			"torso"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.2,
 			"burned":0.1,
 			"drenched":0,
 			"confused":0.05,
 			"paralyzed":0,
 			"bloodless":0.1
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Leather Leggings",
-		 "loreDescription":"Durable leggings made from thick leather that offer decent defense and flexibility in combat.",
+		 "id":"armor023",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"Durable leggings made from thick leather that offer decent defense and flexibility in combat.",
 		 "rarity":"Common",
 		 "slots":[
 			"legs"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.05,
 			"burned":0.1,
 			"drenched":0.1,
 			"confused":0,
 			"paralyzed":0,
 			"bloodless":0.05
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Shadow Hood",
-		 "loreDescription":"A hood infused with the essence of shadows, granting its wearer enhanced stealth and protection from harmful effects.",
+		 "id":"armor024",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"A hood infused with the essence of shadows, granting its wearer enhanced stealth and protection from harmful effects.",
 		 "rarity":"Rare",
 		 "slots":[
 			"head"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.1,
 			"burned":0.2,
 			"drenched":0.05,
 			"confused":0.1,
 			"paralyzed":0,
 			"bloodless":0.05
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Amulet of Vitality",
-		 "loreDescription":"An ancient amulet that radiates with magical energy, boosting the wearer's health and providing resistance against various ailments.",
+		 "id":"armor025",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"An ancient amulet that radiates with magical energy, boosting the wearer's health and providing resistance against various ailments.",
 		 "rarity":"Uncommon",
 		 "slots":[
 			"neck"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.05,
 			"burned":0.05,
 			"drenched":0.05,
 			"confused":0.05,
 			"paralyzed":0.05,
 			"bloodless":0.05
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Dragon Scale Armor",
-		 "loreDescription":"Crafted from the scales of an ancient dragon, this legendary armor grants exceptional protection against fire and various other threats.",
+		 "id":"armor026",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"Crafted from the scales of an ancient dragon, this legendary armor grants exceptional protection against fire and various other threats.",
 		 "rarity":"Epic",
 		 "slots":[
 			"torso"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.1,
 			"burned":0.5,
 			"drenched":0.1,
 			"confused":0.05,
 			"paralyzed":0.05,
 			"bloodless":0.1
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Robes of the Archmage",
-		 "loreDescription":"Enigmatic robes bestowed only upon the most accomplished spellcasters. They enhance the wearer's magical abilities and provide defense against various debilitating effects.",
+		 "id":"armor027",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"Enigmatic robes bestowed only upon the most accomplished spellcasters. They enhance the wearer's magical abilities and provide defense against various debilitating effects.",
 		 "rarity":"Legendary",
 		 "slots":[
 			"torso"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.1,
 			"burned":0.2,
 			"drenched":0.1,
 			"confused":0.15,
 			"paralyzed":0.05,
 			"bloodless":0.05
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Iron Legguards",
-		 "loreDescription":"Sturdy legguards forged by skilled blacksmiths. While heavy, they offer excellent protection against physical attacks.",
+		 "id":"armor028",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"Sturdy legguards forged by skilled blacksmiths. While heavy, they offer excellent protection against physical attacks.",
 		 "rarity":"Common",
 		 "slots":[
 			"legs"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.05,
 			"burned":0.05,
 			"drenched":0.05,
 			"confused":0.05,
 			"paralyzed":0.05,
 			"bloodless":0.05
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Spellweaver's Gloves",
-		 "loreDescription":"Gloves imbued with arcane energy, allowing the wearer to channel spells more effectively while providing moderate defense.",
+		 "id":"armor029",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"Gloves imbued with arcane energy, allowing the wearer to channel spells more effectively while providing moderate defense.",
 		 "rarity":"Rare",
 		 "slots":[
 			"head"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.1,
 			"burned":0.1,
 			"drenched":0.1,
 			"confused":0.1,
 			"paralyzed":0.05,
 			"bloodless":0.05
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Necklace of Protection",
-		 "loreDescription":"A protective necklace enchanted with ancient rituals, granting resistance against various harmful effects.",
+		 "id":"armor030",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"A protective necklace enchanted with ancient rituals, granting resistance against various harmful effects.",
 		 "rarity":"Uncommon",
 		 "slots":[
 			"neck"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.1,
 			"burned":0.1,
 			"drenched":0.1,
 			"confused":0.1,
 			"paralyzed":0.1,
 			"bloodless":0.1
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Crimson Armor",
-		 "loreDescription":"Armor infused with the essence of an otherworldly crimson crystal, offering both protection and increased resistance to all ailments.",
+		 "id":"armor031",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"Armor infused with the essence of an otherworldly crimson crystal, offering both protection and increased resistance to all ailments.",
 		 "rarity":"Rare",
 		 "slots":[
 			"torso"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.2,
 			"burned":0.2,
 			"drenched":0.2,
 			"confused":0.2,
 			"paralyzed":0.2,
 			"bloodless":0.2
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Steel Leggings",
-		 "loreDescription":"Thick steel leggings favored by knights, providing reliable defense against physical and magical attacks.",
+		 "id":"armor032",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"Thick steel leggings favored by knights, providing reliable defense against physical and magical attacks.",
 		 "rarity":"Uncommon",
 		 "slots":[
 			"legs"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.1,
 			"burned":0.2,
 			"drenched":0.1,
 			"confused":0.1,
 			"paralyzed":0.05,
 			"bloodless":0.05
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Helm of the Conqueror",
-		 "loreDescription":"A helm worn by fearless warriors who have emerged victorious from countless battles. Enhances offensive capabilities and grants resistance against harmful effects.",
+		 "id":"armor033",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"A helm worn by fearless warriors who have emerged victorious from countless battles. Enhances offensive capabilities and grants resistance against harmful effects.",
 		 "rarity":"Epic",
 		 "slots":[
 			"head"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.15,
 			"burned":0.15,
 			"drenched":0.05,
 			"confused":0.2,
 			"paralyzed":0.1,
 			"bloodless":0.05
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Amulet of the Serpent",
-		 "loreDescription":"An amulet representing the legendary serpent guardian, granting resistance against venomous attacks and dark magic.",
+		 "id":"armor034",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"An amulet representing the legendary serpent guardian, granting resistance against venomous attacks and dark magic.",
 		 "rarity":"Rare",
 		 "slots":[
 			"neck"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.3,
 			"burned":0.05,
 			"drenched":0.05,
 			"confused":0.05,
 			"paralyzed":0.05,
 			"bloodless":0.05
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Shadow Silk Robes",
-		 "loreDescription":"Robes woven from a rare silk infused with shadow essence, granting heightened magical prowess and protection from harmful effects.",
+		 "id":"armor035",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"Robes woven from a rare silk infused with shadow essence, granting heightened magical prowess and protection from harmful effects.",
 		 "rarity":"Epic",
 		 "slots":[
 			"torso"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.2,
 			"burned":0.2,
 			"drenched":0.2,
 			"confused":0.1,
 			"paralyzed":0.1,
 			"bloodless":0.1
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Silent Leggings",
-		 "loreDescription":"Leggings crafted by secretive assassins, allowing their wearers to move silently and avoid status ailments.",
+		 "id":"armor036",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"Leggings crafted by secretive assassins, allowing their wearers to move silently and avoid status ailments.",
 		 "rarity":"Rare",
 		 "slots":[
 			"legs"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.2,
 			"burned":0.1,
 			"drenched":0.1,
 			"confused":0.05,
 			"paralyzed":0.1,
 			"bloodless":0.1
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Bracelets of Warding",
-		 "loreDescription":"Enchanted bracelets that create protective barriers around the wearer, reducing the effects of harmful spells and status ailments.",
+		 "id":"armor037",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"Enchanted bracelets that create protective barriers around the wearer, reducing the effects of harmful spells and status ailments.",
 		 "rarity":"Uncommon",
 		 "slots":[
 			"head"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.05,
 			"burned":0.05,
 			"drenched":0.05,
 			"confused":0.05,
 			"paralyzed":0.2,
 			"bloodless":0.05
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Crown of Preservation",
-		 "loreDescription":"A crown worn by ancient rulers, said to grant the wearer near-immunity to debilitating effects and curses.",
+		 "id":"armor038",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"A crown worn by ancient rulers, said to grant the wearer near-immunity to debilitating effects and curses.",
 		 "rarity":"Legendary",
 		 "slots":[
 			"head"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.05,
 			"burned":0.05,
 			"drenched":0.05,
 			"confused":0.05,
 			"paralyzed":0.3,
 			"bloodless":0.05
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Talisman of Renewal",
-		 "loreDescription":"A mysterious talisman that constantly rejuvenates the wearer, providing minor health regeneration and reducing the duration of all negative effects.",
+		 "id":"armor039",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"A mysterious talisman that constantly rejuvenates the wearer, providing minor health regeneration and reducing the duration of all negative effects.",
 		 "rarity":"Rare",
 		 "slots":[
-			"neck"
+			"talisman1",
+			"talisman2",
+			"talisman3",
+			"talisman4"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.1,
 			"burned":0.1,
 			"drenched":0.1,
 			"confused":0.1,
 			"paralyzed":0.1,
 			"bloodless":0.1
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  },
 	  {
 		 "name":"Dwarven Mail",
-		 "loreDescription":"Mail armor expertly crafted by the legendary Dwarven blacksmiths, known for its durability and resistance to status ailments.",
+		 "id":"armor040",
+		 "sprite_data":"res://assets/Item__57.png",
+		 "weight":5,
+		 "description":"Mail armor expertly crafted by the legendary Dwarven blacksmiths, known for its durability and resistance to status ailments.",
 		 "rarity":"Uncommon",
 		 "slots":[
 			"torso"
 		 ],
-		 "statusResistances":{
+		 "statusNegations":{
 			"poisoned":0.2,
 			"burned":0.1,
 			"drenched":0.05,
 			"confused":0.05,
 			"paralyzed":0.1,
 			"bloodless":0.05
-		 }
+		 },
+		 "is_equipable":true,
+		 "is_stackable":false,
+		 "is_consumable":false
 	  }
    ],
    "spells":[

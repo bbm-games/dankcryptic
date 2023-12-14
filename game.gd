@@ -149,7 +149,7 @@ func _ready():
 	all_armors = lore_data['armors']
 	
 	# TODO: fully add armor support in json
-	all_items = all_quick_items + all_weapons
+	all_items = all_quick_items + all_weapons + all_armors
 	
 	# set up the artificial item_consume input event
 	item_consume_event = InputEventAction.new()
@@ -183,12 +183,12 @@ func _ready():
 	#	player_data['inventory'].append(item['id'])
 	
 	# OPTIONAL: Give player all the weapon items
-	#for item in all_weapons:
-	#	player_data['inventory'].append(item['id'])
+	for item in all_weapons:
+		player_data['inventory'].append(item['id'])
 		
 	# OPTIONAL: Give player all the armor items
-	#for item in all_armors:
-	#	player_data['inventory'].append(item['id'])
+	for item in all_armors:
+		player_data['inventory'].append(item['id'])
 	
 	# set up this variable for smooth health bar transitions
 	health_target = player_data['current_health']
@@ -400,6 +400,8 @@ func update_player_inventory():
 	if apparent_inventory_weight < 0:
 		apparent_inventory_weight = 0
 	base_speed = 1 - (apparent_inventory_weight/player_data['weight'])*0.75
+	if base_speed <= 0:
+		base_speed = 0
 	base_speed *= 50 # number of pixels a second
 	update_player_stats_tab() # to reflect new weight and stuff
 	
@@ -458,6 +460,8 @@ func update_player_inventory():
 					equipMenu.add_check_item("talisman3", 10)
 				if 'talisman4' in item['slots']:
 					equipMenu.add_check_item("talisman4", 11)
+				if 'neck' in item['slots']:
+					equipMenu.add_check_item("neck", 12)
 				itemButton.get_popup().add_child(equipMenu)
 				itemButton.get_popup().add_submenu_item("Equip", "equipMenu")
 				itemButton.get_popup().add_separator()
@@ -528,6 +532,8 @@ func addItemToEquip(equip_index, item):
 		player_data['equipment']['talisman3'] = item['id']
 	if equip_index == 11:
 		player_data['equipment']['talisman4'] = item['id']
+	if equip_index == 12:
+		player_data['equipment']['neck'] = item['id']
 	
 	get_node('CanvasLayer2/playerMenu/equipSound').play()
 	
