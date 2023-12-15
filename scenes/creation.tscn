@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://cmrfp8aucy0rh"]
 
 [ext_resource type="Texture2D" uid="uid://6we0ccyfersj" path="res://assets/creationbg.png" id="1_elijy"]
-[ext_resource type="Script" path="res://creation.gd" id="1_tkosg"]
+[ext_resource type="Script" path="res://scenes/creation.gd" id="1_tkosg"]
 [ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="2_04ku0"]
-[ext_resource type="Script" path="res://CharNameLineEdit.gd" id="3_64eo6"]
+[ext_resource type="Script" path="res://scenes/CharNameLineEdit.gd" id="3_64eo6"]
 [ext_resource type="Texture2D" uid="uid://xbd4of61cpg7" path="res://assets/portraits/Icons_01.png" id="3_f1qa2"]
 [ext_resource type="Texture2D" uid="uid://dmkurwsh46pi3" path="res://assets/portraits/Icons_02.png" id="4_trio2"]
 [ext_resource type="Texture2D" uid="uid://42v32eoa8ayf" path="res://assets/portraits/Icons_03.png" id="5_c10c2"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bdafrjkxddcgt" path="res://assets/portraits/Icons_05.png" id="7_s4oa5"]
 [ext_resource type="Texture2D" uid="uid://c8xn2ds5np25x" path="res://assets/portraits/Icons_06.png" id="8_uyei1"]
 [ext_resource type="Texture2D" uid="uid://b34e5xjw734n" path="res://assets/Item__04.png" id="11_r52q4"]
-[ext_resource type="Script" path="res://firstvocationbutton.gd" id="12_kb2a3"]
+[ext_resource type="Script" path="res://scenes/firstvocationbutton.gd" id="12_kb2a3"]
 [ext_resource type="Texture2D" uid="uid://c4dbelswopvwk" path="res://assets/portraits/Icons_21.png" id="12_to48f"]
 [ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="13_nsk31"]
 
@@ -532,7 +532,5 @@ stream = ExtResource("13_nsk31")
 
 [connection signal="text_changed" from="TabContainer/Name/VBoxContainer/CharNameLineEdit" to="." method="_on_char_name_line_edit_text_changed"]
 [connection signal="pressed" from="TabContainer/Confirm/VBoxContainer/startGameButton" to="." method="_on_start_game_button_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/nextButton" to="." method="_on_next_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/nextButton" to="." method="_on_next_button_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/prevButton" to="." method="_on_prev_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/prevButton" to="." method="_on_prev_button_pressed"]

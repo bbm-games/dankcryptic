@@ -1,35 +1,35 @@
 [gd_scene load_steps=70 format=3 uid="uid://b78h3ma27r3rb"]
 
-[ext_resource type="Texture2D" uid="uid://dty6ym387qvf4" path="res://assets/hudbars.png" id="1_7r21i"]
-[ext_resource type="Script" path="res://HUDLayer.gd" id="1_47glo"]
-[ext_resource type="Script" path="res://game.gd" id="1_o5ole"]
-[ext_resource type="Texture2D" uid="uid://kuy5fnxctvqh" path="res://assets/testbg.png" id="3_ctx3v"]
-[ext_resource type="Texture2D" uid="uid://cvjwjaa034kkc" path="res://assets/guts.png" id="6_ui0lc"]
-[ext_resource type="AudioStream" uid="uid://cchk611qy76ua" path="res://assets/sounds/quickitemswitch.wav" id="7_7pep6"]
-[ext_resource type="Texture2D" uid="uid://7mr23lprj7n3" path="res://assets/neutral.webp" id="7_45vux"]
-[ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="7_f521b"]
-[ext_resource type="AudioStream" uid="uid://bvdtncy8q6r27" path="res://assets/sounds/quickitemuse.wav" id="8_0de4k"]
-[ext_resource type="Script" path="res://bigportrait.gd" id="8_c6bur"]
-[ext_resource type="Script" path="res://resumeGameButton.gd" id="8_ul5po"]
-[ext_resource type="Texture2D" uid="uid://d2jkuylwl6o4a" path="res://assets/border.png" id="8_vh846"]
-[ext_resource type="Texture2D" uid="uid://c8jpbf2bhxlq6" path="res://assets/coin.png" id="9_8743s"]
-[ext_resource type="Shader" path="res://shield.gdshader" id="9_xiwt1"]
-[ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="10_d3c5g"]
-[ext_resource type="Theme" uid="uid://bck6sugoxd40h" path="res://cryptic_theme.tres" id="10_kbx3o"]
-[ext_resource type="Script" path="res://player.gd" id="11_4aetu"]
-[ext_resource type="Shader" path="res://crt.gdshader" id="11_q0vo4"]
-[ext_resource type="AudioStream" uid="uid://b68m0eyu6s6gc" path="res://assets/sounds/shieldsound.wav" id="14_idgaw"]
-[ext_resource type="AudioStream" uid="uid://py6rar5tguch" path="res://assets/sounds/attacksound.wav" id="15_ewa8a"]
-[ext_resource type="Shader" path="res://fire.gdshader" id="16_5vwms"]
-[ext_resource type="AudioStream" uid="uid://v5srpkj6a8ui" path="res://assets/sounds/magic_attack.mp3" id="16_omwxg"]
-[ext_resource type="Shader" path="res://lightning.gdshader" id="17_s64by"]
-[ext_resource type="AudioStream" uid="uid://bpeyq6qhoc0s3" path="res://assets/sounds/RPG_Essentials_Free/10_Battle_SFX/15_Impact_flesh_02.wav" id="20_4wopq"]
-[ext_resource type="AudioStream" uid="uid://dpbyk5u4nr863" path="res://assets/sounds/coin.wav" id="20_e3m1t"]
-[ext_resource type="AudioStream" uid="uid://6s7thlqaga3i" path="res://assets/sounds/RPG_Essentials_Free/10_Battle_SFX/39_Block_03.wav" id="21_cbv0g"]
-[ext_resource type="AudioStream" uid="uid://dliuks0ccxw21" path="res://assets/sounds/Minifantasy_Dungeon_SFX/04_sack_open_2.wav" id="22_hjd6q"]
-[ext_resource type="AudioStream" uid="uid://dss2nlp61r45e" path="res://assets/sounds/Minifantasy_Dungeon_SFX/26_sword_hit_1.wav" id="23_bss3f"]
-[ext_resource type="AudioStream" uid="uid://g4b8v66lx6kh" path="res://assets/sounds/RPG_Essentials_Free/10_UI_Menu_SFX/070_Equip_10.wav" id="26_sghha"]
-[ext_resource type="AudioStream" uid="uid://gwdytccb2iog" path="res://assets/sounds/RPG_Essentials_Free/10_UI_Menu_SFX/071_Unequip_01.wav" id="27_dgr6r"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_y5cr6"]
+[ext_resource type="Script" path="res://scenes/HUDLayer.gd" id="2_eour7"]
+[ext_resource type="Texture2D" uid="uid://dty6ym387qvf4" path="res://assets/hudbars.png" id="3_bxoid"]
+[ext_resource type="Texture2D" uid="uid://cvjwjaa034kkc" path="res://assets/guts.png" id="4_yv851"]
+[ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="5_k6q0s"]
+[ext_resource type="Texture2D" uid="uid://d2jkuylwl6o4a" path="res://assets/border.png" id="6_d03n3"]
+[ext_resource type="AudioStream" uid="uid://cchk611qy76ua" path="res://assets/sounds/quickitemswitch.wav" id="7_u1fmh"]
+[ext_resource type="AudioStream" uid="uid://bvdtncy8q6r27" path="res://assets/sounds/quickitemuse.wav" id="8_wk7tl"]
+[ext_resource type="Texture2D" uid="uid://c8jpbf2bhxlq6" path="res://assets/coin.png" id="9_ktu8j"]
+[ext_resource type="Texture2D" uid="uid://kuy5fnxctvqh" path="res://assets/testbg.png" id="10_fiov2"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="11_updkf"]
+[ext_resource type="Texture2D" uid="uid://7mr23lprj7n3" path="res://assets/neutral.webp" id="12_w4hbc"]
+[ext_resource type="Shader" path="res://shaders/shield.gdshader" id="13_6ecei"]
+[ext_resource type="AudioStream" uid="uid://v5srpkj6a8ui" path="res://assets/sounds/magic_attack.mp3" id="14_q0ik6"]
+[ext_resource type="AudioStream" uid="uid://b68m0eyu6s6gc" path="res://assets/sounds/shieldsound.wav" id="15_x7r5d"]
+[ext_resource type="AudioStream" uid="uid://py6rar5tguch" path="res://assets/sounds/attacksound.wav" id="16_we4ro"]
+[ext_resource type="Shader" path="res://shaders/fire.gdshader" id="17_ejydg"]
+[ext_resource type="Shader" path="res://shaders/lightning.gdshader" id="18_vh277"]
+[ext_resource type="Shader" path="res://shaders/crt.gdshader" id="19_5883h"]
+[ext_resource type="AudioStream" uid="uid://bpeyq6qhoc0s3" path="res://assets/sounds/RPG_Essentials_Free/10_Battle_SFX/15_Impact_flesh_02.wav" id="20_02a1m"]
+[ext_resource type="AudioStream" uid="uid://6s7thlqaga3i" path="res://assets/sounds/RPG_Essentials_Free/10_Battle_SFX/39_Block_03.wav" id="21_crwrx"]
+[ext_resource type="AudioStream" uid="uid://dliuks0ccxw21" path="res://assets/sounds/Minifantasy_Dungeon_SFX/04_sack_open_2.wav" id="22_74p0h"]
+[ext_resource type="AudioStream" uid="uid://dss2nlp61r45e" path="res://assets/sounds/Minifantasy_Dungeon_SFX/26_sword_hit_1.wav" id="23_f2mpy"]
+[ext_resource type="Script" path="res://scenes/resumeGameButton.gd" id="24_n4egi"]
+[ext_resource type="Theme" uid="uid://bck6sugoxd40h" path="res://themes/cryptic_theme.tres" id="25_s6css"]
+[ext_resource type="Script" path="res://scenes/bigportrait.gd" id="26_l3f38"]
+[ext_resource type="AudioStream" uid="uid://g4b8v66lx6kh" path="res://assets/sounds/RPG_Essentials_Free/10_UI_Menu_SFX/070_Equip_10.wav" id="27_qk0wl"]
+[ext_resource type="AudioStream" uid="uid://gwdytccb2iog" path="res://assets/sounds/RPG_Essentials_Free/10_UI_Menu_SFX/071_Unequip_01.wav" id="28_k3oi5"]
+[ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="29_j67qf"]
+[ext_resource type="AudioStream" uid="uid://dpbyk5u4nr863" path="res://assets/sounds/coin.wav" id="30_moqcn"]
 
 [sub_resource type="Animation" id="Animation_lro5q"]
 length = 0.001
@@ -138,7 +138,7 @@ _data = {
 size = Vector2(26, 13)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_omonw"]
-shader = ExtResource("9_xiwt1")
+shader = ExtResource("13_6ecei")
 shader_parameter/color = Color(0.780392, 0.596078, 0, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_al2uw"]
@@ -166,7 +166,7 @@ seamless = true
 noise = SubResource("FastNoiseLite_v6gxl")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wgb8u"]
-shader = ExtResource("16_5vwms")
+shader = ExtResource("17_ejydg")
 shader_parameter/brighter_color = Color(1, 0.8, 0, 1)
 shader_parameter/middle_color = Color(1, 0.56, 0, 1)
 shader_parameter/darker_color = Color(0.64, 0.2, 0.05, 1)
@@ -195,10 +195,10 @@ color_ramp = SubResource("GradientTexture1D_a1h34")
 color_initial_ramp = SubResource("GradientTexture1D_uk2wo")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bhjsi"]
-shader = ExtResource("17_s64by")
+shader = ExtResource("18_vh277")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8mfq3"]
-shader = ExtResource("11_q0vo4")
+shader = ExtResource("19_5883h")
 shader_parameter/overlay = true
 shader_parameter/scanlines_opacity = 0.4
 shader_parameter/scanlines_width = 0.25
@@ -340,19 +340,19 @@ _data = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35k6v"]
-atlas = ExtResource("6_ui0lc")
+atlas = ExtResource("4_yv851")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_npll2"]
-atlas = ExtResource("6_ui0lc")
+atlas = ExtResource("4_yv851")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xvuld"]
-atlas = ExtResource("6_ui0lc")
+atlas = ExtResource("4_yv851")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jffv"]
-atlas = ExtResource("6_ui0lc")
+atlas = ExtResource("4_yv851")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2hrvd"]
@@ -377,10 +377,10 @@ animations = [{
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_o5ole")
+script = ExtResource("1_y5cr6")
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
-script = ExtResource("1_47glo")
+script = ExtResource("2_eour7")
 
 [node name="titleCard" type="ColorRect" parent="HUDLayer"]
 modulate = Color(1, 1, 1, 0)
@@ -432,14 +432,14 @@ modulate = Color(1, 1, 1, 0.686275)
 
 [node name="Hudbars" type="Sprite2D" parent="HUDLayer/CanvasGroup"]
 position = Vector2(107, 25)
-texture = ExtResource("1_7r21i")
+texture = ExtResource("3_bxoid")
 vframes = 2
 
 [node name="portrait" type="Sprite2D" parent="HUDLayer/CanvasGroup"]
 z_index = -1
 position = Vector2(33, 32)
 scale = Vector2(1.75227, 1.65044)
-texture = ExtResource("6_ui0lc")
+texture = ExtResource("4_yv851")
 region_enabled = true
 region_rect = Rect2(15.631, 10.3269, 33.099, 27.0018)
 
@@ -458,7 +458,7 @@ anchor_right = 1.0
 offset_left = -11.0
 offset_bottom = 24.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 9
 horizontal_alignment = 2
 
@@ -477,7 +477,7 @@ anchor_right = 1.0
 offset_left = -11.0
 offset_bottom = 24.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 9
 horizontal_alignment = 2
 
@@ -496,7 +496,7 @@ anchor_right = 1.0
 offset_left = -11.0
 offset_bottom = 24.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 9
 horizontal_alignment = 2
 
@@ -515,7 +515,7 @@ anchor_right = 1.0
 offset_left = -11.0
 offset_bottom = 24.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 9
 horizontal_alignment = 2
 
@@ -534,7 +534,7 @@ anchor_right = 1.0
 offset_left = -11.0
 offset_bottom = 24.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 9
 horizontal_alignment = 2
 
@@ -553,7 +553,7 @@ anchor_right = 1.0
 offset_left = -11.0
 offset_bottom = 24.0
 grow_horizontal = 0
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 9
 horizontal_alignment = 2
 
@@ -563,7 +563,7 @@ offset_top = 279.0
 offset_right = 49.0
 offset_bottom = 326.0
 mouse_filter = 2
-texture = ExtResource("8_vh846")
+texture = ExtResource("6_d03n3")
 
 [node name="healthBar" type="ColorRect" parent="HUDLayer/CanvasGroup"]
 unique_name_in_owner = true
@@ -595,11 +595,11 @@ offset_left = 300.0
 offset_top = 240.0
 offset_right = 575.0
 offset_bottom = 320.0
-theme_override_fonts/normal_font = ExtResource("7_f521b")
-theme_override_fonts/bold_font = ExtResource("7_f521b")
-theme_override_fonts/italics_font = ExtResource("7_f521b")
-theme_override_fonts/bold_italics_font = ExtResource("7_f521b")
-theme_override_fonts/mono_font = ExtResource("7_f521b")
+theme_override_fonts/normal_font = ExtResource("5_k6q0s")
+theme_override_fonts/bold_font = ExtResource("5_k6q0s")
+theme_override_fonts/italics_font = ExtResource("5_k6q0s")
+theme_override_fonts/bold_italics_font = ExtResource("5_k6q0s")
+theme_override_fonts/mono_font = ExtResource("5_k6q0s")
 theme_override_font_sizes/normal_font_size = 9
 theme_override_font_sizes/bold_font_size = 9
 theme_override_font_sizes/italics_font_size = 9
@@ -609,11 +609,11 @@ bbcode_enabled = true
 scroll_following = true
 
 [node name="quickItemSwitchSound" type="AudioStreamPlayer" parent="HUDLayer/CanvasGroup"]
-stream = ExtResource("7_7pep6")
+stream = ExtResource("7_u1fmh")
 bus = &"Sounds"
 
 [node name="quickItemConsumeSound" type="AudioStreamPlayer" parent="HUDLayer/CanvasGroup"]
-stream = ExtResource("8_0de4k")
+stream = ExtResource("8_wk7tl")
 bus = &"Sounds"
 
 [node name="playersummarybarcontainer" type="HBoxContainer" parent="HUDLayer/CanvasGroup"]
@@ -625,7 +625,7 @@ offset_bottom = 19.0
 [node name="playersummarybar" type="RichTextLabel" parent="HUDLayer/CanvasGroup/playersummarybarcontainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("7_f521b")
+theme_override_fonts/normal_font = ExtResource("5_k6q0s")
 theme_override_font_sizes/normal_font_size = 9
 bbcode_enabled = true
 fit_content = true
@@ -634,7 +634,7 @@ scroll_active = false
 [node name="TextureRect" type="TextureRect" parent="HUDLayer/CanvasGroup/playersummarybarcontainer"]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
-texture = ExtResource("9_8743s")
+texture = ExtResource("9_ktu8j")
 expand_mode = 1
 stretch_mode = 4
 
@@ -670,7 +670,7 @@ offset_bottom = 60.0
 [node name="npcName" type="Label" parent="HUDLayer/chatPopup/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
 
@@ -687,11 +687,11 @@ expand_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("7_f521b")
-theme_override_fonts/bold_font = ExtResource("7_f521b")
-theme_override_fonts/italics_font = ExtResource("7_f521b")
-theme_override_fonts/bold_italics_font = ExtResource("7_f521b")
-theme_override_fonts/mono_font = ExtResource("7_f521b")
+theme_override_fonts/normal_font = ExtResource("5_k6q0s")
+theme_override_fonts/bold_font = ExtResource("5_k6q0s")
+theme_override_fonts/italics_font = ExtResource("5_k6q0s")
+theme_override_fonts/bold_italics_font = ExtResource("5_k6q0s")
+theme_override_fonts/mono_font = ExtResource("5_k6q0s")
 theme_override_font_sizes/normal_font_size = 8
 theme_override_font_sizes/bold_font_size = 8
 theme_override_font_sizes/italics_font_size = 8
@@ -702,7 +702,7 @@ bbcode_enabled = true
 [node name="convoOptions" type="ItemList" parent="HUDLayer/chatPopup/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 8
 allow_search = false
 auto_height = true
@@ -712,7 +712,7 @@ modulate = Color(0.14902, 0.14902, 0.14902, 1)
 z_index = -4
 position = Vector2(112, 0)
 scale = Vector2(1.88587, 1.5464)
-texture = ExtResource("3_ctx3v")
+texture = ExtResource("10_fiov2")
 
 [node name="player" type="CharacterBody2D" parent="."]
 z_index = 3
@@ -720,7 +720,7 @@ y_sort_enabled = true
 position = Vector2(298, 175)
 collision_layer = 4
 collision_mask = 31
-script = ExtResource("11_4aetu")
+script = ExtResource("11_updkf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 z_index = 2
@@ -731,7 +731,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="sprite" type="Sprite2D" parent="player"]
 position = Vector2(-1, -19)
 scale = Vector2(0.826499, 0.670151)
-texture = ExtResource("6_ui0lc")
+texture = ExtResource("4_yv851")
 hframes = 4
 vframes = 4
 
@@ -740,7 +740,7 @@ position_smoothing_enabled = true
 
 [node name="PointLight2D" type="PointLight2D" parent="player"]
 position = Vector2(-1, -19)
-texture = ExtResource("7_45vux")
+texture = ExtResource("12_w4hbc")
 
 [node name="ShieldColorRect" type="ColorRect" parent="player"]
 material = SubResource("ShaderMaterial_omonw")
@@ -763,16 +763,16 @@ emitting = false
 process_material = SubResource("ParticleProcessMaterial_al2uw")
 
 [node name="spellSoundPlayer" type="AudioStreamPlayer" parent="player"]
-stream = ExtResource("16_omwxg")
+stream = ExtResource("14_q0ik6")
 volume_db = 5.0
 bus = &"Sounds"
 
 [node name="shieldSoundPlayer" type="AudioStreamPlayer" parent="player"]
-stream = ExtResource("14_idgaw")
+stream = ExtResource("15_x7r5d")
 bus = &"Sounds"
 
 [node name="attackSoundPlayer" type="AudioStreamPlayer" parent="player"]
-stream = ExtResource("15_ewa8a")
+stream = ExtResource("16_we4ro")
 bus = &"Sounds"
 
 [node name="FireColorRect" type="ColorRect" parent="player"]
@@ -815,11 +815,11 @@ offset_right = 277.0
 offset_bottom = 151.0
 
 [node name="clappedSoundPlayer" type="AudioStreamPlayer" parent="player"]
-stream = ExtResource("20_4wopq")
+stream = ExtResource("20_02a1m")
 bus = &"Sounds"
 
 [node name="deflectSoundPlayer" type="AudioStreamPlayer" parent="player"]
-stream = ExtResource("21_cbv0g")
+stream = ExtResource("21_crwrx")
 bus = &"Sounds"
 
 [node name="sparks" type="GPUParticles2D" parent="player"]
@@ -857,11 +857,11 @@ libraries = {
 }
 
 [node name="grabSoundPlayer" type="AudioStreamPlayer" parent="player"]
-stream = ExtResource("22_hjd6q")
+stream = ExtResource("22_74p0h")
 bus = &"Sounds"
 
 [node name="criticalSoundPlayer" type="AudioStreamPlayer" parent="player"]
-stream = ExtResource("23_bss3f")
+stream = ExtResource("23_f2mpy")
 volume_db = 5.0
 bus = &"Sounds"
 
@@ -880,23 +880,23 @@ focus_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/pauseMenu"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 text = "Pause"
 horizontal_alignment = 1
 
 [node name="resumeGameButton" type="Button" parent="CanvasLayer/pauseMenu"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Button")
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 11
 text = "Resume"
-script = ExtResource("8_ul5po")
+script = ExtResource("24_n4egi")
 
 [node name="Button" type="Button" parent="CanvasLayer/pauseMenu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../resumeGameButton")
 focus_neighbor_bottom = NodePath("../Button2")
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 11
 text = "Options"
 
@@ -904,14 +904,14 @@ text = "Options"
 layout_mode = 2
 focus_neighbor_top = NodePath("../Button")
 focus_neighbor_bottom = NodePath("../Button3")
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 11
 text = "Exit to Main"
 
 [node name="Button3" type="Button" parent="CanvasLayer/pauseMenu"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Button2")
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 11
 text = "Exit to Desktop"
 
@@ -922,8 +922,8 @@ offset_left = 33.0
 offset_top = 39.0
 offset_right = 541.0
 offset_bottom = 279.0
-theme = ExtResource("10_kbx3o")
-theme_override_fonts/font = ExtResource("7_f521b")
+theme = ExtResource("25_s6css")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 tab_alignment = 2
 
 [node name="Stats" type="HBoxContainer" parent="CanvasLayer2/playerMenu"]
@@ -946,7 +946,7 @@ scale = Vector2(2.35691, 2.19071)
 sprite_frames = SubResource("SpriteFrames_2hrvd")
 frame_progress = 0.202865
 centered = false
-script = ExtResource("8_c6bur")
+script = ExtResource("26_l3f38")
 
 [node name="otherStats" type="RichTextLabel" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
@@ -961,7 +961,7 @@ bbcode_enabled = true
 [node name="vocationDesc" type="RichTextLabel" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("7_f521b")
+theme_override_fonts/normal_font = ExtResource("5_k6q0s")
 theme_override_font_sizes/normal_font_size = 10
 text = "Sellswords are skilled mercenaries well-versed in both swordplay and tactics. Driven by a desire for wealth and status, they roam the land, offering their services to the highest bidder."
 
@@ -974,7 +974,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "Attack
 "
@@ -982,13 +982,13 @@ vertical_alignment = 2
 
 [node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "1"
 horizontal_alignment = 2
@@ -996,7 +996,7 @@ vertical_alignment = 2
 
 [node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "+"
 
@@ -1006,20 +1006,20 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "Defense"
 vertical_alignment = 2
 
 [node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "1"
 horizontal_alignment = 2
@@ -1027,7 +1027,7 @@ vertical_alignment = 2
 
 [node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "+"
 
@@ -1037,20 +1037,20 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "Strength"
 vertical_alignment = 2
 
 [node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "1"
 horizontal_alignment = 2
@@ -1058,7 +1058,7 @@ vertical_alignment = 2
 
 [node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "+"
 
@@ -1068,20 +1068,20 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "Max Health"
 vertical_alignment = 2
 
 [node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "1"
 horizontal_alignment = 2
@@ -1089,7 +1089,7 @@ vertical_alignment = 2
 
 [node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "+"
 
@@ -1099,20 +1099,20 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer5"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "Stamina"
 vertical_alignment = 2
 
 [node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "1"
 horizontal_alignment = 2
@@ -1120,7 +1120,7 @@ vertical_alignment = 2
 
 [node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "+"
 
@@ -1130,20 +1130,20 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer6"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "Magic"
 vertical_alignment = 2
 
 [node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer6"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer6"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "1"
 horizontal_alignment = 2
@@ -1151,7 +1151,7 @@ vertical_alignment = 2
 
 [node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer6"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "+"
 
@@ -1161,20 +1161,20 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer7"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "Wisdom"
 vertical_alignment = 2
 
 [node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer7"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer7"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "1"
 horizontal_alignment = 2
@@ -1182,7 +1182,7 @@ vertical_alignment = 2
 
 [node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer7"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "+"
 
@@ -1192,20 +1192,20 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer8"]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "Mana"
 vertical_alignment = 2
 
 [node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer8"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer8"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "1"
 horizontal_alignment = 2
@@ -1213,7 +1213,7 @@ vertical_alignment = 2
 
 [node name="Button2" type="Button" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer8"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "+"
 
@@ -1223,13 +1223,13 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer9"]
 custom_minimum_size = Vector2(107, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "Level: "
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer9"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "1"
 horizontal_alignment = 2
@@ -1240,13 +1240,13 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer10"]
 custom_minimum_size = Vector2(107, 0)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "Exp:"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer10"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "1"
 horizontal_alignment = 2
@@ -1324,7 +1324,7 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="CanvasLayer2/playerMenu/Lore/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("7_f521b")
+theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "Game World"
 
@@ -1335,23 +1335,23 @@ layout_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer2/playerMenu/Lore/VBoxContainer2"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("7_f521b")
+theme_override_fonts/normal_font = ExtResource("5_k6q0s")
 theme_override_font_sizes/normal_font_size = 10
 
 [node name="equipSound" type="AudioStreamPlayer" parent="CanvasLayer2/playerMenu"]
-stream = ExtResource("26_sghha")
+stream = ExtResource("27_qk0wl")
 bus = &"Sounds"
 
 [node name="unequipSound" type="AudioStreamPlayer" parent="CanvasLayer2/playerMenu"]
-stream = ExtResource("27_dgr6r")
+stream = ExtResource("28_k3oi5")
 bus = &"Sounds"
 
 [node name="discardSound" type="AudioStreamPlayer" parent="CanvasLayer2/playerMenu"]
-stream = ExtResource("22_hjd6q")
+stream = ExtResource("22_74p0h")
 bus = &"Sounds"
 
 [node name="hoverSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_d3c5g")
+stream = ExtResource("29_j67qf")
 volume_db = 1.0
 bus = &"Sounds"
 
@@ -1364,7 +1364,7 @@ offset_bottom = 40.0
 
 [node name="coinCollisionSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("20_e3m1t")
+stream = ExtResource("30_moqcn")
 
 [connection signal="mouse_entered" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_exited"]

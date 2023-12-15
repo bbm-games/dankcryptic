@@ -72,7 +72,7 @@ func setConvoState(id):
 	for i in range(0,convoOptions.get_item_count()):
 		convoOptions.set_item_tooltip_enabled(i,false)
 
-func convoOptionsItemClicked(index, at_position, mouse_button_index):
+func convoOptionsItemClicked(index, _at_position, _mouse_button_index):
 	# index of the end convo option is always the last one
 	endConvoIndex = convoOptions.get_item_count() - 1 
 	if index == endConvoIndex:
@@ -83,8 +83,8 @@ func convoOptionsItemClicked(index, at_position, mouse_button_index):
 		# look up where the selected id will take us
 		setConvoState("ID 1")
 	
-func _process(delta):
-	pass
+#func _process(delta):
+#	pass
 	
 func _physics_process(delta):
 	etime = etime + delta
@@ -119,12 +119,12 @@ func _input(event):
 			pass
 		
 # functions to show chat icon when player is in viscinity
-func _on_npc_boundary_body_entered(body):
+func _on_npc_boundary_body_entered(_body):
 	chatIcon.show()
 	viscinity = true
 	# play suprise audio
 	supriseSound.play()
 
-func _on_npc_boundary_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
+func _on_npc_boundary_body_shape_exited(_body_rid, _body, _body_shape_index, _local_shape_index):
 	chatIcon.hide()
 	viscinity = false

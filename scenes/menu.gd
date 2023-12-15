@@ -18,7 +18,7 @@ func _ready():
 			backgroundMusic.play()
 	
 	# load in the options menu
-	var options_resource = ResourceLoader.load("res://options.tscn")
+	var options_resource = ResourceLoader.load("res://scenes/options.tscn")
 	var options_scene = options_resource.instantiate()
 	optionsMenu = get_node("CanvasLayer2/options")
 	optionsMenu.add_child(options_scene)
@@ -26,7 +26,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	# add flicker to spotlight
 	#light.set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.1,.1), rng.randf_range(-.1,.1)))
 	if rng.randf_range(0,1) < 0.2:	
@@ -34,7 +34,7 @@ func _process(delta):
 
 func startNewGame():
 	# TODO: actually create character creation
-	get_tree().change_scene_to_file("res://creation.tscn")
+	get_tree().change_scene_to_file("res://scenes/creation.tscn")
 
 # exit button
 func _on_link_button_4_pressed():
@@ -75,4 +75,4 @@ func _on_file_dialog_confirmed():
 	# establish the new player save file
 	GlobalVars.load_player_data("res://saves/" + path)
 	# start the game and set the location of the save file
-	get_tree().change_scene_to_file("res://game.tscn")
+	get_tree().change_scene_to_file("res://scenes/game.tscn")

@@ -47,16 +47,16 @@ func changeState(state_name):
 		self.showCertainSprite('walk')
 		speed = base_speed * 2
 
-func showCertainSprite(name):
+func showCertainSprite(name_given):
 	# by default the hit box should not be active
 	get_node('hitBox').set_monitoring(false)
-	if not get_node(name).is_visible():
+	if not get_node(name_given).is_visible():
 		for child in get_children():
 			if child is Sprite2D:
 				child.hide()
-		get_node(name).show()
-		get_node('AnimationPlayer').play(name)	
-		if name == 'walkfast':
+		get_node(name_given).show()
+		get_node('AnimationPlayer').play(name_given)	
+		if name_given == 'walkfast':
 			get_node('AnimationPlayer').set_speed_scale(2)
 		else:
 			get_node('AnimationPlayer').set_speed_scale(1)
@@ -64,13 +64,14 @@ func showCertainSprite(name):
 func flip_sprite():
 	pass
 
-func take_damage(value, statusInflictions = null):
+func take_damage(value, _statusInflictions = null):
 	get_node('clapped_sound').play()
 	just_took_damage = true
 	enemy_data['stats']['health'] -= value
 	if enemy_data['stats']['health'] <= 0:
 		enemy_data['stats']['health'] = 0
 		self.queue_free()
+	#TODO: apply status inflictions to enemy
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -96,7 +97,7 @@ func _process(delta):
 			changeState('walk')
 			walk_fast_time = 0
 		
-func _physics_process(delta):
+func _physics_process(_delta):
 	pass
 
 func _on_hit_box_body_entered(body):
@@ -113,7 +114,7 @@ func _on_hit_box_body_entered(body):
 			body.take_damage(enemy_data['stats']['strength'])
 			
 	#main_game_node.chatBoxAppend('got clapped')
-func _on_hit_box_body_exited(body):
+func _on_hit_box_body_exited(_body):
 	pass
 
 func _on_detection_zone_body_entered(body):

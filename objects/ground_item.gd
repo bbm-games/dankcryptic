@@ -34,8 +34,8 @@ func load_item(item_id_given):
 	get_node("Sprite2D").set_texture(load(sprite_data))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+#	pass
 
 '''
 func highlight(item_sprite):

@@ -19,5 +19,5 @@ func load_player_data(path):
 	file.close()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+#	pass

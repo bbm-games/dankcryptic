@@ -6,14 +6,15 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 # exit without saving settings
 func _on_button_2_pressed():
 	# if the options menu was opened in the main menu
-	if get_tree().get_root().get_node("Menu"):
+	if get_tree().get_root().get_node_or_null("Menu"):
 		get_node("CanvasLayer").hide()
+		print('options exited from main menu')
 	else:
 		# standard exit protocol if options menu is opened in game
 		get_node("CanvasLayer").hide()
@@ -26,8 +27,9 @@ func _on_button_2_pressed():
 func _on_button_pressed():
 	#TODO: actually save shit
 	# if the options menu was opened in the main menu
-	if get_tree().get_root().get_node("Menu"):
+	if get_tree().get_root().get_node_or_null("Menu"):
 		get_node("CanvasLayer").hide()
+		print('options exited from main menu')
 	else:
 		# standard exit protocol if options menu is opened in game
 		get_node("CanvasLayer").hide()

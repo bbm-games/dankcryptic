@@ -1,27 +1,27 @@
 [gd_scene load_steps=36 format=3 uid="uid://bulhn4rc843jq"]
 
-[ext_resource type="Script" path="res://dungeon.gd" id="1_bdp4a"]
-[ext_resource type="Texture2D" uid="uid://bt5e0mken3goj" path="res://assets/griffith.png" id="3_jv5tp"]
-[ext_resource type="Script" path="res://npc1.gd" id="3_rao3l"]
-[ext_resource type="Texture2D" uid="uid://cpgipefc7y1ek" path="res://assets/chaticon.png" id="5_xhq85"]
-[ext_resource type="AudioStream" uid="uid://bsxdj6do18f4k" path="res://assets/sounds/suprise.wav" id="6_2goit"]
-[ext_resource type="AudioStream" uid="uid://dl3p5p2c3jhh2" path="res://assets/sounds/chat.wav" id="6_q2qxw"]
-[ext_resource type="Script" path="res://goldPiece.gd" id="8_4flet"]
-[ext_resource type="Texture2D" uid="uid://c8jpbf2bhxlq6" path="res://assets/coin.png" id="8_rpth0"]
-[ext_resource type="Texture2D" uid="uid://byfym0ukednyd" path="res://assets/undead/undead_idle_sheet.png" id="11_5t43f"]
-[ext_resource type="Script" path="res://enemy.gd" id="11_hi2bv"]
-[ext_resource type="Texture2D" uid="uid://b52ysywplg4s5" path="res://assets/undead/undead_attack_sheet.png" id="12_xqjnf"]
-[ext_resource type="Texture2D" uid="uid://dwuqfcxb3u8jo" path="res://assets/undead/undead_walk_sheet.png" id="13_ykib3"]
-[ext_resource type="AudioStream" uid="uid://b865kmi44feuw" path="res://assets/sounds/Minifantasy_Dungeon_SFX/17_orc_atk_sword_1.wav" id="15_eeipt"]
-[ext_resource type="AudioStream" uid="uid://ckqrfhym0h1tk" path="res://assets/sounds/Minifantasy_Dungeon_SFX/25_orc_walk_stone_3.wav" id="16_kf05u"]
-[ext_resource type="AudioStream" uid="uid://d368enykfayyf" path="res://assets/sounds/Minifantasy_Dungeon_SFX/21_orc_damage_3.wav" id="16_o8bt7"]
-[ext_resource type="PackedScene" uid="uid://dywtovs1hwwfx" path="res://ground_item.tscn" id="17_ti4gq"]
-[ext_resource type="Texture2D" uid="uid://dtcm1ghr12nia" path="res://assets/DarkDungeon.png" id="DarkDungeon"]
+[ext_resource type="Script" path="res://maps/dungeon.gd" id="1_5e13p"]
+[ext_resource type="Texture2D" uid="uid://dtcm1ghr12nia" path="res://assets/DarkDungeon.png" id="2_nwbmn"]
+[ext_resource type="Script" path="res://scenes/npc1.gd" id="3_1ckni"]
+[ext_resource type="Texture2D" uid="uid://bt5e0mken3goj" path="res://assets/griffith.png" id="4_gplh7"]
+[ext_resource type="Texture2D" uid="uid://cpgipefc7y1ek" path="res://assets/chaticon.png" id="5_crho6"]
+[ext_resource type="AudioStream" uid="uid://dl3p5p2c3jhh2" path="res://assets/sounds/chat.wav" id="6_15r6j"]
+[ext_resource type="AudioStream" uid="uid://bsxdj6do18f4k" path="res://assets/sounds/suprise.wav" id="7_c6tnh"]
+[ext_resource type="Script" path="res://scenes/goldPiece.gd" id="8_cswit"]
+[ext_resource type="Texture2D" uid="uid://c8jpbf2bhxlq6" path="res://assets/coin.png" id="9_hibmv"]
+[ext_resource type="Script" path="res://scenes/enemy.gd" id="10_nkkhi"]
+[ext_resource type="Texture2D" uid="uid://byfym0ukednyd" path="res://assets/undead/undead_idle_sheet.png" id="11_epotr"]
+[ext_resource type="Texture2D" uid="uid://b52ysywplg4s5" path="res://assets/undead/undead_attack_sheet.png" id="12_uh48f"]
+[ext_resource type="Texture2D" uid="uid://dwuqfcxb3u8jo" path="res://assets/undead/undead_walk_sheet.png" id="13_g5rpy"]
+[ext_resource type="AudioStream" uid="uid://b865kmi44feuw" path="res://assets/sounds/Minifantasy_Dungeon_SFX/17_orc_atk_sword_1.wav" id="14_vj16t"]
+[ext_resource type="AudioStream" uid="uid://ckqrfhym0h1tk" path="res://assets/sounds/Minifantasy_Dungeon_SFX/25_orc_walk_stone_3.wav" id="15_ne36m"]
+[ext_resource type="AudioStream" uid="uid://d368enykfayyf" path="res://assets/sounds/Minifantasy_Dungeon_SFX/21_orc_damage_3.wav" id="16_dvvh8"]
+[ext_resource type="PackedScene" uid="uid://dywtovs1hwwfx" path="res://objects/ground_item.tscn" id="17_tx5kw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gdev4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0"]
-texture = ExtResource("DarkDungeon")
+texture = ExtResource("2_nwbmn")
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
@@ -586,7 +586,7 @@ height = 32.7487
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_bdp4a")
+script = ExtResource("1_5e13p")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.121569, 0.121569, 0.121569, 1)
@@ -613,11 +613,11 @@ z_index = 2
 position = Vector2(409, 202)
 collision_layer = 16
 collision_mask = 15
-script = ExtResource("3_rao3l")
+script = ExtResource("3_1ckni")
 
 [node name="npc1sprite" type="Sprite2D" parent="npc1"]
 scale = Vector2(0.07375, 0.0683333)
-texture = ExtResource("3_jv5tp")
+texture = ExtResource("4_gplh7")
 hframes = 3
 frame = 1
 
@@ -628,7 +628,7 @@ shape = SubResource("RectangleShape2D_bp8pf")
 [node name="chatIcon" type="Sprite2D" parent="npc1"]
 z_index = 1
 position = Vector2(0, -30)
-texture = ExtResource("5_xhq85")
+texture = ExtResource("5_crho6")
 
 [node name="npcBoundary" type="Area2D" parent="npc1"]
 collision_layer = 0
@@ -638,7 +638,7 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_gn28i")
 
 [node name="chatSound" type="AudioStreamPlayer" parent="npc1"]
-stream = ExtResource("6_q2qxw")
+stream = ExtResource("6_15r6j")
 bus = &"Sounds"
 
 [node name="chatIconAnimationPlayer" type="AnimationPlayer" parent="npc1"]
@@ -647,7 +647,7 @@ libraries = {
 }
 
 [node name="surpriseSound" type="AudioStreamPlayer" parent="npc1"]
-stream = ExtResource("6_2goit")
+stream = ExtResource("7_c6tnh")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 enabled = false
@@ -656,7 +656,7 @@ enabled = false
 position = Vector2(394, 111)
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("8_4flet")
+script = ExtResource("8_cswit")
 
 [node name="coinCollisionShape" type="CollisionShape2D" parent="goldPiece"]
 shape = SubResource("CapsuleShape2D_cvnbo")
@@ -664,13 +664,13 @@ shape = SubResource("CapsuleShape2D_cvnbo")
 [node name="goldSprite" type="Sprite2D" parent="goldPiece"]
 z_index = 1
 scale = Vector2(0.01, 0.01)
-texture = ExtResource("8_rpth0")
+texture = ExtResource("9_hibmv")
 
 [node name="goldPiece2" type="Area2D" parent="."]
 position = Vector2(446, 95)
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("8_4flet")
+script = ExtResource("8_cswit")
 
 [node name="coinCollisionShape" type="CollisionShape2D" parent="goldPiece2"]
 shape = SubResource("CapsuleShape2D_cvnbo")
@@ -678,13 +678,13 @@ shape = SubResource("CapsuleShape2D_cvnbo")
 [node name="goldSprite" type="Sprite2D" parent="goldPiece2"]
 z_index = 1
 scale = Vector2(0.01, 0.01)
-texture = ExtResource("8_rpth0")
+texture = ExtResource("9_hibmv")
 
 [node name="goldPiece3" type="Area2D" parent="."]
 position = Vector2(417, 130)
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("8_4flet")
+script = ExtResource("8_cswit")
 
 [node name="coinCollisionShape" type="CollisionShape2D" parent="goldPiece3"]
 shape = SubResource("CapsuleShape2D_cvnbo")
@@ -692,13 +692,13 @@ shape = SubResource("CapsuleShape2D_cvnbo")
 [node name="goldSprite" type="Sprite2D" parent="goldPiece3"]
 z_index = 1
 scale = Vector2(0.01, 0.01)
-texture = ExtResource("8_rpth0")
+texture = ExtResource("9_hibmv")
 
 [node name="goldPiece4" type="Area2D" parent="."]
 position = Vector2(424, 111)
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("8_4flet")
+script = ExtResource("8_cswit")
 
 [node name="coinCollisionShape" type="CollisionShape2D" parent="goldPiece4"]
 shape = SubResource("CapsuleShape2D_cvnbo")
@@ -706,7 +706,7 @@ shape = SubResource("CapsuleShape2D_cvnbo")
 [node name="goldSprite" type="Sprite2D" parent="goldPiece4"]
 z_index = 1
 scale = Vector2(0.01, 0.01)
-texture = ExtResource("8_rpth0")
+texture = ExtResource("9_hibmv")
 
 [node name="skele_enemy" type="CharacterBody2D" parent="."]
 z_index = 3
@@ -715,7 +715,7 @@ position = Vector2(477, 268)
 scale = Vector2(1.5, 1.5)
 collision_layer = 8
 collision_mask = 15
-script = ExtResource("11_hi2bv")
+script = ExtResource("10_nkkhi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="skele_enemy"]
 autoplay = "idle"
@@ -726,18 +726,18 @@ libraries = {
 [node name="idle" type="Sprite2D" parent="skele_enemy"]
 visible = false
 position = Vector2(1, -15)
-texture = ExtResource("11_5t43f")
+texture = ExtResource("11_epotr")
 hframes = 18
 
 [node name="attack" type="Sprite2D" parent="skele_enemy"]
 position = Vector2(1, -15)
-texture = ExtResource("12_xqjnf")
+texture = ExtResource("12_uh48f")
 hframes = 20
 
 [node name="walk" type="Sprite2D" parent="skele_enemy"]
 visible = false
 position = Vector2(1, -15)
-texture = ExtResource("13_ykib3")
+texture = ExtResource("13_g5rpy")
 hframes = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="skele_enemy"]
@@ -754,7 +754,7 @@ rotation = 2.61799
 shape = SubResource("CapsuleShape2D_nntj8")
 
 [node name="attack_sound" type="AudioStreamPlayer2D" parent="skele_enemy"]
-stream = ExtResource("15_eeipt")
+stream = ExtResource("14_vj16t")
 attenuation = 6.0
 bus = &"Sounds"
 
@@ -776,7 +776,7 @@ rotation = 2.61799
 shape = SubResource("CapsuleShape2D_tegtr")
 
 [node name="walk_sound" type="AudioStreamPlayer2D" parent="skele_enemy"]
-stream = ExtResource("16_kf05u")
+stream = ExtResource("15_ne36m")
 volume_db = 8.914
 attenuation = 6.0
 bus = &"Sounds"
@@ -786,7 +786,7 @@ attenuation = 6.0
 bus = &"Sounds"
 
 [node name="clapped_sound" type="AudioStreamPlayer" parent="skele_enemy"]
-stream = ExtResource("16_o8bt7")
+stream = ExtResource("16_dvvh8")
 
 [node name="treasure" type="Node2D" parent="."]
 position = Vector2(413, 32)
@@ -794,7 +794,7 @@ position = Vector2(413, 32)
 [node name="treasure2" type="Node2D" parent="."]
 position = Vector2(273, 73)
 
-[node name="treasure3" parent="." instance=ExtResource("17_ti4gq")]
+[node name="treasure3" parent="." instance=ExtResource("17_tx5kw")]
 position = Vector2(273, 243)
 
 [connection signal="body_entered" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_entered"]

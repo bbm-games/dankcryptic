@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxfkpt7yeeuav"]
 
-[ext_resource type="Script" path="res://splashscreen.gd" id="1_jhx7o"]
-[ext_resource type="Texture2D" uid="uid://dpx7a8ha5kuix" path="res://assets/tears.jpg" id="2_8olsr"]
-[ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="2_hssv8"]
+[ext_resource type="Script" path="res://scenes/splashscreen.gd" id="1_lkod3"]
+[ext_resource type="Texture2D" uid="uid://dpx7a8ha5kuix" path="res://assets/tears.jpg" id="2_rxvkl"]
+[ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="3_v13dh"]
 
 [sub_resource type="Animation" id="Animation_nwsnb"]
 length = 0.001
@@ -78,7 +78,7 @@ _data = {
 }
 
 [node name="splashscreen" type="Node2D"]
-script = ExtResource("1_jhx7o")
+script = ExtResource("1_lkod3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Splash")
@@ -91,7 +91,7 @@ libraries = {
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, -150)
 scale = Vector2(0.560473, 0.461577)
-texture = ExtResource("2_8olsr")
+texture = ExtResource("2_rxvkl")
 centered = false
 
 [node name="Label" type="Label" parent="."]
@@ -101,5 +101,5 @@ offset_top = 116.0
 offset_right = 274.0
 offset_bottom = 142.0
 scale = Vector2(2.39659, 2.56729)
-theme_override_fonts/font = ExtResource("2_hssv8")
+theme_override_fonts/font = ExtResource("3_v13dh")
 text = "BBM Games"

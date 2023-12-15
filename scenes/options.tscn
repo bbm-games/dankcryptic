@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://jagbh3ntpxlx"]
 
-[ext_resource type="Script" path="res://options.gd" id="1_e5eim"]
+[ext_resource type="Script" path="res://scenes/options.gd" id="1_e5eim"]
 [ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="1_xvq04"]
 
 [node name="Node2D" type="Node2D"]
@@ -151,7 +151,6 @@ theme_override_font_sizes/font_size = 10
 text = "Exit without saving"
 
 [connection signal="value_changed" from="CanvasLayer/TabContainer/Audio/VBoxContainer/masterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
-[connection signal="changed" from="CanvasLayer/TabContainer/Audio/VBoxContainer/musicVolumeSlider" to="." method="_on_music_volume_slider_changed"]
 [connection signal="value_changed" from="CanvasLayer/TabContainer/Audio/VBoxContainer/musicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/TabContainer/Audio/VBoxContainer/soundVolumeSlider" to="." method="_on_sound_volume_slider_value_changed"]
 [connection signal="item_selected" from="CanvasLayer/TabContainer/Video/VBoxContainer/ItemList" to="." method="_on_item_list_item_selected"]

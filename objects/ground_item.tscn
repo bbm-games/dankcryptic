@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dywtovs1hwwfx"]
 
-[ext_resource type="Script" path="res://ground_item.gd" id="1_pkmkb"]
-[ext_resource type="Shader" path="res://itemoutline.gdshader" id="2_q0ike"]
+[ext_resource type="Script" path="res://objects/ground_item.gd" id="1_pkmkb"]
+[ext_resource type="Shader" path="res://shaders/itemoutline.gdshader" id="2_q0ike"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tj0j6"]
 

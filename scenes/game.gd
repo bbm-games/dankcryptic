@@ -57,8 +57,8 @@ var damage_partial_highlight_time = 0
 
 var time_passed = 0.0
 var playerAnimationPlayer
-var boss1ScenePath = "res://boss1.tscn"
-var dungeonScenePath = "res://dungeon.tscn"
+var boss1ScenePath = "res://maps/boss1.tscn"
+var dungeonScenePath = "res://maps/dungeon.tscn"
 var hoverSound
 
 var item_slot_frame
@@ -169,7 +169,7 @@ func _ready():
 	item_slot_frame_initial_position = item_slot_frame.get_position()
 	
 	# load in the options menu
-	var options_resource = ResourceLoader.load("res://options.tscn")
+	var options_resource = ResourceLoader.load("res://scenes/options.tscn")
 	var options_scene = options_resource.instantiate()
 	optionsMenu = get_node("options")
 	optionsMenu.add_child(options_scene)
@@ -1163,7 +1163,7 @@ func _on_button_3_pressed():
 	get_tree().quit()
 func _on_button_2_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")
 func _on_button_4_pressed():
 	get_tree().paused = false
 	pauseMenu.hide()

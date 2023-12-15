@@ -20,7 +20,7 @@ func _ready():
 	var classes = tabs.get_node("Vocation").get_node("HBoxContainer").get_node("GridContainer")
 	for button in classes.get_children():
 		var vocation_name = button.get_text()
-		var vocation_data = get_vocation_stats(button.get_text())
+		var _vocation_data = get_vocation_stats(button.get_text())
 		# make it so stats UI updates on the button click
 		button.pressed.connect(vocation_button_pressed.bind(vocation_name))
 	
@@ -52,11 +52,11 @@ func vocation_button_pressed(vocation_name):
 	new_player_data['max_mana'] = statsdatajson['stats']['mana']
 	new_player_data['current_mana'] = statsdatajson['stats']['mana']
 
-func get_vocation_stats(name):
+func get_vocation_stats(namegiven):
 	for thing in lore_data["vocations"]:
-		if thing["class_name"] == name:
+		if thing["class_name"] == namegiven:
 			return thing
-	return "Couldn't find vocation data for " + name
+	return "Couldn't find vocation data for " + namegiven
 	
 func _on_SceneTree_node_added(node):
 	if node is Button:
@@ -76,8 +76,8 @@ func _on_mouse_entered_button():
 	hoverSound.play()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+#	pass
 
 func _on_next_button_pressed():
 	if (tabs.get_current_tab() + 1 < tabs.get_tab_count()):
@@ -87,7 +87,7 @@ func _on_prev_button_pressed():
 	if (tabs.get_current_tab() - 1 >= 0):
 		tabs.set_current_tab(tabs.get_current_tab() - 1)
 	else:
-		get_tree().change_scene_to_file("res://menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 func _on_start_game_button_pressed():
 	# establish the new player save file
@@ -96,7 +96,7 @@ func _on_start_game_button_pressed():
 	file.close()
 	GlobalVars.load_player_data("res://saves/" + new_player_data['name'] + '.json')
 	# start the game and set the location of the save file
-	get_tree().change_scene_to_file("res://game.tscn")
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
 	
 
 func _on_char_name_line_edit_text_changed(new_text):

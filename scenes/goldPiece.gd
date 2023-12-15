@@ -6,10 +6,10 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#func _process(delta):
+#	pass
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	#print(get_tree().get_root().get_node('Node2D'))
 	get_tree().get_root().get_node('Node2D').hit_coin()
 	queue_free()
