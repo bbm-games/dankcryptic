@@ -1050,14 +1050,14 @@ func _process(delta):
 		# make purple hue on sprite
 		player_sprite.modulate = Color(1,0,1)
 	if player_data['statuses']["burned"] >= 1:
-		player_data['current_health'] -= 1 * delta
+		self.subtractHealth(1 * delta)
 		player_body.get_node("FireColorRect").show()	
 	if player_data['statuses']["bloodless"] >= 1:
 		if walk_down_held or walk_up_held or walk_left_held or walk_right_held:
 			if dash:
-				player_data['current_health'] -= 3 * delta
+				self.subtractHealth(3 * delta)
 			else:
-				player_data['current_health'] -= 2 * delta
+				self.subtractHealth(2 * delta)
 		player_body.get_node("trail").get_process_material().set_color (Color(1,0,0,1))
 		player_body.get_node("trail").set_emitting(true)
 	
