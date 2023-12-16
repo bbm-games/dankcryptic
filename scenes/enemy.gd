@@ -4,10 +4,10 @@ var main_game_node # contains the root of the entire game
 var target_body = null # will be the body that will be targeted
 var base_speed = 30 # incorporated delta scaling factor
 var speed = base_speed
-var current_state
-var walk_fast_time = 0
+var current_state # holds the current state in the state machine
+var walk_fast_time = 0 # a counter variable used for limiting how long the skele can chase you
 var is_attackable = true
-var just_took_damage = false
+var just_took_damage = false 
 var damage_highlight_time = 0
 var base_modulation = self.get_modulate()
 var rng
