@@ -145,10 +145,10 @@ size_flags_vertical = 3
 
 [node name="HUDColorPicker" type="ColorPicker" parent="CanvasLayer/TabContainer/Gameplay/VBoxContainer/Control"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 4.0
-offset_right = 294.0
-offset_bottom = 370.0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 306.0
+offset_bottom = 382.0
 scale = Vector2(0.5, 0.5)
 picker_shape = 4
 

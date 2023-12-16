@@ -18,7 +18,7 @@ func _ready():
 func load_item(item_id_given):
 	
 	item_id = item_id_given
-	var sprite_data = 'res://assets/anvil.png' # default sprite if one isn't found
+	var sprite_data
 	
 	if item_id.contains('weapon'):
 		sprite_data = main_game_node.searchDocsInList(GlobalVars.lore_data['weapons'], 'id', item_id, 'sprite_data')
@@ -30,6 +30,9 @@ func load_item(item_id_given):
 		sprite_data = main_game_node.searchDocsInList(GlobalVars.lore_data['armors'], 'id', item_id, 'sprite_data')
 	elif item_id.contains('questitems'):
 		sprite_data = main_game_node.searchDocsInList(GlobalVars.lore_data['questitems'], 'id', item_id, 'sprite_data')
+	
+	if not sprite_data:
+		sprite_data = 'res://assets/anvil.png' # default sprite if one isn't found
 	
 	get_node("Sprite2D").set_texture(load(sprite_data))
 

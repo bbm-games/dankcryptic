@@ -351,25 +351,27 @@ func update_player_equipment():
 			if 'statusNegations' in item.keys():
 				for key2 in item['statusNegations']:
 					player_data['statusNegations'][key2] += item['statusNegations'][key2]
-	
-	var inflictions = get_node('CanvasLayer2/playerMenu/Equipment/HBoxContainer/statusInflictions')
-	inflictions.clear()
-	inflictions.append_text('\nStatus Offensives')	
-	inflictions.append_text('\n\n' + "[color=purple]Poisoned[/color]: " + str(snapped(player_data['statusInflictions']['poisoned'], 0.01)))
-	inflictions.append_text('\n' + "[color=orange]Burned[/color]: " + str(snapped(player_data['statusInflictions']['burned'],0.01)))
-	inflictions.append_text('\n' + "[color=blue]Drenched[/color]: " + str(snapped(player_data['statusInflictions']['drenched'],0.01)))
-	inflictions.append_text('\n' + "[color=green]Confused[/color]: " + str(snapped(player_data['statusInflictions']['confused'],0.01)))
-	inflictions.append_text('\n' + "[color=yellow]Paralyzed[/color]: " + str(snapped(player_data['statusInflictions']['paralyzed'],0.01)))
-	inflictions.append_text('\n' + "[color=red]Bloodless[/color]: " + str(snapped(player_data['statusInflictions']['bloodless'],0.01)))
-	var negations = get_node('CanvasLayer2/playerMenu/Equipment/HBoxContainer/statusNegations')
-	negations.clear()
-	negations.append_text('\nStatus Resistances')	
-	negations.append_text('\n\n' + "[color=purple]Poisoned[/color]: " + str(snapped(player_data['statusNegations']['poisoned'], 0.01)))
-	negations.append_text('\n' + "[color=orange]Burned[/color]: " + str(snapped(player_data['statusNegations']['burned'],0.01)))
-	negations.append_text('\n' + "[color=blue]Drenched[/color]: " + str(snapped(player_data['statusNegations']['drenched'],0.01)))
-	negations.append_text('\n' + "[color=green]Confused[/color]: " + str(snapped(player_data['statusNegations']['confused'],0.01)))
-	negations.append_text('\n' + "[color=yellow]Paralyzed[/color]: " + str(snapped(player_data['statusNegations']['paralyzed'],0.01)))
-	negations.append_text('\n' + "[color=red]Bloodless[/color]: " + str(snapped(player_data['statusNegations']['bloodless'],0.01)))
+			
+			# draw the item as well
+			get_node('CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/' + key).texture = load(item['sprite_data'])
+			get_node('CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/' + key).set_tooltip_text(item['name'])
+			
+	var effects = get_node('CanvasLayer2/playerMenu/Equipment/HBoxContainer/statusEffects')
+	effects.clear()
+	effects.append_text('Status Offensives')	
+	effects.append_text('\n' + "[color=purple]Poisoned[/color]: " + str(snapped(player_data['statusInflictions']['poisoned'], 0.01)))
+	effects.append_text('\n' + "[color=orange]Burned[/color]: " + str(snapped(player_data['statusInflictions']['burned'],0.01)))
+	effects.append_text('\n' + "[color=blue]Drenched[/color]: " + str(snapped(player_data['statusInflictions']['drenched'],0.01)))
+	effects.append_text('\n' + "[color=green]Confused[/color]: " + str(snapped(player_data['statusInflictions']['confused'],0.01)))
+	effects.append_text('\n' + "[color=yellow]Paralyzed[/color]: " + str(snapped(player_data['statusInflictions']['paralyzed'],0.01)))
+	effects.append_text('\n' + "[color=red]Bloodless[/color]: " + str(snapped(player_data['statusInflictions']['bloodless'],0.01)))
+	effects.append_text('\n\nStatus Resistances')	
+	effects.append_text('\n' + "[color=purple]Poisoned[/color]: " + str(snapped(player_data['statusNegations']['poisoned'], 0.01)))
+	effects.append_text('\n' + "[color=orange]Burned[/color]: " + str(snapped(player_data['statusNegations']['burned'],0.01)))
+	effects.append_text('\n' + "[color=blue]Drenched[/color]: " + str(snapped(player_data['statusNegations']['drenched'],0.01)))
+	effects.append_text('\n' + "[color=green]Confused[/color]: " + str(snapped(player_data['statusNegations']['confused'],0.01)))
+	effects.append_text('\n' + "[color=yellow]Paralyzed[/color]: " + str(snapped(player_data['statusNegations']['paralyzed'],0.01)))
+	effects.append_text('\n' + "[color=red]Bloodless[/color]: " + str(snapped(player_data['statusNegations']['bloodless'],0.01)))
 
 # updates the player inventory
 func update_player_inventory():
@@ -1179,6 +1181,8 @@ func _on_button_pressed():
 	optionsMenu.get_node("Node2D/CanvasLayer").show()
 	pauseMenu.hide()
 
-
 func _on_player_menu_tab_changed(_tab):
 	get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+
+func _on_frame_mouse_entered():
+	hoverSound.play()

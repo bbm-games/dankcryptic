@@ -22,6 +22,9 @@ func _ready():
 	
 	# The other way to load in item
 	get_node('treasure3').load_item('weapon13')
+	
+	# The other way to load in item
+	get_node('treasure4').load_item('armor006')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=77 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_y5cr6"]
 [ext_resource type="Script" path="res://scenes/HUDLayer.gd" id="2_eour7"]
@@ -28,6 +28,7 @@
 [ext_resource type="Theme" uid="uid://bck6sugoxd40h" path="res://themes/cryptic_theme.tres" id="25_s6css"]
 [ext_resource type="Script" path="res://scenes/bigportrait.gd" id="26_l3f38"]
 [ext_resource type="AudioStream" uid="uid://g4b8v66lx6kh" path="res://assets/sounds/RPG_Essentials_Free/10_UI_Menu_SFX/070_Equip_10.wav" id="27_qk0wl"]
+[ext_resource type="Shader" path="res://shaders/shiny.gdshader" id="28_ixh5u"]
 [ext_resource type="AudioStream" uid="uid://gwdytccb2iog" path="res://assets/sounds/RPG_Essentials_Free/10_UI_Menu_SFX/071_Unequip_01.wav" id="28_k3oi5"]
 [ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="29_j67qf"]
 [ext_resource type="AudioStream" uid="uid://dpbyk5u4nr863" path="res://assets/sounds/coin.wav" id="30_moqcn"]
@@ -387,6 +388,17 @@ animations = [{
 }]
 
 [sub_resource type="Theme" id="Theme_egno1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y13ya"]
+shader = ExtResource("7_ggdhh")
+shader_parameter/tint = null
+shader_parameter/color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5dna"]
+shader = ExtResource("28_ixh5u")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 1.6
+shader_parameter/shine_size = 0.01
 
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
@@ -945,6 +957,7 @@ tab_alignment = 2
 drag_to_rearrange_enabled = true
 
 [node name="Stats" type="HBoxContainer" parent="CanvasLayer2/playerMenu"]
+visible = false
 layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer2/playerMenu/Stats"]
@@ -1314,7 +1327,6 @@ theme_override_font_sizes/mono_font_size = 9
 bbcode_enabled = true
 
 [node name="Equipment" type="HBoxContainer" parent="CanvasLayer2/playerMenu"]
-visible = false
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer2/playerMenu/Equipment"]
@@ -1330,17 +1342,229 @@ theme_override_font_sizes/bold_italics_font_size = 9
 theme_override_font_sizes/mono_font_size = 9
 bbcode_enabled = true
 
-[node name="statusInflictions" type="RichTextLabel" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 9
-theme_override_font_sizes/bold_font_size = 9
-theme_override_font_sizes/italics_font_size = 9
-theme_override_font_sizes/bold_italics_font_size = 9
-theme_override_font_sizes/mono_font_size = 9
-bbcode_enabled = true
 
-[node name="statusNegations" type="RichTextLabel" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer"]
+[node name="CanvasGroup" type="CanvasGroup" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer"]
+
+[node name="frame" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_y13ya")
+offset_left = 57.0
+offset_top = 16.0
+offset_right = 104.0
+offset_bottom = 63.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_d03n3")
+flip_v = true
+
+[node name="frame2" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_y13ya")
+offset_left = 16.0
+offset_top = 95.0
+offset_right = 63.0
+offset_bottom = 142.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_d03n3")
+flip_v = true
+
+[node name="frame3" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_y13ya")
+offset_left = 96.0
+offset_top = 95.0
+offset_right = 143.0
+offset_bottom = 142.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_d03n3")
+flip_v = true
+
+[node name="frame4" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_y13ya")
+offset_left = 57.0
+offset_top = 55.0
+offset_right = 104.0
+offset_bottom = 102.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_d03n3")
+flip_v = true
+
+[node name="frame5" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_y13ya")
+offset_left = 57.0
+offset_top = 95.0
+offset_right = 104.0
+offset_bottom = 142.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_d03n3")
+flip_v = true
+
+[node name="frame6" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_y13ya")
+offset_left = 57.0
+offset_top = 134.0
+offset_right = 104.0
+offset_bottom = 181.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_d03n3")
+flip_v = true
+
+[node name="frame7" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_y13ya")
+offset_left = 151.0
+offset_top = 134.0
+offset_right = 198.0
+offset_bottom = 181.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_d03n3")
+flip_v = true
+
+[node name="frame8" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_y13ya")
+offset_left = 96.0
+offset_top = 55.0
+offset_right = 143.0
+offset_bottom = 102.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_d03n3")
+flip_v = true
+
+[node name="frame9" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_y13ya")
+offset_left = 151.0
+offset_top = 95.0
+offset_right = 198.0
+offset_bottom = 142.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_d03n3")
+flip_v = true
+
+[node name="frame10" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_y13ya")
+offset_left = 151.0
+offset_top = 55.0
+offset_right = 198.0
+offset_bottom = 102.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_d03n3")
+flip_v = true
+
+[node name="frame11" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_y13ya")
+offset_left = 151.0
+offset_top = 16.0
+offset_right = 198.0
+offset_bottom = 63.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_d03n3")
+flip_v = true
+
+[node name="frame12" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_y13ya")
+offset_left = 57.0
+offset_top = 174.0
+offset_right = 104.0
+offset_bottom = 221.0
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_d03n3")
+flip_v = true
+
+[node name="leftarm" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_p5dna")
+offset_left = 21.0
+offset_top = 100.0
+offset_right = 68.0
+offset_bottom = 147.0
+scale = Vector2(0.5, 0.5)
+
+[node name="rightarm" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_p5dna")
+offset_left = 101.0
+offset_top = 100.0
+offset_right = 148.0
+offset_bottom = 147.0
+scale = Vector2(0.5, 0.5)
+
+[node name="neck" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_p5dna")
+offset_left = 62.0
+offset_top = 60.0
+offset_right = 109.0
+offset_bottom = 107.0
+scale = Vector2(0.5, 0.5)
+
+[node name="torso" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_p5dna")
+offset_left = 62.0
+offset_top = 100.0
+offset_right = 109.0
+offset_bottom = 147.0
+scale = Vector2(0.5, 0.5)
+
+[node name="legs" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_p5dna")
+offset_left = 62.0
+offset_top = 139.0
+offset_right = 109.0
+offset_bottom = 186.0
+scale = Vector2(0.5, 0.5)
+
+[node name="talisman4" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_p5dna")
+offset_left = 156.0
+offset_top = 139.0
+offset_right = 203.0
+offset_bottom = 186.0
+scale = Vector2(0.5, 0.5)
+
+[node name="back" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_p5dna")
+offset_left = 101.0
+offset_top = 60.0
+offset_right = 148.0
+offset_bottom = 107.0
+scale = Vector2(0.5, 0.5)
+
+[node name="talisman3" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_p5dna")
+offset_left = 156.0
+offset_top = 100.0
+offset_right = 203.0
+offset_bottom = 147.0
+scale = Vector2(0.5, 0.5)
+
+[node name="talisman2" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_p5dna")
+offset_left = 156.0
+offset_top = 60.0
+offset_right = 203.0
+offset_bottom = 107.0
+scale = Vector2(0.5, 0.5)
+
+[node name="talisman1" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_p5dna")
+offset_left = 156.0
+offset_top = 21.0
+offset_right = 203.0
+offset_bottom = 68.0
+scale = Vector2(0.5, 0.5)
+
+[node name="feet" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_p5dna")
+offset_left = 62.0
+offset_top = 179.0
+offset_right = 109.0
+offset_bottom = 226.0
+scale = Vector2(0.5, 0.5)
+
+[node name="head" type="TextureRect" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup"]
+material = SubResource("ShaderMaterial_p5dna")
+offset_left = 62.0
+offset_top = 21.0
+offset_right = 109.0
+offset_bottom = 68.0
+scale = Vector2(0.5, 0.5)
+
+[node name="statusEffects" type="RichTextLabel" parent="CanvasLayer2/playerMenu/Equipment/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 9
@@ -1413,3 +1637,15 @@ stream = ExtResource("30_moqcn")
 [connection signal="mouse_entered" from="CanvasLayer/pauseMenu/Button3" to="CanvasLayer/pauseMenu/resumeGameButton" method="_on_button_3_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/pauseMenu/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="tab_changed" from="CanvasLayer2/playerMenu" to="." method="_on_player_menu_tab_changed"]
+[connection signal="mouse_entered" from="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/frame" to="." method="_on_frame_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/frame2" to="." method="_on_frame_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/frame3" to="." method="_on_frame_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/frame4" to="." method="_on_frame_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/frame5" to="." method="_on_frame_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/frame6" to="." method="_on_frame_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/frame7" to="." method="_on_frame_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/frame8" to="." method="_on_frame_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/frame9" to="." method="_on_frame_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/frame10" to="." method="_on_frame_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/frame11" to="." method="_on_frame_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/frame12" to="." method="_on_frame_mouse_entered"]

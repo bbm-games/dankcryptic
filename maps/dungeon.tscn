@@ -797,6 +797,9 @@ position = Vector2(273, 73)
 [node name="treasure3" parent="." instance=ExtResource("17_tx5kw")]
 position = Vector2(273, 243)
 
+[node name="treasure4" parent="." instance=ExtResource("17_tx5kw")]
+position = Vector2(540, 123)
+
 [connection signal="body_entered" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_entered"]
 [connection signal="body_shape_exited" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_shape_exited"]
 [connection signal="body_entered" from="goldPiece" to="goldPiece" method="_on_body_entered"]
