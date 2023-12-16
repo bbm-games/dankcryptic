@@ -88,7 +88,12 @@
 		 "act_1":true,
 		 "act_2":false,
 		 "act_3":false
-	  }
+	  },
+	 "hud_color":{
+	  "x":0.299,
+	  "y":0.587,
+	  "z":0.114
+	 }
    },
    "vocations":[
 	  {

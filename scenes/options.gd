@@ -39,7 +39,6 @@ func _on_button_pressed():
 		pauseMenu.get_node('resumeGameButton').grab_focus()
 
 # audio settings
-
 func _on_sound_volume_slider_value_changed(value):
 	var sounds_bus = AudioServer.get_bus_index("Sounds")
 	AudioServer.set_bus_volume_db(sounds_bus, value)
@@ -68,3 +67,18 @@ func _on_item_list_item_selected(index):
 		get_window().size = Vector2i(864,486)
 	else:
 		get_window().size = Vector2i(1152, 648)
+
+
+func _on_hud_color_picker_color_changed(color):
+	# this is how we would save the color to player_data
+	#if(GlobalVars.player_data):
+	#	GlobalVars.player_data['hud_color'].x = color.r
+	#	GlobalVars.player_data['hud_color'].y = color.g
+	#	GlobalVars.player_data['hud_color'].z = color.b
+		
+	if get_tree().get_root().get_node_or_null("Menu"):
+		print('options accessed from main menu, will not update HUD colors')
+	else:
+		# update hud colors if in game
+		var main_game_node = get_tree().get_root().get_node('Node2D')
+		main_game_node.update_hud_colors(Vector3(color.r, color.g, color.b))

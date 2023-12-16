@@ -219,6 +219,12 @@ func _ready():
 	backgroundMusic.play()
 	playTitleCard(currentMap.get_node('Node2D').map_name)
 	
+func update_hud_colors(hud_color: Vector3):
+	# set up the HUD color
+	get_node('HUDLayer/CanvasGroup/Hudbars').material.set_shader_parameter("tint", true)
+	get_node('HUDLayer/CanvasGroup/Hudbars').material.set_shader_parameter("color", hud_color)
+	get_node('HUDLayer/CanvasGroup/slotFrame').material.set_shader_parameter("tint", true)
+	get_node('HUDLayer/CanvasGroup/slotFrame').material.set_shader_parameter("color", hud_color)
 
 func playTitleCard(title: String):
 	get_node("HUDLayer/titleCard/areaTitle").set_text(title)

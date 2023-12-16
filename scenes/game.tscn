@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=74 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_y5cr6"]
 [ext_resource type="Script" path="res://scenes/HUDLayer.gd" id="2_eour7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cvjwjaa034kkc" path="res://assets/guts.png" id="4_yv851"]
 [ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="5_k6q0s"]
 [ext_resource type="Texture2D" uid="uid://d2jkuylwl6o4a" path="res://assets/border.png" id="6_d03n3"]
+[ext_resource type="Shader" path="res://shaders/hudcolor.gdshader" id="7_ggdhh"]
 [ext_resource type="AudioStream" uid="uid://cchk611qy76ua" path="res://assets/sounds/quickitemswitch.wav" id="7_u1fmh"]
 [ext_resource type="AudioStream" uid="uid://bvdtncy8q6r27" path="res://assets/sounds/quickitemuse.wav" id="8_wk7tl"]
 [ext_resource type="Texture2D" uid="uid://c8jpbf2bhxlq6" path="res://assets/coin.png" id="9_ktu8j"]
@@ -91,6 +92,16 @@ _data = {
 "RESET": SubResource("Animation_lro5q"),
 "fade_in": SubResource("Animation_s5u8t")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4cyr3"]
+shader = ExtResource("7_ggdhh")
+shader_parameter/tint = null
+shader_parameter/color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nam51"]
+shader = ExtResource("7_ggdhh")
+shader_parameter/tint = null
+shader_parameter/color = null
 
 [sub_resource type="Animation" id="Animation_knli3"]
 length = 0.001
@@ -433,6 +444,7 @@ polygon = PackedVector2Array(210.05, 2, 210.414, 63, 7.29339, 62, 5.47004, 278, 
 modulate = Color(1, 1, 1, 0.686275)
 
 [node name="Hudbars" type="Sprite2D" parent="HUDLayer/CanvasGroup"]
+material = SubResource("ShaderMaterial_4cyr3")
 position = Vector2(107, 25)
 texture = ExtResource("3_bxoid")
 vframes = 2
@@ -560,6 +572,7 @@ theme_override_font_sizes/font_size = 9
 horizontal_alignment = 2
 
 [node name="slotFrame" type="TextureRect" parent="HUDLayer/CanvasGroup"]
+material = SubResource("ShaderMaterial_nam51")
 offset_left = 2.0
 offset_top = 279.0
 offset_right = 49.0
