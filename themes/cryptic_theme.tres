@@ -4,5 +4,6 @@
 
 [resource]
 default_font = ExtResource("1_a1yx1")
+HBoxContainer/constants/separation = 4
 TooltipLabel/colors/font_color = Color(1, 1, 1, 1)
 TooltipLabel/font_sizes/font_size = 9

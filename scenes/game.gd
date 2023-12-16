@@ -777,7 +777,7 @@ func _input(event):
 			attack_held = true
 			var bodies = get_node('player/hitBox').get_overlapping_bodies();
 			if bodies:
-				for body in bodies:
+				for body in bodies:	
 					if body.is_attackable:
 						if body.has_method("take_damage") :
 							# TODO: determine perfect formula for attack
