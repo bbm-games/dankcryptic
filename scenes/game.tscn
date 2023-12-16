@@ -985,7 +985,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1000,6 +1000,7 @@ theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1017,7 +1018,7 @@ text = "+"
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1031,6 +1032,7 @@ theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1048,7 +1050,7 @@ text = "+"
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1062,6 +1064,7 @@ theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1079,7 +1082,7 @@ text = "+"
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer4"]
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1093,6 +1096,7 @@ theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1110,7 +1114,7 @@ text = "+"
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer5"]
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1124,6 +1128,7 @@ theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1141,7 +1146,7 @@ text = "+"
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer6"]
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1155,6 +1160,7 @@ theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1172,7 +1178,7 @@ text = "+"
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer7"]
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1186,6 +1192,7 @@ theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer7"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1203,7 +1210,7 @@ text = "+"
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer8"]
-custom_minimum_size = Vector2(90, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1217,6 +1224,7 @@ theme_override_font_sizes/font_size = 10
 text = "-"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer8"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1234,13 +1242,14 @@ text = "+"
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer9"]
-custom_minimum_size = Vector2(107, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "Level: "
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer9"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
@@ -1251,13 +1260,14 @@ horizontal_alignment = 2
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer10"]
-custom_minimum_size = Vector2(107, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
 text = "Exp:"
 
 [node name="Label2" type="Label" parent="CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer10"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 10
