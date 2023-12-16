@@ -265,7 +265,7 @@ func update_player_stats_tab():
 	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer9/Label2").set_text(str(player_data['current_level']))
 	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer10/Label2").set_text(str(player_data['current_exp']))
 
-	var otherstats = get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer2/HBoxContainer/otherStats")
+	var otherstats = get_node("%otherStats")
 	otherstats.clear()
 	otherstats.append_text("\nWeight: " + str(player_data['weight']))
 	otherstats.append_text("\nInventory Weight: " + str(player_data['inventory_weight'])) 
@@ -874,6 +874,8 @@ func _input(event):
 					chatBoxAppend("Picked up item with id " + body.item_id + ' could not find in database')
 				# add item to the inventory	
 				player_data['inventory'].append(body.item_id)
+				# update the player inventory display
+				update_player_inventory()
 				# remove item from world.
 				body.queue_free()
 	if event.is_action_released("chat"):
