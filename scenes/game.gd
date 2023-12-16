@@ -212,8 +212,8 @@ func _ready():
 	
 	# load in actual game map
 	#var scene_resource = ResourceLoader.load(boss1ScenePath)
-	var scene_resource = ResourceLoader.load(dungeonScenePath)
-	#var scene_resource = ResourceLoader.load(wartotaurlairScenePath)
+	#var scene_resource = ResourceLoader.load(dungeonScenePath)
+	var scene_resource = ResourceLoader.load(wartotaurlairScenePath)
 	var scene = scene_resource.instantiate()
 	currentMap = self.get_node("currentMap")
 	currentMap.add_child(scene)
