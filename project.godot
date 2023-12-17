@@ -22,6 +22,7 @@ buses/default_bus_layout="res://audiobuses/default_bus_layout.tres"
 
 [autoload]
 
+MaterialsCache="*res://scenes/MaterialsCache.gd"
 GlobalVars="*res://scenes/global_vars.gd"
 Music="*res://scenes/music.tscn"
 

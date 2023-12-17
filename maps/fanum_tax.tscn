@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dv5yiioxqim71"]
 
-[ext_resource type="Script" path="res://maps/wartotaur_lair.gd" id="1_ecfeq"]
+[ext_resource type="Script" path="res://maps/fanum_tax.gd" id="1_kl7g8"]
 [ext_resource type="Texture2D" uid="uid://dkyrsri1xtteb" path="res://assets/tilesets/fanum-tax.jpeg" id="2_wy1js"]
 [ext_resource type="Texture2D" uid="uid://7mr23lprj7n3" path="res://assets/neutral.webp" id="3_uoces"]
 [ext_resource type="PackedScene" uid="uid://bgarsyah7v4on" path="res://objects/gold_piece.tscn" id="4_p5h7g"]
@@ -12649,7 +12649,7 @@ physics_layer_0/collision_mask = 13
 sources/1 = SubResource("TileSetAtlasSource_chhvr")
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_ecfeq")
+script = ExtResource("1_kl7g8")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)

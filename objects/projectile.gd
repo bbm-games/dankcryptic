@@ -31,6 +31,10 @@ func _ready():
 	# TODO: set the stream so it's consistent with the type of projectile this is
 	get_node('spawnSound').play()
 
+
+func flicker(energy_range = 0.05):
+	get_node("PointLight2D").set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.05,.05), rng.randf_range(-.05,.05)))
+	get_node("PointLight2D").energy = 0.33 + rng.randf_range(-1*energy_range,energy_range)
 	
 func set_direction_facing_vector(direction: Vector2):
 	direction_facing_vector = direction
@@ -44,9 +48,11 @@ func _process(delta):
 	# delete the projectile if it's gone on past it's lifetime
 	lifetime_counter += delta
 	if lifetime_counter >= lifetime_limit:
-		print("just died.")
 		queue_free()
-		
+	
+	# flicker the light
+	flicker()	
+	
 	# move the projectile in the direction it's facing
 	#direction_facing_vector = Vector2.RIGHT.rotated(self.get_global_rotation())
 	self.move_and_collide(direction_facing_vector * delta * speed)

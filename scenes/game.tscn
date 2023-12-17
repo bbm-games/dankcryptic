@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=67 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_y5cr6"]
 [ext_resource type="Script" path="res://scenes/HUDLayer.gd" id="2_eour7"]
@@ -13,18 +13,21 @@
 [ext_resource type="Texture2D" uid="uid://kuy5fnxctvqh" path="res://assets/testbg.png" id="10_fiov2"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="11_updkf"]
 [ext_resource type="Texture2D" uid="uid://7mr23lprj7n3" path="res://assets/neutral.webp" id="12_w4hbc"]
-[ext_resource type="Shader" path="res://shaders/shield.gdshader" id="13_6ecei"]
+[ext_resource type="Material" uid="uid://biktfxaq848hp" path="res://materials/shield.tres" id="14_iy6yf"]
 [ext_resource type="AudioStream" uid="uid://v5srpkj6a8ui" path="res://assets/sounds/magic_attack.mp3" id="14_q0ik6"]
+[ext_resource type="Material" uid="uid://bxrvfxvwj7m4t" path="res://materials/manafluc.tres" id="15_hwk80"]
 [ext_resource type="AudioStream" uid="uid://b68m0eyu6s6gc" path="res://assets/sounds/shieldsound.wav" id="15_x7r5d"]
 [ext_resource type="AudioStream" uid="uid://py6rar5tguch" path="res://assets/sounds/attacksound.wav" id="16_we4ro"]
 [ext_resource type="Shader" path="res://shaders/fire.gdshader" id="17_ejydg"]
 [ext_resource type="Shader" path="res://shaders/lightning.gdshader" id="18_vh277"]
 [ext_resource type="Shader" path="res://shaders/crt.gdshader" id="19_5883h"]
 [ext_resource type="AudioStream" uid="uid://bpeyq6qhoc0s3" path="res://assets/sounds/RPG_Essentials_Free/10_Battle_SFX/15_Impact_flesh_02.wav" id="20_02a1m"]
+[ext_resource type="Material" uid="uid://ccbsnvaymt5st" path="res://materials/trail.tres" id="20_ke3qe"]
 [ext_resource type="AudioStream" uid="uid://6s7thlqaga3i" path="res://assets/sounds/RPG_Essentials_Free/10_Battle_SFX/39_Block_03.wav" id="21_crwrx"]
 [ext_resource type="AudioStream" uid="uid://dliuks0ccxw21" path="res://assets/sounds/Minifantasy_Dungeon_SFX/04_sack_open_2.wav" id="22_74p0h"]
 [ext_resource type="AudioStream" uid="uid://dss2nlp61r45e" path="res://assets/sounds/Minifantasy_Dungeon_SFX/26_sword_hit_1.wav" id="23_f2mpy"]
 [ext_resource type="Script" path="res://scenes/resumeGameButton.gd" id="24_n4egi"]
+[ext_resource type="Material" uid="uid://bgqageybcf6an" path="res://materials/sparks.tres" id="25_4xcpj"]
 [ext_resource type="Theme" uid="uid://bck6sugoxd40h" path="res://themes/cryptic_theme.tres" id="25_s6css"]
 [ext_resource type="Script" path="res://scenes/bigportrait.gd" id="26_l3f38"]
 [ext_resource type="AudioStream" uid="uid://g4b8v66lx6kh" path="res://assets/sounds/RPG_Essentials_Free/10_UI_Menu_SFX/070_Equip_10.wav" id="27_qk0wl"]
@@ -149,23 +152,6 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14xon"]
 size = Vector2(26, 13)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_omonw"]
-shader = ExtResource("13_6ecei")
-shader_parameter/color = Color(0.780392, 0.596078, 0, 1)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_al2uw"]
-particle_flag_disable_z = true
-spread = 15.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 105.27
-initial_velocity_max = 105.27
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-scale_max = 3.0
-color = Color(0.0666667, 1, 1, 1)
-hue_variation_min = -1.0
-hue_variation_max = 1.0
-
 [sub_resource type="Gradient" id="Gradient_4uyyb"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_6qdh2"]
@@ -185,26 +171,6 @@ shader_parameter/darker_color = Color(0.64, 0.2, 0.05, 1)
 shader_parameter/spread = 0.555
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_g7kdf")
 shader_parameter/gradient_tex = SubResource("GradientTexture2D_6qdh2")
-
-[sub_resource type="Gradient" id="Gradient_gabys"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uk2wo"]
-gradient = SubResource("Gradient_gabys")
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_a1h34"]
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y5dq8"]
-emission_shape = 3
-emission_box_extents = Vector3(5, 5, 1)
-particle_flag_disable_z = true
-gravity = Vector3(0, 0, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-scale_min = 3.0
-scale_max = 5.0
-color = Color(1, 0, 0.0156863, 1)
-color_ramp = SubResource("GradientTexture1D_a1h34")
-color_initial_ramp = SubResource("GradientTexture1D_uk2wo")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bhjsi"]
 shader = ExtResource("18_vh277")
@@ -232,44 +198,6 @@ shader_parameter/warp_amount = 1.0
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
-
-[sub_resource type="Gradient" id="Gradient_4n1sk"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_22ru1"]
-gradient = SubResource("Gradient_4n1sk")
-
-[sub_resource type="Gradient" id="Gradient_g51w6"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_k4b0j"]
-gradient = SubResource("Gradient_g51w6")
-
-[sub_resource type="Curve" id="Curve_2uawe"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_p8wt1"]
-curve = SubResource("Curve_2uawe")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_c0mhp"]
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 1)
-emission_ring_height = 24.0
-emission_ring_radius = 24.0
-emission_ring_inner_radius = 23.0
-particle_flag_disable_z = true
-direction = Vector3(0, 0, 0)
-spread = 180.0
-gravity = Vector3(0, 200, 0)
-initial_velocity_min = 100.0
-initial_velocity_max = 150.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-scale_min = 2.0
-scale_max = 2.0
-scale_curve = SubResource("CurveTexture_p8wt1")
-color = Color(1, 0.670588, 0.101961, 1)
-color_ramp = SubResource("GradientTexture1D_k4b0j")
-color_initial_ramp = SubResource("GradientTexture1D_22ru1")
 
 [sub_resource type="Animation" id="Animation_et487"]
 length = 0.001
@@ -770,7 +698,7 @@ position = Vector2(-1, -19)
 texture = ExtResource("12_w4hbc")
 
 [node name="ShieldColorRect" type="ColorRect" parent="player"]
-material = SubResource("ShaderMaterial_omonw")
+material = ExtResource("14_iy6yf")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -787,7 +715,7 @@ grow_vertical = 2
 z_index = 1
 position = Vector2(-1, -19)
 emitting = false
-process_material = SubResource("ParticleProcessMaterial_al2uw")
+process_material = ExtResource("15_hwk80")
 
 [node name="spellSoundPlayer" type="AudioStreamPlayer" parent="player"]
 stream = ExtResource("14_q0ik6")
@@ -818,7 +746,7 @@ z_index = -1
 position = Vector2(0, -3)
 emitting = false
 amount = 30
-process_material = SubResource("ParticleProcessMaterial_y5dq8")
+process_material = ExtResource("20_ke3qe")
 lifetime = 3.0
 
 [node name="LightningColorRect" type="ColorRect" parent="player"]
@@ -853,7 +781,7 @@ bus = &"Sounds"
 position = Vector2(0, -17)
 emitting = false
 amount = 60
-process_material = SubResource("ParticleProcessMaterial_c0mhp")
+process_material = ExtResource("25_4xcpj")
 lifetime = 0.3
 one_shot = true
 

@@ -1,0 +1,14 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://bxrvfxvwj7m4t"]
+
+[resource]
+particle_flag_disable_z = true
+spread = 15.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 105.27
+initial_velocity_max = 105.27
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 3.0
+color = Color(0.0666667, 1, 1, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0

@@ -1101,7 +1101,7 @@ func _process(delta):
 	# Spell casting shit
 	if spell_active && player_data['current_mana'] > 0: 
 		# get the current spell that's present in the current quickslot
-		var spell_id = player_data["quick_slots"]['slot' + str(current_item_index+1)]
+		var _spell_id = player_data["quick_slots"]['slot' + str(current_item_index+1)]
 		
 		# do the hold down key spell
 		
