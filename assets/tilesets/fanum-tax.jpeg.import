@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doodq6tdpllvd"
-path="res://.godot/imported/OIG.jpeg-5cef0b842ede60af209ab40ef3b6dd3d.ctex"
+uid="uid://dkyrsri1xtteb"
+path="res://.godot/imported/fanum-tax.jpeg-c1ca3aad55cab287707ce6f8964b53fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/OIG.jpeg"
-dest_files=["res://.godot/imported/OIG.jpeg-5cef0b842ede60af209ab40ef3b6dd3d.ctex"]
+source_file="res://assets/tilesets/fanum-tax.jpeg"
+dest_files=["res://.godot/imported/fanum-tax.jpeg-c1ca3aad55cab287707ce6f8964b53fe.ctex"]
 
 [params]
 

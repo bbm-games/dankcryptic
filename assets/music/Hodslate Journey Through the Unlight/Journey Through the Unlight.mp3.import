@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bb2fk1u5iq486"
+path="res://.godot/imported/Journey Through the Unlight.mp3-81a8dfc0e7fb70a922b5b11e713422a5.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Hodslate Journey Through the Unlight/Journey Through the Unlight.mp3"
+dest_files=["res://.godot/imported/Journey Through the Unlight.mp3-81a8dfc0e7fb70a922b5b11e713422a5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

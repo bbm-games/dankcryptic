@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dkcv2nxe22u7e"
+path="res://.godot/imported/A Magelight Silenced.mp3-33e8ad4cb7b9f4ce8180dff1b0f75d67.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Hodslate Journey Through the Unlight/A Magelight Silenced.mp3"
+dest_files=["res://.godot/imported/A Magelight Silenced.mp3-33e8ad4cb7b9f4ce8180dff1b0f75d67.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

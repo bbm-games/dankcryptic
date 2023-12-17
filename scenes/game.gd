@@ -60,6 +60,7 @@ var playerAnimationPlayer
 var boss1ScenePath = "res://maps/boss1.tscn"
 var dungeonScenePath = "res://maps/dungeon.tscn"
 var wartotaurlairScenePath = "res://maps/wartotaur_lair.tscn"
+var fanumtaxScenePath = "res://maps/fanum_tax.tscn"
 var hoverSound
 
 var item_slot_frame
@@ -213,7 +214,8 @@ func _ready():
 	# load in actual game map
 	#var scene_resource = ResourceLoader.load(boss1ScenePath)
 	#var scene_resource = ResourceLoader.load(dungeonScenePath)
-	var scene_resource = ResourceLoader.load(wartotaurlairScenePath)
+	#var scene_resource = ResourceLoader.load(wartotaurlairScenePath)
+	var scene_resource = ResourceLoader.load(fanumtaxScenePath)
 	var scene = scene_resource.instantiate()
 	currentMap = self.get_node("currentMap")
 	currentMap.add_child(scene)
