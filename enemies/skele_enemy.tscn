@@ -1,0 +1,277 @@
+[gd_scene load_steps=17 format=3 uid="uid://cdnweam38rxor"]
+
+[ext_resource type="Script" path="res://enemies/skele_enemy.gd" id="1_xchgr"]
+[ext_resource type="Texture2D" uid="uid://byfym0ukednyd" path="res://assets/undead/undead_idle_sheet.png" id="2_gtr7m"]
+[ext_resource type="Texture2D" uid="uid://b52ysywplg4s5" path="res://assets/undead/undead_attack_sheet.png" id="3_psjj0"]
+[ext_resource type="Texture2D" uid="uid://dwuqfcxb3u8jo" path="res://assets/undead/undead_walk_sheet.png" id="4_wim8p"]
+[ext_resource type="AudioStream" uid="uid://b865kmi44feuw" path="res://assets/sounds/Minifantasy_Dungeon_SFX/17_orc_atk_sword_1.wav" id="5_ofrt3"]
+[ext_resource type="AudioStream" uid="uid://ckqrfhym0h1tk" path="res://assets/sounds/Minifantasy_Dungeon_SFX/25_orc_walk_stone_3.wav" id="6_bay6w"]
+[ext_resource type="AudioStream" uid="uid://d368enykfayyf" path="res://assets/sounds/Minifantasy_Dungeon_SFX/21_orc_damage_3.wav" id="7_nfveq"]
+
+[sub_resource type="Animation" id="Animation_ltjhe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attack:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("walk:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("attack_sound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("hitBox:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("walk_sound:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_kg0tn"]
+resource_name = "attack"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attack_sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hitBox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_23mgi"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 17]
+}
+
+[sub_resource type="Animation" id="Animation_ohu8y"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("walk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("walk_sound:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tn0ai"]
+_data = {
+"RESET": SubResource("Animation_ltjhe"),
+"attack": SubResource("Animation_kg0tn"),
+"idle": SubResource("Animation_23mgi"),
+"walk": SubResource("Animation_ohu8y")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vcpq"]
+size = Vector2(14, 10)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nntj8"]
+radius = 8.08012
+height = 33.6147
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_366qa"]
+radius = 164.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tegtr"]
+radius = 8.24521
+height = 32.7487
+
+[node name="skele_enemy" type="CharacterBody2D"]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(477, 268)
+scale = Vector2(1.5, 1.5)
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("1_xchgr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_tn0ai")
+}
+
+[node name="idle" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -15)
+texture = ExtResource("2_gtr7m")
+hframes = 18
+
+[node name="attack" type="Sprite2D" parent="."]
+position = Vector2(1, -15)
+texture = ExtResource("3_psjj0")
+hframes = 20
+
+[node name="walk" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -15)
+texture = ExtResource("4_wim8p")
+hframes = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -5)
+shape = SubResource("RectangleShape2D_1vcpq")
+
+[node name="hitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+position = Vector2(13, -10.5)
+rotation = 2.61799
+shape = SubResource("CapsuleShape2D_nntj8")
+
+[node name="attack_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ofrt3")
+attenuation = 6.0
+bus = &"Sounds"
+
+[node name="detectionZone" type="Area2D" parent="."]
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionZone"]
+shape = SubResource("CircleShape2D_366qa")
+
+[node name="attackZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackZone"]
+position = Vector2(12.5, -10.5)
+rotation = 2.61799
+shape = SubResource("CapsuleShape2D_tegtr")
+
+[node name="walk_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_bay6w")
+volume_db = 8.914
+attenuation = 6.0
+bus = &"Sounds"
+
+[node name="idle_sound" type="AudioStreamPlayer2D" parent="."]
+attenuation = 6.0
+bus = &"Sounds"
+
+[node name="clapped_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_nfveq")
+
+[connection signal="body_entered" from="hitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_exited" from="hitBox" to="." method="_on_hit_box_body_exited"]
+[connection signal="body_entered" from="detectionZone" to="." method="_on_detection_zone_body_entered"]
+[connection signal="body_exited" from="detectionZone" to="." method="_on_detection_zone_body_exited"]
+[connection signal="body_entered" from="attackZone" to="." method="_on_attack_zone_body_entered"]
+[connection signal="body_exited" from="attackZone" to="." method="_on_attack_zone_body_exited"]

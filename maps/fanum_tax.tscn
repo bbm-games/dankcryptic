@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dv5yiioxqim71"]
+[gd_scene load_steps=7 format=3 uid="uid://dv5yiioxqim71"]
 
 [ext_resource type="Script" path="res://maps/wartotaur_lair.gd" id="1_ecfeq"]
 [ext_resource type="Texture2D" uid="uid://dkyrsri1xtteb" path="res://assets/tilesets/fanum-tax.jpeg" id="2_wy1js"]
 [ext_resource type="Texture2D" uid="uid://7mr23lprj7n3" path="res://assets/neutral.webp" id="3_uoces"]
+[ext_resource type="PackedScene" uid="uid://bgarsyah7v4on" path="res://objects/gold_piece.tscn" id="4_p5h7g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_chhvr"]
 texture = ExtResource("2_wy1js")
@@ -12687,3 +12688,24 @@ energy = 0.33
 blend_mode = 2
 texture = ExtResource("3_uoces")
 texture_scale = 3.0
+
+[node name="goldPiece" parent="." instance=ExtResource("4_p5h7g")]
+position = Vector2(616, 143)
+
+[node name="goldPiece3" parent="." instance=ExtResource("4_p5h7g")]
+position = Vector2(649, 148)
+
+[node name="goldPiece2" parent="." instance=ExtResource("4_p5h7g")]
+position = Vector2(633, 140)
+
+[node name="goldPiece7" parent="." instance=ExtResource("4_p5h7g")]
+position = Vector2(646, 127)
+
+[node name="goldPiece6" parent="." instance=ExtResource("4_p5h7g")]
+position = Vector2(654, 113)
+
+[node name="goldPiece5" parent="." instance=ExtResource("4_p5h7g")]
+position = Vector2(636, 152)
+
+[node name="goldPiece4" parent="." instance=ExtResource("4_p5h7g")]
+position = Vector2(630, 125)

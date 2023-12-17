@@ -1433,7 +1433,7 @@
 		 "description":"Casts a malevolent curse upon the target, inflicting damage over time.",
 		 "base_damage":20,
 		 "min_magic_level":10,
-		 "mana_cost":15,
+		 "mana_cost":1,
 		 "sprite_data":"res://assets/Item__37.png",
 		 "statusInflictions":{
 			"poisoned":0.2,

@@ -18,5 +18,5 @@ func flicker(energy_range = 0.05):
 	get_node("PointLight2D3").energy = 0.33 + rng.randf_range(-1*energy_range,energy_range)
 	get_node("PointLight2D4").energy = 0.33 + rng.randf_range(-1*energy_range,energy_range)
 
-func _process(delta):
+func _process(_delta):
 	flicker()

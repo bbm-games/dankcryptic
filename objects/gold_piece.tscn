@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgarsyah7v4on"]
+
+[ext_resource type="Script" path="res://objects/goldPiece.gd" id="1_105er"]
+[ext_resource type="Texture2D" uid="uid://c8jpbf2bhxlq6" path="res://assets/coin.png" id="2_bsjuv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnbo"]
+radius = 3.0
+height = 6.0
+
+[node name="goldPiece" type="Area2D"]
+position = Vector2(394, 111)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_105er")
+
+[node name="coinCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_cvnbo")
+
+[node name="goldSprite" type="Sprite2D" parent="."]
+z_index = 1
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("2_bsjuv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

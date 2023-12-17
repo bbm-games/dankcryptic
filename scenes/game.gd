@@ -770,6 +770,18 @@ func _input(event):
 			# if it's a spell
 			# TODO: This needs to be more elaborate
 			if item_id == "spell001":
+				# only cast if there's enough mana for the spell
+				var mana_cost = searchDocsInList(all_quick_items,'id', item_id, 'mana_cost')
+				if player_data['current_mana'] >= mana_cost:
+					# TODO: generalize this so it works with more spells
+					var projectile = preload("res://objects/projectile.tscn").instantiate()
+					projectile.set_direction_facing_vector(Vector2(get_global_mouse_position().x - player_body.position.x, get_global_mouse_position().y - player_body.position.y).normalized())
+					projectile.set_initial_position(player_body.get_global_position() + Vector2(0,-10))
+					self.add_child(projectile)
+					self.subtractMana(mana_cost)
+				
+				# add this parameter for spells that require the key to be held
+				# in order to continue casting
 				spell_active = true
 			
 			# redraw the quick slots
@@ -1086,8 +1098,12 @@ func _process(delta):
 			
 	# Spell casting shit
 	if spell_active && player_data['current_mana'] > 0: 
-		# cast the spell in direction of mouse
-		# TODO: adjust emission based on spell being cast
+		# get the current spell that's present in the current quickslot
+		var spell_id = player_data["quick_slots"]['slot' + str(current_item_index+1)]
+		
+		# do the hold down key spell
+		
+		# TODO: adjust emission animation!
 		emmisionNode.set_emitting(true)
 		# aim with controller if possible
 		#emmisionNode.get_process_material().set_direction(Vector3(Input.get_joy_axis(JOY_AXIS_RIGHT_X) - player_body.position.x, get_global_mouse_position().y - player_body.position.y, 0))
@@ -1137,6 +1153,12 @@ func _process(delta):
 	update_player_stats_tab()
 	update_player_summary_bar()
 	
+# for removing mana
+func subtractMana(amount):	
+	player_data['current_mana'] -= amount
+	if player_data['current_mana'] <= 0:
+		player_data['current_mana'] = 0
+		
 # for removing health
 func subtractHealth(amount):
 	if not player_data['is_dead']: # only subtract health if player isn't dead.
