@@ -770,13 +770,15 @@ func _input(event):
 			# if it's a spell
 			# TODO: This needs to be more elaborate
 			if item_id == "spell001":
+				# to ensure that the spell doesn't come from player's feet
+				var casting_position_offset = Vector2(0,-10)
 				# only cast if there's enough mana for the spell
 				var mana_cost = searchDocsInList(all_quick_items,'id', item_id, 'mana_cost')
 				if player_data['current_mana'] >= mana_cost:
 					# TODO: generalize this so it works with more spells
 					var projectile = preload("res://objects/projectile.tscn").instantiate()
-					projectile.set_direction_facing_vector(Vector2(get_global_mouse_position().x - player_body.position.x, get_global_mouse_position().y - player_body.position.y).normalized())
-					projectile.set_initial_position(player_body.get_global_position() + Vector2(0,-10))
+					projectile.set_direction_facing_vector(Vector2(get_global_mouse_position().x - (player_body.get_global_position().x + casting_position_offset.x), get_global_mouse_position().y - (player_body.get_global_position().y + casting_position_offset.y)).normalized())
+					projectile.set_initial_position(player_body.get_global_position() + casting_position_offset)
 					self.add_child(projectile)
 					self.subtractMana(mana_cost)
 				
