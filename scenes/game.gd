@@ -938,6 +938,9 @@ func _process(delta):
 		speed = base_speed * 2 * paralyzer
 		if player_data['current_stamina'] - player_data['stamina_depl_rate'] * delta >= 0:
 			player_data['current_stamina'] = player_data['current_stamina'] - player_data['stamina_depl_rate']*delta
+			# play dash sound if it's not already playing
+			if not get_node('player/dashSoundPlayer').is_playing():
+				get_node('player/dashSoundPlayer').play()
 		else:
 			player_data['current_stamina'] = 0
 	# cannot dash if no stamina
@@ -968,7 +971,14 @@ func _process(delta):
 	else:
 		# hide block shield
 		player_body.get_node("ShieldColorRect").hide()	
-
+	
+	# play sound if walking
+	if walk_up_held or walk_down_held or walk_right_held or walk_left_held:
+		if not get_node('player/stepRockSoundPlayer').is_playing():
+			get_node('player/stepRockSoundPlayer').play()
+	else:
+		get_node('player/stepRockSoundPlayer').stop()
+	
 	# set up movement
 	if walk_up_held:
 		if walk_right_held:

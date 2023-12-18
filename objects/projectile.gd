@@ -1,5 +1,6 @@
-extends RigidBody2D
+extends Area2D
 
+var main_game_node
 var rng
 var magic_level : int
 var spell_inflictions = {
@@ -19,6 +20,8 @@ var speed = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	main_game_node = get_tree().get_root().get_node('Node2D')
 	rng = RandomNumberGenerator.new()
 	
 	# TODO: GENERALIZE THIS SO YOU GRAB THE MAGIC LEVEL FROM WHOEVER THE CASTER IS
@@ -55,7 +58,7 @@ func _process(delta):
 	
 	# move the projectile in the direction it's facing
 	#direction_facing_vector = Vector2.RIGHT.rotated(self.get_global_rotation())
-	self.move_and_collide(direction_facing_vector * delta * speed)
+	self.set_position(self.get_position() + direction_facing_vector * delta * speed)
 	
 func _on_body_entered(body):
 	# check to see if the body is attackable, is so apply damage
@@ -71,11 +74,11 @@ func _on_body_entered(body):
 				prob = 0.1 + pow(2.718,-10/diff) * 0.9
 			if rng.randf_range(0,1) <= prob:
 				# then do a critical hit
-				body.take_damage(magic_level*2, spell_inflictions)
+				body.take_damage(magic_level/5, spell_inflictions)
 				#get_node('player/criticalSoundPlayer').play()
 			else:
 				# do a normal hit
-				body.take_damage(magic_level, spell_inflictions)
+				body.take_damage(magic_level/10, spell_inflictions)
 				#get_node('player/attackSoundPlayer').play()		
 			
 			# delete the projectile

@@ -176,7 +176,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vcpq"]
-size = Vector2(14, 10)
+size = Vector2(15.3333, 11.3333)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nntj8"]
 radius = 8.08012
@@ -222,7 +222,7 @@ texture = ExtResource("4_wim8p")
 hframes = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -5)
+position = Vector2(0.333344, -4.33333)
 shape = SubResource("RectangleShape2D_1vcpq")
 
 [node name="hitBox" type="Area2D" parent="."]

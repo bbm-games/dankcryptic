@@ -66,8 +66,8 @@
 [ext_resource type="Material" uid="uid://dlu3n0c87ds4" path="res://materials/projectile.tres" id="64_m78b6"]
 [ext_resource type="Texture2D" uid="uid://7mr23lprj7n3" path="res://assets/neutral.webp" id="65_rupwk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_31tba"]
-radius = 7.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lobpc"]
+size = Vector2(14.2569, 14.5784)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_run8w"]
 animations = [{
@@ -260,16 +260,16 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="projectile" type="RigidBody2D"]
+[node name="projectile" type="Area2D"]
 z_index = 2
 collision_layer = 32
 collision_mask = 8
-gravity_scale = 0.0
 script = ExtResource("1_jfflj")
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(-4, 0)
-shape = SubResource("CircleShape2D_31tba")
+position = Vector2(-11, -0.0880252)
+scale = Vector2(2.11422, 0.83521)
+shape = SubResource("RectangleShape2D_lobpc")
 
 [node name="spawnSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("63_7biup")
