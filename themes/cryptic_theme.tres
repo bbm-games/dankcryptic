@@ -119,12 +119,12 @@ bg_color = Color(0.054902, 0.054902, 0.054902, 0.568627)
 expand_margin_left = 7.0
 expand_margin_right = 7.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpp0o"]
-bg_color = Color(0.988235, 0.988235, 0.988235, 0.0980392)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kuy8e"]
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
+corner_detail = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27o5f"]
 content_margin_left = 4.0
@@ -182,7 +182,7 @@ TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_f7tnt")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_0w7qn")
 TooltipLabel/colors/font_color = Color(1, 1, 1, 1)
 TooltipLabel/font_sizes/font_size = 9
-VScrollBar/styles/grabber = SubResource("StyleBoxFlat_hpp0o")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_kuy8e")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_27o5f")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_bcftm")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_6lfh3")

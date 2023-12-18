@@ -1187,13 +1187,23 @@ func subtractHealth(amount):
 			backgroundMusic.playing = false
 			backgroundMusic.stream = load('res://assets/music/mindseyepack/2- Mental Vortex.mp3')
 			backgroundMusic.play()
-			# TODO: show the dead sprite
-			light.hide()
-			playTitleCard('YOU DIED.')
-			
-			# TODO: pull up the death menu
-			
 
+			# add the to_dust shader
+			var to_dust = preload("res://materials/to_dust.tres")
+			# TODO: actually have a death sprite to attach the to_dust material to
+			player_sprite.set_material(to_dust)
+			var tween = get_tree().create_tween()
+			tween.tween_method(set_to_dust_sensitivity, 0.0, 1.0, 1)
+			tween.connect("finished", on_death_tween_finished)
+			
+func on_death_tween_finished():
+	light.hide()
+	playTitleCard('YOU DIED.')
+	# TODO: pull up the death menu
+
+func set_to_dust_sensitivity(value: float):
+	player_sprite.get_material().set_shader_parameter('sensitivity', value)
+	
 # for when you want to output to the chatbox
 func chatBoxAppend(message):
 	chatBox.append_text("\n" + message)
