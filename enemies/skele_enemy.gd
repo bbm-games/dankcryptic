@@ -46,6 +46,9 @@ func changeState(state_name):
 	if current_state == 'walkfast':
 		self.showCertainSprite('walk')
 		speed = base_speed * 2
+	if current_state == 'death':
+		self.showCertainSprite('idle')
+		speed = 0
 
 func showCertainSprite(name_given):
 	# by default the hit box should not be active
@@ -65,13 +68,27 @@ func flip_sprite():
 	pass
 
 func take_damage(value, _statusInflictions = null):
-	get_node('clapped_sound').play()
-	just_took_damage = true
-	enemy_data['stats']['health'] -= value
-	if enemy_data['stats']['health'] <= 0:
-		enemy_data['stats']['health'] = 0
-		self.queue_free()
-	#TODO: apply status inflictions to enemy
+	if current_state != 'death': # let's not retween death animation if already dead
+		get_node('clapped_sound').play()
+		just_took_damage = true
+		enemy_data['stats']['health'] -= value
+		if enemy_data['stats']['health'] <= 0:
+			enemy_data['stats']['health'] = 0
+			# add the material for shader pixel explosion
+			var to_dust = preload('res://materials/to_dust.tres')
+			changeState('death')
+			# TODO: actually have a death sprite to attach the to_dust material to
+			get_node('idle').set_material(to_dust)
+			var tween = get_tree().create_tween()
+			tween.tween_method(set_to_dust_sensitivity, 0.0, 1.0, 1)
+			tween.connect("finished", on_tween_finished)
+		#TODO: apply status inflictions to enemy
+
+func on_tween_finished():
+	queue_free()
+
+func set_to_dust_sensitivity(value: float):
+	get_node('idle').get_material().set_shader_parameter('sensitivity', value)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

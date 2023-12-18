@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdnweam38rxor"]
+[gd_scene load_steps=18 format=3 uid="uid://cdnweam38rxor"]
 
 [ext_resource type="Script" path="res://enemies/skele_enemy.gd" id="1_xchgr"]
 [ext_resource type="Texture2D" uid="uid://byfym0ukednyd" path="res://assets/undead/undead_idle_sheet.png" id="2_gtr7m"]
@@ -123,6 +123,9 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_jdqs7"]
+resource_name = "death"
+
 [sub_resource type="Animation" id="Animation_23mgi"]
 resource_name = "idle"
 loop_mode = 1
@@ -171,6 +174,7 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_ltjhe"),
 "attack": SubResource("Animation_kg0tn"),
+"death": SubResource("Animation_jdqs7"),
 "idle": SubResource("Animation_23mgi"),
 "walk": SubResource("Animation_ohu8y")
 }
