@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dv5yiioxqim71"]
+[gd_scene load_steps=8 format=3 uid="uid://dv5yiioxqim71"]
 
 [ext_resource type="Script" path="res://maps/fanum_tax.gd" id="1_kl7g8"]
 [ext_resource type="Texture2D" uid="uid://dkyrsri1xtteb" path="res://assets/tilesets/fanum-tax.jpeg" id="2_wy1js"]
 [ext_resource type="Texture2D" uid="uid://7mr23lprj7n3" path="res://assets/neutral.webp" id="3_uoces"]
 [ext_resource type="PackedScene" uid="uid://bgarsyah7v4on" path="res://objects/gold_piece.tscn" id="4_p5h7g"]
+[ext_resource type="PackedScene" uid="uid://cdnweam38rxor" path="res://enemies/skele_enemy.tscn" id="5_kvndv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_chhvr"]
 texture = ExtResource("2_wy1js")
@@ -12709,3 +12710,14 @@ position = Vector2(636, 152)
 
 [node name="goldPiece4" parent="." instance=ExtResource("4_p5h7g")]
 position = Vector2(630, 125)
+
+[node name="skele_enemy" parent="." instance=ExtResource("5_kvndv")]
+position = Vector2(183, -207)
+
+[node name="skele_enemy2" parent="." instance=ExtResource("5_kvndv")]
+position = Vector2(289, -281)
+scale = Vector2(2.25, 2.25)
+
+[node name="skele_enemy3" parent="." instance=ExtResource("5_kvndv")]
+position = Vector2(352, -172)
+scale = Vector2(3.375, 3.375)

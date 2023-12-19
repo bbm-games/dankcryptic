@@ -213,9 +213,9 @@ func _ready():
 	
 	# load in actual game map
 	#var scene_resource = ResourceLoader.load(boss1ScenePath)
-	var scene_resource = ResourceLoader.load(dungeonScenePath)
+	#var scene_resource = ResourceLoader.load(dungeonScenePath)
 	#var scene_resource = ResourceLoader.load(wartotaurlairScenePath)
-	#var scene_resource = ResourceLoader.load(fanumtaxScenePath)
+	var scene_resource = ResourceLoader.load(fanumtaxScenePath)
 	var scene = scene_resource.instantiate()
 	currentMap = self.get_node("currentMap")
 	currentMap.add_child(scene)
@@ -1195,7 +1195,7 @@ func subtractHealth(amount):
 			var tween = get_tree().create_tween()
 			tween.tween_method(set_to_dust_sensitivity, 0.0, 1.0, 1)
 			tween.connect("finished", on_death_tween_finished)
-			
+
 func on_death_tween_finished():
 	light.hide()
 	playTitleCard('YOU DIED.')

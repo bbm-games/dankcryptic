@@ -11,6 +11,24 @@ var just_took_damage = false
 var damage_highlight_time = 0
 var base_modulation = self.get_modulate()
 var rng
+
+# the enemy states
+enum States{
+	IDLE,
+	ATTACK,
+	WALK,
+	WALKFAST,
+	DEATH
+}
+
+var StateStrings = {
+	States.IDLE: 'idle',
+	States.WALK: 'walk',
+	States.WALKFAST: 'walkfast',
+	States.ATTACK: 'attack',
+	States.DEATH: 'death'
+}
+
 var enemy_data =  {"stats":{
 			"attack":65,
 			"defense":65,
@@ -28,29 +46,31 @@ func _ready():
 	rng = RandomNumberGenerator.new()
 	
 	# initial state when spawned is idle
-	self.changeState('idle')
+	self.changeState(States.IDLE)
 
 func changeState(state_name):
 	if current_state != state_name:
 		current_state = state_name
-	main_game_node.chatBoxAppend(str(state_name))
-	if current_state == 'attack':
-		self.showCertainSprite('attack')
+	main_game_node.chatBoxAppend(StateStrings[state_name])
+	if current_state == States.ATTACK:
+		self.showCertainSprite(States.ATTACK)
 	else:
 		pass
-	if current_state == 'idle':
-		self.showCertainSprite('idle')
-	if current_state == 'walk':
-		self.showCertainSprite('walk')
+	if current_state == States.IDLE:
+		self.showCertainSprite(States.IDLE)
+	if current_state == States.WALK:
+		self.showCertainSprite(States.WALK)
 		speed = base_speed
-	if current_state == 'walkfast':
-		self.showCertainSprite('walk')
+	if current_state == States.WALKFAST:
+		# TODO: modify the walk fast state sprite
+		self.showCertainSprite(States.WALK)
 		speed = base_speed * 2
-	if current_state == 'death':
-		self.showCertainSprite('idle')
+	if current_state == States.DEATH:
+		self.showCertainSprite(States.IDLE)
 		speed = 0
 
-func showCertainSprite(name_given):
+func showCertainSprite(enum_given):
+	var name_given : String = StateStrings[enum_given]
 	# by default the hit box should not be active
 	get_node('hitBox').set_monitoring(false)
 	if not get_node(name_given).is_visible():
@@ -59,7 +79,7 @@ func showCertainSprite(name_given):
 				child.hide()
 		get_node(name_given).show()
 		get_node('AnimationPlayer').play(name_given)	
-		if name_given == 'walkfast':
+		if enum_given == States.WALKFAST:
 			get_node('AnimationPlayer').set_speed_scale(2)
 		else:
 			get_node('AnimationPlayer').set_speed_scale(1)
@@ -67,8 +87,8 @@ func showCertainSprite(name_given):
 func flip_sprite():
 	pass
 
-func take_damage(value, _statusInflictions = null):
-	if current_state != 'death': # let's not retween death animation if already dead
+func take_damage(value, _statusInflictions = null, ranged = false):
+	if current_state != States.DEATH: # let's not retween death animation if already dead
 		get_node('clapped_sound').play()
 		just_took_damage = true
 		enemy_data['stats']['health'] -= value
@@ -76,13 +96,29 @@ func take_damage(value, _statusInflictions = null):
 			enemy_data['stats']['health'] = 0
 			# add the material for shader pixel explosion
 			var to_dust = preload('res://materials/to_dust.tres')
-			changeState('death')
+			changeState(States.DEATH)
 			# TODO: actually have a death sprite to attach the to_dust material to
 			get_node('idle').set_material(to_dust)
+			get_node('attack').set_material(to_dust)
+			get_node('walk').set_material(to_dust)
 			var tween = get_tree().create_tween()
 			tween.tween_method(set_to_dust_sensitivity, 0.0, 1.0, 1)
 			tween.connect("finished", on_tween_finished)
 		#TODO: apply status inflictions to enemy
+		
+		# if the skele was idling with no target and got blasted by a range attack
+		if current_state == States.IDLE and not target_body:
+			main_game_node.chatBoxAppend('Attacked by unknown ranger!')
+			# adjust the base speed
+			base_speed *= 2
+			changeState(States.WALKFAST)
+			# double the detection zone to find the player!
+			var circleshape = get_node('detectionZone/CollisionShape2D').get_shape()
+			circleshape.set_radius(circleshape.get_radius()*2)
+		
+		if ranged and target_body:
+			changeState(States.WALKFAST)
+			
 
 func on_tween_finished():
 	queue_free()
@@ -92,26 +128,35 @@ func set_to_dust_sensitivity(value: float):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	# display red damage color
 	if just_took_damage:
 		damage_highlight_time += delta
 		self.set_modulate(Color(1,.16,.16,1))
 		if damage_highlight_time > .3:
 			damage_highlight_time = 0
 			just_took_damage = false
+			
 	else:
 		self.set_modulate(base_modulation)
+		
+	# flips the skele sprite to face the target_body at all times
 	if target_body:
 		if (target_body.position - self.position).x < 0:
 			self.set_transform(Transform2D(Vector2(-1.5, 0), Vector2(0,  1.5), Vector2(position.x, position.y)))
 		else:
 			# unflip
 			self.set_transform(Transform2D(Vector2(1.5, 0), Vector2(0,  1.5), Vector2(position.x, position.y)))
-	if current_state == 'walk' or current_state == 'walkfast' and target_body:
+	
+	# makes the skele move to target body if in the WALK or WALK_FAST STATE
+	if (current_state == States.WALK or current_state == States.WALKFAST) and target_body:
 		self.move_and_collide((target_body.position - (get_node('attackZone').position + self.position)).normalized() * speed * delta)
-	if current_state == 'walkfast':
+	
+	# limits the WALKFAST state TO 5 seconds
+	if current_state == States.WALKFAST:
 		walk_fast_time += delta
 		if walk_fast_time > 5:
-			changeState('walk')
+			changeState(States.WALK)
 			walk_fast_time = 0
 		
 func _physics_process(_delta):
@@ -136,22 +181,25 @@ func _on_hit_box_body_exited(_body):
 
 func _on_detection_zone_body_entered(body):
 	# basically targets any body that can take damage (this includes player)
-	if body.has_method("take_damage"):
+	if body.has_method("take_damage") and body.is_player:
 		target_body = body
-		changeState('walk')
-		
+		if current_state == States.WALKFAST:
+			pass
+		else:
+			changeState(States.WALK)
+	
 func _on_detection_zone_body_exited(body):
 	if body == target_body:
 		target_body = null
-	changeState('idle')
+	changeState(States.IDLE)
 	
 func _on_attack_zone_body_entered(body):
-	if body == target_body and current_state != 'walkfast':
-		changeState('attack')
+	if body == target_body and current_state != States.WALKFAST:
+		changeState(States.ATTACK)
 	elif body == target_body:
-		await get_tree().create_timer(1.0).timeout
-		changeState('attack')
+		#await get_tree().create_timer(1.0).timeout
+		changeState(States.ATTACK)
 		
 func _on_attack_zone_body_exited(body):
 	if body == target_body:
-		changeState('walkfast')
+		changeState(States.WALKFAST)
