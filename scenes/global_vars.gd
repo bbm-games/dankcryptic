@@ -8,8 +8,11 @@ func _ready():
 	var file = FileAccess.open("res://lore/lore.json", FileAccess.READ)
 	lore_data = JSON.parse_string(file.get_as_text())
 	file.close()
+	load_default_player_data()
+
+func load_default_player_data():
 	# get player data (default one in lore file)
-	file = FileAccess.open("res://lore/lore.json", FileAccess.READ)
+	var file = FileAccess.open("res://lore/lore.json", FileAccess.READ)
 	player_data = JSON.parse_string(file.get_as_text())['character']
 	file.close()
 

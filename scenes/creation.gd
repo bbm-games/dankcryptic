@@ -24,7 +24,8 @@ func _ready():
 		# make it so stats UI updates on the button click
 		button.pressed.connect(vocation_button_pressed.bind(vocation_name))
 	
-	# make a copy of the player_data JSON
+	# make a copy of the default player data from the lore JSON
+	GlobalVars.load_default_player_data()
 	new_player_data = GlobalVars.player_data
 	
 func vocation_button_pressed(vocation_name):

@@ -2,8 +2,14 @@ extends CharacterBody2D
 
 var main_game_node # contains the root of the entire game
 var target_body = null # will be the body that will be targeted
+var offset : Vector2   # contains offset to the target_body_position that enemy will move to
 var base_speed = 30 # incorporated delta scaling factor
 var speed = base_speed
+
+var des_vel : Vector2 # the desired velocity (used in steering)
+var vel : Vector2 
+var mass : float = 1
+
 var current_state # holds the current state in the state machine
 var walk_fast_time = 0 # a counter variable used for limiting how long the skele can chase you
 var is_attackable = true
@@ -11,7 +17,6 @@ var just_took_damage = false
 var damage_highlight_time = 0
 var base_modulation = self.get_modulate()
 var rng
-
 # the enemy states
 enum States{
 	IDLE,
@@ -47,6 +52,8 @@ func _ready():
 	
 	# initial state when spawned is idle
 	self.changeState(States.IDLE)
+	
+	vel = Vector2(0,0)
 
 func changeState(state_name):
 	if current_state != state_name:
@@ -144,14 +151,23 @@ func _process(delta):
 	if target_body:
 		if (target_body.position - self.position).x < 0:
 			self.set_transform(Transform2D(Vector2(-1.5, 0), Vector2(0,  1.5), Vector2(position.x, position.y)))
+			offset = Vector2(-13,0)
 		else:
 			# unflip
+			offset = Vector2(13,0)
 			self.set_transform(Transform2D(Vector2(1.5, 0), Vector2(0,  1.5), Vector2(position.x, position.y)))
 	
 	# makes the skele move to target body if in the WALK or WALK_FAST STATE
 	if (current_state == States.WALK or current_state == States.WALKFAST) and target_body:
-		self.move_and_collide((target_body.position - (get_node('attackZone').position + self.position)).normalized() * speed * delta)
-	
+		# with steering
+		#des_vel = (target_body.position + offset - (get_node('attackZone').position + self.position)).normalized() * speed
+		#var steering = (des_vel - vel) / mass
+		#vel += steering
+		#self.move_and_collide(vel * delta)
+		
+		# without steering
+		self.move_and_collide((target_body.position + offset - (get_node('attackZone').position + self.position)).normalized() * speed * delta)
+		
 	# limits the WALKFAST state TO 5 seconds
 	if current_state == States.WALKFAST:
 		walk_fast_time += delta
