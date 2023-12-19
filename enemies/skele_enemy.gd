@@ -16,6 +16,9 @@ var is_attackable = true
 var just_took_damage = false 
 var damage_highlight_time = 0
 var base_modulation = self.get_modulate()
+
+var attackCooldown = 0
+
 var rng
 # the enemy states
 enum States{
@@ -60,7 +63,7 @@ func changeState(state_name):
 		current_state = state_name
 	main_game_node.chatBoxAppend(StateStrings[state_name])
 	if current_state == States.ATTACK:
-		self.showCertainSprite(States.ATTACK)
+		self.showCertainSprite(States.ATTACK)		
 	else:
 		pass
 	if current_state == States.IDLE:
@@ -78,7 +81,7 @@ func changeState(state_name):
 
 func showCertainSprite(enum_given):
 	var name_given : String = StateStrings[enum_given]
-	# by default the hit box should not be active
+	# by default the hit box should not be active when a state changes
 	get_node('hitBox').set_monitoring(false)
 	if not get_node(name_given).is_visible():
 		for child in get_children():
@@ -174,11 +177,11 @@ func _process(delta):
 		if walk_fast_time > 5:
 			changeState(States.WALK)
 			walk_fast_time = 0
-		
+
 func _physics_process(_delta):
 	pass
 
-func _on_hit_box_body_entered(body):
+func attack_a_body(body):
 	#main_game_node.chatBoxAppend(str(body))
 	# attack the body
 	if body.has_method("take_damage"):
@@ -192,6 +195,10 @@ func _on_hit_box_body_entered(body):
 			body.take_damage(enemy_data['stats']['strength'])
 			
 	#main_game_node.chatBoxAppend('got clapped')
+
+func _on_hit_box_body_entered(body):
+	self.attack_a_body(body)
+	
 func _on_hit_box_body_exited(_body):
 	pass
 
