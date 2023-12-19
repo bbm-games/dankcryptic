@@ -74,11 +74,11 @@ func _on_body_entered(body):
 				prob = 0.1 + pow(2.718,-10/diff) * 0.9
 			if rng.randf_range(0,1) <= prob:
 				# then do a critical hit
-				body.take_damage(magic_level/5, spell_inflictions, true)
+				body.take_damage(magic_level/5.0, spell_inflictions, true)
 				#get_node('player/criticalSoundPlayer').play()
 			else:
 				# do a normal hit
-				body.take_damage(magic_level/10, spell_inflictions, true)
+				body.take_damage(magic_level/10.0, spell_inflictions, true)
 				#get_node('player/attackSoundPlayer').play()		
 			
 			# delete the projectile

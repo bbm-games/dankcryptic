@@ -13,5 +13,5 @@ func flicker(energy_range = 0.05):
 		light.set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.05,.05), rng.randf_range(-.05,.05)))
 		light.energy = 0.33 + rng.randf_range(-1*energy_range,energy_range)
 	
-func _process(delta):
+func _process(_delta):
 	flicker()

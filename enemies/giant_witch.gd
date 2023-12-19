@@ -168,6 +168,7 @@ func _process(delta):
 		if direction_to_player.y > 0 and abs(direction_to_player.x)  < abs(direction_to_player.y):
 			if not get_node('AnimationPlayer').is_playing():
 				get_node('AnimationPlayer').play(StateStrings[current_state] + '_down')	
+				#applyShake(30)
 		if direction_to_player.y < 0 and abs(direction_to_player.x)  < abs(direction_to_player.y):
 			if not get_node('AnimationPlayer').is_playing():
 				get_node('AnimationPlayer').play(StateStrings[current_state] + '_up')	
@@ -188,6 +189,9 @@ func _process(delta):
 			changeState(States.WALK)
 			walk_fast_time = 0
 
+func applyShake(shake_strength_given = 5):
+	main_game_node.apply_shake(shake_strength_given)
+	
 func _physics_process(_delta):
 	pass
 
