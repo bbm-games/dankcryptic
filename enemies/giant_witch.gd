@@ -60,14 +60,13 @@ func _ready():
 
 func changeState(state_name):
 	if current_state != state_name:
+		# wait 5 seconds before changing state
+		#await get_tree().create_timer(0.5).timeout
 		current_state = state_name
 	main_game_node.chatBoxAppend(StateStrings[state_name])
 	if current_state == States.ATTACK:
 		# there is no attack sprite atm
-		##self.showCertainSprite(States.ATTACK)
-		pass
-	else:
-		pass
+		self.showCertainSprite(States.IDLE)
 	if current_state == States.IDLE:
 		self.showCertainSprite(States.IDLE)
 	if current_state == States.WALK:
@@ -75,7 +74,7 @@ func changeState(state_name):
 		speed = base_speed
 	if current_state == States.WALKFAST:
 		# TODO: modify the walk fast state sprite
-		self.showCertainSprite(States.WALK)
+		self.showCertainSprite(States.WALKFAST)
 		speed = base_speed * 2
 	if current_state == States.DEATH:
 		self.showCertainSprite(States.IDLE)
@@ -90,15 +89,19 @@ func showCertainSprite(enum_given):
 	for child in get_children():
 		if child is Sprite2D:
 			child.hide()
+	
 	if enum_given == States.IDLE:
 		get_node(name_given).show()
 	else:
 		# for walk and walkfast states
-		get_node(name_given).show()
 		if enum_given == States.WALKFAST:
 			get_node('AnimationPlayer').set_speed_scale(2)
-		else:
+			get_node(StateStrings[States.WALKFAST]).show()
+			#get_node(StateStrings[States.WALK]).hide()
+		elif enum_given == States.WALK:
 			get_node('AnimationPlayer').set_speed_scale(1)
+			#get_node(StateStrings[States.WALKFAST]).hide()
+			get_node(StateStrings[States.WALK]).show()
 
 func take_damage(value, _statusInflictions = null, ranged = false):
 	if current_state != States.DEATH: # let's not retween death animation if already dead
@@ -153,10 +156,31 @@ func _process(delta):
 			
 	else:
 		self.set_modulate(base_modulation)
-		
+	
+	if target_body:
+		facePlayer()
+	
 	# makes the skele move to target body with appropraite sprite if in the WALK or WALK_FAST STATE
+	if (current_state == States.WALK or current_state == States.WALKFAST) and target_body:	
+		# with steering
+		des_vel = (target_body.position + offset - (get_node('attackZone').position + self.position)).normalized() * speed
+		var steering = (des_vel - vel) / mass
+		vel += steering
+		self.move_and_collide(vel * delta)
+		
+		# without steering
+		#self.move_and_collide((target_body.position + offset - (get_node('attackZone').position + self.position)).normalized() * speed * delta)
+	
+	# limits the WALKFAST state TO 5 seconds
+	if current_state == States.WALKFAST:
+		walk_fast_time += delta
+		if walk_fast_time > 5:
+			changeState(States.WALK)
+			walk_fast_time = 0
+			
+func facePlayer():
+	var direction_to_player = (target_body.get_position() - self.get_position()).normalized()
 	if (current_state == States.WALK or current_state == States.WALKFAST) and target_body:
-		var direction_to_player = (target_body.get_position() - self.get_position()).normalized()
 		if direction_to_player.x > 0 and abs(direction_to_player.y)  < abs(direction_to_player.x):
 			if not get_node('AnimationPlayer').is_playing():
 				get_node('AnimationPlayer').play(StateStrings[current_state] + '_right')	
@@ -172,23 +196,23 @@ func _process(delta):
 		if direction_to_player.y < 0 and abs(direction_to_player.x)  < abs(direction_to_player.y):
 			if not get_node('AnimationPlayer').is_playing():
 				get_node('AnimationPlayer').play(StateStrings[current_state] + '_up')	
-		
-		# with steering
-		des_vel = (target_body.position + offset - (get_node('attackZone').position + self.position)).normalized() * speed
-		var steering = (des_vel - vel) / mass
-		vel += steering
-		self.move_and_collide(vel * delta)
-		
-		# without steering
-		#self.move_and_collide((target_body.position + offset - (get_node('attackZone').position + self.position)).normalized() * speed * delta)
-		
-	# limits the WALKFAST state TO 5 seconds
-	if current_state == States.WALKFAST:
-		walk_fast_time += delta
-		if walk_fast_time > 5:
-			changeState(States.WALK)
-			walk_fast_time = 0
-
+	
+	elif (current_state == States.ATTACK or current_state == States.IDLE) and target_body:
+		if direction_to_player.x > 0 and abs(direction_to_player.y)  < abs(direction_to_player.x):
+			if not get_node('AnimationPlayer').is_playing():
+				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_right')	
+			offset = Vector2(-13,0)
+		if direction_to_player.x < 0 and abs(direction_to_player.y)  < abs(direction_to_player.x):
+			if not get_node('AnimationPlayer').is_playing():
+				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_left')	
+			offset = Vector2(13,0)
+		if direction_to_player.y > 0 and abs(direction_to_player.x)  < abs(direction_to_player.y):
+			if not get_node('AnimationPlayer').is_playing():
+				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_down')	
+				#applyShake(30)
+		if direction_to_player.y < 0 and abs(direction_to_player.x)  < abs(direction_to_player.y):
+			if not get_node('AnimationPlayer').is_playing():
+				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_up')	
 func applyShake(shake_strength_given = 5):
 	main_game_node.apply_shake(shake_strength_given)
 	
@@ -232,12 +256,15 @@ func _on_detection_zone_body_exited(body):
 	
 func _on_attack_zone_body_entered(body):
 	if body == target_body and current_state != States.WALKFAST:
-		changeState(States.ATTACK)
+		changeState(States.ATTACK)	
 	elif body == target_body:
-		#await get_tree().create_timer(1.0).timeout
+		
 		changeState(States.ATTACK)
 		
+		
 func _on_attack_zone_body_exited(body):
+	# chase after the player 
 	if body == target_body:
+		await get_tree().create_timer(0.2).timeout
 		changeState(States.WALKFAST)
 
