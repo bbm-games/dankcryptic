@@ -186,6 +186,11 @@ func _process(delta):
 			changeState(States.WALK)
 			walk_fast_time = 0
 			
+# this function makes the animationplayer play the proper animation.
+# if it's specified do be done instantly then the player will not wait until the previous animation is 
+# complete to start playing the next one. This is useful when changing states, as that results 
+# in changing sprites, and you don't want a new sprite to show while the animation of the previous sprite is finishing.
+
 func facePlayer(instant: bool = false):
 	var direction_to_player = (target_body.get_position() - self.get_position()).normalized()
 	if (current_state == States.WALK or current_state == States.WALKFAST) and target_body:
