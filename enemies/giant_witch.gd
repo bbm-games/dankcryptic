@@ -124,6 +124,7 @@ func showCertainSprite(enum_given):
 			get_node(StateStrings[States.WALK]).show()
 
 func do_shockwave():
+	get_node('attack_sound').play()
 	get_node('shockwave').show()
 	var tween = get_tree().create_tween()
 	tween.tween_method(set_shockwave_amplitude, 0.0, 2, .2)
@@ -136,7 +137,8 @@ func do_shockwave():
 
 func take_damage(value, _statusInflictions = null, ranged = false):
 	if current_state != States.DEATH: # let's not retween death animation if already dead
-		#get_node('clapped_sound').play()
+		if not get_node('clapped_sound').is_playing():
+			get_node('clapped_sound').play()
 		just_took_damage = true
 		enemy_data['stats']['health'] -= value
 		if enemy_data['stats']['health'] <= 0:

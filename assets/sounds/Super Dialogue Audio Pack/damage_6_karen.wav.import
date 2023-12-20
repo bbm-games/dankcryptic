@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cs3o7s7wtw0gq"
+path="res://.godot/imported/damage_6_karen.wav-2aa597d8529bb94a721e7b67a5b13394.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Super Dialogue Audio Pack/damage_6_karen.wav"
+dest_files=["res://.godot/imported/damage_6_karen.wav-2aa597d8529bb94a721e7b67a5b13394.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

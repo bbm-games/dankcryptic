@@ -282,12 +282,12 @@ func update_player_stats_tab():
 	otherstats.append_text("\nWeight: " + str(player_data['weight']))
 	otherstats.append_text("\nInventory Weight: " + str(player_data['inventory_weight'])) 
 	otherstats.append_text("\nBase Speed: " + str(base_speed))
-	otherstats.append_text('\n\n' + "[color=purple]Poisoned[/color]: " + str(snapped(player_data['statuses']['poisoned'], 0.01)))
-	otherstats.append_text('\n' + "[color=orange]Burned[/color]: " + str(snapped(player_data['statuses']['burned'],0.01)))
-	otherstats.append_text('\n' + "[color=blue]Drenched[/color]: " + str(snapped(player_data['statuses']['drenched'],0.01)))
-	otherstats.append_text('\n' + "[color=green]Confused[/color]: " + str(snapped(player_data['statuses']['confused'],0.01)))
-	otherstats.append_text('\n' + "[color=yellow]Paralyzed[/color]: " + str(snapped(player_data['statuses']['paralyzed'],0.01)))
-	otherstats.append_text('\n' + "[color=red]Bloodless[/color]: " + str(snapped(player_data['statuses']['bloodless'],0.01)))
+	otherstats.append_text('\n\n' + "[img=15]res://assets/thunder5.png[/img] [color=purple]Poisoned[/color]: " + str(snapped(player_data['statuses']['poisoned'], 0.01)))
+	otherstats.append_text('\n' + "[img=15]res://assets/fire1.png[/img] [color=orange]Burned[/color]: " + str(snapped(player_data['statuses']['burned'],0.01)))
+	otherstats.append_text('\n' + "[img=15]res://assets/water2.png[/img] [color=blue]Drenched[/color]: " + str(snapped(player_data['statuses']['drenched'],0.01)))
+	otherstats.append_text('\n' + "[img=15]res://assets/earth2.png[/img] [color=green]Confused[/color]: " + str(snapped(player_data['statuses']['confused'],0.01)))
+	otherstats.append_text('\n' + "[img=15]res://assets/light3.png[/img] [color=yellow]Paralyzed[/color]: " + str(snapped(player_data['statuses']['paralyzed'],0.01)))
+	otherstats.append_text('\n' + "[img=15]res://assets/dark4.png[/img] [color=red]Bloodless[/color]: " + str(snapped(player_data['statuses']['bloodless'],0.01)))
 	
 # updates the player summary bar text at the top of the screen
 func update_player_summary_bar():
@@ -668,13 +668,13 @@ func _input(event):
 		mouse_event_global_pos = get_global_mouse_position()
 		# move the player's melee collision shape
 		get_node('player/hitBox').look_at(mouse_event_global_pos)
-	if event.is_action_pressed("zoom_in") and not playerMenu.visible:
+	if event.is_action_pressed("zoom_in") and not playerMenu.visible and not confused:
 		if currentZoom <= 2:
 			currentZoom += 0.03
 		else:
 			currentZoom = 2
 		player_body.get_node("sprite/Camera2D").set_zoom(Vector2(currentZoom, currentZoom))
-	if event.is_action_pressed("zoom_out") and not playerMenu.visible:
+	if event.is_action_pressed("zoom_out") and not playerMenu.visible and not confused:
 		if currentZoom >= 0.5:
 			currentZoom -= 0.03
 		else:

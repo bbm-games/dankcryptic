@@ -1,10 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://ch4ob6ijht11l"]
+[gd_scene load_steps=32 format=3 uid="uid://ch4ob6ijht11l"]
 
 [ext_resource type="Script" path="res://enemies/giant_witch.gd" id="1_kucni"]
 [ext_resource type="Texture2D" uid="uid://dvgch11c176lt" path="res://assets/witch/64X128_Idle_Free.png" id="1_pbi32"]
 [ext_resource type="Texture2D" uid="uid://drbku705vwhta" path="res://assets/witch/64X128_Walking_Free.png" id="2_1pma6"]
 [ext_resource type="Material" uid="uid://bpw5nehhdliim" path="res://materials/ripple.tres" id="2_dr1gs"]
 [ext_resource type="Texture2D" uid="uid://d3wmyx5prqe4l" path="res://assets/witch/64X128_Runing_Free.png" id="3_o15bg"]
+[ext_resource type="AudioStream" uid="uid://qswtup1yxecg" path="res://assets/sounds/Super Dialogue Audio Pack/grunting_5_karen.wav" id="6_jdyr3"]
+[ext_resource type="AudioStream" uid="uid://diuyxj6ha734b" path="res://assets/sounds/Super Dialogue Audio Pack/death_9_karen.wav" id="7_2u0ih"]
 
 [sub_resource type="Animation" id="Animation_64bpa"]
 length = 0.001
@@ -551,6 +553,14 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="smashZone3"]
 scale = Vector2(1, 0.64)
 shape = SubResource("CircleShape2D_vp085")
+
+[node name="attack_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_jdyr3")
+attenuation = 6.0
+bus = &"Sounds"
+
+[node name="clapped_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_2u0ih")
 
 [connection signal="body_entered" from="detectionZone" to="." method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="detectionZone" to="." method="_on_detection_zone_body_exited"]
