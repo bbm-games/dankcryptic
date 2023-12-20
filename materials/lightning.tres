@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cb1h2yucf62ko"]
+
+[ext_resource type="Shader" path="res://shaders/lightning.gdshader" id="1_u0l1q"]
+
+[resource]
+shader = ExtResource("1_u0l1q")

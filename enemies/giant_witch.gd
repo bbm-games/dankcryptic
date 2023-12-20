@@ -17,7 +17,11 @@ var just_took_damage = false
 var damage_highlight_time = 0
 var base_modulation = self.get_modulate()
 
+
 var attackCooldown = 0
+var pushPlayerAway: bool = false
+var timeSinceShockwave = 0
+var pushable_bodies = []
 
 var rng
 # the enemy states
@@ -41,7 +45,7 @@ var enemy_data =  {"stats":{
 			"attack":65,
 			"defense":65,
 			"strength":20,
-			"health":90,
+			"health":400,
 			"stamina":100,
 			"magic":40,
 			"wisdom":60,
@@ -52,7 +56,8 @@ func _ready():
 	main_game_node = get_tree().get_root().get_node('Node2D')
 	
 	rng = RandomNumberGenerator.new()
-	
+	rng.randomize()
+
 	# initial state when spawned is idle
 	self.changeState(States.IDLE)
 	
@@ -69,16 +74,9 @@ func changeState(state_name):
 			facePlayer(true)
 		self.showCertainSprite(States.ATTACK)
 		
-		# show the shockwave via tween
-		get_node('shockwave').show()
-		await get_tree().create_timer(0.1).timeout 
-		var tween = get_tree().create_tween()
-		# TODO: push back player
-		for body in get_node('smashZone3').get_overlapping_bodies():
-			if body.is_player:
-				body.move_and_collide(Vector2.DOWN * 20)
-		tween.tween_method(set_shockwave_amplitude, 0.0, 2, 1)
-		tween.tween_method(set_shockwave_amplitude, 2, 0, .01) # instantly shrink shockwave
+		# Only shockwave after a variable amount of time.
+		await get_tree().create_timer(rng.randf_range(0, 3)).timeout
+		do_shockwave()
 		
 	if current_state == States.IDLE:
 		if target_body:
@@ -125,9 +123,20 @@ func showCertainSprite(enum_given):
 			#get_node(StateStrings[States.WALKFAST]).hide()
 			get_node(StateStrings[States.WALK]).show()
 
+func do_shockwave():
+	get_node('shockwave').show()
+	var tween = get_tree().create_tween()
+	tween.tween_method(set_shockwave_amplitude, 0.0, 2, .2)
+	for body in get_node('smashZone3').get_overlapping_bodies():
+		if body.is_attackable:
+			# add damage to body
+			attack_a_body(body)
+			pushable_bodies.append(body)
+			pushPlayerAway = true
+
 func take_damage(value, _statusInflictions = null, ranged = false):
 	if current_state != States.DEATH: # let's not retween death animation if already dead
-		get_node('clapped_sound').play()
+		#get_node('clapped_sound').play()
 		just_took_damage = true
 		enemy_data['stats']['health'] -= value
 		if enemy_data['stats']['health'] <= 0:
@@ -167,6 +176,18 @@ func set_to_dust_sensitivity(value: float):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	# for pushing player away
+	if pushPlayerAway:
+		timeSinceShockwave += delta
+		for body in pushable_bodies:
+			body.move_and_collide((body.get_global_position() - self.get_global_position()).normalized() * delta * 500)
+		if timeSinceShockwave > 0.2:
+			# reset everything
+			pushPlayerAway = false
+			pushable_bodies.clear()
+			timeSinceShockwave = 0
+			set_shockwave_amplitude(0)
 	
 	# display red damage color
 	if just_took_damage:
@@ -253,12 +274,22 @@ func attack_a_body(body):
 	if body.has_method("take_damage"):
 		var diff = enemy_data['stats']['attack'] - GlobalVars.player_data['stats']['defense']
 		var prob = 0.1 + pow(2.718,-10/diff) * 0.9
+		var statuses = {
+			 "poisoned": 0,
+			 "burned": 0,
+			 "drenched": 0,
+			 "confused": 0,
+			 "paralyzed": 0,
+			 "bloodless": 0
+		}
+		statuses[statuses.keys()[randi_range(0,statuses.keys().size()-1)]] = randf_range(1.0,2.0)
+		
 		if rng.randf_range(0,1) <= prob:
 			# damage is strength times 2 if critical hit
-			body.take_damage(enemy_data['stats']['strength']*2)
+			body.take_damage(enemy_data['stats']['strength']*2, statuses)
 		else:
 			# normal hit
-			body.take_damage(enemy_data['stats']['strength'])
+			body.take_damage(enemy_data['stats']['strength'], statuses)
 			
 	#main_game_node.chatBoxAppend('got clapped')
 

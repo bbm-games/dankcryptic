@@ -12313,6 +12313,9 @@ sources/0 = SubResource("TileSetAtlasSource_4w32e")
 y_sort_enabled = true
 script = ExtResource("1_byqp2")
 
+[node name="giant_witch" parent="." instance=ExtResource("3_bg3qf")]
+position = Vector2(296, -195)
+
 [node name="fog" type="ColorRect" parent="."]
 z_index = 4
 material = SubResource("ShaderMaterial_q4aiu")
@@ -12323,7 +12326,7 @@ offset_bottom = -374.0
 scale = Vector2(1.78482, 3.17006)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+color = Color(0.03, 0.03, 0.03, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 4)
@@ -12389,6 +12392,3 @@ energy = 0.33
 blend_mode = 2
 texture = ExtResource("4_wglam")
 texture_scale = 3.0
-
-[node name="giant_witch" parent="." instance=ExtResource("3_bg3qf")]
-position = Vector2(296, -195)

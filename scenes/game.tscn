@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=62 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_y5cr6"]
 [ext_resource type="Script" path="res://scenes/HUDLayer.gd" id="2_eour7"]
@@ -18,13 +18,13 @@
 [ext_resource type="Material" uid="uid://bxrvfxvwj7m4t" path="res://materials/manafluc.tres" id="15_hwk80"]
 [ext_resource type="AudioStream" uid="uid://b68m0eyu6s6gc" path="res://assets/sounds/shieldsound.wav" id="15_x7r5d"]
 [ext_resource type="AudioStream" uid="uid://py6rar5tguch" path="res://assets/sounds/attacksound.wav" id="16_we4ro"]
-[ext_resource type="Shader" path="res://shaders/fire.gdshader" id="17_ejydg"]
-[ext_resource type="Shader" path="res://shaders/lightning.gdshader" id="18_vh277"]
-[ext_resource type="Shader" path="res://shaders/crt.gdshader" id="19_5883h"]
+[ext_resource type="Material" uid="uid://d2peibcb4e21v" path="res://materials/fire.tres" id="19_kqr7v"]
 [ext_resource type="AudioStream" uid="uid://bpeyq6qhoc0s3" path="res://assets/sounds/RPG_Essentials_Free/10_Battle_SFX/15_Impact_flesh_02.wav" id="20_02a1m"]
 [ext_resource type="Material" uid="uid://ccbsnvaymt5st" path="res://materials/trail.tres" id="20_ke3qe"]
 [ext_resource type="AudioStream" uid="uid://6s7thlqaga3i" path="res://assets/sounds/RPG_Essentials_Free/10_Battle_SFX/39_Block_03.wav" id="21_crwrx"]
+[ext_resource type="Material" uid="uid://cb1h2yucf62ko" path="res://materials/lightning.tres" id="21_s3fiu"]
 [ext_resource type="AudioStream" uid="uid://dliuks0ccxw21" path="res://assets/sounds/Minifantasy_Dungeon_SFX/04_sack_open_2.wav" id="22_74p0h"]
+[ext_resource type="Material" uid="uid://fgigj3ulpyls" path="res://materials/confusion.tres" id="22_yu758"]
 [ext_resource type="AudioStream" uid="uid://dss2nlp61r45e" path="res://assets/sounds/Minifantasy_Dungeon_SFX/26_sword_hit_1.wav" id="23_f2mpy"]
 [ext_resource type="Script" path="res://scenes/resumeGameButton.gd" id="24_n4egi"]
 [ext_resource type="Material" uid="uid://bgqageybcf6an" path="res://materials/sparks.tres" id="25_4xcpj"]
@@ -153,53 +153,6 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14xon"]
 size = Vector2(26, 13)
-
-[sub_resource type="Gradient" id="Gradient_4uyyb"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6qdh2"]
-gradient = SubResource("Gradient_4uyyb")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_v6gxl"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g7kdf"]
-seamless = true
-noise = SubResource("FastNoiseLite_v6gxl")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wgb8u"]
-shader = ExtResource("17_ejydg")
-shader_parameter/brighter_color = Color(1, 0.8, 0, 1)
-shader_parameter/middle_color = Color(1, 0.56, 0, 1)
-shader_parameter/darker_color = Color(0.64, 0.2, 0.05, 1)
-shader_parameter/spread = 0.555
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_g7kdf")
-shader_parameter/gradient_tex = SubResource("GradientTexture2D_6qdh2")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhjsi"]
-shader = ExtResource("18_vh277")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8mfq3"]
-shader = ExtResource("19_5883h")
-shader_parameter/overlay = true
-shader_parameter/scanlines_opacity = 0.4
-shader_parameter/scanlines_width = 0.25
-shader_parameter/grille_opacity = 0.3
-shader_parameter/resolution = Vector2(640, 480)
-shader_parameter/pixelate = true
-shader_parameter/roll = true
-shader_parameter/roll_speed = 8.0
-shader_parameter/roll_size = 15.0
-shader_parameter/roll_variation = 1.8
-shader_parameter/distort_intensity = 0.0
-shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 5.0
-shader_parameter/static_noise_intensity = 0.06
-shader_parameter/aberration = 0.03
-shader_parameter/brightness = 1.4
-shader_parameter/discolor = false
-shader_parameter/warp_amount = 1.0
-shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="Animation" id="Animation_et487"]
 length = 0.001
@@ -736,7 +689,7 @@ bus = &"Sounds"
 visible = false
 light_mask = 0
 z_index = 1
-material = SubResource("ShaderMaterial_wgb8u")
+material = ExtResource("19_kqr7v")
 offset_left = -19.0
 offset_top = -38.0
 offset_right = 21.0
@@ -754,7 +707,7 @@ lifetime = 3.0
 [node name="LightningColorRect" type="ColorRect" parent="player"]
 visible = false
 z_index = 1
-material = SubResource("ShaderMaterial_bhjsi")
+material = ExtResource("21_s3fiu")
 offset_left = 20.0
 offset_top = -31.0
 offset_right = 51.0
@@ -765,7 +718,7 @@ color = Color(1, 1, 1, 0)
 [node name="confusionOverlay" type="ColorRect" parent="player"]
 visible = false
 z_index = 3
-material = SubResource("ShaderMaterial_8mfq3")
+material = ExtResource("22_yu758")
 offset_left = -298.0
 offset_top = -175.0
 offset_right = 277.0

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var main_game_node
 var is_player = true
+var is_attackable = true
 
 func _init():
 	#self.add_collision_exception_with(get_node('hitBox'))

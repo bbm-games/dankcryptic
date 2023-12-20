@@ -547,7 +547,6 @@ shape = SubResource("CircleShape2D_rxgs5")
 [node name="smashZone3" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="smashZone3"]
 scale = Vector2(1, 0.64)

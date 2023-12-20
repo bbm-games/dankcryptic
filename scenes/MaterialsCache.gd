@@ -7,6 +7,9 @@ var trail = preload("res://materials/trail.tres")
 
 var shield = preload("res://materials/shield.tres")
 var ripple = preload("res://materials/ripple.tres")
+var fire = preload("res://materials/fire.tres")
+var lightning = preload("res://materials/lightning.tres")
+var confusion = preload("res://materials/confusion.tres")
 
 var particlematerials = [
 	manafluc,
@@ -17,7 +20,10 @@ var particlematerials = [
 
 var shadermaterials = [
 	shield,
-	ripple
+	ripple,
+	fire,
+	lightning,
+	confusion
 ]
 
 # Called when the node enters the scene tree for the first time.

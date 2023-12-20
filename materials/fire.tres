@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://d2peibcb4e21v"]
+
+[ext_resource type="Shader" path="res://shaders/fire.gdshader" id="1_d1int"]
+
+[sub_resource type="Gradient" id="Gradient_4uyyb"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6qdh2"]
+gradient = SubResource("Gradient_4uyyb")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v6gxl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g7kdf"]
+seamless = true
+noise = SubResource("FastNoiseLite_v6gxl")
+
+[resource]
+shader = ExtResource("1_d1int")
+shader_parameter/brighter_color = Color(1, 0.8, 0, 1)
+shader_parameter/middle_color = Color(1, 0.56, 0, 1)
+shader_parameter/darker_color = Color(0.64, 0.2, 0.05, 1)
+shader_parameter/spread = 0.555
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_g7kdf")
+shader_parameter/gradient_tex = SubResource("GradientTexture2D_6qdh2")
