@@ -66,13 +66,21 @@ func changeState(state_name):
 	main_game_node.chatBoxAppend(StateStrings[state_name])
 	if current_state == States.ATTACK:
 		# there is no attack sprite atm
+		if target_body:
+			facePlayer(true)
 		self.showCertainSprite(States.IDLE)
 	if current_state == States.IDLE:
+		if target_body:
+			facePlayer(true)
 		self.showCertainSprite(States.IDLE)
 	if current_state == States.WALK:
+		if target_body:
+			facePlayer(true)
 		self.showCertainSprite(States.WALK)
 		speed = base_speed
 	if current_state == States.WALKFAST:
+		if target_body:
+			facePlayer(true)
 		# TODO: modify the walk fast state sprite
 		self.showCertainSprite(States.WALKFAST)
 		speed = base_speed * 2
@@ -178,41 +186,56 @@ func _process(delta):
 			changeState(States.WALK)
 			walk_fast_time = 0
 			
-func facePlayer():
+func facePlayer(instant: bool = false):
 	var direction_to_player = (target_body.get_position() - self.get_position()).normalized()
 	if (current_state == States.WALK or current_state == States.WALKFAST) and target_body:
 		if direction_to_player.x > 0 and abs(direction_to_player.y)  < abs(direction_to_player.x):
-			if not get_node('AnimationPlayer').is_playing():
+			if not (get_node('AnimationPlayer').is_playing() or instant):
+				get_node('AnimationPlayer').play(StateStrings[current_state] + '_right')
+			else:
 				get_node('AnimationPlayer').play(StateStrings[current_state] + '_right')	
 			offset = Vector2(-13,0)
 		if direction_to_player.x < 0 and abs(direction_to_player.y)  < abs(direction_to_player.x):
-			if not get_node('AnimationPlayer').is_playing():
+			if not (get_node('AnimationPlayer').is_playing() or instant):
+				get_node('AnimationPlayer').play(StateStrings[current_state] + '_left')	
+			else:
 				get_node('AnimationPlayer').play(StateStrings[current_state] + '_left')	
 			offset = Vector2(13,0)
 		if direction_to_player.y > 0 and abs(direction_to_player.x)  < abs(direction_to_player.y):
-			if not get_node('AnimationPlayer').is_playing():
+			if not (get_node('AnimationPlayer').is_playing() or instant):
 				get_node('AnimationPlayer').play(StateStrings[current_state] + '_down')	
-				#applyShake(30)
+			else:
+				get_node('AnimationPlayer').play(StateStrings[current_state] + '_down')	
 		if direction_to_player.y < 0 and abs(direction_to_player.x)  < abs(direction_to_player.y):
-			if not get_node('AnimationPlayer').is_playing():
+			if not (get_node('AnimationPlayer').is_playing() or instant):
+				get_node('AnimationPlayer').play(StateStrings[current_state] + '_up')	
+			else:
 				get_node('AnimationPlayer').play(StateStrings[current_state] + '_up')	
 	
 	elif (current_state == States.ATTACK or current_state == States.IDLE) and target_body:
 		if direction_to_player.x > 0 and abs(direction_to_player.y)  < abs(direction_to_player.x):
-			if not get_node('AnimationPlayer').is_playing():
+			if not (get_node('AnimationPlayer').is_playing() or instant):
+				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_right')	
+			else:
 				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_right')	
 			offset = Vector2(-13,0)
 		if direction_to_player.x < 0 and abs(direction_to_player.y)  < abs(direction_to_player.x):
-			if not get_node('AnimationPlayer').is_playing():
+			if not (get_node('AnimationPlayer').is_playing() or instant):
+				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_left')	
+			else:
 				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_left')	
 			offset = Vector2(13,0)
 		if direction_to_player.y > 0 and abs(direction_to_player.x)  < abs(direction_to_player.y):
-			if not get_node('AnimationPlayer').is_playing():
+			if not (get_node('AnimationPlayer').is_playing() or instant):
 				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_down')	
-				#applyShake(30)
+			else:
+				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_down')
 		if direction_to_player.y < 0 and abs(direction_to_player.x)  < abs(direction_to_player.y):
 			if not get_node('AnimationPlayer').is_playing():
 				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_up')	
+			else:
+				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_up')	
+				
 func applyShake(shake_strength_given = 5):
 	main_game_node.apply_shake(shake_strength_given)
 	
