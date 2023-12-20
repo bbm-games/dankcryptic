@@ -65,10 +65,21 @@ func changeState(state_name):
 		current_state = state_name
 	main_game_node.chatBoxAppend(StateStrings[state_name])
 	if current_state == States.ATTACK:
-		# there is no attack sprite atm
 		if target_body:
 			facePlayer(true)
-		self.showCertainSprite(States.IDLE)
+		self.showCertainSprite(States.ATTACK)
+		
+		# show the shockwave via tween
+		get_node('shockwave').show()
+		await get_tree().create_timer(0.1).timeout 
+		var tween = get_tree().create_tween()
+		# TODO: push back player
+		for body in get_node('smashZone3').get_overlapping_bodies():
+			if body.is_player:
+				body.move_and_collide(Vector2.DOWN * 20)
+		tween.tween_method(set_shockwave_amplitude, 0.0, 2, 1)
+		tween.tween_method(set_shockwave_amplitude, 2, 0, .01) # instantly shrink shockwave
+		
 	if current_state == States.IDLE:
 		if target_body:
 			facePlayer(true)
@@ -100,6 +111,9 @@ func showCertainSprite(enum_given):
 	
 	if enum_given == States.IDLE:
 		get_node(name_given).show()
+	if enum_given == States.ATTACK:
+		# the attack sprite is the same as the idle sprite
+		get_node(StateStrings[States.IDLE]).show()
 	else:
 		# for walk and walkfast states
 		if enum_given == States.WALKFAST:
@@ -185,15 +199,25 @@ func _process(delta):
 		if walk_fast_time > 5:
 			changeState(States.WALK)
 			walk_fast_time = 0
-			
+	
+	# hide shockwave if not attacking
+	if current_state != States.ATTACK:
+		get_node('shockwave').hide()
+
+func set_shockwave_amplitude(value: float):
+	# in my case i'm tweening a shader on a texture rect, but you can use anything with a material on it
+	get_node("shockwave").get_material().set_shader_parameter("amplitude", value);
+		
 # this function makes the animationplayer play the proper animation.
 # if it's specified do be done instantly then the player will not wait until the previous animation is 
 # complete to start playing the next one. This is useful when changing states, as that results 
 # in changing sprites, and you don't want a new sprite to show while the animation of the previous sprite is finishing.
 
+
+
 func facePlayer(instant: bool = false):
 	var direction_to_player = (target_body.get_position() - self.get_position()).normalized()
-	if (current_state == States.WALK or current_state == States.WALKFAST) and target_body:
+	if current_state and target_body:
 		if direction_to_player.x > 0 and abs(direction_to_player.y)  < abs(direction_to_player.x):
 			if not (get_node('AnimationPlayer').is_playing() or instant):
 				get_node('AnimationPlayer').play(StateStrings[current_state] + '_right')
@@ -216,31 +240,7 @@ func facePlayer(instant: bool = false):
 				get_node('AnimationPlayer').play(StateStrings[current_state] + '_up')	
 			else:
 				get_node('AnimationPlayer').play(StateStrings[current_state] + '_up')	
-	
-	elif (current_state == States.ATTACK or current_state == States.IDLE) and target_body:
-		if direction_to_player.x > 0 and abs(direction_to_player.y)  < abs(direction_to_player.x):
-			if not (get_node('AnimationPlayer').is_playing() or instant):
-				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_right')	
-			else:
-				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_right')	
-			offset = Vector2(-13,0)
-		if direction_to_player.x < 0 and abs(direction_to_player.y)  < abs(direction_to_player.x):
-			if not (get_node('AnimationPlayer').is_playing() or instant):
-				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_left')	
-			else:
-				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_left')	
-			offset = Vector2(13,0)
-		if direction_to_player.y > 0 and abs(direction_to_player.x)  < abs(direction_to_player.y):
-			if not (get_node('AnimationPlayer').is_playing() or instant):
-				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_down')	
-			else:
-				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_down')
-		if direction_to_player.y < 0 and abs(direction_to_player.x)  < abs(direction_to_player.y):
-			if not get_node('AnimationPlayer').is_playing():
-				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_up')	
-			else:
-				get_node('AnimationPlayer').play(StateStrings[States.IDLE] + '_up')	
-				
+
 func applyShake(shake_strength_given = 5):
 	main_game_node.apply_shake(shake_strength_given)
 	

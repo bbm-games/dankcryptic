@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://ch4ob6ijht11l"]
+[gd_scene load_steps=30 format=3 uid="uid://ch4ob6ijht11l"]
 
 [ext_resource type="Script" path="res://enemies/giant_witch.gd" id="1_kucni"]
 [ext_resource type="Texture2D" uid="uid://dvgch11c176lt" path="res://assets/witch/64X128_Idle_Free.png" id="1_pbi32"]
 [ext_resource type="Texture2D" uid="uid://drbku705vwhta" path="res://assets/witch/64X128_Walking_Free.png" id="2_1pma6"]
+[ext_resource type="Material" uid="uid://bpw5nehhdliim" path="res://materials/ripple.tres" id="2_dr1gs"]
 [ext_resource type="Texture2D" uid="uid://d3wmyx5prqe4l" path="res://assets/witch/64X128_Runing_Free.png" id="3_o15bg"]
 
 [sub_resource type="Animation" id="Animation_64bpa"]
@@ -360,9 +361,73 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_xpuwj"]
+resource_name = "attack_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(7, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_38imo"]
+resource_name = "attack_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 1), Vector2i(7, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_003wj"]
+resource_name = "attack_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 2), Vector2i(7, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_8yls6"]
+resource_name = "attack_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 3), Vector2i(7, 3)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ep2ol"]
 _data = {
 "RESET": SubResource("Animation_64bpa"),
+"attack_down": SubResource("Animation_xpuwj"),
+"attack_left": SubResource("Animation_38imo"),
+"attack_right": SubResource("Animation_003wj"),
+"attack_up": SubResource("Animation_8yls6"),
 "idle_down": SubResource("Animation_kwra7"),
 "idle_left": SubResource("Animation_6lpa3"),
 "idle_right": SubResource("Animation_uujee"),
@@ -386,14 +451,32 @@ radius = 199.26
 [sub_resource type="CircleShape2D" id="CircleShape2D_w800o"]
 radius = 43.0116
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0n6s8"]
+radius = 42.48
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rxgs5"]
+radius = 85.45
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vp085"]
+radius = 128.57
+
 [node name="giant_witch" type="CharacterBody2D"]
 z_index = 3
 collision_layer = 9
 collision_mask = 5
 script = ExtResource("1_kucni")
 
-[node name="idle" type="Sprite2D" parent="."]
+[node name="shockwave" type="ColorRect" parent="."]
 visible = false
+z_index = -1
+material = ExtResource("2_dr1gs")
+offset_left = -117.0
+offset_top = -53.0
+offset_right = -77.0
+offset_bottom = -13.0
+scale = Vector2(5.92943, 2.73663)
+
+[node name="idle" type="Sprite2D" parent="."]
 position = Vector2(-1, -50)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_pbi32")
@@ -409,6 +492,7 @@ hframes = 10
 vframes = 4
 
 [node name="walkfast" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-1, -50)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_o15bg")
@@ -441,6 +525,33 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackZone"]
 scale = Vector2(1, 0.624302)
 shape = SubResource("CircleShape2D_w800o")
+
+[node name="smashZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="smashZone"]
+scale = Vector2(1, 0.64)
+shape = SubResource("CircleShape2D_0n6s8")
+
+[node name="smashZone2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="smashZone2"]
+scale = Vector2(1, 0.64)
+shape = SubResource("CircleShape2D_rxgs5")
+
+[node name="smashZone3" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="smashZone3"]
+scale = Vector2(1, 0.64)
+shape = SubResource("CircleShape2D_vp085")
 
 [connection signal="body_entered" from="detectionZone" to="." method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="detectionZone" to="." method="_on_detection_zone_body_exited"]
