@@ -184,6 +184,7 @@ func on_tween_finished():
 	# unlock boss before deleting boss
 	main_game_node.unlock_boss(self)
 	queue_free()
+	main_game_node.playTitleCard('GREAT WITCH FELLED.')
 
 func set_to_dust_sensitivity(value: float):
 	# remmeber shader is shared across the sprites, so only need to adjust on one sprite
@@ -253,7 +254,7 @@ func set_shockwave_amplitude(value: float):
 
 func facePlayer(instant: bool = false):
 	var direction_to_player = (target_body.get_position() - self.get_position()).normalized()
-	if current_state and target_body:
+	if current_state and target_body and current_state != States.DEATH:
 		if direction_to_player.x > 0 and abs(direction_to_player.y)  < abs(direction_to_player.x):
 			if not (get_node('AnimationPlayer').is_playing() or instant):
 				get_node('AnimationPlayer').play(StateStrings[current_state] + '_right')
