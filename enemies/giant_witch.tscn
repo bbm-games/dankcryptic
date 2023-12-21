@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://ch4ob6ijht11l"]
+[gd_scene load_steps=33 format=3 uid="uid://ch4ob6ijht11l"]
 
 [ext_resource type="Script" path="res://enemies/giant_witch.gd" id="1_kucni"]
 [ext_resource type="Texture2D" uid="uid://dvgch11c176lt" path="res://assets/witch/64X128_Idle_Free.png" id="1_pbi32"]
 [ext_resource type="Texture2D" uid="uid://drbku705vwhta" path="res://assets/witch/64X128_Walking_Free.png" id="2_1pma6"]
 [ext_resource type="Material" uid="uid://bpw5nehhdliim" path="res://materials/ripple.tres" id="2_dr1gs"]
+[ext_resource type="Material" uid="uid://u7qkagjc8by4" path="res://materials/godrays.tres" id="3_a1y5v"]
 [ext_resource type="Texture2D" uid="uid://d3wmyx5prqe4l" path="res://assets/witch/64X128_Runing_Free.png" id="3_o15bg"]
 [ext_resource type="AudioStream" uid="uid://qswtup1yxecg" path="res://assets/sounds/Super Dialogue Audio Pack/grunting_5_karen.wav" id="6_jdyr3"]
 [ext_resource type="AudioStream" uid="uid://diuyxj6ha734b" path="res://assets/sounds/Super Dialogue Audio Pack/death_9_karen.wav" id="7_2u0ih"]
@@ -477,6 +478,16 @@ offset_top = -53.0
 offset_right = -77.0
 offset_bottom = -13.0
 scale = Vector2(5.92943, 2.73663)
+
+[node name="godrays" type="ColorRect" parent="."]
+z_index = 1
+material = ExtResource("3_a1y5v")
+offset_left = 47.0
+offset_top = 11.0
+offset_right = 95.0
+offset_bottom = 47.0
+rotation = 3.14159
+scale = Vector2(2.06199, 3.57727)
 
 [node name="idle" type="Sprite2D" parent="."]
 position = Vector2(-1, -50)

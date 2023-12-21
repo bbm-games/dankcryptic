@@ -60,6 +60,7 @@ func _ready():
 
 	# initial state when spawned is idle
 	self.changeState(States.IDLE)
+	get_node('godrays').hide()
 	
 	vel = Vector2(0,0)
 
@@ -76,8 +77,11 @@ func changeState(state_name):
 		
 		# Only shockwave after a variable amount of time.
 		await get_tree().create_timer(rng.randf_range(0, 3)).timeout
+		# give player a warning that attack is coming
+		get_node('godrays').show()
+		await get_tree().create_timer(0.5).timeout
 		do_shockwave()
-		
+		get_node('godrays').hide()
 	if current_state == States.IDLE:
 		if target_body:
 			facePlayer(true)
