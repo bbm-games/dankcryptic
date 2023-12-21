@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=63 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_y5cr6"]
 [ext_resource type="Script" path="res://scenes/HUDLayer.gd" id="2_eour7"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bvdtncy8q6r27" path="res://assets/sounds/quickitemuse.wav" id="8_wk7tl"]
 [ext_resource type="Texture2D" uid="uid://c8jpbf2bhxlq6" path="res://assets/coin.png" id="9_ktu8j"]
 [ext_resource type="Texture2D" uid="uid://kuy5fnxctvqh" path="res://assets/testbg.png" id="10_fiov2"]
+[ext_resource type="Texture2D" uid="uid://bhwam4dktqr3s" path="res://assets/boss_bar.png" id="11_qsang"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="11_updkf"]
 [ext_resource type="Texture2D" uid="uid://7mr23lprj7n3" path="res://assets/neutral.webp" id="12_w4hbc"]
 [ext_resource type="Material" uid="uid://biktfxaq848hp" path="res://materials/shield.tres" id="14_iy6yf"]
@@ -557,6 +558,31 @@ size_flags_vertical = 1
 theme_override_font_sizes/font_size = 9
 text = "999"
 vertical_alignment = 1
+
+[node name="boss_hud_display" type="Node2D" parent="HUDLayer/CanvasGroup"]
+position = Vector2(0, 5)
+
+[node name="boss_name" type="RichTextLabel" parent="HUDLayer/CanvasGroup/boss_hud_display"]
+offset_left = 342.0
+offset_top = 26.0
+offset_right = 570.0
+offset_bottom = 41.0
+theme_override_font_sizes/normal_font_size = 9
+bbcode_enabled = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="bosshealthBar" type="ColorRect" parent="HUDLayer/CanvasGroup/boss_hud_display"]
+unique_name_in_owner = true
+offset_left = 300.0
+offset_top = 45.0
+offset_right = 568.0
+offset_bottom = 53.0
+color = Color(0.823529, 0.270588, 0.27451, 1)
+
+[node name="bosshealthFrame" type="Sprite2D" parent="HUDLayer/CanvasGroup/boss_hud_display"]
+position = Vector2(427, 49)
+texture = ExtResource("11_qsang")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUDLayer"]
 root_node = NodePath("../..")

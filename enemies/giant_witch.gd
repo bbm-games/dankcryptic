@@ -41,16 +41,22 @@ var StateStrings = {
 	States.DEATH: 'death'
 }
 
-var enemy_data =  {"stats":{
-			"attack":65,
-			"defense":65,
-			"strength":20,
-			"health":400,
-			"stamina":100,
-			"magic":40,
-			"wisdom":60,
-			"mana":40
-		 }}
+var enemy_data =  {
+	"name": 'Chaos Queen Qualude',
+	"stats":{
+		"attack":65,
+		"defense":65,
+		"strength":20,
+		"health":400,
+		"stamina":100,
+		"magic":40,
+		"wisdom":60,
+		"mana":40
+	 },
+	'current_health': 400,
+	'max_health': 400
+	
+}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main_game_node = get_tree().get_root().get_node('Node2D')
@@ -80,8 +86,9 @@ func changeState(state_name):
 		# give player a warning that attack is coming
 		get_node('godrays').show()
 		await get_tree().create_timer(0.5).timeout
-		do_shockwave()
 		get_node('godrays').hide()
+		do_shockwave()
+		
 	if current_state == States.IDLE:
 		if target_body:
 			facePlayer(true)
@@ -144,9 +151,9 @@ func take_damage(value, _statusInflictions = null, ranged = false):
 		if not get_node('clapped_sound').is_playing():
 			get_node('clapped_sound').play()
 		just_took_damage = true
-		enemy_data['stats']['health'] -= value
-		if enemy_data['stats']['health'] <= 0:
-			enemy_data['stats']['health'] = 0
+		enemy_data['current_health'] -= value
+		if enemy_data['current_health'] <= 0:
+			enemy_data['current_health'] = 0
 			# add the material for shader pixel explosion
 			var to_dust = preload('res://materials/to_dust.tres')
 			changeState(States.DEATH)
@@ -174,6 +181,8 @@ func take_damage(value, _statusInflictions = null, ranged = false):
 			
 
 func on_tween_finished():
+	# unlock boss before deleting boss
+	main_game_node.unlock_boss(self)
 	queue_free()
 
 func set_to_dust_sensitivity(value: float):
@@ -309,6 +318,7 @@ func _on_detection_zone_body_entered(body):
 	# basically targets any body that can take damage (this includes player)
 	if body.has_method("take_damage") and body.is_player:
 		target_body = body
+		main_game_node.lock_boss(self)
 		if current_state == States.WALKFAST:
 			pass
 		else:
@@ -316,6 +326,7 @@ func _on_detection_zone_body_entered(body):
 	
 func _on_detection_zone_body_exited(body):
 	if body == target_body:
+		main_game_node.unlock_boss(self)
 		target_body = null
 	changeState(States.IDLE)
 	

@@ -48,6 +48,66 @@ tracks/2/keys = {
 "values": [Vector2i(0, 2)]
 }
 
+[sub_resource type="Animation" id="Animation_xpuwj"]
+resource_name = "attack_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 0), Vector2i(7, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_38imo"]
+resource_name = "attack_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 1), Vector2i(7, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_003wj"]
+resource_name = "attack_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 2), Vector2i(7, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_8yls6"]
+resource_name = "attack_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2i(0, 3), Vector2i(7, 3)]
+}
+
 [sub_resource type="Animation" id="Animation_kwra7"]
 resource_name = "idle_down"
 tracks/0/type = "value"
@@ -364,66 +424,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_xpuwj"]
-resource_name = "attack_down"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("idle:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2i(0, 0), Vector2i(7, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_38imo"]
-resource_name = "attack_left"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("idle:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2i(0, 1), Vector2i(7, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_003wj"]
-resource_name = "attack_right"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("idle:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2i(0, 2), Vector2i(7, 2)]
-}
-
-[sub_resource type="Animation" id="Animation_8yls6"]
-resource_name = "attack_up"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("idle:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2i(0, 3), Vector2i(7, 3)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ep2ol"]
 _data = {
 "RESET": SubResource("Animation_64bpa"),
@@ -480,6 +480,7 @@ offset_bottom = -13.0
 scale = Vector2(5.92943, 2.73663)
 
 [node name="godrays" type="ColorRect" parent="."]
+visible = false
 z_index = 1
 material = ExtResource("3_a1y5v")
 offset_left = 47.0
@@ -487,7 +488,7 @@ offset_top = 11.0
 offset_right = 95.0
 offset_bottom = 47.0
 rotation = 3.14159
-scale = Vector2(2.06199, 3.57727)
+scale = Vector2(1.92793, 4.20248)
 
 [node name="idle" type="Sprite2D" parent="."]
 position = Vector2(-1, -50)

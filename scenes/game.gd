@@ -76,6 +76,15 @@ var mouse_event_global_pos
 var emmisionNode
 var spell_active
 
+# if locked in combat with boss
+var boss_lock: bool = false
+var boss = null # should be the character2D node
+var boss_data = null
+var bosshealth_bar
+var bosshealth_bar_length
+var bosshealth_bar_height
+var bosshealth_bar_pos
+
 var interaction # determines if the E key is being pressed
 
 var backgroundMusic
@@ -135,6 +144,13 @@ func _ready():
 	mana_bar_height = mana_bar.get_size().y
 	health_bar_length = health_bar.get_size().x
 	health_bar_height = health_bar.get_size().y
+	
+	# set up the boss health and hide the boss HUD on load
+	get_node('HUDLayer/CanvasGroup/boss_hud_display').hide()
+	bosshealth_bar = get_node('HUDLayer/CanvasGroup/boss_hud_display/bosshealthBar')
+	bosshealth_bar_length = bosshealth_bar.get_size().x
+	bosshealth_bar_height = bosshealth_bar.get_size().y
+	bosshealth_bar_pos = bosshealth_bar.get_position()
 	
 	# get background music player from global 
 	backgroundMusic = get_node("/root/Music")
@@ -237,6 +253,20 @@ func playTitleCard(title: String):
 	get_node("HUDLayer/titleCard/AnimationPlayer").play('fade_in')
 	#get_node("HUDLayer/titleCard").hide()
 
+# for locking in or out of combat with boss
+func lock_boss(body):
+	boss = body
+	boss_data = boss.enemy_data
+	boss_lock = true
+	get_node('HUDLayer/CanvasGroup/boss_hud_display/boss_name').clear()
+	get_node('HUDLayer/CanvasGroup/boss_hud_display/boss_name').append_text("[right]" + boss_data['name'] + "[/right]")
+	
+func unlock_boss(body):
+	if self.boss == body:
+		self.boss = null
+		boss_lock = false
+		get_node('HUDLayer/CanvasGroup/boss_hud_display/boss_name').clear()
+		
 # useful function for searching through a list of json documents 
 # and retrieving the value for a key for a document that has a certain id
 func searchDocsInList(list, uniquekey: String, uniqueid: String, key: String):
@@ -1145,6 +1175,15 @@ func _process(delta):
 	# redraw mana bar
 	mana_bar.set_size(Vector2(player_data['current_mana']/player_data['max_mana'] * mana_bar_length, mana_bar_height))
 	
+	# show boss HUD if in combat
+	if boss_lock:
+		get_node('HUDLayer/CanvasGroup/boss_hud_display').show()
+		var percentage = boss_data['current_health']/boss_data['max_health']
+		bosshealth_bar.set_size(Vector2(percentage * bosshealth_bar_length, bosshealth_bar_height))
+		bosshealth_bar.set_position(bosshealth_bar_pos + Vector2((1 - percentage)* bosshealth_bar_length,0))
+	else:
+		get_node('HUDLayer/CanvasGroup/boss_hud_display').hide()
+		
 	# redraw health bar in a smooth fashion using health target
 	var health_diff = health_target - player_data['current_health']
 	if health_diff > 0:
@@ -1186,6 +1225,15 @@ func subtractHealth(amount):
 			walk_left_held = false
 			walk_right_held = false
 			walk_down_held = false
+			
+			# turn off all status effects
+			player_data['statuses']["poisoned"] = 0
+			player_data['statuses']["burned"] = 0
+			player_data['statuses']["drenched"] = 0
+			player_data['statuses']["confused"] = 0
+			player_data['statuses']["paralyzed"] = 0
+			player_data['statuses']["bloodless"] = 0
+			
 			backgroundMusic.playing = false
 			backgroundMusic.stream = load('res://assets/music/mindseyepack/2- Mental Vortex.mp3')
 			backgroundMusic.play()
@@ -1201,7 +1249,7 @@ func subtractHealth(amount):
 func on_death_tween_finished():
 	light.hide()
 	playTitleCard('YOU DIED.')
-	# TODO: pull up the death menu
+	player_body.is_attackable = false
 
 func set_to_dust_sensitivity(value: float):
 	player_sprite.get_material().set_shader_parameter('sensitivity', value)
