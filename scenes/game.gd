@@ -46,9 +46,12 @@ var last_walk_down_held = false
 var last_walk_left_held = false
 var last_walk_right_held = false
 var paralyzer = 1
-var confused = false
-var block_held = false
-var attack_held = false
+var confused : bool = false
+var block_held: bool = false
+var attack_held: bool = false
+var attack_cooldown_timer = 0
+var attack_cooldown_timer_running = false
+var attack_not_on_cooldown = false
 var block_held_t_interval = 0
 var just_took_damage = false
 var just_took_partial_damage = false
@@ -830,7 +833,7 @@ func _input(event):
 		if item_id:
 			if item_id.contains("spell"):
 				spell_active = false
-	if event.is_action_pressed("attack") && !playerMenu.visible && !chatPopup.visible and not player_data['is_dead']:
+	if event.is_action_pressed("attack") && !playerMenu.visible && !chatPopup.visible and not player_data['is_dead'] and not attack_cooldown_timer_running:
 		if not block_held:
 			attack_held = true
 			var bodies = get_node('player/hitBox').get_overlapping_bodies();
@@ -859,6 +862,7 @@ func _input(event):
 			else:
 				get_node('player/attackSoundPlayer').play()
 			get_node("player/hitBox/Line2D").set_default_color(Color(1,0,0,1))
+			attack_cooldown_timer_running = true
 		else:
 			attack_held = false
 	if event.is_action_released("attack") and not player_data['is_dead']:
@@ -990,6 +994,13 @@ func _process(delta):
 	# redraw stamina bar
 	stamina_bar.set_size(Vector2(player_data['current_stamina']/player_data['max_stamina'] * stamina_bar_length, stamina_bar_height))
 	
+	# attack cooldown contingent on player's attack level
+	if attack_cooldown_timer_running == true:
+		attack_cooldown_timer += delta
+		if attack_cooldown_timer >= 0.25 + 0.75 / pow(player_data['stats']['attack'],1/2):
+			attack_cooldown_timer = 0
+			attack_cooldown_timer_running = false
+
 	# set up attacks and blocks so you can only do one at a time
 	if attack_held:
 		pass
@@ -1104,7 +1115,7 @@ func _process(delta):
 	else:
 		confused = false
 		player_body.get_node("confusionOverlay").hide()
-	if player_data['statuses']["drenched"] >= 1 and not just_took_damage and not just_took_partial_damage:
+	if player_data['statuses']["drenched"] >= 1 and not just_took_damage and not just_took_partial_damage and not player_data['is_dead']:
 		player_sprite.modulate = Color(0.37,0.62,0.63,1)
 		if last_walk_up_held:
 			collision_data = player_body.move_and_collide((Vector2(rng.randf_range(-1,1), -1).normalized()) * 2 * base_speed * delta)
