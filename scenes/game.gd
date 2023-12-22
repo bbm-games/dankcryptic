@@ -835,10 +835,19 @@ func _input(event):
 				spell_active = false
 	if event.is_action_pressed("attack") && !playerMenu.visible && !chatPopup.visible and not player_data['is_dead'] and not attack_cooldown_timer_running:
 		if not block_held:
+			# subtract some stamina for the attack based on patient's strength and weapon weight
+			var stamina_consumption = player_data['max_stamina']/5 - player_data['max_stamina'] * player_data['stats']['strength']/(100*5)
+			if stamina_consumption < 0:
+				stamina_consumption = 0
+			if player_data['current_stamina'] - stamina_consumption >= 0:
+				player_data['current_stamina'] -= stamina_consumption
+			else:
+				player_data['current_stamina'] = 0
+				
 			attack_held = true
 			var bodies = get_node('player/hitBox').get_overlapping_bodies();
 			if bodies:
-				for body in bodies:	
+				for body in bodies:
 					if body.is_attackable:
 						if body.has_method("take_damage") :
 							# TODO: determine perfect formula for attack
@@ -859,10 +868,10 @@ func _input(event):
 								# do a normal hit
 								body.take_damage(player_data['stats']['strength'], player_data['statusInflictions'])
 								get_node('player/attackSoundPlayer').play()
-			else:
+			else :
 				get_node('player/attackSoundPlayer').play()
 			get_node("player/hitBox/Line2D").set_default_color(Color(1,0,0,1))
-			attack_cooldown_timer_running = true
+			attack_cooldown_timer_running = true # to prevent spamming attacks too fast 
 		else:
 			attack_held = false
 	if event.is_action_released("attack") and not player_data['is_dead']:
@@ -997,7 +1006,7 @@ func _process(delta):
 	# attack cooldown contingent on player's attack level
 	if attack_cooldown_timer_running == true:
 		attack_cooldown_timer += delta
-		if attack_cooldown_timer >= 0.25 + 0.75 / pow(player_data['stats']['attack'],1/2):
+		if attack_cooldown_timer >= 0.25 + 0.75 / pow(player_data['stats']['attack'], 0.5):
 			attack_cooldown_timer = 0
 			attack_cooldown_timer_running = false
 
