@@ -250,8 +250,6 @@ func set_shockwave_amplitude(value: float):
 # complete to start playing the next one. This is useful when changing states, as that results 
 # in changing sprites, and you don't want a new sprite to show while the animation of the previous sprite is finishing.
 
-
-
 func facePlayer(instant: bool = false):
 	var direction_to_player = (target_body.get_position() - self.get_position()).normalized()
 	if current_state and target_body and current_state != States.DEATH:
@@ -335,9 +333,7 @@ func _on_attack_zone_body_entered(body):
 	if body == target_body and current_state != States.WALKFAST:
 		changeState(States.ATTACK)	
 	elif body == target_body:
-		
 		changeState(States.ATTACK)
-		
 		
 func _on_attack_zone_body_exited(body):
 	# chase after the player 
