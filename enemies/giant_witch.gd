@@ -17,6 +17,7 @@ var just_took_damage = false
 var damage_highlight_time = 0
 var base_modulation = self.get_modulate()
 
+var boss_music = 'res://assets/music/Peritunes/15-Gothic_Dark.mp3'
 
 var attackCooldown = 0
 var pushPlayerAway: bool = false

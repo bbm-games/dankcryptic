@@ -263,12 +263,18 @@ func lock_boss(body):
 	boss_lock = true
 	get_node('HUDLayer/CanvasGroup/boss_hud_display/boss_name').clear()
 	get_node('HUDLayer/CanvasGroup/boss_hud_display/boss_name').append_text("[right]" + boss_data['name'] + "[/right]")
+	# start playing the boss music
+	backgroundMusic.stream = load(body.boss_music)
+	backgroundMusic.play()
 	
 func unlock_boss(body):
 	if self.boss == body:
 		self.boss = null
 		boss_lock = false
 		get_node('HUDLayer/CanvasGroup/boss_hud_display/boss_name').clear()
+		# turn back on the map music
+		backgroundMusic.stream = load(currentMap.get_node('Node2D').map_music)
+		backgroundMusic.play()
 		
 # useful function for searching through a list of json documents 
 # and retrieving the value for a key for a document that has a certain id
