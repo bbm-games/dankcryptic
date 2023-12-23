@@ -179,7 +179,9 @@ func take_damage(value, _statusInflictions = null, ranged = false):
 		
 		if ranged and target_body:
 			changeState(States.WALKFAST)
-			
+		elif target_body:
+			changeState(States.ATTACK)
+		
 
 func on_tween_finished():
 	# unlock boss before deleting boss
