@@ -11,6 +11,7 @@ var fire = preload("res://materials/fire.tres")
 var lightning = preload("res://materials/lightning.tres")
 var confusion = preload("res://materials/confusion.tres")
 var godrays = preload("res://materials/godrays.tres")
+var todust = preload('res://materials/to_dust.tres')
 
 var particlematerials = [
 	manafluc,
@@ -25,7 +26,8 @@ var shadermaterials = [
 	fire,
 	lightning,
 	confusion,
-	godrays
+	godrays,
+	todust
 ]
 
 # Called when the node enters the scene tree for the first time.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgarsyah7v4on"]
+[gd_scene load_steps=11 format=3 uid="uid://bgarsyah7v4on"]
 
 [ext_resource type="Script" path="res://objects/goldPiece.gd" id="1_105er"]
 [ext_resource type="Texture2D" uid="uid://g18xayfjn3qc" path="res://assets/GoldCoinSprite/Coin1.png" id="2_2yxub"]
@@ -38,6 +38,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0p4bx"]
+radius = 37.6563
+
 [node name="goldPiece" type="Area2D"]
 position = Vector2(394, 111)
 collision_layer = 2
@@ -53,5 +56,12 @@ scale = Vector2(0.283334, 0.279167)
 sprite_frames = SubResource("SpriteFrames_xrusr")
 autoplay = "default"
 frame_progress = 0.497211
+
+[node name="detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+shape = SubResource("CircleShape2D_0p4bx")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

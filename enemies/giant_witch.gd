@@ -55,8 +55,11 @@ var enemy_data =  {
 		"mana":40
 	 },
 	'current_health': 400,
-	'max_health': 400
-	
+	'max_health': 400,
+	"inventory":[
+		'armor035',
+		'spell002'
+	]
 }
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -70,7 +73,23 @@ func _ready():
 	get_node('godrays').hide()
 	
 	vel = Vector2(0,0)
+	
+func dropItems():
+	for itemid in self.enemy_data['inventory']:
+		# TODO: Make it to items have droprates
+		var item = preload("res://objects/ground_item.tscn")
+		var item_instance = item.instantiate()
+		main_game_node.get_node('currentMap/Node2D').add_child(item_instance)
+		item_instance.load_item(itemid)
+		item_instance.position = self.get_position()  + Vector2(rng.randi_range(-5,5), rng.randi_range(-5,5))
 
+	# drop some coins too
+	for i in range(rng.randi_range(20,50)):
+		var item = preload("res://objects/gold_piece.tscn")
+		var item_instance = item.instantiate()
+		main_game_node.get_node('currentMap/Node2D').add_child(item_instance)
+		item_instance.position = self.get_position() + Vector2(rng.randi_range(-50,50), rng.randi_range(-50,50))
+		
 func changeState(state_name):
 	if current_state != state_name:
 		# wait 5 seconds before changing state
@@ -136,16 +155,17 @@ func showCertainSprite(enum_given):
 			get_node(StateStrings[States.WALK]).show()
 
 func do_shockwave():
-	get_node('attack_sound').play()
-	get_node('shockwave').show()
-	var tween = get_tree().create_tween()
-	tween.tween_method(set_shockwave_amplitude, 0.0, 2, .2)
-	for body in get_node('smashZone3').get_overlapping_bodies():
-		if body.is_attackable:
-			# add damage to body
-			attack_a_body(body)
-			pushable_bodies.append(body)
-			pushPlayerAway = true
+	if current_state != States.DEATH:
+		get_node('attack_sound').play()
+		get_node('shockwave').show()
+		var tween = get_tree().create_tween()
+		tween.tween_method(set_shockwave_amplitude, 0.0, 2, .2)
+		for body in get_node('smashZone3').get_overlapping_bodies():
+			if body.is_attackable:
+				# add damage to body
+				attack_a_body(body)
+				pushable_bodies.append(body)
+				pushPlayerAway = true
 
 func take_damage(value, _statusInflictions = null, ranged = false):
 	if current_state != States.DEATH: # let's not retween death animation if already dead
@@ -156,12 +176,13 @@ func take_damage(value, _statusInflictions = null, ranged = false):
 		if enemy_data['current_health'] <= 0:
 			enemy_data['current_health'] = 0
 			# add the material for shader pixel explosion
-			var to_dust = preload('res://materials/to_dust.tres')
+			var to_dust = MaterialsCache.todust
 			changeState(States.DEATH)
 			# TODO: actually have a death sprite to attach the to_dust material to
 			get_node('idle').set_material(to_dust)
 			get_node('walkfast').set_material(to_dust)
 			get_node('walk').set_material(to_dust)
+			get_node('shockwave').hide()
 			var tween = get_tree().create_tween()
 			tween.tween_method(set_to_dust_sensitivity, 0.0, 1.0, 1)
 			tween.connect("finished", on_tween_finished)
@@ -179,14 +200,19 @@ func take_damage(value, _statusInflictions = null, ranged = false):
 		
 		if ranged and target_body:
 			changeState(States.WALKFAST)
-		elif target_body:
-			changeState(States.ATTACK)
 		
 
 func on_tween_finished():
 	# unlock boss before deleting boss
 	main_game_node.unlock_boss(self)
+	
+	# release the player's items into the world
+	dropItems()
+	
+	# delete the boss
 	queue_free()
+	
+	# play the boss victory screen
 	main_game_node.playTitleCard('GREAT WITCH FELLED.')
 
 func set_to_dust_sensitivity(value: float):
@@ -243,6 +269,19 @@ func _process(delta):
 	# hide shockwave if not attacking
 	if current_state != States.ATTACK:
 		get_node('shockwave').hide()
+		
+	# if player remains in attack zone, continue to attack
+	if current_state != States.ATTACK:
+		attackCooldown = 0
+	else:
+		attackCooldown += delta
+	var bodies = get_node('attackZone').get_overlapping_bodies();
+	if bodies:
+		for body in bodies:
+			if body.is_player and current_state == States.ATTACK and attackCooldown > 1:
+				changeState(States.IDLE)
+				changeState(States.ATTACK)
+				attackCooldown = 0
 
 func set_shockwave_amplitude(value: float):
 	# in my case i'm tweening a shader on a texture rect, but you can use anything with a material on it
