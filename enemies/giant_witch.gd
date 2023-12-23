@@ -278,7 +278,7 @@ func _process(delta):
 	var bodies = get_node('attackZone').get_overlapping_bodies();
 	if bodies:
 		for body in bodies:
-			if body.is_player and current_state == States.ATTACK and attackCooldown > 1:
+			if body.is_player and current_state == States.ATTACK and attackCooldown > 5:
 				changeState(States.IDLE)
 				changeState(States.ATTACK)
 				attackCooldown = 0
