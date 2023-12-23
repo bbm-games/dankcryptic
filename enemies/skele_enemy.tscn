@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cdnweam38rxor"]
+[gd_scene load_steps=19 format=3 uid="uid://cdnweam38rxor"]
 
 [ext_resource type="Script" path="res://enemies/skele_enemy.gd" id="1_xchgr"]
 [ext_resource type="Texture2D" uid="uid://byfym0ukednyd" path="res://assets/undead/undead_idle_sheet.png" id="2_gtr7m"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b865kmi44feuw" path="res://assets/sounds/Minifantasy_Dungeon_SFX/17_orc_atk_sword_1.wav" id="5_ofrt3"]
 [ext_resource type="AudioStream" uid="uid://ckqrfhym0h1tk" path="res://assets/sounds/Minifantasy_Dungeon_SFX/25_orc_walk_stone_3.wav" id="6_bay6w"]
 [ext_resource type="AudioStream" uid="uid://d368enykfayyf" path="res://assets/sounds/Minifantasy_Dungeon_SFX/21_orc_damage_3.wav" id="7_nfveq"]
+[ext_resource type="Texture2D" uid="uid://b6tuk3dp4clo3" path="res://assets/healthbartiny.png" id="8_cb41h"]
 
 [sub_resource type="Animation" id="Animation_ltjhe"]
 length = 0.001
@@ -272,6 +273,21 @@ bus = &"Sounds"
 
 [node name="clapped_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_nfveq")
+
+[node name="health_bar" type="Node2D" parent="."]
+position = Vector2(0.666687, -32.6667)
+
+[node name="frame" type="Sprite2D" parent="health_bar"]
+position = Vector2(2.33333, 2.91667)
+scale = Vector2(0.1, 0.191667)
+texture = ExtResource("8_cb41h")
+
+[node name="healthBar" type="ColorRect" parent="health_bar"]
+offset_left = -10.0
+offset_top = 2.0
+offset_bottom = 4.0
+scale = Vector2(2.48084, 1)
+color = Color(0.823529, 0.270588, 0.27451, 1)
 
 [connection signal="body_entered" from="hitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="hitBox" to="." method="_on_hit_box_body_exited"]

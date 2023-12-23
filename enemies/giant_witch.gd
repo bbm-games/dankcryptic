@@ -42,25 +42,8 @@ var StateStrings = {
 	States.DEATH: 'death'
 }
 
-var enemy_data =  {
-	"name": 'Chaos Queen Qualude',
-	"stats":{
-		"attack":65,
-		"defense":65,
-		"strength":20,
-		"health":400,
-		"stamina":100,
-		"magic":40,
-		"wisdom":60,
-		"mana":40
-	 },
-	'current_health': 400,
-	'max_health': 400,
-	"inventory":[
-		'armor035',
-		'spell002'
-	]
-}
+var enemy_data = GlobalVars.returnDocInList(GlobalVars.lore_data['enemies'],'name', 'Chaos Queen Qualude').duplicate(true)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main_game_node = get_tree().get_root().get_node('Node2D')

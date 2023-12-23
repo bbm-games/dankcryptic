@@ -275,36 +275,9 @@ func unlock_boss(body):
 		# turn back on the map music
 		backgroundMusic.stream = load(currentMap.get_node('Node2D').map_music)
 		backgroundMusic.play()
-		
-# useful function for searching through a list of json documents 
-# and retrieving the value for a key for a document that has a certain id
-func searchDocsInList(list, uniquekey: String, uniqueid: String, key: String):
-	for doc in list:
-		if doc[uniquekey] == uniqueid:
-			if key in doc.keys():
-				return doc[key]
-			else:
-				return null
-	return null
-
-# useful function for searching through a list of json documents
-# and retrieving doc where there is a certain value for a certain key
-func returnDocInList(list, uniquekey, uniqueid):
-	for doc in list:
-		if doc[uniquekey] == uniqueid:
-			return doc
-	return null
-	
-# useful function for making an array unique
-func array_unique(array: Array) -> Array:
-	var unique: Array = []
-	for item in array:
-		if not unique.has(item):
-			unique.append(item)
-	return unique
 	
 func update_player_stats_tab():
-	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer2/vocationDesc").set_text(searchDocsInList(lore_data['vocations'],'class_name', player_data['vocation'], 'lore'))
+	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer2/vocationDesc").set_text(GlobalVars.searchDocsInList(lore_data['vocations'],'class_name', player_data['vocation'], 'lore'))
 	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer/Label2").set_text(str(player_data['stats']['attack']))
 	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer2/Label2").set_text(str(player_data['stats']['defense']))
 	get_node("CanvasLayer2/playerMenu/Stats/VBoxContainer/HBoxContainer3/Label2").set_text(str(player_data['stats']['strength']))
@@ -353,10 +326,10 @@ func update_quick_slots():
 	for slot in player_data['quick_slots'].keys():
 		var item_id = player_data['quick_slots'][slot]
 		if item_id:
-			var texturepath = searchDocsInList(all_quick_items, "id", item_id, 'sprite_data')
-			var itemname = searchDocsInList(all_quick_items, "id", item_id, 'name')
-			var itemdesc = searchDocsInList(all_quick_items, "id", item_id, 'description')
-			var consumable = searchDocsInList(all_quick_items, "id", item_id, 'is_consumable')
+			var texturepath = GlobalVars.searchDocsInList(all_quick_items, "id", item_id, 'sprite_data')
+			var itemname = GlobalVars.searchDocsInList(all_quick_items, "id", item_id, 'name')
+			var itemdesc = GlobalVars.searchDocsInList(all_quick_items, "id", item_id, 'description')
+			var consumable = GlobalVars.searchDocsInList(all_quick_items, "id", item_id, 'is_consumable')
 			if texturepath:	
 				#print(texturepath)
 				# draw the item textures in the quickslots
@@ -388,7 +361,7 @@ func update_player_equipment():
 	# then loop and add
 	for key in player_data['equipment'].keys():
 		var item = {}
-		item = returnDocInList(all_items, 'id', player_data['equipment'][key])
+		item = GlobalVars.returnDocInList(all_items, 'id', player_data['equipment'][key])
 		if item:
 			if 'statusInflictions' in item.keys():
 				for key2 in item['statusInflictions']:
@@ -436,7 +409,7 @@ func update_player_inventory():
 	# load in all the items from the player inventory json data
 	var current_inventory_items = []
 	for item_id in player_data['inventory']:
-		current_inventory_items.append(returnDocInList(all_items, 'id', item_id))
+		current_inventory_items.append(GlobalVars.returnDocInList(all_items, 'id', item_id))
 	
 	# get player total item weight
 	var inventory_weight = 0
@@ -458,7 +431,7 @@ func update_player_inventory():
 	base_speed *= 50 # number of pixels a second
 	update_player_stats_tab() # to reflect new weight and stuff
 	
-	for item in array_unique(current_inventory_items):
+	for item in GlobalVars.array_unique(current_inventory_items):
 		var itemButton = MenuButton.new()		
 		itemButton.flat = false
 		itemButton.get_popup().add_theme_font_size_override("font_size", 9)
@@ -653,11 +626,11 @@ func consumeItem(item):
 		consumable = item["is_consumable"]
 	if consumable:
 		# consume whatever current item is active
-		var health_replenished = searchDocsInList(all_quick_items, 'id', item_id, "health_replenished")
-		var mana_replenished = searchDocsInList(all_quick_items, 'id', item_id, "mana_replenished")
-		var stamina_replenished = searchDocsInList(all_quick_items, 'id', item_id, "stamina_replenished") 
+		var health_replenished = GlobalVars.searchDocsInList(all_quick_items, 'id', item_id, "health_replenished")
+		var mana_replenished = GlobalVars.searchDocsInList(all_quick_items, 'id', item_id, "mana_replenished")
+		var stamina_replenished = GlobalVars.searchDocsInList(all_quick_items, 'id', item_id, "stamina_replenished") 
 		var statusNegations = {}
-		statusNegations = searchDocsInList(all_quick_items, 'id', item_id, "statusNegations") 
+		statusNegations = GlobalVars.searchDocsInList(all_quick_items, 'id', item_id, "statusNegations") 
 		if player_data['current_health'] + health_replenished <= player_data['max_health']:
 			player_data['current_health'] += health_replenished
 		else:
@@ -767,7 +740,7 @@ func _input(event):
 		else:
 			current_item_index = 5
 			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))				
-	if event.is_action_pressed("item_left"):
+	if event.is_action_pressed("item_left") and !playerMenu.visible:
 		# cancel any currently running spells
 		spell_active = false
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
@@ -776,7 +749,7 @@ func _input(event):
 		else:
 			current_item_index -= 1
 		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
-	if event.is_action_pressed("item_right"):
+	if event.is_action_pressed("item_right") and !playerMenu.visible:
 		# cancel any currently running spells
 		spell_active = false
 		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
@@ -791,7 +764,7 @@ func _input(event):
 		if item_id:
 			var item = {}
 			# grab the item doc
-			item = returnDocInList(all_quick_items, 'id', item_id)
+			item = GlobalVars.returnDocInList(all_quick_items, 'id', item_id)
 			if 'is_consumable' in item.keys():
 				if item['is_consumable']:
 					consumeItem(item)
@@ -814,7 +787,7 @@ func _input(event):
 				# to ensure that the spell doesn't come from player's feet
 				var casting_position_offset = Vector2(0,-10)
 				# only cast if there's enough mana for the spell
-				var mana_cost = searchDocsInList(all_quick_items,'id', item_id, 'mana_cost')
+				var mana_cost = GlobalVars.searchDocsInList(all_quick_items,'id', item_id, 'mana_cost')
 				if player_data['current_mana'] >= mana_cost:
 					# TODO: generalize this so it works with more spells
 					var projectile = preload("res://objects/projectile.tscn").instantiate()
@@ -944,7 +917,7 @@ func _input(event):
 		for body in get_node('player/hitBox').get_overlapping_bodies():
 			if body.is_ground_item:
 				player_body.get_node('grabSoundPlayer').play()
-				var itemname = searchDocsInList(all_items, 'id', body.item_id, 'name')
+				var itemname = GlobalVars.searchDocsInList(all_items, 'id', body.item_id, 'name')
 				if itemname:
 					chatBoxAppend("Picked up " + itemname)
 				else:

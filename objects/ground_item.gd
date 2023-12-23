@@ -21,15 +21,15 @@ func load_item(item_id_given):
 	var sprite_data
 	
 	if item_id.contains('weapon'):
-		sprite_data = main_game_node.searchDocsInList(GlobalVars.lore_data['weapons'], 'id', item_id, 'sprite_data')
+		sprite_data = GlobalVars.DocsInList(GlobalVars.lore_data['weapons'], 'id', item_id, 'sprite_data')
 	elif item_id.contains('item'):
-		sprite_data = main_game_node.searchDocsInList(GlobalVars.lore_data['items'], 'id', item_id, 'sprite_data')
+		sprite_data = GlobalVars.searchDocsInList(GlobalVars.lore_data['items'], 'id', item_id, 'sprite_data')
 	elif item_id.contains('spell'):
-		sprite_data = main_game_node.searchDocsInList(GlobalVars.lore_data['spells'], 'id', item_id, 'sprite_data')
+		sprite_data = GlobalVars.searchDocsInList(GlobalVars.lore_data['spells'], 'id', item_id, 'sprite_data')
 	elif item_id.contains('armor'):
-		sprite_data = main_game_node.searchDocsInList(GlobalVars.lore_data['armors'], 'id', item_id, 'sprite_data')
+		sprite_data = GlobalVars.searchDocsInList(GlobalVars.lore_data['armors'], 'id', item_id, 'sprite_data')
 	elif item_id.contains('questitems'):
-		sprite_data = main_game_node.searchDocsInList(GlobalVars.lore_data['questitems'], 'id', item_id, 'sprite_data')
+		sprite_data = GlobalVars.searchDocsInList(GlobalVars.lore_data['questitems'], 'id', item_id, 'sprite_data')
 	
 	if not sprite_data:
 		sprite_data = 'res://assets/anvil.png' # default sprite if one isn't found

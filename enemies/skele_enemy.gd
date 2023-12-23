@@ -19,7 +19,14 @@ var base_modulation = self.get_modulate()
 
 var attackCooldown = 0
 
+var flipDelayTimer = 0
+
+var health_bar
+var health_bar_height
+var health_bar_length
+
 var rng
+
 # the enemy states
 enum States{
 	IDLE,
@@ -37,16 +44,8 @@ var StateStrings = {
 	States.DEATH: 'death'
 }
 
-var enemy_data =  {"stats":{
-			"attack":65,
-			"defense":65,
-			"strength":20,
-			"health":90,
-			"stamina":100,
-			"magic":40,
-			"wisdom":60,
-			"mana":40
-		 }}
+var enemy_data = GlobalVars.returnDocInList(GlobalVars.lore_data['enemies'],'name', 'Skele').duplicate(true)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main_game_node = get_tree().get_root().get_node('Node2D')
@@ -57,6 +56,10 @@ func _ready():
 	self.changeState(States.IDLE)
 	
 	vel = Vector2(0,0)
+	
+	health_bar = get_node("health_bar/healthBar")
+	health_bar_length= health_bar.get_size().x
+	health_bar_height = health_bar.get_size().y
 
 func changeState(state_name):
 	if current_state != state_name:
@@ -101,9 +104,9 @@ func take_damage(value, _statusInflictions = null, ranged = false):
 	if current_state != States.DEATH: # let's not retween death animation if already dead
 		get_node('clapped_sound').play()
 		just_took_damage = true
-		enemy_data['stats']['health'] -= value
-		if enemy_data['stats']['health'] <= 0:
-			enemy_data['stats']['health'] = 0
+		enemy_data['current_health'] -= value
+		if enemy_data['current_health'] <= 0:
+			enemy_data['current_health'] = 0
 			# add the material for shader pixel explosion
 			var to_dust = preload('res://materials/to_dust.tres')
 			changeState(States.DEATH)
@@ -129,8 +132,28 @@ func take_damage(value, _statusInflictions = null, ranged = false):
 		if ranged and target_body:
 			changeState(States.WALKFAST)
 			
+func dropItems():
+	for itemid in self.enemy_data['inventory']:
+		# TODO: Make it to items have droprates
+		var item = preload("res://objects/ground_item.tscn")
+		var item_instance = item.instantiate()
+		main_game_node.get_node('currentMap/Node2D').add_child(item_instance)
+		item_instance.load_item(itemid)
+		item_instance.position = self.get_position()  + Vector2(rng.randi_range(-5,5), rng.randi_range(-5,5))
+
+	# drop some coins too
+	for i in range(rng.randi_range(20,50)):
+		var item = preload("res://objects/gold_piece.tscn")
+		var item_instance = item.instantiate()
+		main_game_node.get_node('currentMap/Node2D').add_child(item_instance)
+		item_instance.position = self.get_position() + Vector2(rng.randi_range(-50,50), rng.randi_range(-50,50))
 
 func on_tween_finished():
+	
+	# drop its rewards
+	dropItems()
+	
+	# delete the skele
 	queue_free()
 
 func set_to_dust_sensitivity(value: float):
@@ -138,6 +161,9 @@ func set_to_dust_sensitivity(value: float):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	# update the health bar
+	health_bar.set_size(Vector2(enemy_data['current_health']/enemy_data['max_health'] * health_bar_length, health_bar_height))
 	
 	# display red damage color
 	if just_took_damage:
@@ -151,15 +177,21 @@ func _process(delta):
 		self.set_modulate(base_modulation)
 		
 	# flips the skele sprite to face the target_body at all times
+	flipDelayTimer += delta
 	if target_body:
-		if (target_body.position - self.position).x < 0:
+		if (target_body.position - self.position).x < 0 and flipDelayTimer > 1:
+			flipDelayTimer = 0
 			self.set_transform(Transform2D(Vector2(-1.5, 0), Vector2(0,  1.5), Vector2(position.x, position.y)))
 			offset = Vector2(-13,0)
-		else:
+			# flip back the health bar
+			get_node("health_bar").set_transform(Transform2D(Vector2(1, 0), Vector2(0,  1), get_node('health_bar').position))
+		elif flipDelayTimer > 1:
 			# unflip
+			flipDelayTimer = 0
 			offset = Vector2(13,0)
 			self.set_transform(Transform2D(Vector2(1.5, 0), Vector2(0,  1.5), Vector2(position.x, position.y)))
-	
+			# flip back the health bar
+			get_node("health_bar").set_transform(Transform2D(Vector2(-1, 0), Vector2(0,  1), get_node('health_bar').position))
 	# makes the skele move to target body if in the WALK or WALK_FAST STATE
 	if (current_state == States.WALK or current_state == States.WALKFAST) and target_body:
 		# with steering
