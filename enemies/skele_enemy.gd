@@ -184,14 +184,14 @@ func _process(delta):
 			self.set_transform(Transform2D(Vector2(-1.5, 0), Vector2(0,  1.5), Vector2(position.x, position.y)))
 			offset = Vector2(-13,0)
 			# flip back the health bar
-			get_node("health_bar").set_transform(Transform2D(Vector2(1, 0), Vector2(0,  1), get_node('health_bar').position))
+			get_node("health_bar").set_transform(Transform2D(Vector2(-1, 0), Vector2(0,  1), get_node('health_bar').position))
 		elif flipDelayTimer > 1:
 			# unflip
 			flipDelayTimer = 0
 			offset = Vector2(13,0)
 			self.set_transform(Transform2D(Vector2(1.5, 0), Vector2(0,  1.5), Vector2(position.x, position.y)))
 			# flip back the health bar
-			get_node("health_bar").set_transform(Transform2D(Vector2(-1, 0), Vector2(0,  1), get_node('health_bar').position))
+			get_node("health_bar").set_transform(Transform2D(Vector2(1, 0), Vector2(0,  1), get_node('health_bar').position))
 	# makes the skele move to target body if in the WALK or WALK_FAST STATE
 	if (current_state == States.WALK or current_state == States.WALKFAST) and target_body:
 		# with steering
