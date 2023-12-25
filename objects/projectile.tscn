@@ -291,7 +291,6 @@ process_material = ExtResource("64_m78b6")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 0.33
-blend_mode = 2
 texture = ExtResource("65_rupwk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
