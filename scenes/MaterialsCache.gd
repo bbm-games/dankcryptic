@@ -4,6 +4,7 @@ var manafluc = preload("res://materials/manafluc.tres")
 var projectile = preload("res://materials/projectile.tres")
 var sparks = preload("res://materials/sparks.tres")
 var trail = preload("res://materials/trail.tres")
+var cloud = preload("res://materials/cloud.tres")
 
 var shield = preload("res://materials/shield.tres")
 var ripple = preload("res://materials/ripple.tres")
@@ -18,7 +19,8 @@ var particlematerials = [
 	manafluc,
 	projectile,
 	sparks,
-	trail
+	trail,
+	cloud
 ]
 
 var shadermaterials = [

@@ -100,9 +100,10 @@ func showCertainSprite(enum_given):
 func flip_sprite():
 	pass
 
-func take_damage(value, _statusInflictions = null, ranged = false):
+func take_damage(value, _statusInflictions = null, ranged = false, aoe=false):
 	if current_state != States.DEATH: # let's not retween death animation if already dead
-		get_node('clapped_sound').play()
+		if not aoe:
+			get_node('clapped_sound').play()
 		just_took_damage = true
 		enemy_data['current_health'] -= value
 		if enemy_data['current_health'] <= 0:

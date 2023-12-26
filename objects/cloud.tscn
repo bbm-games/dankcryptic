@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://crkjpiqqisc8v"]
+
+[ext_resource type="Script" path="res://objects/cloud.gd" id="1_ng2ty"]
+[ext_resource type="AudioStream" uid="uid://c777xi10tiaru" path="res://assets/sounds/RPG_Essentials_Free/8_Atk_Magic_SFX/04_Fire_explosion_04_medium.wav" id="2_n6gns"]
+[ext_resource type="Material" uid="uid://c0ajrp7rker2w" path="res://materials/cloud.tres" id="65_1l0qx"]
+[ext_resource type="Texture2D" uid="uid://7mr23lprj7n3" path="res://assets/neutral.webp" id="66_6reqi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_umj0c"]
+radius = 52.05
+
+[node name="cloud" type="Area2D"]
+z_index = 3
+collision_layer = 32
+collision_mask = 12
+script = ExtResource("1_ng2ty")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_umj0c")
+
+[node name="spawnSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_n6gns")
+bus = &"Sounds"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 900
+process_material = ExtResource("65_1l0qx")
+lifetime = 3.0
+speed_scale = 0.3
+local_coords = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+energy = 0.33
+texture = ExtResource("66_6reqi")

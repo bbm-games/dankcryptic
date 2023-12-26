@@ -150,7 +150,7 @@ func do_shockwave():
 				pushable_bodies.append(body)
 				pushPlayerAway = true
 
-func take_damage(value, _statusInflictions = null, ranged = false):
+func take_damage(value, _statusInflictions = null, ranged = false, aoe = false):
 	if current_state != States.DEATH: # let's not retween death animation if already dead
 		if not get_node('clapped_sound').is_playing():
 			get_node('clapped_sound').play()

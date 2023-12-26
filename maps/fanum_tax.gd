@@ -7,7 +7,13 @@ var rng
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng = RandomNumberGenerator.new()
-
+	
+	var item = preload("res://objects/ground_item.tscn")
+	var item_instance = item.instantiate()
+	self.add_child(item_instance)
+	item_instance.load_item('spell007')
+	item_instance.position = get_node('spell').position
+	
 func flicker(energy_range = 0.05):
 	get_node("PointLight2D").set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.05,.05), rng.randf_range(-.05,.05)))
 	get_node("PointLight2D2").set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.05,.05), rng.randf_range(-.05,.05)))

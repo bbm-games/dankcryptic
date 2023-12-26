@@ -12725,3 +12725,6 @@ scale = Vector2(2.25, 2.25)
 [node name="skele_enemy3" parent="." instance=ExtResource("5_kvndv")]
 position = Vector2(352, -172)
 scale = Vector2(3.375, 3.375)
+
+[node name="spell" type="Node2D" parent="."]
+position = Vector2(388, 169)

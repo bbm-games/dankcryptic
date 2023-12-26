@@ -5,9 +5,9 @@ var rng
 var magic_level : int
 var spell_inflictions = {
 	"poisoned":0.0,
-	"burned":0.0,
+	"burned":0.2,
 	"drenched":0.0,
-	"confused":0.3,
+	"confused":0.0,
 	"paralyzed":0.0,
 	"bloodless":0.0
 }

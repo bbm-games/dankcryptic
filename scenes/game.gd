@@ -825,6 +825,23 @@ func _input(event):
 				# in order to continue casting
 				spell_active = true
 			
+			if item_id == "spell007":
+				# to ensure that the spell doesn't come from player's feet
+				var casting_position_offset = Vector2(0,-10)
+				# only cast if there's enough mana for the spell
+				var mana_cost = GlobalVars.searchDocsInList(all_quick_items,'id', item_id, 'mana_cost')
+				if player_data['current_mana'] >= mana_cost:
+					# TODO: generalize this so it works with more spells
+					var cloud = preload("res://objects/cloud.tscn").instantiate()
+					cloud.set_direction_facing_vector(Vector2(get_global_mouse_position().x - (player_body.get_global_position().x + casting_position_offset.x), get_global_mouse_position().y - (player_body.get_global_position().y + casting_position_offset.y)).normalized())
+					cloud.set_initial_position(player_body.get_global_position() + casting_position_offset)
+					self.add_child(cloud)
+					self.subtractMana(mana_cost)
+				
+				# add this parameter for spells that require the key to be held
+				# in order to continue casting
+				spell_active = true
+			
 			# redraw the quick slots
 			update_quick_slots()
 			# redraw the inventory if it was open during consumptions
