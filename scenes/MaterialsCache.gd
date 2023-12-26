@@ -4,7 +4,6 @@ var manafluc = preload("res://materials/manafluc.tres")
 var projectile = preload("res://materials/projectile.tres")
 var sparks = preload("res://materials/sparks.tres")
 var trail = preload("res://materials/trail.tres")
-var additive = preload("res://materials/additive.tres")
 
 var shield = preload("res://materials/shield.tres")
 var ripple = preload("res://materials/ripple.tres")
@@ -13,13 +12,13 @@ var lightning = preload("res://materials/lightning.tres")
 var confusion = preload("res://materials/confusion.tres")
 var godrays = preload("res://materials/godrays.tres")
 var todust = preload('res://materials/to_dust.tres')
+var additive = preload("res://materials/additive.tres")
 
 var particlematerials = [
 	manafluc,
 	projectile,
 	sparks,
-	trail,
-	additive
+	trail
 ]
 
 var shadermaterials = [
@@ -29,7 +28,8 @@ var shadermaterials = [
 	lightning,
 	confusion,
 	godrays,
-	todust
+	todust,
+	additive
 ]
 
 # Called when the node enters the scene tree for the first time.

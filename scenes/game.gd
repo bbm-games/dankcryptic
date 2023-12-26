@@ -114,6 +114,9 @@ func get_random_offset() -> Vector2:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
+	# show the loading screen at the begining
+	get_node("loadingScreen").show()
+	
 	rng = RandomNumberGenerator.new()
 	
 	# add hover sound effect to all buttons
@@ -235,14 +238,36 @@ func _ready():
 	#var scene_resource = ResourceLoader.load(boss1ScenePath)
 	#var scene_resource = ResourceLoader.load(dungeonScenePath)
 	#var scene_resource = ResourceLoader.load(wartotaurlairScenePath)
-	var scene_resource = ResourceLoader.load(fanumtaxScenePath)
+	#var scene_resource = ResourceLoader.load(fanumtaxScenePath)
 	#var scene_resource = ResourceLoader.load(sanctumScenePath)
-	var scene = scene_resource.instantiate()
+	
+	changeMap(fanumtaxScenePath)
+	
+#	var scene = scene_resource.instantiate()
+#	currentMap = self.get_node("currentMap")
+#	currentMap.add_child(scene)
+#	backgroundMusic.stream = load(currentMap.get_node('Node2D').map_music)
+#	backgroundMusic.play()
+#	playTitleCard(currentMap.get_node('Node2D').map_name)
+	
+func changeMap(map_scene_path: String):
+	# show the loading screen
+	get_node("loadingScreen").show()
+	# load the map in the background
+	ResourceLoader.load_threaded_request(map_scene_path)
+	# show the loading screen
+	while ResourceLoader.load_threaded_get_status(map_scene_path) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+		# TODO: update stuff on the loading screen
+		pass
+	# turn off loading screen and load show map
+	get_node("loadingScreen").hide()
+	var scene = ResourceLoader.load_threaded_get(map_scene_path).instantiate()
 	currentMap = self.get_node("currentMap")
 	currentMap.add_child(scene)
 	backgroundMusic.stream = load(currentMap.get_node('Node2D').map_music)
 	backgroundMusic.play()
 	playTitleCard(currentMap.get_node('Node2D').map_name)
+	
 	
 func update_hud_colors(hud_color: Vector3):
 	# set up the HUD color

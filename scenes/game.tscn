@@ -810,6 +810,14 @@ stream = ExtResource("29_fsmxi")
 volume_db = -10.0
 bus = &"Sounds"
 
+[node name="loadingScreen" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="loadingScreen"]
+offset_right = 576.0
+offset_bottom = 324.0
+
 [node name="currentMap" type="Node2D" parent="."]
 y_sort_enabled = true
 
