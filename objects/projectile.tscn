@@ -1,8 +1,9 @@
-[gd_scene load_steps=68 format=3 uid="uid://dihn8ee3is7gr"]
+[gd_scene load_steps=69 format=3 uid="uid://dihn8ee3is7gr"]
 
 [ext_resource type="Script" path="res://objects/projectile.gd" id="1_jfflj"]
 [ext_resource type="Texture2D" uid="uid://bk4bftfh6tego" path="res://assets/flame_projectiles/3/1_0.png" id="2_1wu8x"]
 [ext_resource type="Texture2D" uid="uid://cahqlu1uki02s" path="res://assets/flame_projectiles/3/1_1.png" id="3_70yqj"]
+[ext_resource type="Material" uid="uid://bkorl7pv5xo2x" path="res://materials/additive.tres" id="3_n0xrv"]
 [ext_resource type="Texture2D" uid="uid://p5tgvggfa34p" path="res://assets/flame_projectiles/3/1_2.png" id="4_6lope"]
 [ext_resource type="Texture2D" uid="uid://cvpt2wdl6q2eu" path="res://assets/flame_projectiles/3/1_3.png" id="5_s87rm"]
 [ext_resource type="Texture2D" uid="uid://ctkxwfncew51f" path="res://assets/flame_projectiles/3/1_4.png" id="6_oudnn"]
@@ -277,6 +278,7 @@ bus = &"Sounds"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
+material = ExtResource("3_n0xrv")
 position = Vector2(-7, -5)
 sprite_frames = SubResource("SpriteFrames_run8w")
 autoplay = "default"
@@ -290,6 +292,7 @@ amount = 90
 process_material = ExtResource("64_m78b6")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
 energy = 0.33
 texture = ExtResource("65_rupwk")
 
