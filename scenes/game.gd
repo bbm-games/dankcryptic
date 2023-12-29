@@ -279,13 +279,16 @@ func changeMap(map_scene_path: String):
 	playTitleCard(currentMap.get_node('Node2D').map_name)
 
 func update_statuses_on_screen():
-	# TODO: make this better
 	for key in player_data['statuses'].keys():
 		var value = player_data['statuses'][key]
-		if value > 1:
-			value = 1
-		get_node('HUDLayer/statusEffectBars/' + key +'/Node2D/bar').set_size(Vector2(value/1.0 * status_infliction_bar_length, status_infliction_bar_height))
-	
+		if value > 0:
+			if value > 1:
+				value = 1
+			get_node('HUDLayer/statusEffectBars/' + key).show()
+			get_node('HUDLayer/statusEffectBars/' + key +'/Node2D/bar').set_size(Vector2(value/1.0 * status_infliction_bar_length, status_infliction_bar_height))
+		else:
+			get_node('HUDLayer/statusEffectBars/' + key).hide()
+
 func update_hud_colors(hud_color: Vector3):
 	# set up the HUD color
 	get_node('HUDLayer/CanvasGroup/Hudbars').material.set_shader_parameter("tint", true)
@@ -1302,6 +1305,9 @@ func subtractHealth(amount):
 			player_data['statuses']["confused"] = 0
 			player_data['statuses']["paralyzed"] = 0
 			player_data['statuses']["bloodless"] = 0
+			
+			just_took_status_infliction = false
+			just_took_status_infliction_timer = 0
 			
 			backgroundMusic.playing = false
 			backgroundMusic.stream = load('res://assets/music/mindseyepack/2- Mental Vortex.mp3')

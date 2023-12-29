@@ -215,17 +215,24 @@ func _physics_process(_delta):
 	pass
 
 func attack_a_body(body):
-	#main_game_node.chatBoxAppend(str(body))
+	var statuses = {
+			 "poisoned": 0,
+			 "burned": 0,
+			 "drenched": 0,
+			 "confused": 0,
+			 "paralyzed": 0,
+			 "bloodless": 0.2
+	}
 	# attack the body
 	if body.has_method("take_damage"):
 		var diff = enemy_data['stats']['attack'] - GlobalVars.player_data['stats']['defense']
 		var prob = 0.1 + pow(2.718,-10/diff) * 0.9
 		if rng.randf_range(0,1) <= prob:
 			# damage is strength times 2 if critical hit
-			body.take_damage(enemy_data['stats']['strength']*2)
+			body.take_damage(enemy_data['stats']['strength']*2, statuses)
 		else:
 			# normal hit
-			body.take_damage(enemy_data['stats']['strength'])
+			body.take_damage(enemy_data['stats']['strength'], statuses)
 			
 	#main_game_node.chatBoxAppend('got clapped')
 
@@ -250,12 +257,13 @@ func _on_detection_zone_body_exited(body):
 	changeState(States.IDLE)
 	
 func _on_attack_zone_body_entered(body):
-	if body == target_body and current_state != States.WALKFAST:
-		changeState(States.ATTACK)
-	elif body == target_body:
-		#await get_tree().create_timer(1.0).timeout
-		changeState(States.ATTACK)
-		
+	if body == target_body and body.is_attackable:
+		if current_state != States.WALKFAST:
+			changeState(States.ATTACK)
+		else:
+			#await get_tree().create_timer(1.0).timeout
+			changeState(States.ATTACK)
+					
 func _on_attack_zone_body_exited(body):
 	if body == target_body:
 		changeState(States.WALKFAST)
