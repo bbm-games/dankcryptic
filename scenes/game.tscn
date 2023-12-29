@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=64 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_y5cr6"]
 [ext_resource type="Script" path="res://scenes/HUDLayer.gd" id="2_eour7"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://kuy5fnxctvqh" path="res://assets/testbg.png" id="10_fiov2"]
 [ext_resource type="Texture2D" uid="uid://bhwam4dktqr3s" path="res://assets/boss_bar.png" id="11_qsang"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="11_updkf"]
+[ext_resource type="Texture2D" uid="uid://b6tuk3dp4clo3" path="res://assets/healthbartiny.png" id="12_0dite"]
 [ext_resource type="Texture2D" uid="uid://7mr23lprj7n3" path="res://assets/neutral.webp" id="12_w4hbc"]
 [ext_resource type="Material" uid="uid://biktfxaq848hp" path="res://materials/shield.tres" id="14_iy6yf"]
 [ext_resource type="AudioStream" uid="uid://v5srpkj6a8ui" path="res://assets/sounds/magic_attack.mp3" id="14_q0ik6"]
@@ -642,6 +643,151 @@ theme_override_fonts/font = ExtResource("5_k6q0s")
 theme_override_font_sizes/font_size = 8
 allow_search = false
 auto_height = true
+
+[node name="statusEffectBars" type="VBoxContainer" parent="HUDLayer"]
+visible = false
+offset_left = 8.0
+offset_top = 205.0
+offset_right = 94.0
+offset_bottom = 273.0
+
+[node name="poisoned" type="Control" parent="HUDLayer/statusEffectBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Node2D" type="Node2D" parent="HUDLayer/statusEffectBars/poisoned"]
+z_index = 1
+scale = Vector2(0.7, 0.7)
+
+[node name="frame" type="Sprite2D" parent="HUDLayer/statusEffectBars/poisoned/Node2D"]
+scale = Vector2(0.4, 0.768)
+texture = ExtResource("12_0dite")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 40, 300, 20)
+
+[node name="bar" type="ColorRect" parent="HUDLayer/statusEffectBars/poisoned/Node2D"]
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 50.0
+offset_bottom = 10.0
+scale = Vector2(2.48084, 1)
+color = Color(0.491503, 0.120105, 0.829163, 1)
+
+[node name="burned" type="Control" parent="HUDLayer/statusEffectBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Node2D" type="Node2D" parent="HUDLayer/statusEffectBars/burned"]
+z_index = 1
+scale = Vector2(0.7, 0.7)
+
+[node name="frame" type="Sprite2D" parent="HUDLayer/statusEffectBars/burned/Node2D"]
+scale = Vector2(0.4, 0.768)
+texture = ExtResource("12_0dite")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 40, 300, 20)
+
+[node name="bar" type="ColorRect" parent="HUDLayer/statusEffectBars/burned/Node2D"]
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 50.0
+offset_bottom = 10.0
+scale = Vector2(2.48084, 1)
+color = Color(0.992157, 0.427451, 0.368627, 1)
+
+[node name="drenched" type="Control" parent="HUDLayer/statusEffectBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Node2D" type="Node2D" parent="HUDLayer/statusEffectBars/drenched"]
+z_index = 1
+scale = Vector2(0.7, 0.7)
+
+[node name="frame" type="Sprite2D" parent="HUDLayer/statusEffectBars/drenched/Node2D"]
+scale = Vector2(0.4, 0.768)
+texture = ExtResource("12_0dite")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 40, 300, 20)
+
+[node name="bar" type="ColorRect" parent="HUDLayer/statusEffectBars/drenched/Node2D"]
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 50.0
+offset_bottom = 10.0
+scale = Vector2(2.48084, 1)
+color = Color(0.243952, 0.547697, 1, 1)
+
+[node name="confused" type="Control" parent="HUDLayer/statusEffectBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Node2D" type="Node2D" parent="HUDLayer/statusEffectBars/confused"]
+z_index = 1
+scale = Vector2(0.7, 0.7)
+
+[node name="frame" type="Sprite2D" parent="HUDLayer/statusEffectBars/confused/Node2D"]
+scale = Vector2(0.4, 0.768)
+texture = ExtResource("12_0dite")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 40, 300, 20)
+
+[node name="bar" type="ColorRect" parent="HUDLayer/statusEffectBars/confused/Node2D"]
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 50.0
+offset_bottom = 10.0
+scale = Vector2(2.48084, 1)
+color = Color(0.592875, 0.641948, 0.680862, 1)
+
+[node name="paralyzed" type="Control" parent="HUDLayer/statusEffectBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Node2D" type="Node2D" parent="HUDLayer/statusEffectBars/paralyzed"]
+z_index = 1
+scale = Vector2(0.7, 0.7)
+
+[node name="frame" type="Sprite2D" parent="HUDLayer/statusEffectBars/paralyzed/Node2D"]
+scale = Vector2(0.4, 0.768)
+texture = ExtResource("12_0dite")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 40, 300, 20)
+
+[node name="bar" type="ColorRect" parent="HUDLayer/statusEffectBars/paralyzed/Node2D"]
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 50.0
+offset_bottom = 10.0
+scale = Vector2(2.48084, 1)
+color = Color(1, 1, 0, 1)
+
+[node name="bloodless" type="Control" parent="HUDLayer/statusEffectBars"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="Node2D" type="Node2D" parent="HUDLayer/statusEffectBars/bloodless"]
+z_index = 1
+scale = Vector2(0.7, 0.7)
+
+[node name="frame" type="Sprite2D" parent="HUDLayer/statusEffectBars/bloodless/Node2D"]
+scale = Vector2(0.4, 0.768)
+texture = ExtResource("12_0dite")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 40, 300, 20)
+
+[node name="bar" type="ColorRect" parent="HUDLayer/statusEffectBars/bloodless/Node2D"]
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 50.0
+offset_bottom = 10.0
+scale = Vector2(2.48084, 1)
+color = Color(1, 0, 0.0156863, 1)
 
 [node name="Testbg" type="Sprite2D" parent="."]
 modulate = Color(0.14902, 0.14902, 0.14902, 1)

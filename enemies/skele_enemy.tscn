@@ -275,6 +275,7 @@ bus = &"Sounds"
 stream = ExtResource("7_nfveq")
 
 [node name="health_bar" type="Node2D" parent="."]
+z_index = 1
 position = Vector2(0.666687, -32.6667)
 
 [node name="frame" type="Sprite2D" parent="health_bar"]

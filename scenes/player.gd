@@ -25,6 +25,7 @@ func take_damage(damage_val, statusInflictions = null, ranged = false, aoe = fal
 				if net_amount <= 0:
 					net_amount = 0
 				GlobalVars.player_data['statuses'][key] += net_amount
+		main_game_node.showStatusesOnScreen()
 	if not aoe:
 		# if the block isn't held then you take true damage
 		if not main_game_node.block_held:

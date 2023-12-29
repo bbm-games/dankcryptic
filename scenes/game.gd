@@ -267,7 +267,9 @@ func changeMap(map_scene_path: String):
 	backgroundMusic.stream = load(currentMap.get_node('Node2D').map_music)
 	backgroundMusic.play()
 	playTitleCard(currentMap.get_node('Node2D').map_name)
-	
+
+func showStatusesOnScreen():
+	get_node("HUDLayer/statusEffectBars").show()
 	
 func update_hud_colors(hud_color: Vector3):
 	# set up the HUD color
