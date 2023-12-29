@@ -62,25 +62,25 @@ func _ready():
 	health_bar_height = health_bar.get_size().y
 
 func changeState(state_name):
-	if current_state != state_name:
-		current_state = state_name
-	main_game_node.chatBoxAppend(StateStrings[state_name])
-	if current_state == States.ATTACK:
-		self.showCertainSprite(States.ATTACK)		
-	else:
+	if current_state == state_name:
 		pass
-	if current_state == States.IDLE:
-		self.showCertainSprite(States.IDLE)
-	if current_state == States.WALK:
-		self.showCertainSprite(States.WALK)
-		speed = base_speed
-	if current_state == States.WALKFAST:
-		# TODO: modify the walk fast state sprite
-		self.showCertainSprite(States.WALK)
-		speed = base_speed * 2
-	if current_state == States.DEATH:
-		self.showCertainSprite(States.IDLE)
-		speed = 0
+	else:
+		current_state = state_name
+		main_game_node.chatBoxAppend(StateStrings[state_name])
+		if current_state == States.ATTACK:
+			self.showCertainSprite(States.ATTACK)
+		if current_state == States.IDLE:
+			self.showCertainSprite(States.IDLE)
+		if current_state == States.WALK:
+			self.showCertainSprite(States.WALK)
+			speed = base_speed
+		if current_state == States.WALKFAST:
+			# TODO: modify the walk fast state sprite
+			self.showCertainSprite(States.WALK)
+			speed = base_speed * 2
+		if current_state == States.DEATH:
+			self.showCertainSprite(States.IDLE)
+			speed = 0
 
 func showCertainSprite(enum_given):
 	var name_given : String = StateStrings[enum_given]
@@ -159,9 +159,13 @@ func on_tween_finished():
 
 func set_to_dust_sensitivity(value: float):
 	get_node('idle').get_material().set_shader_parameter('sensitivity', value)
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+
+	# if there is no target body, be idle
+	if not target_body:
+		changeState(States.IDLE)
 	
 	# update the health bar
 	health_bar.set_size(Vector2(enemy_data['current_health']/enemy_data['max_health'] * health_bar_length, health_bar_height))
