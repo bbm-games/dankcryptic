@@ -58,6 +58,11 @@ var just_took_partial_damage = false
 var damage_highlight_time = 0
 var damage_partial_highlight_time = 0
 
+var just_took_status_infliction = false
+var just_took_status_infliction_timer = 0
+var status_infliction_bar_height
+var status_infliction_bar_length
+
 var time_passed = 0.0
 var playerAnimationPlayer
 var boss1ScenePath = "res://maps/boss1.tscn"
@@ -230,6 +235,11 @@ func _ready():
 	# set up the player summary bar
 	update_player_summary_bar()
 	
+	# set the on screen status infliction bars
+	status_infliction_bar_length = get_node('HUDLayer/statusEffectBars/bloodless/Node2D/bar').get_size().x
+	status_infliction_bar_height = get_node('HUDLayer/statusEffectBars/bloodless/Node2D/bar').get_size().y
+	update_statuses_on_screen()
+	
 	# set the textures for the items in the player's quickslots
 	# make sure you update the quickslots everytime the player changes shit
 	update_quick_slots()
@@ -268,8 +278,13 @@ func changeMap(map_scene_path: String):
 	backgroundMusic.play()
 	playTitleCard(currentMap.get_node('Node2D').map_name)
 
-func showStatusesOnScreen():
-	get_node("HUDLayer/statusEffectBars").show()
+func update_statuses_on_screen():
+	# TODO: make this better
+	for key in player_data['statuses'].keys():
+		var value = player_data['statuses'][key]
+		if value > 1:
+			value = 1
+		get_node('HUDLayer/statusEffectBars/' + key +'/Node2D/bar').set_size(Vector2(value/1.0 * status_infliction_bar_length, status_infliction_bar_height))
 	
 func update_hud_colors(hud_color: Vector3):
 	# set up the HUD color
@@ -1124,7 +1139,8 @@ func _process(delta):
 
 	# other status effect applications
 	# by default turn their effects off 
-		# make the player transiently red if attacked
+	
+	# make the player transiently red if attacked
 	if just_took_damage:
 		damage_highlight_time += delta
 		player_sprite.modulate = Color(1,0.18,0.18,1)
@@ -1173,6 +1189,16 @@ func _process(delta):
 				self.subtractHealth(2 * delta)
 		player_body.get_node("trail").get_process_material().set_color (Color(1,0,0,1))
 		player_body.get_node("trail").set_emitting(true)
+	
+	# show status effects on screen if needed
+	if just_took_status_infliction:
+		update_statuses_on_screen()
+		get_node('HUDLayer/statusEffectBars').show()
+		just_took_status_infliction_timer += delta
+		if just_took_status_infliction_timer >= 5:
+			just_took_status_infliction = false
+			just_took_status_infliction_timer = 0
+			get_node('HUDLayer/statusEffectBars').hide()
 	
 	# check to see if collision occured
 	if collision_data:
