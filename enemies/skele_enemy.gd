@@ -25,6 +25,8 @@ var health_bar
 var health_bar_height
 var health_bar_length
 
+var scale_size
+
 var rng
 
 # the enemy states
@@ -60,9 +62,13 @@ func _ready():
 	health_bar = get_node("health_bar/healthBar")
 	health_bar_length= health_bar.get_size().x
 	health_bar_height = health_bar.get_size().y
+	
+	scale_size = self.get_scale().x # x and y scale should ideally be same
 
 func changeState(state_name):
-	if current_state == state_name:
+	if current_state == States.DEATH:
+		pass # cannot escape from this state
+	elif current_state == state_name:
 		pass
 	else:
 		current_state = state_name
@@ -186,7 +192,7 @@ func _process(delta):
 	if target_body:
 		if (target_body.position - self.position).x < 0 and flipDelayTimer > 1:
 			flipDelayTimer = 0
-			self.set_transform(Transform2D(Vector2(-1.5, 0), Vector2(0,  1.5), Vector2(position.x, position.y)))
+			self.set_transform(Transform2D(Vector2(-1 *scale_size, 0), Vector2(0, scale_size), Vector2(position.x, position.y)))
 			offset = Vector2(-13,0)
 			# flip back the health bar
 			get_node("health_bar").set_transform(Transform2D(Vector2(-1, 0), Vector2(0,  1), get_node('health_bar').position))
@@ -194,7 +200,7 @@ func _process(delta):
 			# unflip
 			flipDelayTimer = 0
 			offset = Vector2(13,0)
-			self.set_transform(Transform2D(Vector2(1.5, 0), Vector2(0,  1.5), Vector2(position.x, position.y)))
+			self.set_transform(Transform2D(Vector2(scale_size, 0), Vector2(0,  scale_size), Vector2(position.x, position.y)))
 			# flip back the health bar
 			get_node("health_bar").set_transform(Transform2D(Vector2(1, 0), Vector2(0,  1), get_node('health_bar').position))
 	# makes the skele move to target body if in the WALK or WALK_FAST STATE
