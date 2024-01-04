@@ -70,6 +70,7 @@ var dungeonScenePath = "res://maps/dungeon.tscn"
 var wartotaurlairScenePath = "res://maps/wartotaur_lair.tscn"
 var fanumtaxScenePath = "res://maps/fanum_tax.tscn"
 var sanctumScenePath = "res://maps/sanctum.tscn"
+var proceduralScenePath = "res://maps/procedural.tscn"
 var hoverSound
 
 var item_slot_frame
@@ -251,7 +252,7 @@ func _ready():
 	#var scene_resource = ResourceLoader.load(fanumtaxScenePath)
 	#var scene_resource = ResourceLoader.load(sanctumScenePath)
 	
-	changeMap(fanumtaxScenePath)
+	changeMap(proceduralScenePath)
 	
 #	var scene = scene_resource.instantiate()
 #	currentMap = self.get_node("currentMap")
