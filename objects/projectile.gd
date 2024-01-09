@@ -61,8 +61,12 @@ func _process(delta):
 	self.set_position(self.get_position() + direction_facing_vector * delta * speed)
 	
 func _on_body_entered(body):
+	if body is TileMap:
+		# it's likely a wall
+		# delete the projectile
+		queue_free()
 	# check to see if the body is attackable, is so apply damage
-	if body.is_attackable:
+	elif body.is_attackable:
 		if body.has_method("take_damage") :
 			# calculate the difference between caster magic and enemy defense to determine critical hit percentage
 			var diff = magic_level - body.enemy_data['stats']['defense']

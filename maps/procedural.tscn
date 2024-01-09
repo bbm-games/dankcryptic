@@ -188,6 +188,7 @@ texture = ExtResource("pruple")
 6:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:2/0/physics_layer_0/angular_velocity = 0.0
 7:2/0 = 0
+7:2/0/y_sort_origin = 1
 7:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:2/0/physics_layer_0/angular_velocity = 0.0
 8:2/0 = 0
@@ -300,7 +301,7 @@ texture = ExtResource("pruple")
 11:3/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_0"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 65
 physics_layer_0/collision_mask = 28
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "ground"

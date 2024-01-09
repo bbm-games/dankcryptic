@@ -217,6 +217,7 @@ item_6={
 2d_physics/layer_4="enemy_layer"
 2d_physics/layer_5="npc_layer"
 2d_physics/layer_6="projectile_layer"
+2d_physics/layer_7="tile_map_walls"
 
 [rendering]
 
