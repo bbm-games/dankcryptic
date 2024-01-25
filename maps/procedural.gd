@@ -13,6 +13,8 @@ func _ready():
 	self.add_child(item_instance)
 	item_instance.load_item('spell007')
 	item_instance.position = get_node('spell').position
+	
+	self.get_node('thing').load_item('item001')
 
 func _process(_delta):
 	pass

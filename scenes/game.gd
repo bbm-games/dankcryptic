@@ -722,10 +722,23 @@ func _input(event):
 		#print("Mouse Click/Unclick at: ", event.position)
 		pass
 	elif event is InputEventMouseMotion:
+		#show the mouse if it was hiding
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		mouse_event_pos = event.position
 		mouse_event_global_pos = get_global_mouse_position()
 		# move the player's melee collision shape
 		get_node('player/hitBox').look_at(mouse_event_global_pos)
+	elif event is InputEventJoypadMotion:
+		# hide the mouse
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		var unit_circle_coord = Vector2(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
+										Input.get_joy_axis(0, JOY_AXIS_TRIGGER_RIGHT))
+		chatBoxAppend(str(unit_circle_coord))
+		# move the player's melee collision shape
+		get_node('player/hitBox').look_at(get_node('player').global_position + unit_circle_coord*100)
+	elif event is InputEventJoypadButton:
+		# hide the mouse
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	if event.is_action_pressed("zoom_in") and not playerMenu.visible and not confused:
 		if currentZoom <= 2:
 			currentZoom += 0.03
@@ -989,6 +1002,8 @@ func _input(event):
 				player_data['inventory'].append(body.item_id)
 				# update the player inventory display
 				update_player_inventory()
+				# update the quickslots in case the item you picked up is stackable and the quickslots need to be updated
+				update_quick_slots()
 				# remove item from world.
 				body.queue_free()
 	if event.is_action_released("chat"):

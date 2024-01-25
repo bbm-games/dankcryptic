@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://8ggduo7pru05"]
+[gd_scene load_steps=6 format=3 uid="uid://8ggduo7pru05"]
 
 [ext_resource type="Script" path="res://maps/procedural.gd" id="1_d8trt"]
+[ext_resource type="PackedScene" uid="uid://dywtovs1hwwfx" path="res://objects/ground_item.tscn" id="3_hvg01"]
 [ext_resource type="Texture2D" uid="uid://bo1fgudm5pje8" path="res://assets/tilesets/purple.png" id="pruple"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0"]
@@ -350,3 +351,6 @@ offset_right = -230.0
 offset_bottom = -217.0
 scale = Vector2(29.1194, 21.3401)
 color = Color(0.0980392, 0.054902, 0.133333, 1)
+
+[node name="thing" parent="." instance=ExtResource("3_hvg01")]
+position = Vector2(158, 291)
