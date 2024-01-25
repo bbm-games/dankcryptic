@@ -732,7 +732,7 @@ func _input(event):
 		# hide the mouse
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		var unit_circle_coord = Vector2(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
-										Input.get_joy_axis(0, JOY_AXIS_TRIGGER_RIGHT))
+										Input.get_joy_axis(0, 5))
 		chatBoxAppend(str(unit_circle_coord))
 		# move the player's melee collision shape
 		get_node('player/hitBox').look_at(get_node('player').global_position + unit_circle_coord*100)

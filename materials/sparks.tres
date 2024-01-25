@@ -18,19 +18,17 @@ point_count = 2
 curve = SubResource("Curve_2uawe")
 
 [resource]
+particle_flag_disable_z = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 24.0
 emission_ring_radius = 24.0
 emission_ring_inner_radius = 23.0
-particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
 spread = 180.0
-gravity = Vector3(0, 200, 0)
 initial_velocity_min = 100.0
 initial_velocity_max = 150.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 200, 0)
 scale_min = 2.0
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_p8wt1")
