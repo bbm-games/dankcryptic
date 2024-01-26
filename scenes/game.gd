@@ -732,13 +732,14 @@ func _input(event):
 		# hide the mouse
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		var unit_circle_coord = Vector2(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
-										Input.get_joy_axis(0, 5))
+										Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y))
 		chatBoxAppend(str(unit_circle_coord))
 		# move the player's melee collision shape
 		get_node('player/hitBox').look_at(get_node('player').global_position + unit_circle_coord*100)
 	elif event is InputEventJoypadButton:
 		# hide the mouse
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		
 	if event.is_action_pressed("zoom_in") and not playerMenu.visible and not confused:
 		if currentZoom <= 2:
 			currentZoom += 0.03
@@ -986,7 +987,7 @@ func _input(event):
 		else:
 			update_player_inventory()
 			playerMenu.show()
-	
+			playerMenu.grab_focus()
 	# item interaction in the world also uses the chat key
 	if event.is_action_pressed("chat"):
 		interaction = true

@@ -21,7 +21,7 @@ func load_item(item_id_given):
 	var sprite_data
 	
 	if item_id.contains('weapon'):
-		sprite_data = GlobalVars.DocsInList(GlobalVars.lore_data['weapons'], 'id', item_id, 'sprite_data')
+		sprite_data = GlobalVars.searchDocsInList(GlobalVars.lore_data['weapons'], 'id', item_id, 'sprite_data')
 	elif item_id.contains('item'):
 		sprite_data = GlobalVars.searchDocsInList(GlobalVars.lore_data['items'], 'id', item_id, 'sprite_data')
 	elif item_id.contains('spell'):

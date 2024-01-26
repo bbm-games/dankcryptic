@@ -315,6 +315,18 @@ sources/0 = SubResource("TileSetAtlasSource_0")
 y_sort_enabled = true
 script = ExtResource("1_d8trt")
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -270.0
+offset_top = -257.0
+offset_right = -230.0
+offset_bottom = -217.0
+scale = Vector2(29.1194, 21.3401)
+mouse_filter = 2
+color = Color(0.0980392, 0.054902, 0.133333, 1)
+
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 1
 y_sort_enabled = true
@@ -330,19 +342,8 @@ layer_1/tile_data = PackedInt32Array(196617, 0, 0, 196618, 65536, 0, 196619, 655
 layer_2/name = "decorators"
 layer_2/tile_data = PackedInt32Array()
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.2, 0.2, 0.2, 1)
-
 [node name="spell" type="Node2D" parent="."]
 position = Vector2(409, 247)
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -270.0
-offset_top = -257.0
-offset_right = -230.0
-offset_bottom = -217.0
-scale = Vector2(29.1194, 21.3401)
-color = Color(0.0980392, 0.054902, 0.133333, 1)
 
 [node name="thing" parent="." instance=ExtResource("3_hvg01")]
 position = Vector2(158, 291)
