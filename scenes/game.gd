@@ -252,7 +252,7 @@ func _ready():
 	#var scene_resource = ResourceLoader.load(fanumtaxScenePath)
 	#var scene_resource = ResourceLoader.load(sanctumScenePath)
 	
-	changeMap(proceduralScenePath)
+	changeMap(dungeonScenePath)
 	
 #	var scene = scene_resource.instantiate()
 #	currentMap = self.get_node("currentMap")
