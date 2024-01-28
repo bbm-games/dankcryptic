@@ -1,12 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bulhn4rc843jq"]
+[gd_scene load_steps=9 format=3 uid="uid://bulhn4rc843jq"]
 
 [ext_resource type="Script" path="res://maps/dungeon.gd" id="1_5e13p"]
 [ext_resource type="Texture2D" uid="uid://dtcm1ghr12nia" path="res://assets/DarkDungeon.png" id="2_nwbmn"]
-[ext_resource type="Script" path="res://scenes/npc1.gd" id="3_1ckni"]
-[ext_resource type="Texture2D" uid="uid://bt5e0mken3goj" path="res://assets/griffith.png" id="4_gplh7"]
-[ext_resource type="Texture2D" uid="uid://cpgipefc7y1ek" path="res://assets/chaticon.png" id="5_crho6"]
-[ext_resource type="AudioStream" uid="uid://dl3p5p2c3jhh2" path="res://assets/sounds/chat.wav" id="6_15r6j"]
-[ext_resource type="AudioStream" uid="uid://bsxdj6do18f4k" path="res://assets/sounds/suprise.wav" id="7_c6tnh"]
+[ext_resource type="PackedScene" uid="uid://52fb1vhbw6iv" path="res://npcs/npc_1.tscn" id="3_g73g3"]
 [ext_resource type="PackedScene" uid="uid://cdnweam38rxor" path="res://enemies/skele_enemy.tscn" id="8_1183f"]
 [ext_resource type="PackedScene" uid="uid://dywtovs1hwwfx" path="res://objects/ground_item.tscn" id="17_tx5kw"]
 
@@ -348,49 +344,6 @@ physics_layer_0/collision_mask = 13
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_gdev4")
 sources/0 = SubResource("TileSetAtlasSource_0")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp8pf"]
-size = Vector2(29, 38)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_gn28i"]
-radius = 26.0
-
-[sub_resource type="Animation" id="Animation_e6twv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("chatIcon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -30)]
-}
-
-[sub_resource type="Animation" id="Animation_5djxa"]
-resource_name = "bounce"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("chatIcon:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, -27), Vector2(0, -23), Vector2(0, -27)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2gvuv"]
-_data = {
-"RESET": SubResource("Animation_e6twv"),
-"bounce": SubResource("Animation_5djxa")
-}
-
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5e13p")
@@ -412,47 +365,6 @@ layer_1/y_sort_enabled = true
 layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(8, 131072, 0, 12, 262144, 8, 65536, 262144, 1, 65537, 327680, 1, 65538, 393216, 1, 65539, 131072, 1, 65540, 196608, 1, 65541, 262144, 1, 65542, 327680, 1, 65543, 393216, 1, 65544, 131072, 1, 65545, 196608, 1, 65546, 262144, 1, 65547, 327680, 1, 65548, 393216, 1, 65549, 196608, 1, 65550, 262144, 1, 65551, 327680, 1, 131072, 262144, 2, 131073, 327680, 2, 131074, 393216, 2, 131075, 131072, 2, 131076, 196608, 2, 131077, 262144, 2, 131078, 327680, 2, 131079, 393216, 2, 131080, 131072, 2, 131081, 196608, 2, 131082, 262144, 2, 131083, 327680, 2, 131084, 393216, 2, 131085, 196608, 2, 131086, 262144, 2, 131087, 327680, 2, 196608, 131072, 14, 196609, 196608, 14, 196610, 262144, 14, 196611, 393216, 5, 196612, 327680, 10, 196613, 393216, 10, 196614, 458752, 10, 196615, 524288, 10, 196616, 131072, 1, 196617, 196608, 1, 196618, 262144, 1, 196619, 327680, 1, 196620, 196608, 1, 196621, 262144, 1, 196622, 327680, 1, 262144, 131072, 15, 262145, 196608, 15, 262146, 262144, 15, 262147, 393216, 6, 262148, 327680, 11, 262149, 393216, 11, 262150, 458752, 11, 262151, 524288, 11, 262152, 131072, 2, 262153, 196608, 2, 262154, 262144, 2, 262155, 327680, 2, 262156, 196608, 2, 262157, 262144, 2, 262158, 327680, 2, 327684, 327680, 12, 327685, 393216, 12, 327686, 458752, 12, 327687, 524288, 12, 327688, 262144, 3, 327689, 196608, 1, 327690, 262144, 1, 327691, 327680, 1, 327692, 393216, 1, 393224, 327680, 3, 393225, 196608, 2, 393226, 262144, 2, 393227, 327680, 2, 393228, 393216, 2, 458759, 196608, 1, 458760, 196608, 3, 458761, 327680, 1, 458762, 393216, 1, 458765, 65536, 12, 524293, 65536, 12, 524295, 196608, 2, 524296, 262144, 2, 524297, 327680, 2, 524298, 393216, 2, 524301, 65536, 13, 589829, 65536, 13, 655361, 0, 3, 655362, 196608, 1, 655363, 262144, 1, 655364, 196608, 1, 655365, 262144, 1, 655366, 327680, 1, 655367, 393216, 1, 655368, 65536, 3, 655370, 0, 3, 655371, 65536, 3, 720897, 0, 4, 720898, 196608, 2, 720899, 262144, 2, 720900, 196608, 2, 720901, 262144, 2, 720902, 327680, 2, 720903, 393216, 2, 720904, 65536, 4, 720906, 0, 4, 720907, 65536, 4, 786433, 0, 5, 786434, 196608, 1, 786435, 327680, 7, 786436, 393216, 7, 786437, 458752, 7, 786438, 524288, 7, 786439, 393216, 1, 786440, 65536, 5, 786442, 0, 5, 786443, 65536, 5, 851969, 0, 2, 851970, 196608, 2, 851971, 327680, 8, 851972, 393216, 8, 851973, 458752, 8, 851974, 524288, 8, 851975, 393216, 2, 851976, 65536, 2, 851978, 0, 2, 851979, 65536, 2, 851981, 65536, 12, 917507, 327680, 9, 917508, 393216, 9, 917509, 458752, 9, 917510, 524288, 9, 917517, 65536, 13, 9, 65536, 8, 10, 131072, 8, 11, 196608, 8)
 
-[node name="npc1" type="CharacterBody2D" parent="."]
-z_index = 2
-position = Vector2(409, 202)
-collision_layer = 16
-collision_mask = 15
-script = ExtResource("3_1ckni")
-
-[node name="npc1sprite" type="Sprite2D" parent="npc1"]
-scale = Vector2(0.07375, 0.0683333)
-texture = ExtResource("4_gplh7")
-hframes = 3
-frame = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="npc1"]
-position = Vector2(1.5, 2)
-shape = SubResource("RectangleShape2D_bp8pf")
-
-[node name="chatIcon" type="Sprite2D" parent="npc1"]
-z_index = 1
-position = Vector2(0, -30)
-texture = ExtResource("5_crho6")
-
-[node name="npcBoundary" type="Area2D" parent="npc1"]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="npc1/npcBoundary"]
-shape = SubResource("CircleShape2D_gn28i")
-
-[node name="chatSound" type="AudioStreamPlayer" parent="npc1"]
-stream = ExtResource("6_15r6j")
-bus = &"Sounds"
-
-[node name="chatIconAnimationPlayer" type="AnimationPlayer" parent="npc1"]
-libraries = {
-"": SubResource("AnimationLibrary_2gvuv")
-}
-
-[node name="surpriseSound" type="AudioStreamPlayer" parent="npc1"]
-stream = ExtResource("7_c6tnh")
-
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 enabled = false
 
@@ -470,5 +382,5 @@ position = Vector2(273, 243)
 [node name="treasure4" parent="." instance=ExtResource("17_tx5kw")]
 position = Vector2(540, 123)
 
-[connection signal="body_entered" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_entered"]
-[connection signal="body_shape_exited" from="npc1/npcBoundary" to="npc1" method="_on_npc_boundary_body_shape_exited"]
+[node name="npc1" parent="." instance=ExtResource("3_g73g3")]
+position = Vector2(425, 98)

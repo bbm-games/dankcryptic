@@ -12,8 +12,12 @@ var chatPortrait
 var chatIconAnimationPlayer
 var endConvoIndex
 var convoOptions
-var initialConvoStateID = "ID 0"
+
 var is_attackable = false
+
+# TODO: grab these from the lore file
+var npc_id = 'npc001'
+var initialConvoStateID = "chat001"
 
 func _ready():
 	etime = 0
@@ -24,6 +28,7 @@ func _ready():
 	boundary = get_node("npcBoundary")
 	
 	# grab the chat popup from the main game HUD for manipulation purposes
+	# initially hide it
 	chatPopup = get_tree().get_root().get_node("Node2D/HUDLayer/chatPopup")
 	chatPopup.hide()
 	
@@ -38,12 +43,12 @@ func _ready():
 	chatIconAnimationPlayer.play("bounce")
 	
 	# set the npc portrait for chatting
-	var chatPortraitTexture = preload("res://assets/griffith.png")
+	var chatPortraitTexture = preload("res://assets/portraits/Icons_17.png")
 	chatPortrait = chatPopup.get_node("%chatPortrait")
 	chatPortrait.set_texture(chatPortraitTexture)
 	
 	# set the npc name for chatting
-	chatPopup.get_node("%npcName").set_text("Big Scary Knight")
+	chatPopup.get_node("%npcName").set_text(npc_id)
 	
 	# TODO: make the prompting smarter
 	#chatPopup.get_node("%prompt").set_text("Fuck you. Get out of my sight.\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sodales hendrerit diam, nec aliquam lorem rutrum ac. Suspendisse potenti. Mauris lacus sem, tincidunt et mattis consectetur, maximus at mauris. Duis metus lorem, vehicula sit amet tristique sit amet, facilisis et sapien. Nam tempus bibendum auctor. Pellentesque maximus nulla a tellus ultrices placerat. Curabitur varius dui vulputate tincidunt pellentesque. Aenean tellus nisl, bibendum nec lacus eu, mollis molestie erat.")
@@ -124,6 +129,7 @@ func _on_npc_boundary_body_entered(_body):
 	# play suprise audio
 	supriseSound.play()
 
+# hide chat icon when player is no longer in the viscinity
 func _on_npc_boundary_body_shape_exited(_body_rid, _body, _body_shape_index, _local_shape_index):
 	chatIcon.hide()
 	viscinity = false
