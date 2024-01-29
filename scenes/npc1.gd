@@ -18,6 +18,7 @@ var is_attackable = false
 # TODO: grab these from the lore file
 var npc_id = 'npc001'
 var initialConvoStateID = "chat001"
+var current_dialog = {}
 
 func _ready():
 	etime = 0
@@ -48,6 +49,7 @@ func _ready():
 	chatPortrait.set_texture(chatPortraitTexture)
 	
 	# set the npc name for chatting
+	# TODO: look up npc names based on ids
 	chatPopup.get_node("%npcName").set_text(npc_id)
 	
 	# TODO: make the prompting smarter
@@ -64,11 +66,15 @@ func _ready():
 	
 func setConvoState(id):
 	convoOptions.clear()
-	# TODO: get the prompt based on id
-	chatPopup.get_node("%prompt").set_text("Fuck you. Get out of my sight. " + id)
-	convoOptions.add_item("Option 1")
-	convoOptions.add_item("Option 2")
-	convoOptions.add_item(id)
+	# get the current dialog based on id
+	current_dialog = GlobalVars.returnDocInList(GlobalVars.lore_data['chats'], 'chatID', id)
+	chatPopup.get_node("%prompt").set_text(current_dialog['chatValue'])
+	var num_responses: int = (len(current_dialog.keys()) - 2)/2
+	for i in range(num_responses):
+		if i != 0:
+			convoOptions.add_item(current_dialog['optionValue_' + str(i)])
+		else:
+			convoOptions.add_item(current_dialog['optionValue'])
 	# Set up the default convo exit option
 	convoOptions.add_item("End conversation.")
 	
@@ -85,7 +91,10 @@ func convoOptionsItemClicked(index, _at_position, _mouse_button_index):
 		chatting = false
 	else:
 		# look up where the selected id will take us
-		setConvoState("ID 1")
+		if index != 0:
+			setConvoState(current_dialog['optionID_' + str(index)])
+		else:
+			setConvoState(current_dialog['optionID'])
 	
 #func _process(delta):
 #	pass

@@ -2427,5 +2427,74 @@
 		 "sprite_data":"res://assets/Item__39.png",
 		 "is_consumable":false
 	  }
-   ]
+   ],
+	"chats": [
+		{
+		  "chatID": "chat001",
+		  "chatValue": "Greetings, traveler. You've entered a world unlike any other. Are you ready to learn the rules of this realm?",
+		  "optionValue": "Yes, I am ready.",
+		  "optionID": "chat002",
+		  "optionValue_1": "I need some time.",
+		  "optionID_1": "chat005"
+		},
+		{
+		  "chatID": "chat002",
+		  "chatValue": "Very well. In this world, your strength is determined by your willpower. The more quests you complete, the stronger you become. Do you understand?",
+		  "optionValue": "Yes, I understand.",
+		  "optionID": "chat003"
+		},
+		{
+		  "chatID": "chat003",
+		  "chatValue": "Good. Remember, every action has a consequence. Choose wisely.",
+		  "optionValue": "Can you explain more?",
+		  "optionID": "chat004"
+		},
+		{
+		  "chatID": "chat004",
+		  "chatValue": "Of course. Completing quests will earn you experience points. These points increase your level and your abilities. But beware, some quests may lead to danger."
+		},
+		{
+		  "chatID": "chat005",
+		  "chatValue": "Take your time, traveler. The world isn't going anywhere. When you're ready, I'll be here to guide you."
+		},
+		{
+		  "chatID": "chat006"
+		},
+		{
+		  "chatID": "chat007"
+		},
+		{
+		  "chatID": "chat008"
+		},
+		{
+		  "chatID": "chat009"
+		},
+		{
+		  "chatID": "chat010"
+		},
+		{
+		  "chatID": "chat011"
+		},
+		{
+		  "chatID": "chat012"
+		},
+		{
+		  "chatID": "chat013"
+		},
+		{
+		  "chatID": "chat014"
+		},
+		{
+		  "chatID": "chat015"
+		},
+		{
+		  "chatID": "chat016"
+		},
+		{
+		  "chatID": "chat017"
+		},
+		{
+		  "chatID": "chat018"
+		}
+	  ]
 }
