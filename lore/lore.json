@@ -2429,72 +2429,111 @@
 	  }
    ],
 	"chats": [
-		{
-		  "chatID": "chat001",
-		  "chatValue": "Greetings, traveler. You've entered a world unlike any other. Are you ready to learn the rules of this realm?",
-		  "optionValue": "Yes, I am ready.",
-		  "optionID": "chat002",
-		  "optionValue_1": "I need some time.",
-		  "optionID_1": "chat005"
-		},
-		{
-		  "chatID": "chat002",
-		  "chatValue": "Very well. In this world, your strength is determined by your willpower. The more quests you complete, the stronger you become. Do you understand?",
-		  "optionValue": "Yes, I understand.",
-		  "optionID": "chat003"
-		},
-		{
-		  "chatID": "chat003",
-		  "chatValue": "Good. Remember, every action has a consequence. Choose wisely.",
-		  "optionValue": "Can you explain more?",
-		  "optionID": "chat004"
-		},
-		{
-		  "chatID": "chat004",
-		  "chatValue": "Of course. Completing quests will earn you experience points. These points increase your level and your abilities. But beware, some quests may lead to danger."
-		},
-		{
-		  "chatID": "chat005",
-		  "chatValue": "Take your time, traveler. The world isn't going anywhere. When you're ready, I'll be here to guide you."
-		},
-		{
-		  "chatID": "chat006"
-		},
-		{
-		  "chatID": "chat007"
-		},
-		{
-		  "chatID": "chat008"
-		},
-		{
-		  "chatID": "chat009"
-		},
-		{
-		  "chatID": "chat010"
-		},
-		{
-		  "chatID": "chat011"
-		},
-		{
-		  "chatID": "chat012"
-		},
-		{
-		  "chatID": "chat013"
-		},
-		{
-		  "chatID": "chat014"
-		},
-		{
-		  "chatID": "chat015"
-		},
-		{
-		  "chatID": "chat016"
-		},
-		{
-		  "chatID": "chat017"
-		},
-		{
-		  "chatID": "chat018"
-		}
-	  ]
+	{
+	  "chatID": "chat001",
+	  "chatValue": "Welcome, traveler. You've stepped into a realm shrouded in darkness and mystery. Are you prepared to understand its mechanics?",
+	  "optionValue": "Yes, I am ready.",
+	  "optionID": "chat002",
+	  "optionValue_1": "I need some time.",
+	  "optionID_1": "chat005",
+	  "optionValue_2": "Tell me more about the world.",
+	  "optionID_2": "chat009"
+	},
+	{
+	  "chatID": "chat002",
+	  "chatValue": "In this world, your survival depends on your skill and wit. The more challenges you overcome, the stronger you become. Is that clear?",
+	  "optionValue": "Yes, I understand.",
+	  "optionID": "chat003"
+	},
+	{
+	  "chatID": "chat003",
+	  "chatValue": "Good. Remember, every decision you make shapes your destiny.",
+	  "optionValue": "Can you explain more?",
+	  "optionID": "chat004"
+	},
+	{
+	  "chatID": "chat004",
+	  "chatValue": "Of course. Each challenge you face will earn you experience points. These points increase your abilities and influence your interactions with the world.",
+	  "optionValue": "What kind of challenges?",
+	  "optionID": "chat006"
+	},
+	{
+	  "chatID": "chat005",
+	  "chatValue": "Take your time, traveler. The world isn't going anywhere. When you're ready, I'll be here to guide you."
+	},
+	{
+	  "chatID": "chat006",
+	  "chatValue": "The challenges range from combat with creatures of the dark, solving riddles of the ancient ones, to navigating through treacherous terrains.",
+	  "optionValue": "How do I become stronger?",
+	  "optionID": "chat007"
+	},
+	{
+	  "chatID": "chat007",
+	  "chatValue": "You become stronger by gaining experience, learning new skills, and acquiring powerful equipment.",
+	  "optionValue": "What happens if I fail a challenge?",
+	  "optionID": "chat008"
+	},
+	{
+	  "chatID": "chat008",
+	  "chatValue": "Failure is but a stepping stone to success. If you fail, you can always try again. But beware, some decisions may have lasting consequences.",
+	  "optionValue": "Tell me more about the world.",
+	  "optionID": "chat009"
+	},
+	{
+	  "chatID": "chat009",
+	  "chatValue": "This world is vast and filled with various creatures, races, and mysteries. Would you like to know about any specific aspect?",
+	  "optionValue": "Tell me about the creatures.",
+	  "optionID": "chat010",
+	  "optionValue_1": "Tell me about the races.",
+	  "optionID_1": "chat011",
+	  "optionValue_2": "Tell me about the mysteries.",
+	  "optionID_2": "chat012",
+	  "optionValue_3": "How do I navigate this world?",
+	  "optionID_3": "chat013",
+	  "optionValue_4": "What dangers should I be aware of?",
+	  "optionID_4": "chat014"
+	},
+	{
+	  "chatID": "chat010",
+	  "chatValue": "The creatures of this world are as varied as they are dangerous. From the lowly goblins to the mighty dragons, each creature requires a different strategy to overcome.",
+	  "optionValue": "Okay, I have another question.",
+	  "optionID": "chat009"
+	},
+	{
+	  "chatID": "chat011",
+	  "chatValue": "There are several races in this world, each with their own unique abilities and characteristics. From the agile elves to the sturdy dwarves, your race can greatly influence your journey.",
+	  "optionValue": "Okay, I have another question.",
+	  "optionID": "chat009"
+	},
+	{
+	  "chatID": "chat012",
+	  "chatValue": "Ah, the mysteries of this world are numerous. Ancient ruins, forgotten spells, and hidden treasures are scattered across the land, waiting to be discovered.",
+	  "optionValue": "Okay, I have another question.",
+	  "optionID": "chat009"
+	},
+	{
+	  "chatID": "chat013",
+	  "chatValue": "Navigating this world requires a keen sense of direction and an adventurous spirit. Be sure to check your map often and don't be afraid to explore off the beaten path.",
+	  "optionValue": "Okay, I have another question.",
+	  "optionID": "chat009"
+	},
+	{
+	  "chatID": "chat014",
+	  "chatValue": "This world is full of dangers. Hostile creatures, treacherous terrains, and deadly traps are just some of the perils you might encounter on your journey.",
+	  "optionValue": "Okay, I have another question.",
+	  "optionID": "chat009"
+	},
+	{
+	  "chatID": "chat015"
+	},
+	{
+	  "chatID": "chat016"
+	},
+	{
+	  "chatID": "chat017"
+	},
+	{
+	  "chatID": "chat018"
+	}
+  ]
 }
