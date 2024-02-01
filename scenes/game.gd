@@ -82,6 +82,8 @@ var speed = base_speed # will be adjusted dynamically in game by dashse
 
 var mouse_event_pos
 var mouse_event_global_pos
+var unit_circle_coord
+var last_unit_circle_coord
 var emmisionNode
 var spell_active
 
@@ -731,11 +733,13 @@ func _input(event):
 	elif event is InputEventJoypadMotion:
 		# hide the mouse
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		var unit_circle_coord = Vector2(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
+		unit_circle_coord = Vector2(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
 										Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y))
-		chatBoxAppend(str(unit_circle_coord))
+		#chatBoxAppend(str(unit_circle_coord))
 		# move the player's melee collision shape
-		get_node('player/hitBox').look_at(get_node('player').global_position + unit_circle_coord*100)
+		if unit_circle_coord.length() > 0.2:
+			last_unit_circle_coord = unit_circle_coord
+			get_node('player/hitBox').look_at(get_node('player').global_position + last_unit_circle_coord)
 	elif event is InputEventJoypadButton:
 		# hide the mouse
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -851,7 +855,12 @@ func _input(event):
 				if player_data['current_mana'] >= mana_cost:
 					# TODO: generalize this so it works with more spells
 					var projectile = preload("res://objects/projectile.tscn").instantiate()
-					projectile.set_direction_facing_vector(Vector2(get_global_mouse_position().x - (player_body.get_global_position().x + casting_position_offset.x), get_global_mouse_position().y - (player_body.get_global_position().y + casting_position_offset.y)).normalized())
+					# if mouse is being used, use it to determine projectile aim
+					if Input.get_mouse_mode() != Input.MOUSE_MODE_HIDDEN:
+						projectile.set_direction_facing_vector(Vector2(get_global_mouse_position().x - (player_body.get_global_position().x + casting_position_offset.x), get_global_mouse_position().y - (player_body.get_global_position().y + casting_position_offset.y)).normalized())
+					else:
+						# if not, use the controller aim.
+						projectile.set_direction_facing_vector(Vector2(cos(get_node('player/hitBox').rotation), sin(get_node('player/hitBox').rotation)))
 					projectile.set_initial_position(player_body.get_global_position() + casting_position_offset)
 					self.add_child(projectile)
 					self.subtractMana(mana_cost)
