@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://b78h3ma27r3rb"]
+[gd_scene load_steps=68 format=3 uid="uid://b78h3ma27r3rb"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_y5cr6"]
 [ext_resource type="Script" path="res://scenes/HUDLayer.gd" id="2_eour7"]
@@ -33,6 +33,7 @@
 [ext_resource type="Theme" uid="uid://bck6sugoxd40h" path="res://themes/cryptic_theme.tres" id="25_s6css"]
 [ext_resource type="Script" path="res://scenes/bigportrait.gd" id="26_l3f38"]
 [ext_resource type="AudioStream" uid="uid://g4b8v66lx6kh" path="res://assets/sounds/RPG_Essentials_Free/10_UI_Menu_SFX/070_Equip_10.wav" id="27_qk0wl"]
+[ext_resource type="Texture2D" uid="uid://bijiu3ht8g2bk" path="res://assets/swords/16.png" id="28_a5yxf"]
 [ext_resource type="AudioStream" uid="uid://r0ovvgkjy0dn" path="res://assets/sounds/RPG_Essentials_Free/12_Player_Movement_SFX/30_Jump_03.wav" id="28_h0fbm"]
 [ext_resource type="Shader" path="res://shaders/shiny.gdshader" id="28_ixh5u"]
 [ext_resource type="AudioStream" uid="uid://gwdytccb2iog" path="res://assets/sounds/RPG_Essentials_Free/10_UI_Menu_SFX/071_Unequip_01.wav" id="28_k3oi5"]
@@ -184,6 +185,16 @@ shader_parameter/color = null
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14xon"]
 size = Vector2(26, 13)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35oys"]
+shader = ExtResource("28_ixh5u")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 5.0
+shader_parameter/shine_size = 0.01
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pb7w3"]
+radius = 8.0
+height = 38.0
 
 [sub_resource type="Animation" id="Animation_et487"]
 length = 0.001
@@ -948,6 +959,25 @@ amount = 60
 process_material = ExtResource("25_4xcpj")
 lifetime = 0.3
 one_shot = true
+
+[node name="righthand" type="Node2D" parent="player"]
+position = Vector2(0, -11)
+
+[node name="rightarmament" type="Sprite2D" parent="player/righthand"]
+modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
+material = SubResource("ShaderMaterial_35oys")
+position = Vector2(21, 0)
+rotation = 1.5708
+texture = ExtResource("28_a5yxf")
+
+[node name="swordBox" type="Area2D" parent="player/righthand"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/righthand/swordBox"]
+position = Vector2(25, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pb7w3")
 
 [node name="hitBox" type="Area2D" parent="player"]
 collision_layer = 0

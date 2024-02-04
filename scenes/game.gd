@@ -6,6 +6,8 @@ var currentZoom = 1
 
 var player_body
 var player_sprite
+var leftarmament_sprite
+var rightarmament_sprite
 var light 
 var health_bar 
 var mana_bar
@@ -142,6 +144,7 @@ func _ready():
 	
 	# set up the player
 	player_body = get_node("player")
+	rightarmament_sprite = get_node("player/righthand/rightarmament")
 	player_sprite = get_node("player/sprite") 
 	light = get_node("player/PointLight2D") 
 	emmisionNode = player_body.get_node("GPUParticles2D")
@@ -254,7 +257,7 @@ func _ready():
 	#var scene_resource = ResourceLoader.load(fanumtaxScenePath)
 	#var scene_resource = ResourceLoader.load(sanctumScenePath)
 	
-	changeMap(dungeonScenePath)
+	changeMap(sanctumScenePath)
 	
 #	var scene = scene_resource.instantiate()
 #	currentMap = self.get_node("currentMap")
@@ -730,6 +733,8 @@ func _input(event):
 		mouse_event_global_pos = get_global_mouse_position()
 		# move the player's melee collision shape
 		get_node('player/hitBox').look_at(mouse_event_global_pos)
+		# move the player's right hand armament
+		get_node('player/righthand').look_at(mouse_event_global_pos)
 	elif event is InputEventJoypadMotion:
 		# hide the mouse
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -740,6 +745,8 @@ func _input(event):
 		if unit_circle_coord.length() > 0.2:
 			last_unit_circle_coord = unit_circle_coord
 			get_node('player/hitBox').look_at(get_node('player').global_position + last_unit_circle_coord)
+			# move the player's right hand armament
+			get_node('player/righthand').look_at(get_node('player').global_position + last_unit_circle_coord)
 	elif event is InputEventJoypadButton:
 		# hide the mouse
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -910,7 +917,7 @@ func _input(event):
 				player_data['current_stamina'] = 0
 				
 			attack_held = true
-			var bodies = get_node('player/hitBox').get_overlapping_bodies();
+			var bodies = get_node('player/righthand/swordBox').get_overlapping_bodies();
 			if bodies:
 				for body in bodies:
 					if body.is_attackable:
@@ -936,6 +943,13 @@ func _input(event):
 			else :
 				get_node('player/attackSoundPlayer').play()
 			get_node("player/hitBox/Line2D").set_default_color(Color(1,0,0,1))
+			# make the right armament move
+			get_node('player/righthand/AnimationPlayer')
+			var stabdirection = (get_node('player/righthand').global_position - mouse_event_global_pos).normalized()
+			var tween = get_tree().create_tween()
+			var original_pos = get_node('player/righthand').position
+			tween.tween_property(get_node('player/righthand'), "position", original_pos + stabdirection * 20, 0.05)
+			tween.tween_property(get_node('player/righthand'), "position", original_pos, 0.05)
 			attack_cooldown_timer_running = true # to prevent spamming attacks too fast 
 		else:
 			attack_held = false
@@ -953,21 +967,25 @@ func _input(event):
 		block_held = false
 	if event.is_action_pressed("walk_up") and not player_data['is_dead']:
 		player_sprite.set_frame_coords(Vector2i(0, 3))
+		rightarmament_sprite.set_z_index(-1)
 		walk_up_held = true
 	if event.is_action_released("walk_up") and not player_data['is_dead']:
 		walk_up_held = false
 	if event.is_action_pressed("walk_down") and not player_data['is_dead']:
 		player_sprite.set_frame_coords(Vector2i(0, 0))
+		rightarmament_sprite.set_z_index(2)
 		walk_down_held = true
 	if event.is_action_released("walk_down") and not player_data['is_dead']:
 		walk_down_held = false
 	if event.is_action_pressed("walk_left") and not player_data['is_dead']:
 		player_sprite.set_frame_coords(Vector2i(0, 1))
+		rightarmament_sprite.set_z_index(-1)
 		walk_left_held = true
 	if event.is_action_released("walk_left") and not player_data['is_dead']:
 		walk_left_held = false
 	if event.is_action_pressed("walk_right") and not player_data['is_dead']:
 		player_sprite.set_frame_coords(Vector2i(0, 2))
+		rightarmament_sprite.set_z_index(2)
 		walk_right_held = true
 	if event.is_action_released("walk_right") and not player_data['is_dead']:
 		walk_right_held = false
@@ -1343,6 +1361,7 @@ func subtractHealth(amount):
 			var to_dust = preload("res://materials/to_dust.tres")
 			# TODO: actually have a death sprite to attach the to_dust material to
 			player_sprite.set_material(to_dust)
+			get_node('player/righthand').hide()
 			var tween = get_tree().create_tween()
 			tween.tween_method(set_to_dust_sensitivity, 0.0, 1.0, 1)
 			tween.connect("finished", on_death_tween_finished)
