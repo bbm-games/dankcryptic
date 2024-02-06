@@ -152,7 +152,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_cgn14")
 theme_override_font_sizes/font_size = 10
-text = "© 2023, BBM Games, LLC. All Right Reserved."
+text = "© 2024, BBM Games, LLC. All Right Reserved."
 vertical_alignment = 2
 
 [node name="FileDialog" type="FileDialog" parent="CanvasLayer"]
@@ -184,10 +184,10 @@ scale = Vector2(1.125, 0.628906)
 texture = ExtResource("4_l7sgt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "fade in"
 libraries = {
 "": SubResource("AnimationLibrary_g63ds")
 }
+autoplay = "fade in"
 
 [node name="uiPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_g3o4v")
