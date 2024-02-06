@@ -3,6 +3,8 @@ extends Node
 var player_data
 var lore_data
 
+var scene_to_change_to
+
 func _ready():
 	#get lore data
 	var file = FileAccess.open("res://lore/lore.json", FileAccess.READ)

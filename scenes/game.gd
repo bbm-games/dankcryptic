@@ -257,7 +257,7 @@ func _ready():
 	#var scene_resource = ResourceLoader.load(fanumtaxScenePath)
 	#var scene_resource = ResourceLoader.load(sanctumScenePath)
 	
-	changeMap(sanctumScenePath)
+	changeMap(fanumtaxScenePath)
 	
 #	var scene = scene_resource.instantiate()
 #	currentMap = self.get_node("currentMap")
@@ -944,7 +944,6 @@ func _input(event):
 				get_node('player/attackSoundPlayer').play()
 			get_node("player/hitBox/Line2D").set_default_color(Color(1,0,0,1))
 			# make the right armament move
-			get_node('player/righthand/AnimationPlayer')
 			var stabdirection = (get_node('player/righthand').global_position - mouse_event_global_pos).normalized()
 			var tween = get_tree().create_tween()
 			var original_pos = get_node('player/righthand').position
