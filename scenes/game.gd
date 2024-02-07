@@ -125,7 +125,7 @@ func get_random_offset() -> Vector2:
 func _ready():
 	
 	# show the loading screen at the begining
-	get_node("loadingScreen").show()
+	get_node("CanvasLayer3/loadingScreen").show()
 	
 	rng = RandomNumberGenerator.new()
 	
@@ -268,20 +268,25 @@ func _ready():
 	
 func changeMap(map_scene_path: String):
 	# show the loading screen
-	get_node("loadingScreen").show()
+	get_node("CanvasLayer3/loadingScreen").show()
+	get_node("CanvasLayer3/loadingScreen").add_child(ResourceLoader.load('res://scenes/loadingscreen.tscn').instantiate())
 	# load the map in the background
 	ResourceLoader.load_threaded_request(map_scene_path)
 	# show the loading screen
 	while ResourceLoader.load_threaded_get_status(map_scene_path) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 		# TODO: update stuff on the loading screen
 		pass
+	# minimum wait time is 6 seconds
+	await get_tree().create_timer(4).timeout
 	# turn off loading screen and load show map
-	get_node("loadingScreen").hide()
+	get_node("CanvasLayer3/loadingScreen").hide()
+	get_node("CanvasLayer3/loadingScreen").get_child(0).queue_free()
 	var scene = ResourceLoader.load_threaded_get(map_scene_path).instantiate()
 	currentMap = self.get_node("currentMap")
 	currentMap.add_child(scene)
 	backgroundMusic.stream = load(currentMap.get_node('Node2D').map_music)
 	backgroundMusic.play()
+	
 	playTitleCard(currentMap.get_node('Node2D').map_name)
 
 func update_statuses_on_screen():

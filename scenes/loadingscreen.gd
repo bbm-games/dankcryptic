@@ -5,12 +5,13 @@ func _ready():
 	# update the sprite in the background
 	#get_node('backgroundimage').set_texture(load())
 	var images = GlobalVars.dir_contents('res://assets/loading/')
+	get_node("backgroundimage").set_texture(load('res://assets/loading/' + GlobalVars.choose_random_from_list(images)))
 	get_node('AnimationPlayer').play('modulate fade in')
 	get_node('AnimationPlayer').queue('modulate fade out')
-	get_node("backgroundimage").set_texture(load('res://assets/loading/' + GlobalVars.choose_random_from_list(images)))
-
+	get_node('AnimationPlayer').queue('colorrect fade out')
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	#if not get_node('AnimationPlayer').is_playing():
+func _process(_delta):
+	#if not get_node('AnimationPlayer').is_playing(): #&& loading is complete
 	#	get_tree().change_scene_to_file(GlobalVars.scene_to_change_to)
 	pass

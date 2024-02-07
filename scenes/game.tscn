@@ -1023,14 +1023,6 @@ stream = ExtResource("29_fsmxi")
 volume_db = -10.0
 bus = &"Sounds"
 
-[node name="loadingScreen" type="CanvasLayer" parent="."]
-layer = 2
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="loadingScreen"]
-offset_right = 576.0
-offset_bottom = 324.0
-
 [node name="currentMap" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -1764,6 +1756,11 @@ offset_bottom = 40.0
 [node name="coinCollisionSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("30_moqcn")
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="loadingScreen" type="Node2D" parent="CanvasLayer3"]
 
 [connection signal="mouse_entered" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="HUDLayer/Area2D" to="HUDLayer" method="_on_area_2d_mouse_exited"]
