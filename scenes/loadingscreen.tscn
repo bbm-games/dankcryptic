@@ -265,12 +265,12 @@ offset_top = 276.0
 offset_right = 576.0
 offset_bottom = 324.0
 theme = SubResource("Theme_fx1qk")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 11
 text = "Perfect deflects prevent taking damage.  "
 horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 offset_right = 576.0
 offset_bottom = 324.0
 mouse_filter = 2

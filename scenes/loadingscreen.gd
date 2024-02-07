@@ -7,11 +7,12 @@ func _ready():
 	var images = GlobalVars.dir_contents('res://assets/loading/')
 	get_node("backgroundimage").set_texture(load('res://assets/loading/' + GlobalVars.choose_random_from_list(images)))
 	get_node('AnimationPlayer').play('modulate fade in')
-	get_node('AnimationPlayer').queue('modulate fade out')
+	
+func deleteScreen():
+	get_node('AnimationPlayer').play('modulate fade out')
 	get_node('AnimationPlayer').queue('colorrect fade out')
+	self.queue_free()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	#if not get_node('AnimationPlayer').is_playing(): #&& loading is complete
-	#	get_tree().change_scene_to_file(GlobalVars.scene_to_change_to)
 	pass

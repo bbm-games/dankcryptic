@@ -21,6 +21,8 @@ var health_bar_height
 
 var health_target
 
+var loadingCounter = 0
+
 # player data
 var player_data
 
@@ -123,9 +125,6 @@ func get_random_offset() -> Vector2:
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	# show the loading screen at the begining
-	get_node("CanvasLayer3/loadingScreen").show()
 	
 	rng = RandomNumberGenerator.new()
 	
@@ -267,21 +266,19 @@ func _ready():
 #	playTitleCard(currentMap.get_node('Node2D').map_name)
 	
 func changeMap(map_scene_path: String):
+	
 	# show the loading screen
+	GlobalVars.is_loading = true
+	GlobalVars.scene_to_change_to = map_scene_path
 	get_node("CanvasLayer3/loadingScreen").show()
 	get_node("CanvasLayer3/loadingScreen").add_child(ResourceLoader.load('res://scenes/loadingscreen.tscn').instantiate())
-	# load the map in the background
+	
+	# load the map in the background while the loading screen is showing
 	ResourceLoader.load_threaded_request(map_scene_path)
-	# show the loading screen
-	while ResourceLoader.load_threaded_get_status(map_scene_path) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-		# TODO: update stuff on the loading screen
-		pass
-	# minimum wait time is 6 seconds
-	await get_tree().create_timer(4).timeout
-	# turn off loading screen and load show map
-	get_node("CanvasLayer3/loadingScreen").hide()
-	get_node("CanvasLayer3/loadingScreen").get_child(0).queue_free()
-	var scene = ResourceLoader.load_threaded_get(map_scene_path).instantiate()
+
+	
+func showLoadedMap():
+	var scene = ResourceLoader.load_threaded_get(GlobalVars.scene_to_change_to).instantiate()
 	currentMap = self.get_node("currentMap")
 	currentMap.add_child(scene)
 	backgroundMusic.stream = load(currentMap.get_node('Node2D').map_music)
@@ -1045,6 +1042,17 @@ func _input(event):
 func _process(delta):
 	time_passed += delta
 	
+	# bunch of shit for the loading screen
+	
+	if GlobalVars.is_loading:
+		loadingCounter += delta
+		if ResourceLoader.load_threaded_get_status(GlobalVars.scene_to_change_to) == ResourceLoader.THREAD_LOAD_LOADED and loadingCounter > 4:
+			loadingCounter = 0
+			GlobalVars.is_loading = false
+			get_node("CanvasLayer3/loadingScreen").hide()
+			get_node('CanvasLayer3/loadingScreen/Loadingscreen').deleteScreen()
+			showLoadedMap()
+			
 	var collision_data
 	
 	# screen shake effect if needed

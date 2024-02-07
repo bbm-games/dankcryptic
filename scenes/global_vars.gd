@@ -4,6 +4,7 @@ var player_data
 var lore_data
 
 var scene_to_change_to
+var is_loading = false
 
 func _ready():
 	#get lore data
