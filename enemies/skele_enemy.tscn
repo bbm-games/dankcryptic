@@ -204,10 +204,10 @@ collision_mask = 15
 script = ExtResource("1_xchgr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_tn0ai")
 }
+autoplay = "idle"
 
 [node name="idle" type="Sprite2D" parent="."]
 visible = false

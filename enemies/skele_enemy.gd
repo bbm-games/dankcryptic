@@ -212,7 +212,7 @@ func _process(delta):
 		#self.move_and_collide(vel * delta)
 		
 		# without steering
-		self.move_and_collide((target_body.position + offset - (get_node('attackZone').position + self.position)).normalized() * speed * delta)
+		self.move_and_collide((target_body.position + offset - (get_node('attackZone/CollisionShape2D').position + self.position)).normalized() * speed * delta)
 		
 	# limits the WALKFAST state TO 5 seconds
 	if current_state == States.WALKFAST:
