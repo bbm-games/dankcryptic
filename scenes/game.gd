@@ -276,7 +276,6 @@ func changeMap(map_scene_path: String):
 	# load the map in the background while the loading screen is showing
 	ResourceLoader.load_threaded_request(map_scene_path)
 
-	
 func showLoadedMap():
 	var scene = ResourceLoader.load_threaded_get(GlobalVars.scene_to_change_to).instantiate()
 	currentMap = self.get_node("currentMap")

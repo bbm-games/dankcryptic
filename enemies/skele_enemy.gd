@@ -153,7 +153,11 @@ func dropItems():
 		var item = preload("res://objects/gold_piece.tscn")
 		var item_instance = item.instantiate()
 		main_game_node.get_node('currentMap/Node2D').add_child(item_instance)
-		item_instance.position = self.get_position() + Vector2(rng.randi_range(-50,50), rng.randi_range(-50,50))
+		item_instance.position = self.get_position() 
+		var tween = get_tree().create_tween()
+		tween.set_ease(Tween.EASE_OUT)
+		tween.tween_property(item_instance, "position", self.get_position() + Vector2(rng.randi_range(-50,50), rng.randi_range(-50,50)), 0.25)
+		
 
 func on_tween_finished():
 	
