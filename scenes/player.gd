@@ -35,6 +35,7 @@ func take_damage(damage_val, statusInflictions = null, ranged = false, aoe = fal
 				main_game_node.subtractHealth(damage_val)
 				main_game_node.apply_shake(15)
 				get_node('clappedSoundPlayer').play()
+				Input.start_joy_vibration(0, 0, 1, 0.1)
 				main_game_node.just_took_damage = true
 				# if status inflictions are present apply them fully!
 				if statusInflictions:
@@ -50,6 +51,7 @@ func take_damage(damage_val, statusInflictions = null, ranged = false, aoe = fal
 				if main_game_node.block_held_t_interval < 0.2:
 					get_node('sparks').set_emitting(true)
 					main_game_node.apply_shake(5)
+					Input.start_joy_vibration(0, 1, 0, 0.1)
 				else:
 					# only partially lose health based on defense level
 					# TODO: make this better
@@ -57,6 +59,7 @@ func take_damage(damage_val, statusInflictions = null, ranged = false, aoe = fal
 					var frac = damage_val / GlobalVars.player_data['stats']['defense']
 					if frac > 1:
 						frac = 1
+					Input.start_joy_vibration(0, 0, frac, 0.1)
 					main_game_node.subtractHealth(int(frac * damage_val))
 					main_game_node.just_took_partial_damage = true
 					# if status inflictions are present apply them lessed by status negations!

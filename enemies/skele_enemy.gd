@@ -124,6 +124,9 @@ func take_damage(value, _statusInflictions = null, ranged = false, aoe=false):
 			var tween = get_tree().create_tween()
 			tween.tween_method(set_to_dust_sensitivity, 0.0, 1.0, 1)
 			tween.connect("finished", on_tween_finished)
+			# drop its rewards
+			dropItems()
+		
 		#TODO: apply status inflictions to enemy
 		
 		# if the skele was idling with no target and got blasted by a range attack
@@ -160,10 +163,6 @@ func dropItems():
 		
 
 func on_tween_finished():
-	
-	# drop its rewards
-	dropItems()
-	
 	# delete the skele
 	queue_free()
 

@@ -747,7 +747,7 @@ func _input(event):
 			last_unit_circle_coord = unit_circle_coord
 			get_node('player/hitBox').look_at(get_node('player').global_position + last_unit_circle_coord)
 			# move the player's right hand armament
-			get_node('player/righthand').look_at(get_node('player').global_position + last_unit_circle_coord)
+			get_node('player/righthand').look_at(get_node('player/righthand').global_position + last_unit_circle_coord)
 	elif event is InputEventJoypadButton:
 		# hide the mouse
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -944,8 +944,15 @@ func _input(event):
 			else :
 				get_node('player/attackSoundPlayer').play()
 			get_node("player/hitBox/Line2D").set_default_color(Color(1,0,0,1))
-			# make the right armament move
-			var stabdirection = (get_node('player/righthand').global_position - mouse_event_global_pos).normalized()
+			# make the right armament move in the stabdirection
+			# if mouse is being used for aim
+			var stabdirection
+			if Input.get_mouse_mode() != Input.MOUSE_MODE_HIDDEN:
+				stabdirection = (get_node('player/righthand').global_position - mouse_event_global_pos).normalized()
+			elif last_unit_circle_coord:
+				stabdirection = last_unit_circle_coord
+			else:
+				stabdirection = Vector2(1,0)
 			var tween = get_tree().create_tween()
 			var original_pos = get_node('player/righthand').position
 			tween.tween_property(get_node('player/righthand'), "position", original_pos + stabdirection * 20, 0.05)
