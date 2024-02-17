@@ -1256,6 +1256,7 @@ func _process(delta):
 		player_body.get_node("trail").set_emitting(true)
 	
 	# show status effects on screen if needed
+	# TODO: if a status just got over 100 show it
 	if just_took_status_infliction:
 		update_statuses_on_screen()
 		get_node('HUDLayer/statusEffectBars').show()
