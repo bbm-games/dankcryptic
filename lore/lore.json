@@ -3,7 +3,8 @@
    "hints": [
    	"Perfect deflects prevent taking damage.",
    	"There are 6 status effects.",
-   	"Certain items negate status buildup."
+   	"Certain items negate status buildup.",
+   	"If you want people to die, you must kill them."
    ],
    "character":{
 	  "name":"undefined",
@@ -259,6 +260,24 @@
 	  },
 	  {
 		 "name": "Skele",
+		 "stats":{
+		 "attack":65,
+		 "defense":65,
+		 "strength":20,
+		 "health":90,
+		 "stamina":100,
+		 "magic":40,
+		 "wisdom":60,
+		 "mana":40
+	   },
+	  "current_health": 90,
+	  "max_health": 90,
+	  "inventory":[
+		 
+	  ]
+	  },
+	  {
+		 "name": "Wizard",
 		 "stats":{
 		 "attack":65,
 		 "defense":65,
