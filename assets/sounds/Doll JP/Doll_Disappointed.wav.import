@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dsvhosqs6a7a3"
+path="res://.godot/imported/Doll_Disappointed.wav-d6901bfe704de27ae96ca2a709c7ab3f.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Doll JP/Doll_Disappointed.wav"
+dest_files=["res://.godot/imported/Doll_Disappointed.wav-d6901bfe704de27ae96ca2a709c7ab3f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

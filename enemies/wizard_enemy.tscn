@@ -1,12 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://drra7beaib5fp"]
+[gd_scene load_steps=20 format=3 uid="uid://drra7beaib5fp"]
 
 [ext_resource type="Script" path="res://enemies/wizard_enemy.gd" id="1_j5lqy"]
 [ext_resource type="Texture2D" uid="uid://dku8n0s4knv7y" path="res://assets/ gothicvania patreon collection/demon-Files/PNG/demon-idle.png" id="1_qcva3"]
 [ext_resource type="Texture2D" uid="uid://b6tuk3dp4clo3" path="res://assets/healthbartiny.png" id="2_fjuxc"]
 [ext_resource type="Texture2D" uid="uid://nk0pt43bjcyc" path="res://assets/ gothicvania patreon collection/demon-Files/PNG/demon-attack-no-breath.png" id="3_m3qf8"]
-[ext_resource type="AudioStream" uid="uid://b865kmi44feuw" path="res://assets/sounds/Minifantasy_Dungeon_SFX/17_orc_atk_sword_1.wav" id="4_5i1rx"]
-[ext_resource type="AudioStream" uid="uid://ckqrfhym0h1tk" path="res://assets/sounds/Minifantasy_Dungeon_SFX/25_orc_walk_stone_3.wav" id="5_dkv8a"]
-[ext_resource type="AudioStream" uid="uid://d368enykfayyf" path="res://assets/sounds/Minifantasy_Dungeon_SFX/21_orc_damage_3.wav" id="6_xxhpt"]
+[ext_resource type="AudioStream" uid="uid://6gs0tl7v3ewp" path="res://assets/sounds/Doll JP/Doll_Giggle4.wav" id="6_3rva4"]
+[ext_resource type="AudioStream" uid="uid://bv6unf4fmr84v" path="res://assets/sounds/Doll JP/Doll_Play.wav" id="6_srpwf"]
+[ext_resource type="AudioStream" uid="uid://dsvhosqs6a7a3" path="res://assets/sounds/Doll JP/Doll_Disappointed.wav" id="7_4gf61"]
+[ext_resource type="Shader" path="res://shaders/beam.gdshader" id="8_ucgnc"]
 
 [sub_resource type="Animation" id="Animation_5e0rc"]
 resource_name = "idle"
@@ -118,15 +119,36 @@ radius = 8.08012
 height = 33.6147
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_koqax"]
-radius = 164.0
+radius = 352.006
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ymw7q"]
 radius = 8.24521
 height = 32.7487
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2b46"]
+shader = ExtResource("8_ucgnc")
+shader_parameter/beams = 4
+shader_parameter/energy = 10.0
+shader_parameter/roughness = 3
+shader_parameter/frequency = 10
+shader_parameter/speed = 1.0
+shader_parameter/thickness = 0.006
+shader_parameter/outline_thickness = 0.03
+shader_parameter/beam_difference = 0.0
+shader_parameter/glow = 1.987
+shader_parameter/outline_glow = 0.0
+shader_parameter/color = Color(0.909804, 0.231373, 0.0117647, 1)
+shader_parameter/outline_color = Color(0.5, 1, 0.96, 1)
+shader_parameter/progress = 1.0
+shader_parameter/y_offset = 0.0
+shader_parameter/fixed_edge_size = 0.05
+shader_parameter/noise_scale = Vector2(5, 1)
+
 [node name="wizard_enemy" type="CharacterBody2D"]
 z_index = 3
 y_sort_enabled = true
+collision_layer = 8
+collision_mask = 15
 script = ExtResource("1_j5lqy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -173,22 +195,23 @@ scale = Vector2(2.48084, 1)
 color = Color(0.823529, 0.270588, 0.27451, 1)
 
 [node name="attack_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_5i1rx")
+stream = ExtResource("6_3rva4")
 attenuation = 6.0
 bus = &"Sounds"
 
 [node name="walk_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_dkv8a")
+stream = ExtResource("6_srpwf")
 volume_db = 8.914
 attenuation = 6.0
 bus = &"Sounds"
 
 [node name="idle_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_3rva4")
 attenuation = 6.0
 bus = &"Sounds"
 
 [node name="clapped_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_xxhpt")
+stream = ExtResource("7_4gf61")
 
 [node name="hitBox" type="Area2D" parent="."]
 collision_layer = 0
@@ -215,6 +238,19 @@ collision_mask = 4
 position = Vector2(12.5, -10.5)
 rotation = 2.61799
 shape = SubResource("CapsuleShape2D_ymw7q")
+
+[node name="beam" type="ColorRect" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_r2b46")
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -14.0
+offset_right = 100.0
+offset_bottom = 12.0
+grow_vertical = 2
+scale = Vector2(1.78351, 2.59524)
+pivot_offset = Vector2(0, 13)
 
 [connection signal="body_entered" from="detectionZone" to="." method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="detectionZone" to="." method="_on_detection_zone_body_exited"]

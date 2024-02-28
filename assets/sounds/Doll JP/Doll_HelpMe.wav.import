@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c10t3pdnwkrgo"
+path="res://.godot/imported/Doll_HelpMe.wav-0ed00a03da5a3d68affb32c862e675ad.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Doll JP/Doll_HelpMe.wav"
+dest_files=["res://.godot/imported/Doll_HelpMe.wav-0ed00a03da5a3d68affb32c862e675ad.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

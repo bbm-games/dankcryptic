@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ba2qt7vwdecui"
+path="res://.godot/imported/Doll_Laugh3.wav-91bd9242a52e8ff86d9ffd512440a9e3.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Doll JP/Doll_Laugh3.wav"
+dest_files=["res://.godot/imported/Doll_Laugh3.wav-91bd9242a52e8ff86d9ffd512440a9e3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

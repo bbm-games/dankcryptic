@@ -18,6 +18,7 @@ var damage_highlight_time = 0
 var base_modulation = self.get_modulate()
 
 var attackCooldown = 0
+var beam_angle = 0 
 
 var flipDelayTimer = 0
 
@@ -171,10 +172,19 @@ func set_to_dust_sensitivity(value: float):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	beam_angle += delta 
+	if beam_angle > 2 * PI:
+		beam_angle = 0
 
 	# if there is no target body, be idle
 	if not target_body:
 		changeState(States.IDLE)
+		get_node('beam').hide()
+	else:
+		# fire some spells in the direction of the target body
+		get_node('beam').show()
+		get_node('beam').set_rotation(beam_angle)
 	
 	# update the health bar
 	health_bar.set_size(Vector2(enemy_data['current_health']/enemy_data['max_health'] * health_bar_length, health_bar_height))

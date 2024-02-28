@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://weypibu08mqp"
+path="res://.godot/imported/Doll_Laugh4.wav-b346779417454e2c634959fc85507a17.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Doll JP/Doll_Laugh4.wav"
+dest_files=["res://.godot/imported/Doll_Laugh4.wav-b346779417454e2c634959fc85507a17.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
