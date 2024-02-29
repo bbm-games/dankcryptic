@@ -181,9 +181,12 @@ func _process(delta):
 	if not target_body:
 		changeState(States.IDLE)
 		get_node('beam').hide()
+		get_node('attack_sound').stop()
 	else:
 		# fire some spells in the direction of the target body
 		get_node('beam').show()
+		if not get_node('attack_sound').is_playing():
+			get_node('attack_sound').play()
 		get_node('beam').set_rotation(beam_angle)
 	
 	# update the health bar
@@ -209,6 +212,8 @@ func _process(delta):
 			offset = Vector2(-13,0)
 			# flip back the health bar
 			get_node("health_bar").set_transform(Transform2D(Vector2(-1, 0), Vector2(0,  1), get_node('health_bar').position))
+			# flip back beam
+			#get_node("beam").set_transform(Transform2D(Vector2(-1, 0), Vector2(0,  1), get_node('beam').position))
 		elif flipDelayTimer > 1:
 			# unflip
 			flipDelayTimer = 0
@@ -216,6 +221,8 @@ func _process(delta):
 			self.set_transform(Transform2D(Vector2(scale_size, 0), Vector2(0,  scale_size), Vector2(position.x, position.y)))
 			# flip back the health bar
 			get_node("health_bar").set_transform(Transform2D(Vector2(1, 0), Vector2(0,  1), get_node('health_bar').position))
+			# flip back beam
+			#get_node("beam").set_transform(Transform2D(Vector2(-1, 0), Vector2(0,  1), get_node('beam').position))
 	# makes the skele move to target body if in the WALK or WALK_FAST STATE
 	if (current_state == States.WALK or current_state == States.WALKFAST) and target_body:
 		# with steering
