@@ -235,6 +235,7 @@ bg_color = Color(0, 0, 0, 0.439216)
 Label/styles/normal = SubResource("StyleBoxFlat_3bvaq")
 
 [node name="Loadingscreen" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_3ofvr")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -271,6 +272,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_right = 576.0
 offset_bottom = 324.0
 mouse_filter = 2

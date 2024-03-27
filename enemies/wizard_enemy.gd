@@ -241,36 +241,28 @@ func _process(delta):
 			changeState(States.WALK)
 			walk_fast_time = 0
 
-func _physics_process(_delta):
-	pass
+func _physics_process(delta):
+	var bodies = get_node('beam/Area2D').get_overlapping_bodies()
+	for body in bodies:
+		if 'is_attackable' in body:
+			if body.is_attackable and body != self:
+				self.zap_a_body(body, delta)
 
-func attack_a_body(body):
+func zap_a_body(body, delta):
 	var statuses = {
-			 "poisoned": 0,
-			 "burned": 0,
-			 "drenched": 0,
-			 "confused": 0,
-			 "paralyzed": 0,
-			 "bloodless": 0.2
+			 "poisoned": 0 * delta,
+			 "burned": 1 * delta,
+			 "drenched": 0 * delta,
+			 "confused": 0 * delta,
+			 "paralyzed": 2 * delta,
+			 "bloodless": 0.0 * delta
 	}
 	# attack the body
 	if body.has_method("take_damage"):
-		var diff = enemy_data['stats']['attack'] - GlobalVars.player_data['stats']['defense']
-		var prob = 0.1 + pow(2.718,-10/diff) * 0.9
-		if rng.randf_range(0,1) <= prob:
-			# damage is strength times 2 if critical hit
-			body.take_damage(enemy_data['stats']['strength']*2, statuses)
-		else:
-			# normal hit
-			body.take_damage(enemy_data['stats']['strength'], statuses)
+		# normal hit
+		body.take_damage(enemy_data['stats']['strength'] * delta, statuses)
 			
 	#main_game_node.chatBoxAppend('got clapped')
-
-func _on_hit_box_body_entered(body):
-	self.attack_a_body(body)
-	
-func _on_hit_box_body_exited(_body):
-	pass
 
 func _on_detection_zone_body_entered(body):
 	# basically targets any body that can take damage (this includes player)

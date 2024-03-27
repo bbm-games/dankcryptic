@@ -722,328 +722,324 @@ func _on_mouse_entered_button():
 	hoverSound.play()
 
 func _input(event):
-	#print(event.as_text())
-	# Mouse in viewport coordinates.
-	if event is InputEventMouseButton:
-		#print("Mouse Click/Unclick at: ", event.position)
-		pass
-	elif event is InputEventMouseMotion:
-		#show the mouse if it was hiding
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		mouse_event_pos = event.position
-		mouse_event_global_pos = get_global_mouse_position()
-		# move the player's melee collision shape
-		get_node('player/hitBox').look_at(mouse_event_global_pos)
-		# move the player's right hand armament
-		get_node('player/righthand').look_at(mouse_event_global_pos)
-	elif event is InputEventJoypadMotion:
-		# hide the mouse
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		unit_circle_coord = Vector2(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
-										Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y))
-		#chatBoxAppend(str(unit_circle_coord))
-		# move the player's melee collision shape
-		if unit_circle_coord.length() > 0.2:
-			last_unit_circle_coord = unit_circle_coord
-			get_node('player/hitBox').look_at(get_node('player').global_position + last_unit_circle_coord)
+	if not GlobalVars.is_loading:
+		#print(event.as_text())
+		# Mouse in viewport coordinates.
+		if event is InputEventMouseButton:
+			#print("Mouse Click/Unclick at: ", event.position)
+			pass
+		elif event is InputEventMouseMotion:
+			#show the mouse if it was hiding
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			mouse_event_pos = event.position
+			mouse_event_global_pos = get_global_mouse_position()
+			# move the player's melee collision shape
+			get_node('player/hitBox').look_at(mouse_event_global_pos)
 			# move the player's right hand armament
-			get_node('player/righthand').look_at(get_node('player/righthand').global_position + last_unit_circle_coord)
-	elif event is InputEventJoypadButton:
-		# hide the mouse
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		
-	if event.is_action_pressed("zoom_in") and not playerMenu.visible and not confused:
-		if currentZoom <= 2:
-			currentZoom += 0.03
-		else:
-			currentZoom = 2
-		player_body.get_node("sprite/Camera2D").set_zoom(Vector2(currentZoom, currentZoom))
-	if event.is_action_pressed("zoom_out") and not playerMenu.visible and not confused:
-		if currentZoom >= 0.5:
-			currentZoom -= 0.03
-		else:
-			currentZoom = 0.5
-		player_body.get_node("sprite/Camera2D").set_zoom(Vector2(currentZoom, currentZoom))
-	if event.is_action_pressed("item_1"):
-		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 0 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
-			if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
-				Input.parse_input_event(item_consume_event)
-		else:
-			current_item_index = 0
+			get_node('player/righthand').look_at(mouse_event_global_pos)
+		elif event is InputEventJoypadMotion:
+			# hide the mouse
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			unit_circle_coord = Vector2(Input.get_joy_axis(0, JOY_AXIS_RIGHT_X),
+											Input.get_joy_axis(0, JOY_AXIS_RIGHT_Y))
+			#chatBoxAppend(str(unit_circle_coord))
+			# move the player's melee collision shape
+			if unit_circle_coord.length() > 0.2:
+				last_unit_circle_coord = unit_circle_coord
+				get_node('player/hitBox').look_at(get_node('player').global_position + last_unit_circle_coord)
+				# move the player's right hand armament
+				get_node('player/righthand').look_at(get_node('player/righthand').global_position + last_unit_circle_coord)
+		elif event is InputEventJoypadButton:
+			# hide the mouse
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			
+		if event.is_action_pressed("zoom_in") and not playerMenu.visible and not confused:
+			if currentZoom <= 2:
+				currentZoom += 0.03
+			else:
+				currentZoom = 2
+			player_body.get_node("sprite/Camera2D").set_zoom(Vector2(currentZoom, currentZoom))
+		if event.is_action_pressed("zoom_out") and not playerMenu.visible and not confused:
+			if currentZoom >= 0.5:
+				currentZoom -= 0.03
+			else:
+				currentZoom = 0.5
+			player_body.get_node("sprite/Camera2D").set_zoom(Vector2(currentZoom, currentZoom))
+		if event.is_action_pressed("item_1"):
+			get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+			if current_item_index == 0 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
+				if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+					Input.parse_input_event(item_consume_event)
+			else:
+				current_item_index = 0
+				item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+		if event.is_action_pressed("item_2"):
+			get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+			if current_item_index == 1 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
+				if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+					Input.parse_input_event(item_consume_event)
+			else:
+				current_item_index = 1
+				item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+		if event.is_action_pressed("item_3"):
+			get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+			if current_item_index == 2 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
+				if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+					Input.parse_input_event(item_consume_event)
+			else:
+				current_item_index = 2
+				item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+		if event.is_action_pressed("item_4"):
+			get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+			if current_item_index == 3 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
+				if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+					Input.parse_input_event(item_consume_event)
+			else:
+				current_item_index = 3
+				item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+		if event.is_action_pressed("item_5"):
+			get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+			if current_item_index == 4 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
+				if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+					Input.parse_input_event(item_consume_event)
+			else:
+				current_item_index = 4
+				item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
+		if event.is_action_pressed("item_6"):
+			get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+			if current_item_index == 5 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
+				if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
+					Input.parse_input_event(item_consume_event)
+			else:
+				current_item_index = 5
+				item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))				
+		if event.is_action_pressed("item_left") and !playerMenu.visible:
+			# cancel any currently running spells
+			spell_active = false
+			get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+			if current_item_index == 0:
+				current_item_index = 5
+			else:
+				current_item_index -= 1
 			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
-	if event.is_action_pressed("item_2"):
-		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 1 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
-			if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
-				Input.parse_input_event(item_consume_event)
-		else:
-			current_item_index = 1
+		if event.is_action_pressed("item_right") and !playerMenu.visible:
+			# cancel any currently running spells
+			spell_active = false
+			get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+			if current_item_index == 5:
+				current_item_index = 0
+			else:
+				current_item_index += 1
 			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
-	if event.is_action_pressed("item_3"):
-		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 2 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
-			if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
-				Input.parse_input_event(item_consume_event)
-		else:
-			current_item_index = 2
-			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
-	if event.is_action_pressed("item_4"):
-		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 3 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
-			if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
-				Input.parse_input_event(item_consume_event)
-		else:
-			current_item_index = 3
-			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
-	if event.is_action_pressed("item_5"):
-		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 4 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
-			if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
-				Input.parse_input_event(item_consume_event)
-		else:
-			current_item_index = 4
-			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
-	if event.is_action_pressed("item_6"):
-		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 5 and player_data["quick_slots"]['slot' + str(current_item_index+1)]:
-			if not player_data["quick_slots"]['slot' + str(current_item_index+1)].contains("spell"):
-				Input.parse_input_event(item_consume_event)
-		else:
-			current_item_index = 5
-			item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))				
-	if event.is_action_pressed("item_left") and !playerMenu.visible:
-		# cancel any currently running spells
-		spell_active = false
-		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 0:
-			current_item_index = 5
-		else:
-			current_item_index -= 1
-		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
-	if event.is_action_pressed("item_right") and !playerMenu.visible:
-		# cancel any currently running spells
-		spell_active = false
-		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if current_item_index == 5:
-			current_item_index = 0
-		else:
-			current_item_index += 1
-		item_slot_frame.set_position(item_slot_frame_initial_position + current_item_index * Vector2(46,0))
-	if event.is_action_pressed("item_consume") and not confused and not player_data['is_dead']:
-		var item_id = player_data['quick_slots']['slot' + str(current_item_index+1)]
-		# make sure there's actually an item in the slot
-		if item_id:
-			var item = {}
-			# grab the item doc
-			item = GlobalVars.returnDocInList(all_quick_items, 'id', item_id)
-			if 'is_consumable' in item.keys():
-				if item['is_consumable']:
-					consumeItem(item)
+		if event.is_action_pressed("item_consume") and not confused and not player_data['is_dead']:
+			var item_id = player_data['quick_slots']['slot' + str(current_item_index+1)]
+			# make sure there's actually an item in the slot
+			if item_id:
+				var item = {}
+				# grab the item doc
+				item = GlobalVars.returnDocInList(all_quick_items, 'id', item_id)
+				if 'is_consumable' in item.keys():
+					if item['is_consumable']:
+						consumeItem(item)
+						get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
+						# remove item when it's effects are done being applied and there's none left in inventory
+						if player_data['inventory'].find(item['id']) == -1:
+							player_data['quick_slots']['slot' + str(current_item_index+1)] = null
+						
+				# CODE FOR SPECIAL ITEMS LIKE SPELLS AND TOGGLE ITEMS
+				# if it's the flashlight toggle it
+				if item_id == "item012":
 					get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
-					# remove item when it's effects are done being applied and there's none left in inventory
-					if player_data['inventory'].find(item['id']) == -1:
-						player_data['quick_slots']['slot' + str(current_item_index+1)] = null
-					
-			# CODE FOR SPECIAL ITEMS LIKE SPELLS AND TOGGLE ITEMS
-			# if it's the flashlight toggle it
-			if item_id == "item012":
-				get_node("HUDLayer/CanvasGroup/quickItemConsumeSound").play()
-				if light.is_visible():
-					light.hide()
-				else:
-					light.show()
-			# if it's a spell
-			# TODO: This needs to be more elaborate
-			if item_id == "spell001":
-				# to ensure that the spell doesn't come from player's feet
-				var casting_position_offset = Vector2(0,-10)
-				# only cast if there's enough mana for the spell
-				var mana_cost = GlobalVars.searchDocsInList(all_quick_items,'id', item_id, 'mana_cost')
-				if player_data['current_mana'] >= mana_cost:
-					# TODO: generalize this so it works with more spells
-					var projectile = preload("res://objects/projectile.tscn").instantiate()
-					# if mouse is being used, use it to determine projectile aim
-					if Input.get_mouse_mode() != Input.MOUSE_MODE_HIDDEN:
-						projectile.set_direction_facing_vector(Vector2(get_global_mouse_position().x - (player_body.get_global_position().x + casting_position_offset.x), get_global_mouse_position().y - (player_body.get_global_position().y + casting_position_offset.y)).normalized())
+					if light.is_visible():
+						light.hide()
 					else:
-						# if not, use the controller aim.
-						projectile.set_direction_facing_vector(Vector2(cos(get_node('player/hitBox').rotation), sin(get_node('player/hitBox').rotation)))
-					projectile.set_initial_position(player_body.get_global_position() + casting_position_offset)
-					self.add_child(projectile)
-					self.subtractMana(mana_cost)
+						light.show()
+				# if it's a spell
+				# TODO: This needs to be more elaborate
+				if item_id == "spell001":
+					# to ensure that the spell doesn't come from player's feet
+					var casting_position_offset = Vector2(0,-10)
+					# only cast if there's enough mana for the spell
+					var mana_cost = GlobalVars.searchDocsInList(all_quick_items,'id', item_id, 'mana_cost')
+					if player_data['current_mana'] >= mana_cost:
+						# TODO: generalize this so it works with more spells
+						var projectile = preload("res://objects/projectile.tscn").instantiate()
+						# if mouse is being used, use it to determine projectile aim
+						if Input.get_mouse_mode() != Input.MOUSE_MODE_HIDDEN:
+							projectile.set_direction_facing_vector(Vector2(get_global_mouse_position().x - (player_body.get_global_position().x + casting_position_offset.x), get_global_mouse_position().y - (player_body.get_global_position().y + casting_position_offset.y)).normalized())
+						else:
+							# if not, use the controller aim.
+							projectile.set_direction_facing_vector(Vector2(cos(get_node('player/hitBox').rotation), sin(get_node('player/hitBox').rotation)))
+						projectile.set_initial_position(player_body.get_global_position() + casting_position_offset)
+						self.add_child(projectile)
+						self.subtractMana(mana_cost)
+					
+					# add this parameter for spells that require the key to be held
+					# in order to continue casting
+					spell_active = true
 				
-				# add this parameter for spells that require the key to be held
-				# in order to continue casting
-				spell_active = true
-			
-			if item_id == "spell007":
-				# to ensure that the spell doesn't come from player's feet
-				var casting_position_offset = Vector2(0,-10)
-				# only cast if there's enough mana for the spell
-				var mana_cost = GlobalVars.searchDocsInList(all_quick_items,'id', item_id, 'mana_cost')
-				if player_data['current_mana'] >= mana_cost:
-					# TODO: generalize this so it works with more spells
-					var cloud = preload("res://objects/cloud.tscn").instantiate()
-					cloud.set_direction_facing_vector(Vector2(get_global_mouse_position().x - (player_body.get_global_position().x + casting_position_offset.x), get_global_mouse_position().y - (player_body.get_global_position().y + casting_position_offset.y)).normalized())
-					cloud.set_initial_position(player_body.get_global_position() + casting_position_offset)
-					self.add_child(cloud)
-					self.subtractMana(mana_cost)
+				if item_id == "spell007":
+					# to ensure that the spell doesn't come from player's feet
+					var casting_position_offset = Vector2(0,-10)
+					# only cast if there's enough mana for the spell
+					var mana_cost = GlobalVars.searchDocsInList(all_quick_items,'id', item_id, 'mana_cost')
+					if player_data['current_mana'] >= mana_cost:
+						# TODO: generalize this so it works with more spells
+						var cloud = preload("res://objects/cloud.tscn").instantiate()
+						cloud.set_direction_facing_vector(Vector2(get_global_mouse_position().x - (player_body.get_global_position().x + casting_position_offset.x), get_global_mouse_position().y - (player_body.get_global_position().y + casting_position_offset.y)).normalized())
+						cloud.set_initial_position(player_body.get_global_position() + casting_position_offset)
+						self.add_child(cloud)
+						self.subtractMana(mana_cost)
+					
+					# add this parameter for spells that require the key to be held
+					# in order to continue casting
+					spell_active = true
 				
-				# add this parameter for spells that require the key to be held
-				# in order to continue casting
-				spell_active = true
-			
-			# redraw the quick slots
-			update_quick_slots()
-			# redraw the inventory if it was open during consumptions
-			if playerMenu.visible:
-				update_player_inventory()
-			
-	if event.is_action_released("item_consume") and not confused and not player_data['is_dead']:
-		# this is for stopping casting a spell
-		var item_id = player_data["quick_slots"]['slot' + str(current_item_index+1)]
-		if item_id:
-			if item_id.contains("spell"):
-				spell_active = false
-	if event.is_action_pressed("attack") && !playerMenu.visible && !chatPopup.visible and not player_data['is_dead'] and not attack_cooldown_timer_running:
-		if not block_held:
-			# subtract some stamina for the attack based on patient's strength and weapon weight
-			var stamina_consumption = player_data['max_stamina']/5 - player_data['max_stamina'] * player_data['stats']['strength']/(100*5)
-			if stamina_consumption < 0:
-				stamina_consumption = 0
-			if player_data['current_stamina'] - stamina_consumption >= 0:
-				player_data['current_stamina'] -= stamina_consumption
+				# redraw the quick slots
+				update_quick_slots()
+				# redraw the inventory if it was open during consumptions
+				if playerMenu.visible:
+					update_player_inventory()
+				
+		if event.is_action_released("item_consume") and not confused and not player_data['is_dead']:
+			# this is for stopping casting a spell
+			var item_id = player_data["quick_slots"]['slot' + str(current_item_index+1)]
+			if item_id:
+				if item_id.contains("spell"):
+					spell_active = false
+		if event.is_action_pressed("attack") && !playerMenu.visible && !chatPopup.visible and not player_data['is_dead'] and not attack_cooldown_timer_running:
+			if not block_held:
+				# subtract some stamina for the attack based on patient's strength and weapon weight
+				var stamina_consumption = player_data['max_stamina']/5 - player_data['max_stamina'] * player_data['stats']['strength']/(100*5)
+				if stamina_consumption < 0:
+					stamina_consumption = 0
+				if player_data['current_stamina'] - stamina_consumption >= 0:
+					player_data['current_stamina'] -= stamina_consumption
+				else:
+					player_data['current_stamina'] = 0
+					
+				attack_held = true
+				var bodies = get_node('player/righthand/swordBox').get_overlapping_bodies();
+				if bodies:
+					for body in bodies:
+						if body.is_attackable:
+							if body.has_method("take_damage") :
+								# TODO: determine perfect formula for attack
+								
+								# calculate the difference between player attack and enemy defense to determine critical hit percentage
+								var diff = player_data['stats']['attack'] - body.enemy_data['stats']['defense']
+								var prob = 0
+								if diff <= 0: # if the enemy is higher level than you, you cannot critically hit
+									prob = 0
+								else:
+									# base critical hit change at same level is 1/10
+									prob = 0.1 + pow(2.718,-10/diff) * 0.9
+								if rng.randf_range(0,1) <= prob:
+									# then do a critical hit
+									body.take_damage(player_data['stats']['strength']*2, player_data['statusInflictions'])
+									get_node('player/criticalSoundPlayer').play()
+								else:
+									# do a normal hit
+									body.take_damage(player_data['stats']['strength'], player_data['statusInflictions'])
+									get_node('player/attackSoundPlayer').play()
+				else :
+					get_node('player/attackSoundPlayer').play()
+				get_node("player/hitBox/Line2D").set_default_color(Color(1,0,0,1))
+				# make the right armament move in the stabdirection
+				# if mouse is being used for aim
+				var stabdirection
+				if Input.get_mouse_mode() != Input.MOUSE_MODE_HIDDEN:
+					stabdirection = (get_node('player/righthand').global_position - mouse_event_global_pos).normalized()
+				elif last_unit_circle_coord:
+					stabdirection = last_unit_circle_coord
+				else:
+					stabdirection = Vector2(1,0)
+				var tween = get_tree().create_tween()
+				var original_pos = get_node('player/righthand').position
+				tween.tween_property(get_node('player/righthand'), "position", original_pos + stabdirection * 20, 0.05)
+				tween.tween_property(get_node('player/righthand'), "position", original_pos, 0.05)
+				attack_cooldown_timer_running = true # to prevent spamming attacks too fast 
 			else:
-				player_data['current_stamina'] = 0
-				
-			attack_held = true
-			var bodies = get_node('player/righthand/swordBox').get_overlapping_bodies();
-			if bodies:
-				for body in bodies:
-					if body.is_attackable:
-						if body.has_method("take_damage") :
-							# TODO: determine perfect formula for attack
-							
-							# calculate the difference between player attack and enemy defense to determine critical hit percentage
-							var diff = player_data['stats']['attack'] - body.enemy_data['stats']['defense']
-							var prob = 0
-							if diff <= 0: # if the enemy is higher level than you, you cannot critically hit
-								prob = 0
-							else:
-								# base critical hit change at same level is 1/10
-								prob = 0.1 + pow(2.718,-10/diff) * 0.9
-							if rng.randf_range(0,1) <= prob:
-								# then do a critical hit
-								body.take_damage(player_data['stats']['strength']*2, player_data['statusInflictions'])
-								get_node('player/criticalSoundPlayer').play()
-							else:
-								# do a normal hit
-								body.take_damage(player_data['stats']['strength'], player_data['statusInflictions'])
-								get_node('player/attackSoundPlayer').play()
-			else :
-				get_node('player/attackSoundPlayer').play()
-			get_node("player/hitBox/Line2D").set_default_color(Color(1,0,0,1))
-			# make the right armament move in the stabdirection
-			# if mouse is being used for aim
-			var stabdirection
-			if Input.get_mouse_mode() != Input.MOUSE_MODE_HIDDEN:
-				stabdirection = (get_node('player/righthand').global_position - mouse_event_global_pos).normalized()
-			elif last_unit_circle_coord:
-				stabdirection = last_unit_circle_coord
-			else:
-				stabdirection = Vector2(1,0)
-			var tween = get_tree().create_tween()
-			var original_pos = get_node('player/righthand').position
-			tween.tween_property(get_node('player/righthand'), "position", original_pos + stabdirection * 20, 0.05)
-			tween.tween_property(get_node('player/righthand'), "position", original_pos, 0.05)
-			attack_cooldown_timer_running = true # to prevent spamming attacks too fast 
-		else:
+				attack_held = false
+		if event.is_action_released("attack") and not player_data['is_dead']:
+			get_node("player/hitBox/Line2D").set_default_color(Color(1,1,1,1))
 			attack_held = false
-	if event.is_action_released("attack") and not player_data['is_dead']:
-		get_node("player/hitBox/Line2D").set_default_color(Color(1,1,1,1))
-		attack_held = false
-	if event.is_action_pressed("block") and not player_data['is_dead']:
-		if not attack_held:
-			block_held = true
-			block_held_t_interval = 0
-			get_node("player/shieldSoundPlayer").play()
-		else:
+		if event.is_action_pressed("block") and not player_data['is_dead']:
+			if not attack_held:
+				block_held = true
+				block_held_t_interval = 0
+				get_node("player/shieldSoundPlayer").play()
+			else:
+				block_held = false
+		if event.is_action_released("block") and not player_data['is_dead']:
 			block_held = false
-	if event.is_action_released("block") and not player_data['is_dead']:
-		block_held = false
-	if event.is_action_pressed("walk_up") and not player_data['is_dead']:
-		player_sprite.set_frame_coords(Vector2i(0, 3))
-		rightarmament_sprite.set_z_index(-1)
-		walk_up_held = true
-	if event.is_action_released("walk_up") and not player_data['is_dead']:
-		walk_up_held = false
-	if event.is_action_pressed("walk_down") and not player_data['is_dead']:
-		player_sprite.set_frame_coords(Vector2i(0, 0))
-		rightarmament_sprite.set_z_index(2)
-		walk_down_held = true
-	if event.is_action_released("walk_down") and not player_data['is_dead']:
-		walk_down_held = false
-	if event.is_action_pressed("walk_left") and not player_data['is_dead']:
-		player_sprite.set_frame_coords(Vector2i(0, 1))
-		rightarmament_sprite.set_z_index(-1)
-		walk_left_held = true
-	if event.is_action_released("walk_left") and not player_data['is_dead']:
-		walk_left_held = false
-	if event.is_action_pressed("walk_right") and not player_data['is_dead']:
-		player_sprite.set_frame_coords(Vector2i(0, 2))
-		rightarmament_sprite.set_z_index(2)
-		walk_right_held = true
-	if event.is_action_released("walk_right") and not player_data['is_dead']:
-		walk_right_held = false
-	if event.is_action_pressed("dash") and not player_data['is_dead']:
-		#chatBox.append_text("\n[i]Player has pressed dash.[/i]")
-		dash = true
-	if event.is_action_released("dash") and not player_data['is_dead']:
-		#chatBox.append_text("\n[i]Player has let go of dash.[/i]")
-		dash = false
-	if event.is_action_pressed("pause"):
-		if playerMenu.visible:
-			playerMenu.hide()
-		elif get_tree().paused:
-			print("unpausing")
-			get_tree().paused = false
-			pauseMenu.hide()
-		else:
+		if event.is_action_pressed("walk_up") and not player_data['is_dead']:
+			player_sprite.set_frame_coords(Vector2i(0, 3))
+			rightarmament_sprite.set_z_index(-1)
+			walk_up_held = true
+		if event.is_action_released("walk_up") and not player_data['is_dead']:
+			walk_up_held = false
+		if event.is_action_pressed("walk_down") and not player_data['is_dead']:
+			player_sprite.set_frame_coords(Vector2i(0, 0))
+			rightarmament_sprite.set_z_index(2)
+			walk_down_held = true
+		if event.is_action_released("walk_down") and not player_data['is_dead']:
+			walk_down_held = false
+		if event.is_action_pressed("walk_left") and not player_data['is_dead']:
+			player_sprite.set_frame_coords(Vector2i(0, 1))
+			rightarmament_sprite.set_z_index(-1)
+			walk_left_held = true
+		if event.is_action_released("walk_left") and not player_data['is_dead']:
+			walk_left_held = false
+		if event.is_action_pressed("walk_right") and not player_data['is_dead']:
+			player_sprite.set_frame_coords(Vector2i(0, 2))
+			rightarmament_sprite.set_z_index(2)
+			walk_right_held = true
+		if event.is_action_released("walk_right") and not player_data['is_dead']:
+			walk_right_held = false
+		if event.is_action_pressed("dash") and not player_data['is_dead']:
+			#chatBox.append_text("\n[i]Player has pressed dash.[/i]")
+			dash = true
+		if event.is_action_released("dash") and not player_data['is_dead']:
+			#chatBox.append_text("\n[i]Player has let go of dash.[/i]")
+			dash = false
+		if Input.is_action_just_pressed("pause"):
+			if playerMenu.visible:
+				playerMenu.hide()
 			print("pausing")
 			get_tree().paused = true
 			pauseMenu.show()
 			pauseMenu.get_node('resumeGameButton').grab_focus()
-	if event.is_action_pressed("playerMenu"):
-		get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
-		if playerMenu.visible:
-			playerMenu.hide()
-		else:
-			update_player_inventory()
-			playerMenu.show()
-			playerMenu.grab_focus()
-	# item interaction in the world also uses the chat key
-	if event.is_action_pressed("chat"):
-		interaction = true
-		for body in get_node('player/hitBox').get_overlapping_bodies():
-			if body.is_ground_item:
-				player_body.get_node('grabSoundPlayer').play()
-				var itemname = GlobalVars.searchDocsInList(all_items, 'id', body.item_id, 'name')
-				if itemname:
-					chatBoxAppend("Picked up " + itemname)
-				else:
-					chatBoxAppend("Picked up item with id " + body.item_id + ' could not find in database')
-				# add item to the inventory	
-				player_data['inventory'].append(body.item_id)
-				# update the player inventory display
+		if event.is_action_pressed("playerMenu"):
+			get_node("HUDLayer/CanvasGroup/quickItemSwitchSound").play()
+			if playerMenu.visible:
+				playerMenu.hide()
+			else:
 				update_player_inventory()
-				# update the quickslots in case the item you picked up is stackable and the quickslots need to be updated
-				update_quick_slots()
-				# remove item from world.
-				body.queue_free()
-	if event.is_action_released("chat"):
-		interaction = false
-	
+				playerMenu.show()
+				playerMenu.grab_focus()
+		# item interaction in the world also uses the chat key
+		if event.is_action_pressed("chat"):
+			interaction = true
+			for body in get_node('player/hitBox').get_overlapping_bodies():
+				if body.is_ground_item:
+					player_body.get_node('grabSoundPlayer').play()
+					var itemname = GlobalVars.searchDocsInList(all_items, 'id', body.item_id, 'name')
+					if itemname:
+						chatBoxAppend("Picked up " + itemname)
+					else:
+						chatBoxAppend("Picked up item with id " + body.item_id + ' could not find in database')
+					# add item to the inventory	
+					player_data['inventory'].append(body.item_id)
+					# update the player inventory display
+					update_player_inventory()
+					# update the quickslots in case the item you picked up is stackable and the quickslots need to be updated
+					update_quick_slots()
+					# remove item from world.
+					body.queue_free()
+		if event.is_action_released("chat"):
+			interaction = false
+		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	time_passed += delta
@@ -1373,7 +1369,7 @@ func subtractHealth(amount):
 			just_took_status_infliction_timer = 0
 			
 			backgroundMusic.playing = false
-			backgroundMusic.stream = load('res://assets/music/mindseyepack/2- Mental Vortex.mp3')
+			backgroundMusic.stream = load('res://assets/music/mindseyepack/2- Mental Vortex- boosted.mp3')
 			backgroundMusic.play()
 
 			# add the to_dust shader

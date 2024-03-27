@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://hbvk87qaebyj"
+path="res://.godot/imported/2- Mental Vortex- boosted.mp3-4a5299ed9cd3aa2492ae59453b8e5560.mp3str"
+
+[deps]
+
+source_file="res://assets/music/mindseyepack/2- Mental Vortex- boosted.mp3"
+dest_files=["res://.godot/imported/2- Mental Vortex- boosted.mp3-4a5299ed9cd3aa2492ae59453b8e5560.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
