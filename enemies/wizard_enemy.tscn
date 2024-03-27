@@ -10,23 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://dsvhosqs6a7a3" path="res://assets/sounds/Doll JP/Doll_Disappointed.wav" id="7_4gf61"]
 [ext_resource type="Shader" path="res://shaders/beam.gdshader" id="8_ucgnc"]
 
-[sub_resource type="Animation" id="Animation_5e0rc"]
-resource_name = "idle"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("idle:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 5]
-}
-
 [sub_resource type="Animation" id="Animation_a1t11"]
 length = 0.001
 tracks/0/type = "value"
@@ -83,6 +66,26 @@ tracks/0/keys = {
 "values": [0, 7]
 }
 
+[sub_resource type="Animation" id="Animation_y3h5j"]
+resource_name = "death"
+
+[sub_resource type="Animation" id="Animation_5e0rc"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 5]
+}
+
 [sub_resource type="Animation" id="Animation_il6kh"]
 resource_name = "walk"
 length = 0.6
@@ -99,9 +102,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [0, 5]
 }
-
-[sub_resource type="Animation" id="Animation_y3h5j"]
-resource_name = "death"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_43mu4"]
 _data = {
