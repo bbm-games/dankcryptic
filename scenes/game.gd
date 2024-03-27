@@ -256,16 +256,21 @@ func _ready():
 	#var scene_resource = ResourceLoader.load(fanumtaxScenePath)
 	#var scene_resource = ResourceLoader.load(sanctumScenePath)
 	
+	currentMap = self.get_node("currentMap")
 	changeMap(fanumtaxScenePath)
 	
 #	var scene = scene_resource.instantiate()
-#	currentMap = self.get_node("currentMap")
+#	
 #	currentMap.add_child(scene)
 #	backgroundMusic.stream = load(currentMap.get_node('Node2D').map_music)
 #	backgroundMusic.play()
 #	playTitleCard(currentMap.get_node('Node2D').map_name)
 	
 func changeMap(map_scene_path: String):
+	
+	# clear the current map
+	if currentMap.get_child(0):
+		currentMap.get_child(0).queue_free()
 	
 	# show the loading screen
 	GlobalVars.is_loading = true
@@ -278,7 +283,6 @@ func changeMap(map_scene_path: String):
 
 func showLoadedMap():
 	var scene = ResourceLoader.load_threaded_get(GlobalVars.scene_to_change_to).instantiate()
-	currentMap = self.get_node("currentMap")
 	currentMap.add_child(scene)
 	backgroundMusic.stream = load(currentMap.get_node('Node2D').map_music)
 	backgroundMusic.play()
@@ -477,7 +481,7 @@ func update_player_inventory():
 	var apparent_inventory_weight = inventory_weight - player_data['stats']['strength']
 	if apparent_inventory_weight < 0:
 		apparent_inventory_weight = 0
-	base_speed = 1 - (apparent_inventory_weight/player_data['weight'])*0.75
+	base_speed = (2-player_data['weight']/100) - (apparent_inventory_weight/player_data['weight'])*0.75
 	if base_speed <= 0:
 		base_speed = 0
 	base_speed *= 50 # number of pixels a second
@@ -1039,6 +1043,12 @@ func _input(event):
 					body.queue_free()
 		if event.is_action_released("chat"):
 			interaction = false
+		
+	else:
+		walk_up_held = false
+		walk_down_held = false
+		walk_left_held = false
+		walk_right_held = false
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

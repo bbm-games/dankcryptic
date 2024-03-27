@@ -864,6 +864,7 @@ scale = Vector2(0.826499, 0.670151)
 texture = ExtResource("4_yv851")
 hframes = 4
 vframes = 4
+frame = 3
 
 [node name="Camera2D" type="Camera2D" parent="player/sprite"]
 position_smoothing_enabled = true
