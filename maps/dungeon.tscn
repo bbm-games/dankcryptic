@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bulhn4rc843jq"]
+[gd_scene load_steps=10 format=3 uid="uid://bulhn4rc843jq"]
 
 [ext_resource type="Script" path="res://maps/dungeon.gd" id="1_5e13p"]
 [ext_resource type="Texture2D" uid="uid://dtcm1ghr12nia" path="res://assets/DarkDungeon.png" id="2_nwbmn"]
 [ext_resource type="PackedScene" uid="uid://52fb1vhbw6iv" path="res://npcs/npc_1.tscn" id="3_g73g3"]
+[ext_resource type="PackedScene" uid="uid://bd0qt1pef4tri" path="res://objects/warp.tscn" id="6_ly2h1"]
 [ext_resource type="PackedScene" uid="uid://cdnweam38rxor" path="res://enemies/skele_enemy.tscn" id="8_1183f"]
 [ext_resource type="PackedScene" uid="uid://dywtovs1hwwfx" path="res://objects/ground_item.tscn" id="17_tx5kw"]
 
@@ -384,3 +385,7 @@ position = Vector2(540, 123)
 
 [node name="npc1" parent="." instance=ExtResource("3_g73g3")]
 position = Vector2(425, 98)
+
+[node name="Warp" parent="." instance=ExtResource("6_ly2h1")]
+z_index = 1
+position = Vector2(519, 47)

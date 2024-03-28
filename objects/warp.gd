@@ -16,6 +16,9 @@ func _process(delta):
 	for body in bodies:
 		if 'is_player' in body:
 			if body.is_player:
+				var backgroundMusic = get_node("/root/Music")
+				backgroundMusic.stream = preload('res://assets/sounds/RPG_Essentials_Free/12_Player_Movement_SFX/88_Teleport_02.wav')
+				backgroundMusic.play()
 				main_game_node.changeMap(warp_dest_map)
-				body.set_position(Vector2(576/2, 325/2))
-				body.get_node('PlayerAnimationPlayer').stop()
+				
+	

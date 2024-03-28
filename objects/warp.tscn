@@ -1,8 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd0qt1pef4tri"]
+[gd_scene load_steps=7 format=3 uid="uid://bd0qt1pef4tri"]
 
 [ext_resource type="Script" path="res://objects/warp.gd" id="1_7u2ey"]
+[ext_resource type="AudioStream" uid="uid://brn0vwov66l25" path="res://assets/sounds/RPG_Essentials_Free/12_Player_Movement_SFX/88_Teleport_02.wav" id="2_l7iw1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ibks"]
+
+[sub_resource type="Gradient" id="Gradient_41wxy"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b8vls"]
+gradient = SubResource("Gradient_41wxy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f0kln"]
+lifetime_randomness = 0.06
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 1)
+direction = Vector3(0, -2, 0)
+spread = 5.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_min = 0.5
+color = Color(0.521569, 1, 1, 1)
+color_ramp = SubResource("GradientTexture1D_b8vls")
 
 [node name="Warp" type="Node2D"]
 script = ExtResource("1_7u2ey")
@@ -13,3 +33,14 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_1ibks")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_f0kln")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_l7iw1")
+volume_db = 5.0
+bus = &"Sounds"
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

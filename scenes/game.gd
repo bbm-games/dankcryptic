@@ -283,10 +283,27 @@ func changeMap(map_scene_path: String):
 
 func showLoadedMap():
 	var scene = ResourceLoader.load_threaded_get(GlobalVars.scene_to_change_to).instantiate()
+	
+	
+	# put player in the correct position on map and stop any previously running animations
+	get_node('player/sprite/Camera2D').position_smoothing_enabled = false
+	var startingPosition = scene.get_node_or_null('startingPosition')
+	if startingPosition:
+		player_body.set_position(startingPosition.position)
+	else:
+		player_body.set_position(Vector2(576/2, 325/2))
+	
 	currentMap.add_child(scene)
 	backgroundMusic.stream = load(currentMap.get_node('Node2D').map_music)
 	backgroundMusic.play()
 	
+	# delay for a little bit to get the camera to snap to new spot, before deleting loading screen and turning back on smoothing
+	await get_tree().create_timer(0.05).timeout 
+	get_node("CanvasLayer3/loadingScreen").hide()
+	get_node('CanvasLayer3/loadingScreen/Loadingscreen').deleteScreen()
+	get_node('player/sprite/Camera2D').position_smoothing_enabled = true
+	
+	# play the classic title card
 	playTitleCard(currentMap.get_node('Node2D').map_name)
 
 func update_statuses_on_screen():
@@ -1061,8 +1078,7 @@ func _process(delta):
 		if ResourceLoader.load_threaded_get_status(GlobalVars.scene_to_change_to) == ResourceLoader.THREAD_LOAD_LOADED and loadingCounter > 4:
 			loadingCounter = 0
 			GlobalVars.is_loading = false
-			get_node("CanvasLayer3/loadingScreen").hide()
-			get_node('CanvasLayer3/loadingScreen/Loadingscreen').deleteScreen()
+			
 			showLoadedMap()
 			
 	var collision_data

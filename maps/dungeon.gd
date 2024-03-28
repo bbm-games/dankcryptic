@@ -25,6 +25,9 @@ func _ready():
 	
 	# The other way to load in item
 	get_node('treasure4').load_item('armor006')
+	
+	# load in warp
+	get_node('Warp').set_destination('res://maps/sanctum.tscn')
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
