@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3a5qovvsnmt7"]
+[gd_scene load_steps=11 format=3 uid="uid://b3a5qovvsnmt7"]
 
 [ext_resource type="FontFile" uid="uid://ch7j6j6n75yoo" path="res://assets/font.ttf" id="1_cgn14"]
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_qbheq"]
 [ext_resource type="Texture2D" uid="uid://b1enf06ssx3u4" path="res://assets/menubg.png" id="4_l7sgt"]
+[ext_resource type="Theme" uid="uid://bck6sugoxd40h" path="res://themes/cryptic_theme.tres" id="4_wl0tf"]
 [ext_resource type="Script" path="res://scenes/newGameButton.gd" id="5_odj0k"]
 [ext_resource type="AudioStream" uid="uid://dfkqxl7vx8ul2" path="res://assets/sounds/ui.wav" id="6_g3o4v"]
 [ext_resource type="Texture2D" uid="uid://b58dasmnbp1a4" path="res://assets/spotlight.jpg" id="7_g3y0y"]
@@ -160,9 +161,11 @@ mode = 2
 title = "Open a File"
 initial_position = 2
 size = Vector2i(400, 250)
+theme = ExtResource("4_wl0tf")
 ok_button_text = "Open"
 file_mode = 0
 root_subfolder = "saves"
+show_hidden_files = true
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 

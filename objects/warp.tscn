@@ -20,11 +20,12 @@ direction = Vector3(0, -2, 0)
 spread = 5.0
 initial_velocity_min = 5.0
 initial_velocity_max = 10.0
-scale_min = 0.5
+scale_max = 3.0
 color = Color(0.521569, 1, 1, 1)
 color_ramp = SubResource("GradientTexture1D_b8vls")
 
 [node name="Warp" type="Node2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_7u2ey")
 
 [node name="Area2D" type="Area2D" parent="."]
