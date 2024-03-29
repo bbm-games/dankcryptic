@@ -15,6 +15,7 @@ func _ready():
 	item_instance.position = get_node('spell').position
 	
 	get_node('Warp').set_destination("res://maps/dungeon.tscn")
+	get_node('Warp2').set_destination('res://maps/wartotaur_lair.tscn')
 	
 func flicker(energy_range = 0.05):
 	get_node("PointLight2D").set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.05,.05), rng.randf_range(-.05,.05)))

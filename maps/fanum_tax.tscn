@@ -12735,5 +12735,7 @@ position = Vector2(388, 169)
 position = Vector2(-51, 94)
 
 [node name="Warp" parent="." instance=ExtResource("7_3r71n")]
-z_index = 1
-position = Vector2(765, -243)
+position = Vector2(653, 229)
+
+[node name="Warp2" parent="." instance=ExtResource("7_3r71n")]
+position = Vector2(296, 241)

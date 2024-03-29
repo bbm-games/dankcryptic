@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3f01ru3rq0f3"]
+
+[ext_resource type="Script" path="res://objects/altar.gd" id="1_lcqav"]
+[ext_resource type="Texture2D" uid="uid://bbk1jssoclq2u" path="res://assets/altar-removebg-preview.png" id="2_7iyw5"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1n8en"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf06d"]
+size = Vector2(102, 8)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+z_index = 3
+collision_layer = 2
+collision_mask = 15
+physics_material_override = SubResource("PhysicsMaterial_1n8en")
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_lcqav")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -46)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_7iyw5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_uf06d")
