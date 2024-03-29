@@ -1066,6 +1066,8 @@ func _input(event):
 		walk_down_held = false
 		walk_left_held = false
 		walk_right_held = false
+		dash = false
+		attack_held = false
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

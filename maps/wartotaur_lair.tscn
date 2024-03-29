@@ -12719,4 +12719,4 @@ position = Vector2(294, 253)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("3_7gg6w")]
 modulate = Color(0.611765, 0.654902, 0.741176, 1)
-position = Vector2(101, 174)
+position = Vector2(298, -158)
