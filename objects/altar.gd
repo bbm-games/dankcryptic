@@ -1,9 +1,10 @@
 extends RigidBody2D
-
+var main_game_node
+var is_altar = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	main_game_node = get_tree().get_root().get_node('Node2D')
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,3 +19,18 @@ func _on_altar_boundary_body_entered(_body):
 
 func _on_altar_boundary_body_exited(body):
 	get_node('chatIcon').hide()
+
+func save_game():
+	# play the save file animation
+	main_game_node.get_node('HUDLayer/CanvasGroup/saveIcon').show()
+	get_node('saveSound').play()
+	# add position and map info and save the current player_data to json
+	GlobalVars.player_data['last_map'] = GlobalVars.scene_to_change_to
+	GlobalVars.player_data['last_pos_x'] = main_game_node.get_node('player').position.x
+	GlobalVars.player_data['last_pos_y'] = main_game_node.get_node('player').position.y
+	var file = FileAccess.open("res://saves/" + GlobalVars.player_data['name'] + '.json', FileAccess.WRITE)
+	file.store_string(JSON.stringify(GlobalVars.player_data))
+	file.close()
+	await get_tree().create_timer(1).timeout
+	main_game_node.get_node('HUDLayer/CanvasGroup/saveIcon').hide()
+	main_game_node.chatBoxAppend("Saved game.")

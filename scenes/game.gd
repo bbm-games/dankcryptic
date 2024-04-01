@@ -19,6 +19,9 @@ var mana_bar_height
 var health_bar_length
 var health_bar_height
 
+var savefile_pos_x = null
+var savefile_pos_y = null
+
 var health_target
 
 var loadingCounter = 0
@@ -257,7 +260,16 @@ func _ready():
 	#var scene_resource = ResourceLoader.load(sanctumScenePath)
 	
 	currentMap = self.get_node("currentMap")
-	changeMap(fanumtaxScenePath)
+	
+	# if an actual save file is loaded, open up the correct map and player position
+	if player_data['last_map']:
+		savefile_pos_x = player_data['last_pos_x']
+		savefile_pos_y = player_data['last_pos_y']
+		changeMap(player_data['last_map'])
+	else:
+		# else just do nothing
+		changeMap(fanumtaxScenePath)
+	
 	
 #	var scene = scene_resource.instantiate()
 #	
@@ -284,12 +296,16 @@ func changeMap(map_scene_path: String):
 func showLoadedMap():
 	var scene = ResourceLoader.load_threaded_get(GlobalVars.scene_to_change_to).instantiate()
 	
-	
-	# put player in the correct position on map and stop any previously running animations
+	# put player in the correct position specified for the map and stop any previously running animations
 	get_node('player/sprite/Camera2D').position_smoothing_enabled = false
 	var startingPosition = scene.get_node_or_null('startingPosition')
-	if startingPosition:
+	if savefile_pos_x:
+		player_body.set_position(Vector2(savefile_pos_x, savefile_pos_y))
+		savefile_pos_x = null
+		savefile_pos_y = null
+	elif startingPosition:
 		player_body.set_position(startingPosition.position)
+	# or just place player in default position if map doesn't have anything
 	else:
 		player_body.set_position(Vector2(576/2, 325/2))
 	
@@ -1043,21 +1059,25 @@ func _input(event):
 		if event.is_action_pressed("chat"):
 			interaction = true
 			for body in get_node('player/hitBox').get_overlapping_bodies():
-				if body.is_ground_item:
-					player_body.get_node('grabSoundPlayer').play()
-					var itemname = GlobalVars.searchDocsInList(all_items, 'id', body.item_id, 'name')
-					if itemname:
-						chatBoxAppend("Picked up " + itemname)
-					else:
-						chatBoxAppend("Picked up item with id " + body.item_id + ' could not find in database')
-					# add item to the inventory	
-					player_data['inventory'].append(body.item_id)
-					# update the player inventory display
-					update_player_inventory()
-					# update the quickslots in case the item you picked up is stackable and the quickslots need to be updated
-					update_quick_slots()
-					# remove item from world.
-					body.queue_free()
+				if 'is_ground_item' in body:	
+					if body.is_ground_item:
+						player_body.get_node('grabSoundPlayer').play()
+						var itemname = GlobalVars.searchDocsInList(all_items, 'id', body.item_id, 'name')
+						if itemname:
+							chatBoxAppend("Picked up " + itemname)
+						else:
+							chatBoxAppend("Picked up item with id " + body.item_id + ' could not find in database')
+						# add item to the inventory	
+						player_data['inventory'].append(body.item_id)
+						# update the player inventory display
+						update_player_inventory()
+						# update the quickslots in case the item you picked up is stackable and the quickslots need to be updated
+						update_quick_slots()
+						# remove item from world.
+						body.queue_free()
+				if 'is_altar' in body:
+					if body.is_altar:
+						body.save_game()
 		if event.is_action_released("chat"):
 			interaction = false
 		

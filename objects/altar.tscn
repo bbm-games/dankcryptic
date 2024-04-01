@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3f01ru3rq0f3"]
+[gd_scene load_steps=12 format=3 uid="uid://b3f01ru3rq0f3"]
 
 [ext_resource type="Script" path="res://objects/altar.gd" id="1_lcqav"]
 [ext_resource type="Texture2D" uid="uid://bbk1jssoclq2u" path="res://assets/altar-removebg-preview.png" id="2_7iyw5"]
 [ext_resource type="Texture2D" uid="uid://cr1203spmbv3" path="res://assets/Item__71.png" id="3_ngukh"]
 [ext_resource type="AudioStream" uid="uid://bsxdj6do18f4k" path="res://assets/sounds/suprise.wav" id="4_8tx3g"]
+[ext_resource type="AudioStream" uid="uid://nun6g325nvep" path="res://assets/sounds/RPG_Essentials_Free/10_UI_Menu_SFX/013_Confirm_03.wav" id="5_gaqy4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1n8en"]
 
@@ -92,6 +93,11 @@ autoplay = "bounce"
 
 [node name="surpriseSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_8tx3g")
+
+[node name="saveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gaqy4")
+volume_db = 18.0
+bus = &"Sounds"
 
 [connection signal="body_entered" from="altarBoundary" to="." method="_on_altar_boundary_body_entered"]
 [connection signal="body_exited" from="altarBoundary" to="." method="_on_altar_boundary_body_exited"]

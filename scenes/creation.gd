@@ -91,6 +91,10 @@ func _on_prev_button_pressed():
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 
 func _on_start_game_button_pressed():
+	
+	# all players start on this default map
+	new_player_data['last_map'] = 'res://maps/fanum_tax.tscn'
+	
 	# establish the new player save file
 	var file = FileAccess.open("res://saves/" + new_player_data['name'] + '.json', FileAccess.WRITE)
 	file.store_string(JSON.stringify(new_player_data))

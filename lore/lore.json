@@ -11,8 +11,9 @@
 	  "vocation":"Sellsword",
 	  "gold":0,
 	  "sprite_data":"",
-	  "last_map":"res://maps/fanum_tax.tscn",
-	  "last_altar":"Altar",
+	  "last_map":null,
+	  "last_pos_x":null,
+	  "last_pos_y":null,
 	  "is_dead":false,
 	  "stats":{
 		 "attack":75,
