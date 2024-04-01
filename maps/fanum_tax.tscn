@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dv5yiioxqim71"]
+[gd_scene load_steps=11 format=3 uid="uid://dv5yiioxqim71"]
 
 [ext_resource type="Script" path="res://maps/fanum_tax.gd" id="1_kl7g8"]
 [ext_resource type="Texture2D" uid="uid://dkyrsri1xtteb" path="res://assets/tilesets/fanum-tax.jpeg" id="2_wy1js"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cdnweam38rxor" path="res://enemies/skele_enemy.tscn" id="5_kvndv"]
 [ext_resource type="PackedScene" uid="uid://drra7beaib5fp" path="res://enemies/wizard_enemy.tscn" id="6_a3nl0"]
 [ext_resource type="PackedScene" uid="uid://bd0qt1pef4tri" path="res://objects/warp.tscn" id="7_3r71n"]
+[ext_resource type="PackedScene" uid="uid://b3f01ru3rq0f3" path="res://objects/altar.tscn" id="8_eq7qm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_chhvr"]
 texture = ExtResource("2_wy1js")
@@ -12739,3 +12740,7 @@ position = Vector2(653, 229)
 
 [node name="Warp2" parent="." instance=ExtResource("7_3r71n")]
 position = Vector2(296, 241)
+
+[node name="Altar" parent="." instance=ExtResource("8_eq7qm")]
+position = Vector2(728, 77)
+scale = Vector2(1, 1)
