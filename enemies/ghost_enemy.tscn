@@ -1,0 +1,226 @@
+[gd_scene load_steps=19 format=3 uid="uid://cbt7cpuqc1t7l"]
+
+[ext_resource type="Script" path="res://enemies/ghost_enemy.gd" id="1_ut7gm"]
+[ext_resource type="Texture2D" uid="uid://dmaxsb5h58gv8" path="res://assets/ gothicvania patreon collection/Ghost-Files/PNG/ghost-idle.png" id="2_86wji"]
+[ext_resource type="Texture2D" uid="uid://bm8uk6n66m3in" path="res://assets/ gothicvania patreon collection/Ghost-Files/PNG/ghost-shriek.png" id="3_ichpg"]
+[ext_resource type="Texture2D" uid="uid://b6tuk3dp4clo3" path="res://assets/healthbartiny.png" id="4_7hdpm"]
+[ext_resource type="AudioStream" uid="uid://dwawhvohjamun" path="res://assets/sounds/essentials/Electromagnetic_Car_Dashboard_Loop_Mono_Elektrousi_04.wav" id="5_xxq12"]
+[ext_resource type="AudioStream" uid="uid://bv6unf4fmr84v" path="res://assets/sounds/Doll JP/Doll_Play.wav" id="6_lblga"]
+[ext_resource type="AudioStream" uid="uid://6gs0tl7v3ewp" path="res://assets/sounds/Doll JP/Doll_Giggle4.wav" id="7_aqab6"]
+[ext_resource type="AudioStream" uid="uid://dsvhosqs6a7a3" path="res://assets/sounds/Doll JP/Doll_Disappointed.wav" id="8_r1jae"]
+
+[sub_resource type="Animation" id="Animation_a1t11"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("attack:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("walk:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2m51g"]
+resource_name = "attack"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("attack:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
+}
+
+[sub_resource type="Animation" id="Animation_y3h5j"]
+resource_name = "death"
+
+[sub_resource type="Animation" id="Animation_5e0rc"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("idle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 5]
+}
+
+[sub_resource type="Animation" id="Animation_il6kh"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("walk:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_43mu4"]
+_data = {
+"RESET": SubResource("Animation_a1t11"),
+"attack": SubResource("Animation_2m51g"),
+"death": SubResource("Animation_y3h5j"),
+"idle": SubResource("Animation_5e0rc"),
+"walk": SubResource("Animation_il6kh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ixdy"]
+size = Vector2(53, 84)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3oc3x"]
+radius = 8.08012
+height = 33.6147
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_koqax"]
+radius = 352.006
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ymw7q"]
+radius = 8.24521
+height = 32.7487
+
+[node name="ghost_enemy" type="CharacterBody2D"]
+z_index = 3
+y_sort_enabled = true
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("1_ut7gm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_43mu4")
+}
+autoplay = "idle"
+
+[node name="idle" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -24)
+texture = ExtResource("2_86wji")
+hframes = 7
+
+[node name="walk" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, -24)
+texture = ExtResource("2_86wji")
+hframes = 7
+
+[node name="attack" type="Sprite2D" parent="."]
+position = Vector2(1, -24)
+texture = ExtResource("3_ichpg")
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -43)
+shape = SubResource("RectangleShape2D_5ixdy")
+
+[node name="health_bar" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(-2, -55)
+scale = Vector2(1.2, 1.2)
+
+[node name="frame" type="Sprite2D" parent="health_bar"]
+position = Vector2(2.33333, 2.91667)
+scale = Vector2(0.1, 0.191667)
+texture = ExtResource("4_7hdpm")
+
+[node name="healthBar" type="ColorRect" parent="health_bar"]
+offset_left = -10.0
+offset_top = 2.0
+offset_bottom = 4.0
+scale = Vector2(2.48084, 1)
+color = Color(0.823529, 0.270588, 0.27451, 1)
+
+[node name="attack_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xxq12")
+volume_db = 10.0
+attenuation = 6.0
+bus = &"Sounds"
+
+[node name="walk_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_lblga")
+volume_db = 8.914
+attenuation = 6.0
+bus = &"Sounds"
+
+[node name="idle_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_aqab6")
+attenuation = 6.0
+bus = &"Sounds"
+
+[node name="clapped_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_r1jae")
+
+[node name="hitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+position = Vector2(13, -10.5)
+rotation = 2.61799
+shape = SubResource("CapsuleShape2D_3oc3x")
+
+[node name="detectionZone" type="Area2D" parent="."]
+scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionZone"]
+shape = SubResource("CircleShape2D_koqax")
+
+[node name="attackZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackZone"]
+position = Vector2(12.5, -10.5)
+rotation = 2.61799
+shape = SubResource("CapsuleShape2D_ymw7q")
+
+[connection signal="body_entered" from="detectionZone" to="." method="_on_detection_zone_body_entered"]
+[connection signal="body_exited" from="detectionZone" to="." method="_on_detection_zone_body_exited"]
