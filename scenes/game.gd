@@ -441,7 +441,7 @@ func update_quick_slots():
 func update_player_equipment():
 	get_node('CanvasLayer2/playerMenu/Equipment/HBoxContainer/RichTextLabel').set_text("")
 	get_node('CanvasLayer2/playerMenu/Equipment/HBoxContainer/RichTextLabel').set_text(JSON.stringify(player_data['equipment']))
-	
+
 	# adjust the status inflictions and negations
 	# first set it all to zero
 	for key in player_data['statusInflictions'].keys():
@@ -462,6 +462,9 @@ func update_player_equipment():
 			# draw the item as well
 			get_node('CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/' + key).texture = load(item['sprite_data'])
 			get_node('CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/' + key).set_tooltip_text(item['name'])
+		else:
+			# if no item, remove the texture 
+			get_node('CanvasLayer2/playerMenu/Equipment/HBoxContainer/PanelContainer/CanvasGroup/' + key).texture = null
 			
 	var effects = get_node('CanvasLayer2/playerMenu/Equipment/HBoxContainer/statusEffects')
 	effects.clear()
