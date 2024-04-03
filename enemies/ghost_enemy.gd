@@ -18,7 +18,6 @@ var damage_highlight_time = 0
 var base_modulation = self.get_modulate()
 
 var attackCooldown = 0
-var beam_angle = 0 
 
 var flipDelayTimer = 0
 
@@ -47,7 +46,7 @@ var StateStrings = {
 	States.DEATH: 'death'
 }
 
-var enemy_data = GlobalVars.returnDocInList(GlobalVars.lore_data['enemies'],'name', 'Wizard').duplicate(true)
+var enemy_data = GlobalVars.returnDocInList(GlobalVars.lore_data['enemies'],'name', 'Ghost').duplicate(true)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -172,22 +171,10 @@ func set_to_dust_sensitivity(value: float):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	beam_angle += delta 
-	if beam_angle > 2 * PI:
-		beam_angle = 0
-
 	# if there is no target body, be idle
 	if not target_body:
 		changeState(States.IDLE)
-		get_node('beam').hide()
 		get_node('attack_sound').stop()
-	else:
-		# fire some spells in the direction of the target body
-		get_node('beam').show()
-		if not get_node('attack_sound').is_playing():
-			get_node('attack_sound').play()
-		get_node('beam').set_rotation(beam_angle)
 	
 	# update the health bar
 	health_bar.set_size(Vector2(enemy_data['current_health']/enemy_data['max_health'] * health_bar_length, health_bar_height))
@@ -253,15 +240,3 @@ func _on_detection_zone_body_exited(body):
 	if body == target_body:
 		target_body = null
 	changeState(States.IDLE)
-	
-func _on_attack_zone_body_entered(body):
-	if body == target_body and body.is_attackable:
-		if current_state != States.WALKFAST:
-			changeState(States.ATTACK)
-		else:
-			#await get_tree().create_timer(1.0).timeout
-			changeState(States.ATTACK)
-					
-func _on_attack_zone_body_exited(body):
-	if body == target_body:
-		changeState(States.WALKFAST)

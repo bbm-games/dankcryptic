@@ -24,6 +24,10 @@ func _ready():
 	optionsMenu.add_child(options_scene)
 	optionsMenu.get_node("Node2D/CanvasLayer").hide()
 
+func _input(event):
+	if event is InputEventMouseMotion:
+		#show the mouse if it was hiding
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

@@ -296,6 +296,24 @@
 	  "inventory":[
 		 
 	  ]
+	  },
+	  {
+		 "name": "Ghost",
+		 "stats":{
+		 "attack":65,
+		 "defense":65,
+		 "strength":20,
+		 "health":90,
+		 "stamina":100,
+		 "magic":40,
+		 "wisdom":60,
+		 "mana":40
+	   },
+	  "current_health": 90,
+	  "max_health": 90,
+	  "inventory":[
+		 
+	  ]
 	  }
    ],
    "questitems":[

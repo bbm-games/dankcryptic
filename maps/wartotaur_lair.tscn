@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsi0p34pul4s5"]
+[gd_scene load_steps=7 format=3 uid="uid://bsi0p34pul4s5"]
 
 [ext_resource type="Script" path="res://maps/wartotaur_lair.gd" id="1_a8g6w"]
 [ext_resource type="Texture2D" uid="uid://doodq6tdpllvd" path="res://assets/tilesets/wartotaur-lair.jpeg" id="2_3crre"]
 [ext_resource type="PackedScene" uid="uid://b3f01ru3rq0f3" path="res://objects/altar.tscn" id="3_7gg6w"]
+[ext_resource type="PackedScene" uid="uid://cbt7cpuqc1t7l" path="res://enemies/ghost_enemy.tscn" id="4_h81n2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4w32e"]
 texture = ExtResource("2_3crre")
@@ -12706,8 +12707,6 @@ script = ExtResource("1_a8g6w")
 color = Color(0.121569, 0.121569, 0.121569, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
-z_index = 1
-y_sort_enabled = true
 position = Vector2(-1, 4)
 tile_set = SubResource("TileSet_dh4d8")
 rendering_quadrant_size = 64
@@ -12719,3 +12718,9 @@ position = Vector2(294, 253)
 
 [node name="RigidBody2D" parent="." instance=ExtResource("3_7gg6w")]
 position = Vector2(298, -158)
+
+[node name="ghost_enemy" parent="." instance=ExtResource("4_h81n2")]
+position = Vector2(62, -163)
+
+[node name="ghost_enemy2" parent="." instance=ExtResource("4_h81n2")]
+position = Vector2(532, -181)
