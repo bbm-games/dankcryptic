@@ -12,6 +12,11 @@ func _ready():
 	lore_data = JSON.parse_string(file.get_as_text())
 	file.close()
 	load_default_player_data()
+	
+	# check if save directory exists
+	var dir = DirAccess.open("user://")
+	if not dir.dir_exists('saves'):
+		dir.make_dir('saves')
 
 func load_default_player_data():
 	# get player data (default one in lore file)

@@ -96,10 +96,10 @@ func _on_start_game_button_pressed():
 	new_player_data['last_map'] = 'res://maps/fanum_tax.tscn'
 	
 	# establish the new player save file
-	var file = FileAccess.open("res://saves/" + new_player_data['name'] + '.json', FileAccess.WRITE)
+	var file = FileAccess.open("user://saves/" + new_player_data['name'] + '.json', FileAccess.WRITE)
 	file.store_string(JSON.stringify(new_player_data))
 	file.close()
-	GlobalVars.load_player_data("res://saves/" + new_player_data['name'] + '.json')
+	GlobalVars.load_player_data("user://saves/" + new_player_data['name'] + '.json')
 	# start the game and set the location of the save file
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 	

@@ -164,6 +164,7 @@ size = Vector2i(400, 250)
 theme = ExtResource("4_wl0tf")
 ok_button_text = "Open"
 file_mode = 0
+access = 1
 root_subfolder = "saves"
 show_hidden_files = true
 

@@ -23,7 +23,7 @@ func _ready():
 	optionsMenu = get_node("CanvasLayer2/options")
 	optionsMenu.add_child(options_scene)
 	optionsMenu.get_node("Node2D/CanvasLayer").hide()
-
+	
 func _input(event):
 	if event is InputEventMouseMotion:
 		#show the mouse if it was hiding
@@ -77,6 +77,6 @@ func _on_link_button_2_pressed():
 func _on_file_dialog_confirmed():
 	var path = get_node("CanvasLayer/FileDialog").get_current_path()
 	# establish the new player save file
-	GlobalVars.load_player_data("res://saves/" + path)
+	GlobalVars.load_player_data("user://saves/" + path)
 	# start the game and set the location of the save file
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
