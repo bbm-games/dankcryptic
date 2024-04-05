@@ -216,9 +216,14 @@ func _process(delta):
 		
 		# without steering
 		self.move_and_collide((target_body.position + offset - (get_node('attackZone/CollisionShape2D').position + self.position)).normalized() * speed * delta)
+		# start spell timer
+		if get_node('spellTimer').is_stopped():
+			get_node('spellTimer').start()
+	else:
+		get_node('spellTimer').stop()
 		
 	# limits the WALKFAST state TO 5 seconds
-	if current_state == States.WALKFAST:
+	if current_state ==	 States.WALKFAST:
 		walk_fast_time += delta
 		if walk_fast_time > 5:
 			changeState(States.WALK)
@@ -240,3 +245,17 @@ func _on_detection_zone_body_exited(body):
 	if body == target_body:
 		target_body = null
 	changeState(States.IDLE)
+
+
+func _on_spell_timer_timeout():
+	# shoot spells
+	# to ensure that the spell doesn't come from player's feet
+	var casting_position_offset = Vector2(0,-20)
+	var projectile = preload("res://objects/projectile.tscn").instantiate()
+	projectile.set_direction_facing_vector((target_body.position - self.position).normalized())
+	projectile.set_initial_position(self.get_position() + casting_position_offset)
+	projectile.set_caster(self)
+	get_parent().add_child(projectile)
+	
+	# change the interval for next spell
+	get_node('spellTimer').wait_time = rng.randf_range(0.75, 1.25)

@@ -911,6 +911,8 @@ func _input(event):
 							# if not, use the controller aim.
 							projectile.set_direction_facing_vector(Vector2(cos(get_node('player/hitBox').rotation), sin(get_node('player/hitBox').rotation)))
 						projectile.set_initial_position(player_body.get_global_position() + casting_position_offset)
+						# remove the player layer from the collision bitmask
+						projectile.set_caster(player_body)
 						self.add_child(projectile)
 						self.subtractMana(mana_cost)
 					

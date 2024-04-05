@@ -4,6 +4,9 @@ var main_game_node
 var is_player = true
 var is_attackable = true
 
+# if the player will be considered an enemy (aka, attacked by enemy) allow enemy to access data
+var enemy_data
+
 func _init():
 	#self.add_collision_exception_with(get_node('hitBox'))
 	pass
@@ -11,7 +14,8 @@ func _init():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	main_game_node = get_tree().get_root().get_node('Node2D')
-
+	enemy_data = GlobalVars.player_data
+	
 # modifies the player_data anytime damage is taken
 func take_damage(damage_val, statusInflictions = null, ranged = false, aoe = false):
 	if not GlobalVars.player_data['is_dead']:

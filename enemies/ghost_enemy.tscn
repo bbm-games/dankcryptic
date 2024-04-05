@@ -223,5 +223,8 @@ position = Vector2(12.5, -10.5)
 rotation = 2.61799
 shape = SubResource("CapsuleShape2D_ymw7q")
 
+[node name="spellTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="detectionZone" to="." method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="detectionZone" to="." method="_on_detection_zone_body_exited"]
+[connection signal="timeout" from="spellTimer" to="." method="_on_spell_timer_timeout"]

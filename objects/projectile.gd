@@ -18,14 +18,20 @@ var lifetime_counter = 0
 var direction_facing_vector: Vector2
 var speed = 200
 
+var caster = null
+
+func set_caster(caster_body):
+	self.caster = caster_body
+	# magic level is grabbed from whomever the caster is
+	magic_level = caster_body.enemy_data['stats']['magic'] 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
 	main_game_node = get_tree().get_root().get_node('Node2D')
 	rng = RandomNumberGenerator.new()
 	
-	# TODO: GENERALIZE THIS SO YOU GRAB THE MAGIC LEVEL FROM WHOEVER THE CASTER IS
-	magic_level = GlobalVars.player_data['stats']['magic'] 
+	
 	
 	# play the projectile trails if need be
 	get_node('GPUParticles2D').set_emitting(true)
@@ -67,7 +73,7 @@ func _on_body_entered(body):
 		queue_free()
 	# check to see if the body is attackable, is so apply damage
 	elif body.is_attackable:
-		if body.has_method("take_damage") :
+		if body.has_method("take_damage") and body != caster:
 			# calculate the difference between caster magic and enemy defense to determine critical hit percentage
 			var diff = magic_level - body.enemy_data['stats']['defense']
 			var prob = 0
