@@ -1438,6 +1438,15 @@ func on_death_tween_finished():
 	light.hide()
 	playTitleCard('YOU DIED.')
 	player_body.is_attackable = false
+	player_data['gold'] = 0
+	# TODO: make this on click
+	await get_tree().create_timer(3.0).timeout
+	
+	# set player stats to the one from last save
+	player_data['current_health'] = player_data['max_health']
+	player_data['is_dead'] = false
+	player_body.is_attackable = true
+	get_tree().reload_current_scene()
 
 func set_to_dust_sensitivity(value: float):
 	player_sprite.get_material().set_shader_parameter('sensitivity', value)

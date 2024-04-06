@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 var main_game_node
+
+# TODO: figure out why these aren't in json?
 var is_player = true
 var is_attackable = true
 
