@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dmaxsb5h58gv8" path="res://assets/ gothicvania patreon collection/Ghost-Files/PNG/ghost-idle.png" id="2_86wji"]
 [ext_resource type="Texture2D" uid="uid://bm8uk6n66m3in" path="res://assets/ gothicvania patreon collection/Ghost-Files/PNG/ghost-shriek.png" id="3_ichpg"]
 [ext_resource type="Texture2D" uid="uid://b6tuk3dp4clo3" path="res://assets/healthbartiny.png" id="4_7hdpm"]
-[ext_resource type="AudioStream" uid="uid://dwawhvohjamun" path="res://assets/sounds/essentials/Electromagnetic_Car_Dashboard_Loop_Mono_Elektrousi_04.wav" id="5_xxq12"]
-[ext_resource type="AudioStream" uid="uid://bv6unf4fmr84v" path="res://assets/sounds/Doll JP/Doll_Play.wav" id="6_lblga"]
+[ext_resource type="AudioStream" uid="uid://cxwhopbb40050" path="res://assets/sounds/Fantasy Monsters/Fantasy Monsters/Fae_Giggle.wav" id="5_82vq6"]
+[ext_resource type="AudioStream" uid="uid://ccmd1th8immfb" path="res://assets/sounds/Fantasy Monsters/Fantasy Monsters/Fae_Concerned.wav" id="6_g5u1c"]
 [ext_resource type="AudioStream" uid="uid://6gs0tl7v3ewp" path="res://assets/sounds/Doll JP/Doll_Giggle4.wav" id="7_aqab6"]
-[ext_resource type="AudioStream" uid="uid://dsvhosqs6a7a3" path="res://assets/sounds/Doll JP/Doll_Disappointed.wav" id="8_r1jae"]
+[ext_resource type="AudioStream" uid="uid://bm2xri0yet5ha" path="res://assets/sounds/Fantasy Monsters/Fantasy Monsters/Fae_Gasp.wav" id="8_spuvk"]
 
 [sub_resource type="Animation" id="Animation_a1t11"]
 length = 0.001
@@ -51,7 +51,6 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_2m51g"]
 resource_name = "attack"
 length = 0.6
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -178,13 +177,13 @@ scale = Vector2(2.48084, 1)
 color = Color(0.823529, 0.270588, 0.27451, 1)
 
 [node name="attack_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_xxq12")
+stream = ExtResource("5_82vq6")
 volume_db = 10.0
 attenuation = 6.0
 bus = &"Sounds"
 
 [node name="walk_sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_lblga")
+stream = ExtResource("6_g5u1c")
 volume_db = 8.914
 attenuation = 6.0
 bus = &"Sounds"
@@ -195,7 +194,7 @@ attenuation = 6.0
 bus = &"Sounds"
 
 [node name="clapped_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_r1jae")
+stream = ExtResource("8_spuvk")
 
 [node name="hitBox" type="Area2D" parent="."]
 collision_layer = 0

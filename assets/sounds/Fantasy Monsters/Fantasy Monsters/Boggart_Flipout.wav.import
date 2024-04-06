@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bsfpwgkr0xcy5"
+path="res://.godot/imported/Boggart_Flipout.wav-90b0c0814232deee45354ab11789cd60.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Fantasy Monsters/Fantasy Monsters/Boggart_Flipout.wav"
+dest_files=["res://.godot/imported/Boggart_Flipout.wav-90b0c0814232deee45354ab11789cd60.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -17,7 +17,7 @@ var just_took_damage = false
 var damage_highlight_time = 0
 var base_modulation = self.get_modulate()
 
-var attackCooldown = 0
+var attackCooldown = 0.6
 
 var flipDelayTimer = 0
 
@@ -222,6 +222,12 @@ func _process(delta):
 	else:
 		get_node('spellTimer').stop()
 		
+	if current_state == States.ATTACK:
+		attackCooldown -= delta
+		if attackCooldown <= 0:
+			changeState(States.WALK)
+			attackCooldown = 0.6
+		
 	# limits the WALKFAST state TO 5 seconds
 	if current_state ==	 States.WALKFAST:
 		walk_fast_time += delta
@@ -246,16 +252,18 @@ func _on_detection_zone_body_exited(body):
 		target_body = null
 	changeState(States.IDLE)
 
-
 func _on_spell_timer_timeout():
 	# shoot spells
 	# to ensure that the spell doesn't come from player's feet
+	changeState(States.ATTACK)
+	
 	var casting_position_offset = Vector2(0,-20)
 	var projectile = preload("res://objects/projectile.tscn").instantiate()
 	projectile.set_direction_facing_vector((target_body.position - self.position).normalized())
 	projectile.set_initial_position(self.get_position() + casting_position_offset)
 	projectile.set_caster(self)
 	get_parent().add_child(projectile)
+	
 	
 	# change the interval for next spell
 	get_node('spellTimer').wait_time = rng.randf_range(0.75, 1.25)
