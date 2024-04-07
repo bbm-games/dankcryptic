@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2qub3dtoc5ie"]
+[gd_scene load_steps=20 format=3 uid="uid://d2qub3dtoc5ie"]
 
 [ext_resource type="Script" path="res://objects/chest.gd" id="1_x7vbm"]
 [ext_resource type="Shader" path="res://shaders/itemoutline.gdshader" id="2_eihlw"]
 [ext_resource type="Texture2D" uid="uid://dwm1pqcv727su" path="res://assets/pixel-art-treasure-chest/chest-ss-sat.png" id="3_fvi3w"]
 [ext_resource type="AudioStream" uid="uid://bw7tyqphcnam1" path="res://assets/sounds/Minifantasy_Dungeon_SFX/01_chest_open_3.wav" id="4_4uodx"]
+[ext_resource type="Texture2D" uid="uid://hc61h6wbsj2v" path="res://assets/Item__61.png" id="5_615j3"]
 [ext_resource type="Texture2D" uid="uid://iokgxjbylm41" path="res://assets/PS4 Pixel Controller Buttons FREE/PS4.png" id="5_gle5r"]
 [ext_resource type="AudioStream" uid="uid://bsxdj6do18f4k" path="res://assets/sounds/suprise.wav" id="6_xlxwk"]
 
@@ -172,6 +173,13 @@ shape = SubResource("RectangleShape2D_ouw7g")
 [node name="chatIcon" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(0, -30)
+texture = ExtResource("5_615j3")
+region_rect = Rect2(355, 356, 26, 25)
+
+[node name="controllerIcon" type="Sprite2D" parent="chatIcon"]
+z_index = 1
+position = Vector2(9, 5)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_gle5r")
 hframes = 5
 vframes = 7

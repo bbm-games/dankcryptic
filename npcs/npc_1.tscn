@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://52fb1vhbw6iv"]
+[gd_scene load_steps=12 format=3 uid="uid://52fb1vhbw6iv"]
 
 [ext_resource type="Script" path="res://scenes/npc1.gd" id="1_05c1o"]
 [ext_resource type="Texture2D" uid="uid://bt5e0mken3goj" path="res://assets/griffith.png" id="2_udkei"]
 [ext_resource type="Texture2D" uid="uid://cpgipefc7y1ek" path="res://assets/chaticon.png" id="3_te3pm"]
+[ext_resource type="Texture2D" uid="uid://iokgxjbylm41" path="res://assets/PS4 Pixel Controller Buttons FREE/PS4.png" id="4_i2fcb"]
 [ext_resource type="AudioStream" uid="uid://dl3p5p2c3jhh2" path="res://assets/sounds/chat.wav" id="4_vi3dp"]
 [ext_resource type="AudioStream" uid="uid://bsxdj6do18f4k" path="res://assets/sounds/suprise.wav" id="5_e3ntg"]
 
@@ -71,6 +72,16 @@ shape = SubResource("RectangleShape2D_bp8pf")
 z_index = 1
 position = Vector2(0, -30)
 texture = ExtResource("3_te3pm")
+region_rect = Rect2(100, 6, 24, 22)
+
+[node name="controllerIcon" type="Sprite2D" parent="chatIcon"]
+z_index = 1
+position = Vector2(9, 5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_i2fcb")
+hframes = 5
+vframes = 7
+frame = 27
 
 [node name="npcBoundary" type="Area2D" parent="."]
 position = Vector2(-1.25, -21)

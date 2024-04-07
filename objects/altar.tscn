@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3f01ru3rq0f3"]
+[gd_scene load_steps=13 format=3 uid="uid://b3f01ru3rq0f3"]
 
 [ext_resource type="Script" path="res://objects/altar.gd" id="1_lcqav"]
 [ext_resource type="Texture2D" uid="uid://bbk1jssoclq2u" path="res://assets/altar-removebg-preview.png" id="2_7iyw5"]
 [ext_resource type="Texture2D" uid="uid://cr1203spmbv3" path="res://assets/Item__71.png" id="3_ngukh"]
+[ext_resource type="Texture2D" uid="uid://iokgxjbylm41" path="res://assets/PS4 Pixel Controller Buttons FREE/PS4.png" id="4_3gjqi"]
 [ext_resource type="AudioStream" uid="uid://bsxdj6do18f4k" path="res://assets/sounds/suprise.wav" id="4_8tx3g"]
 [ext_resource type="AudioStream" uid="uid://nun6g325nvep" path="res://assets/sounds/RPG_Essentials_Free/10_UI_Menu_SFX/013_Confirm_03.wav" id="5_gaqy4"]
 
@@ -75,6 +76,15 @@ visible = false
 z_index = 1
 position = Vector2(0, -30)
 texture = ExtResource("3_ngukh")
+
+[node name="controllerIcon" type="Sprite2D" parent="chatIcon"]
+z_index = 1
+position = Vector2(9, 5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_3gjqi")
+hframes = 5
+vframes = 7
+frame = 27
 
 [node name="altarBoundary" type="Area2D" parent="."]
 position = Vector2(-1.25, -21)
