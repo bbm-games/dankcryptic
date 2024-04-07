@@ -34,3 +34,13 @@ func take_item():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_chest_boundary_body_entered(body):
+	get_node('chatIcon').show()
+	# play suprise audio
+	get_node('surpriseSound').play()
+
+
+func _on_chest_boundary_body_exited(body):
+	get_node('chatIcon').hide()

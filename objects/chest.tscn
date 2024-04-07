@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2qub3dtoc5ie"]
+[gd_scene load_steps=19 format=3 uid="uid://d2qub3dtoc5ie"]
 
 [ext_resource type="Script" path="res://objects/chest.gd" id="1_x7vbm"]
 [ext_resource type="Shader" path="res://shaders/itemoutline.gdshader" id="2_eihlw"]
-[ext_resource type="Texture2D" uid="uid://ba3fpluujv74f" path="res://assets/pixel-art-treasure-chest/chest-ss.png" id="3_0skap"]
+[ext_resource type="Texture2D" uid="uid://dwm1pqcv727su" path="res://assets/pixel-art-treasure-chest/chest-ss-sat.png" id="3_fvi3w"]
 [ext_resource type="AudioStream" uid="uid://bw7tyqphcnam1" path="res://assets/sounds/Minifantasy_Dungeon_SFX/01_chest_open_3.wav" id="4_4uodx"]
+[ext_resource type="Texture2D" uid="uid://iokgxjbylm41" path="res://assets/PS4 Pixel Controller Buttons FREE/PS4.png" id="5_gle5r"]
+[ext_resource type="AudioStream" uid="uid://bsxdj6do18f4k" path="res://assets/sounds/suprise.wav" id="6_xlxwk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tj0j6"]
 
@@ -20,21 +22,6 @@ shader_parameter/inside = false
 shader_parameter/add_margins = true
 shader_parameter/number_of_images = Vector2(1, 1)
 
-[sub_resource type="Animation" id="Animation_2j8lt"]
-resource_name = "closed"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="Animation" id="Animation_7birn"]
 length = 0.001
 tracks/0/type = "value"
@@ -50,8 +37,8 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_k37i5"]
-resource_name = "open"
+[sub_resource type="Animation" id="Animation_2j8lt"]
+resource_name = "closed"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,7 +49,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_gdmg6"]
@@ -82,12 +69,67 @@ tracks/0/keys = {
 "values": [1, 2]
 }
 
+[sub_resource type="Animation" id="Animation_k37i5"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xrbr2"]
 _data = {
 "RESET": SubResource("Animation_7birn"),
 "closed": SubResource("Animation_2j8lt"),
 "glowing": SubResource("Animation_gdmg6"),
 "open": SubResource("Animation_k37i5")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouw7g"]
+size = Vector2(30, 25)
+
+[sub_resource type="Animation" id="Animation_e6twv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("chatIcon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_5djxa"]
+resource_name = "bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("chatIcon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -25), Vector2(0, -30), Vector2(0, -25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2gvuv"]
+_data = {
+"RESET": SubResource("Animation_e6twv"),
+"bounce": SubResource("Animation_5djxa")
 }
 
 [node name="chest" type="RigidBody2D"]
@@ -106,7 +148,7 @@ shape = SubResource("RectangleShape2D_o1ttb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_hvjsb")
-texture = ExtResource("3_0skap")
+texture = ExtResource("3_fvi3w")
 hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -119,5 +161,32 @@ stream = ExtResource("4_4uodx")
 volume_db = 5.0
 bus = &"Sounds"
 
+[node name="chestBoundary" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chestBoundary"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_ouw7g")
+
+[node name="chatIcon" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -30)
+texture = ExtResource("5_gle5r")
+hframes = 5
+vframes = 7
+frame = 27
+
+[node name="surpriseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xlxwk")
+
+[node name="chatIconAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2gvuv")
+}
+autoplay = "bounce"
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="body_entered" from="chestBoundary" to="." method="_on_chest_boundary_body_entered"]
+[connection signal="body_exited" from="chestBoundary" to="." method="_on_chest_boundary_body_exited"]
