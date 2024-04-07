@@ -1,0 +1,123 @@
+[gd_scene load_steps=13 format=3 uid="uid://d2qub3dtoc5ie"]
+
+[ext_resource type="Script" path="res://objects/chest.gd" id="1_x7vbm"]
+[ext_resource type="Shader" path="res://shaders/itemoutline.gdshader" id="2_eihlw"]
+[ext_resource type="Texture2D" uid="uid://ba3fpluujv74f" path="res://assets/pixel-art-treasure-chest/chest-ss.png" id="3_0skap"]
+[ext_resource type="AudioStream" uid="uid://bw7tyqphcnam1" path="res://assets/sounds/Minifantasy_Dungeon_SFX/01_chest_open_3.wav" id="4_4uodx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tj0j6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1ttb"]
+size = Vector2(26, 12)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hvjsb"]
+resource_local_to_scene = true
+shader = ExtResource("2_eihlw")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_2j8lt"]
+resource_name = "closed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_7birn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_k37i5"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_gdmg6"]
+resource_name = "glowing"
+length = 0.2
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xrbr2"]
+_data = {
+"RESET": SubResource("Animation_7birn"),
+"closed": SubResource("Animation_2j8lt"),
+"glowing": SubResource("Animation_gdmg6"),
+"open": SubResource("Animation_k37i5")
+}
+
+[node name="chest" type="RigidBody2D"]
+z_index = 3
+collision_layer = 2
+collision_mask = 15
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_tj0j6")
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_x7vbm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_o1ttb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hvjsb")
+texture = ExtResource("3_0skap")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xrbr2")
+}
+
+[node name="openSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4uodx")
+volume_db = 5.0
+bus = &"Sounds"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

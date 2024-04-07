@@ -259,8 +259,8 @@ func _on_spell_timer_timeout():
 	
 	var casting_position_offset = Vector2(0,-20)
 	var projectile = preload("res://objects/projectile.tscn").instantiate()
-	projectile.set_direction_facing_vector((target_body.position - self.position).normalized())
 	projectile.set_initial_position(self.get_position() + casting_position_offset)
+	projectile.set_direction_facing_vector((target_body.position - projectile.position).normalized())
 	projectile.set_caster(self)
 	get_parent().add_child(projectile)
 	

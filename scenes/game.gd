@@ -1083,6 +1083,27 @@ func _input(event):
 				if 'is_altar' in body:
 					if body.is_altar:
 						body.save_game()
+				if 'is_chest' in body:
+					if body.is_chest:
+						if not body.is_open:
+							body.open_chest()
+						elif body.has_item:
+							var item_ids = body.take_item()
+							player_body.get_node('grabSoundPlayer').play()
+							for item_id in item_ids:
+								var itemname = GlobalVars.searchDocsInList(all_items, 'id', item_id, 'name')
+								if itemname:
+									chatBoxAppend("Found " + itemname)
+								else:
+									chatBoxAppend("Found item with id " + body.item_id + ' could not find in database')
+								# add item to the inventory	
+								player_data['inventory'].append(item_id)
+								# update the player inventory display
+								update_player_inventory()
+								# update the quickslots in case the item you picked up is stackable and the quickslots need to be updated
+								update_quick_slots()
+						else:
+							pass
 		if event.is_action_released("chat"):
 			interaction = false
 		
@@ -1437,8 +1458,8 @@ func subtractHealth(amount):
 func on_death_tween_finished():
 	light.hide()
 	playTitleCard('YOU DIED.')
-	player_body.is_attackable = false
 	player_data['gold'] = 0
+	player_body.is_attackable = false
 	# TODO: make this on click
 	await get_tree().create_timer(3.0).timeout
 	
@@ -1446,6 +1467,10 @@ func on_death_tween_finished():
 	player_data['current_health'] = player_data['max_health']
 	player_data['is_dead'] = false
 	player_body.is_attackable = true
+	
+	# save the player file now that they've respawned
+	GlobalVars.save_player_data()
+	
 	get_tree().reload_current_scene()
 
 func set_to_dust_sensitivity(value: float):
@@ -1460,6 +1485,15 @@ func hit_coin():
 	# play coin collision sound
 	get_node('%coinCollisionSound').play()
 	player_data['gold'] += 1
+	update_player_summary_bar()
+	
+# for when you recieve a lump sum of coins from a chest or something
+func give_coins(num):
+	for i in range(num):
+		await get_tree().create_timer(0.05).timeout
+		# play coin collision sound
+		get_node('%coinCollisionSound').play()
+		player_data['gold'] += 1
 	update_player_summary_bar()
 		
 # Options menu buttons 

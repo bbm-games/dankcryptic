@@ -28,6 +28,11 @@ func load_player_data(path):
 	var file = FileAccess.open(path, FileAccess.READ)
 	player_data = JSON.parse_string(file.get_as_text())
 	file.close()
+	
+func save_player_data():
+	var file = FileAccess.open("user://saves/" + GlobalVars.player_data['name'] + '.json', FileAccess.WRITE)
+	file.store_string(JSON.stringify(GlobalVars.player_data))
+	file.close()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
