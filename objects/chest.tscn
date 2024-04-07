@@ -171,6 +171,7 @@ position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_ouw7g")
 
 [node name="chatIcon" type="Sprite2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(0, -30)
 texture = ExtResource("5_615j3")
