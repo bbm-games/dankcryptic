@@ -35,7 +35,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0p4bx"]
@@ -54,8 +54,7 @@ shape = SubResource("CapsuleShape2D_cvnbo")
 z_index = 1
 scale = Vector2(0.283334, 0.279167)
 sprite_frames = SubResource("SpriteFrames_xrusr")
-autoplay = "default"
-frame_progress = 0.497211
+frame_progress = 0.335424
 
 [node name="detection" type="Area2D" parent="."]
 collision_layer = 0
