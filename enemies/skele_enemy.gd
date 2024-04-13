@@ -3,7 +3,7 @@ extends CharacterBody2D
 var main_game_node # contains the root of the entire game
 var target_body = null # will be the body that will be targeted
 var offset : Vector2   # contains offset to the target_body_position that enemy will move to
-var base_speed = 30 # incorporated delta scaling factor
+var base_speed = 3000 # incorporated delta scaling factor
 var speed = base_speed
 
 var des_vel : Vector2 # the desired velocity (used in steering)
@@ -24,6 +24,8 @@ var flipDelayTimer = 0
 var health_bar
 var health_bar_height
 var health_bar_length
+
+var next_path_position
 
 var scale_size
 
@@ -170,7 +172,7 @@ func set_to_dust_sensitivity(value: float):
 	get_node('idle').get_material().set_shader_parameter('sensitivity', value)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 
 	# if there is no target body, be idle
 	if not target_body:
@@ -208,6 +210,7 @@ func _process(delta):
 			get_node("health_bar").set_transform(Transform2D(Vector2(1, 0), Vector2(0,  1), get_node('health_bar').position))
 	# makes the skele move to target body if in the WALK or WALK_FAST STATE
 	if (current_state == States.WALK or current_state == States.WALKFAST) and target_body:
+		next_path_position = $NavigationAgent2D.get_next_path_position()
 		# with steering
 		#des_vel = (target_body.position + offset - (get_node('attackZone').position + self.position)).normalized() * speed
 		#var steering = (des_vel - vel) / mass
@@ -215,7 +218,8 @@ func _process(delta):
 		#self.move_and_collide(vel * delta)
 		
 		# without steering
-		self.move_and_collide((target_body.position + offset - (get_node('attackZone/CollisionShape2D').position + self.position)).normalized() * speed * delta)
+		self.velocity = (next_path_position - self.position).normalized() * speed * delta
+		self.move_and_slide()
 		
 	# limits the WALKFAST state TO 5 seconds
 	if current_state == States.WALKFAST:
@@ -224,7 +228,7 @@ func _process(delta):
 			changeState(States.WALK)
 			walk_fast_time = 0
 
-func _physics_process(_delta):
+func _process(_delta):
 	pass
 
 func attack_a_body(body):
@@ -259,6 +263,9 @@ func _on_detection_zone_body_entered(body):
 	# basically targets any body that can take damage (this includes player)
 	if body.has_method("take_damage") and body.is_player:
 		target_body = body
+		$NavigationAgent2D.set_target_position(target_body.position + offset)
+		next_path_position = $NavigationAgent2D.get_next_path_position()
+		
 		if current_state == States.WALKFAST:
 			pass
 		else:
@@ -280,3 +287,9 @@ func _on_attack_zone_body_entered(body):
 func _on_attack_zone_body_exited(body):
 	if body == target_body:
 		changeState(States.WALKFAST)
+
+func _on_path_update_timeout():
+	if target_body:
+		$NavigationAgent2D.set_target_position(target_body.position + offset)
+
+

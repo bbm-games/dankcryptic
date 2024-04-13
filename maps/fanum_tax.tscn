@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dv5yiioxqim71"]
+[gd_scene load_steps=12 format=3 uid="uid://dv5yiioxqim71"]
 
 [ext_resource type="Script" path="res://maps/fanum_tax.gd" id="1_kl7g8"]
 [ext_resource type="Texture2D" uid="uid://dkyrsri1xtteb" path="res://assets/tilesets/fanum-tax.jpeg" id="2_wy1js"]
@@ -12652,6 +12652,12 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 13
 sources/1 = SubResource("TileSetAtlasSource_chhvr")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7doa4"]
+vertices = PackedVector2Array(781, 277, -217, 262, -197, -748, 773, -754)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-207, -758, 783, -765, 792, 288, -228, 272)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_kl7g8")
 
@@ -12744,3 +12750,6 @@ position = Vector2(296, 241)
 [node name="Altar" parent="." instance=ExtResource("8_eq7qm")]
 position = Vector2(728, 77)
 scale = Vector2(1, 1)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_7doa4")

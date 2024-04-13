@@ -201,6 +201,8 @@ position = Vector2(477, 268)
 scale = Vector2(1.5, 1.5)
 collision_layer = 8
 collision_mask = 15
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_xchgr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -290,9 +292,16 @@ offset_bottom = 4.0
 scale = Vector2(2.48084, 1)
 color = Color(0.823529, 0.270588, 0.27451, 1)
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="pathUpdate" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="hitBox" to="." method="_on_hit_box_body_entered"]
 [connection signal="body_exited" from="hitBox" to="." method="_on_hit_box_body_exited"]
 [connection signal="body_entered" from="detectionZone" to="." method="_on_detection_zone_body_entered"]
 [connection signal="body_exited" from="detectionZone" to="." method="_on_detection_zone_body_exited"]
 [connection signal="body_entered" from="attackZone" to="." method="_on_attack_zone_body_entered"]
 [connection signal="body_exited" from="attackZone" to="." method="_on_attack_zone_body_exited"]
+[connection signal="timeout" from="pathUpdate" to="." method="_on_path_update_timeout"]

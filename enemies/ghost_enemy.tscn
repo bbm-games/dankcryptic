@@ -131,6 +131,7 @@ y_sort_enabled = true
 collision_layer = 8
 collision_mask = 15
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_ut7gm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
