@@ -1141,11 +1141,13 @@ func _process(delta):
 	light.set_scale(Vector2(1,1) + Vector2(rng.randf_range(-.05,.05), rng.randf_range(-.05,.05)))
 	light.energy = 1.5 + rng.randf_range(-.1,.1)
 	
-	# paralyze status effect
+	# paralyze/poison status effect
 	if player_data['statuses']["paralyzed"] >= 1:
 		player_body.get_node("LightningColorRect").show()
 		# this is a variable that when multiplied by the speed, kills it
 		paralyzer = 0
+	elif player_data['statuses']["poisoned"] >= 1:
+		paralyzer = 0.5
 	else:
 		player_body.get_node("LightningColorRect").hide()
 		paralyzer = 1
@@ -1465,6 +1467,13 @@ func on_death_tween_finished():
 	
 	# set player stats to the one from last save
 	player_data['current_health'] = player_data['max_health']
+	# turn off all status effects
+	player_data['statuses']["poisoned"] = 0
+	player_data['statuses']["burned"] = 0
+	player_data['statuses']["drenched"] = 0
+	player_data['statuses']["confused"] = 0
+	player_data['statuses']["paralyzed"] = 0
+	player_data['statuses']["bloodless"] = 0
 	player_data['is_dead'] = false
 	player_body.is_attackable = true
 	
